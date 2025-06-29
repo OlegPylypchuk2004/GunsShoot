@@ -11,7 +11,10 @@ namespace UI
         [Inject]
         private void Construct(TranslucentImageSource translucentImageSource)
         {
-            _translucentImage.source = translucentImageSource;
+            if (translucentImageSource == null)
+            {
+                _translucentImage.source = translucentImageSource;
+            }
         }
     }
 }
