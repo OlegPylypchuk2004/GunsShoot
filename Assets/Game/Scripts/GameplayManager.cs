@@ -1,28 +1,28 @@
 using Gameplay.States;
 using Patterns.StateMachine;
-using UnityEngine;
-using VContainer;
+using VContainer.Unity;
 
 namespace Gameplay
 {
-    public class GameplayManager : MonoBehaviour
+    public class GameplayManager : IStartable, ITickable
     {
-        private StateMachine _stateMachine;
-        private PlayState _playState;
+        private readonly StateMachine _stateMachine;
+        private readonly PreGameState _preGameState;
+        private readonly PlayState _playState;
 
-        [Inject]
-        private void Construct(StateMachine stateMachine, PlayState playState)
+        public GameplayManager(StateMachine stateMachine, PreGameState preGameState, PlayState playState)
         {
             _stateMachine = stateMachine;
+            _preGameState = preGameState;
             _playState = playState;
         }
 
-        private void Start()
+        public void Start()
         {
-            _stateMachine.ChangeState(_playState);
+            _stateMachine.ChangeState(_preGameState);
         }
 
-        private void Update()
+        public void Tick()
         {
             _stateMachine.CurrentState?.Update();
         }

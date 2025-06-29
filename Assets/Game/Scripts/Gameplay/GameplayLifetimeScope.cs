@@ -11,7 +11,6 @@ namespace Gameplay
 {
     public class GameplayLifetimeScope : LifetimeScope
     {
-        [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private TranslucentImageSource _translucentImageSource;
         [SerializeField] private BlurBackground _blurBackground;
         [SerializeField] private PauseDisplay _pauseDisplay;
@@ -22,7 +21,7 @@ namespace Gameplay
         {
             _builder = builder;
 
-            builder.RegisterComponent(_gameplayManager);
+            builder.Register<GameplayManager>(Lifetime.Singleton);
             builder.Register<PauseHandler>(Lifetime.Singleton);
 
             BindStateMachine();
@@ -32,6 +31,8 @@ namespace Gameplay
         private void BindStateMachine()
         {
             _builder.Register<StateMachine>(Lifetime.Singleton);
+
+            _builder.Register<PreGameState>(Lifetime.Singleton);
             _builder.Register<PlayState>(Lifetime.Singleton);
         }
 
