@@ -5,7 +5,11 @@ namespace BlasterSystem
     public class BlasterAnimator : MonoBehaviour
     {
         [SerializeField] protected Blaster _blaster;
-        [SerializeField] protected Transform _meshTransform;
+
+        protected virtual void Awake()
+        {
+
+        }
 
         protected virtual void OnEnable()
         {

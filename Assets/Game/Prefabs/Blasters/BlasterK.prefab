@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1015819631170864520}
   - component: {fileID: 8500727554638676411}
   - component: {fileID: 6600083530754251134}
+  - component: {fileID: 8563930274747409892}
   m_Layer: 0
   m_Name: ShootLight
   m_TagString: Untagged
@@ -149,6 +150,22 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &8563930274747409892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556679970174706579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d62b7417e44b24b9b58d919a9743b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blaster: {fileID: 4994769968609523123}
+  _light: {fileID: 8500727554638676411}
+  _duration: 0.15
+  _ease: 5
 --- !u!1 &3011976511824906708
 GameObject:
   m_ObjectHideFlags: 0

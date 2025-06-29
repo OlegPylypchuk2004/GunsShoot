@@ -5,6 +5,7 @@ namespace BlasterSystem
 {
     public class RecoilAnimator : BlasterAnimator
     {
+        [SerializeField] private Transform _meshTransform;
         [SerializeField, Min(0f)] private float _force;
         [SerializeField, Min(0f)] private float _duration;
         [SerializeField] private Ease _ease;
@@ -12,8 +13,10 @@ namespace BlasterSystem
         private Tween _currentTween;
         private Vector3 _initialPosition;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             _initialPosition = transform.localPosition;
         }
 
