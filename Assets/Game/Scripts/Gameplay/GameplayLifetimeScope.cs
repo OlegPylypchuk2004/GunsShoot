@@ -45,7 +45,6 @@ namespace Gameplay
 
         private void RegisterUI()
         {
-            _builder.RegisterComponent<TranslucentImageSource>(_translucentImageSource);
             _builder.RegisterComponent<BlurBackground>(_blurBackground);
             _builder.RegisterComponent<PauseDisplay>(_pauseDisplay);
         }

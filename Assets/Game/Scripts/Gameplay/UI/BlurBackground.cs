@@ -1,26 +1,17 @@
 using DG.Tweening;
 using LeTai.Asset.TranslucentImage;
 using UnityEngine;
-using VContainer;
 
 namespace Gameplay.UI
 {
     public class BlurBackground : MonoBehaviour
     {
         [SerializeField] private TranslucentImage _translucentImage;
+        [SerializeField] private BlurConfig _blurConfig;
         [SerializeField] private float _maxAlpha;
         [SerializeField] private float _duration;
 
         private Sequence _currentSequence;
-
-        [Inject]
-        private void Construct(TranslucentImageSource translucentImageSource)
-        {
-            if (translucentImageSource == null)
-            {
-                _translucentImage.source = translucentImageSource;
-            }
-        }
 
         public Sequence Appear()
         {
@@ -34,7 +25,7 @@ namespace Gameplay.UI
                 _translucentImage.gameObject.SetActive(true);
             });
 
-            _currentSequence.Append(DOTween.To(() => _translucentImage.source.BlurConfig.Strength, x => _translucentImage.source.BlurConfig.Strength = x, _maxAlpha, _duration)
+            _currentSequence.Append(DOTween.To(() => _blurConfig.Strength, x => _blurConfig.Strength = x, _maxAlpha, _duration)
                 .SetEase(Ease.OutQuad));
 
             return _currentSequence;
@@ -52,7 +43,7 @@ namespace Gameplay.UI
                 _translucentImage.gameObject.SetActive(true);
             });
 
-            _currentSequence.Append(DOTween.To(() => _translucentImage.source.BlurConfig.Strength, x => _translucentImage.source.BlurConfig.Strength = x, 0f, _duration)
+            _currentSequence.Append(DOTween.To(() => _blurConfig.Strength, x => _blurConfig.Strength = x, 0f, _duration)
                 .SetEase(Ease.InQuad));
 
             return _currentSequence;

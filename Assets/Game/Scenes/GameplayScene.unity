@@ -1633,6 +1633,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917803102465699931, guid: 9454831da4ba953438b36b3a94369eba, type: 3}
+      propertyPath: _translucentImageSource
+      value: 
+      objectReference: {fileID: 760077360}
     - target: {fileID: 5058045894426259191, guid: 9454831da4ba953438b36b3a94369eba, type: 3}
       propertyPath: m_Name
       value: BlurBackground
