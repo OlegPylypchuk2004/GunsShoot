@@ -21,8 +21,7 @@ namespace BlasterSystem
                 Vector2 initialDirection = GetInputDirection();
                 _offsetAngle = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg - transform.eulerAngles.z;
             }
-
-            if (Input.GetMouseButton(1))
+            else if (Input.GetMouseButton(1))
             {
                 Vector2 direction = GetInputDirection();
                 float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
