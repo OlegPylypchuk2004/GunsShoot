@@ -6,11 +6,12 @@ namespace BlasterSystem
     public class RecoilAnimator : BlasterAnimator
     {
         [SerializeField] private Transform _meshTransform;
-        [SerializeField, Min(0f)] private float _force;
+        [SerializeField, Min(0f)] private float _punchPositionForce;
+        [SerializeField, Min(0f)] private float _punchRotationForce;
         [SerializeField, Min(0f)] private float _duration;
         [SerializeField] private Ease _ease;
 
-        private Tween _currentTween;
+        private Sequence _currentSequence;
         private Vector3 _initialPosition;
 
         protected override void Awake()
@@ -24,12 +25,17 @@ namespace BlasterSystem
         {
             base.OnShotFired();
 
-            _currentTween?.Kill();
+            _currentSequence?.Kill();
             transform.localPosition = _initialPosition;
 
-            _currentTween = _meshTransform.DOPunchPosition(Vector3.right * _force, _duration, 1)
-                .SetEase(_ease)
-                .SetLink(gameObject);
+            _currentSequence = DOTween.Sequence();
+            _currentSequence.SetLink(gameObject);
+
+            _currentSequence.Join(_meshTransform.DOPunchPosition(Vector3.right * _punchPositionForce, _duration, 1)
+                .SetEase(_ease));
+
+            _currentSequence.Join(_meshTransform.DOPunchRotation(Vector3.right * _punchRotationForce * 100f, _duration, 1)
+                .SetEase(_ease));
         }
     }
 }

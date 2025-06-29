@@ -267,7 +267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blaster: {fileID: 4994769968609523123}
   _meshTransform: {fileID: 3813668815797338187}
-  _force: 0.15
+  _punchPositionForce: 0.1
+  _punchRotationForce: 0.125
   _duration: 0.125
   _ease: 6
 --- !u!1 &5972505582854923798
