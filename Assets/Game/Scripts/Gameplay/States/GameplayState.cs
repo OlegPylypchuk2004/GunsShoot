@@ -6,7 +6,7 @@ using VContainer;
 
 namespace Gameplay.States
 {
-    public class PlayState : State
+    public class GameplayState : State
     {
         private PauseHandler _pauseHandler;
         private BlasterController _blasterController;
@@ -31,15 +31,7 @@ namespace Gameplay.States
                 _pauseHandler.IsPaused = true;
             }
 
-            if (Input.GetMouseButtonDown(1))
-            {
-                _blasterController.UpdateRotationOffset();
-            }
-
-            if (Input.GetMouseButton(1))
-            {
-                _blasterController.Rotate();
-            }
+            _blasterController.UpdateRotation();
         }
     }
 }

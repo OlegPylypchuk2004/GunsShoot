@@ -25,11 +25,11 @@ namespace Gameplay
         {
             _builder = builder;
 
-            builder.Register<GameplayManager>(Lifetime.Singleton);
-            builder.Register<PauseHandler>(Lifetime.Singleton);
+            _builder.RegisterEntryPoint<GameplayManager>(Lifetime.Singleton);
+            _builder.Register<PauseHandler>(Lifetime.Singleton);
 
-            builder.RegisterInstance(_camera);
-            builder.RegisterComponent(_blasterController);
+            _builder.RegisterInstance(_camera);
+            _builder.RegisterComponent(_blasterController);
 
             RegisterStateMachine();
             RegisterUI();
@@ -39,8 +39,8 @@ namespace Gameplay
         {
             _builder.Register<StateMachine>(Lifetime.Singleton);
 
-            _builder.Register<PreGameState>(Lifetime.Singleton);
-            _builder.Register<PlayState>(Lifetime.Singleton);
+            _builder.Register<PreGameplayState>(Lifetime.Singleton);
+            _builder.Register<GameplayState>(Lifetime.Singleton);
         }
 
         private void RegisterUI()

@@ -14,21 +14,21 @@ namespace BlasterSystem
             _camera = camera;
         }
 
-        public void UpdateRotationOffset()
+        public void UpdateRotation()
         {
             if (Input.GetMouseButtonDown(1))
             {
                 Vector2 initialDirection = GetInputDirection();
                 _offsetAngle = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg - transform.eulerAngles.z;
             }
-        }
 
-        public void Rotate()
-        {
-            Vector2 direction = GetInputDirection();
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            if (Input.GetMouseButton(1))
+            {
+                Vector2 direction = GetInputDirection();
+                float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            transform.rotation = Quaternion.Euler(0, 0, targetAngle - _offsetAngle);
+                transform.rotation = Quaternion.Euler(0, 0, targetAngle - _offsetAngle);
+            }
         }
 
         private Vector2 GetInputDirection()

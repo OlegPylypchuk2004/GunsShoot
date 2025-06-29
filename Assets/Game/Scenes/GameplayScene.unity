@@ -416,6 +416,7 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  _camera: {fileID: 760077358}
   _blasterController: {fileID: 1304175452}
   _translucentImageSource: {fileID: 760077360}
   _blurBackground: {fileID: 1818518730}
@@ -465,7 +466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f367340eb1b4b45b9c05153823444b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 760077358}
 --- !u!1001 &1725299335
 PrefabInstance:
   m_ObjectHideFlags: 0
