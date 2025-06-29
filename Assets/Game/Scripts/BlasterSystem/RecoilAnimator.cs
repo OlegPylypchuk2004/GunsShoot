@@ -3,10 +3,8 @@ using UnityEngine;
 
 namespace BlasterSystem
 {
-    public class RecoilAnimator : MonoBehaviour
+    public class RecoilAnimator : BlasterAnimator
     {
-        [SerializeField] private Blaster _blaster;
-        [SerializeField] private Transform _meshTransform;
         [SerializeField, Min(0f)] private float _force;
         [SerializeField, Min(0f)] private float _duration;
         [SerializeField] private Ease _ease;
@@ -19,18 +17,10 @@ namespace BlasterSystem
             _initialPosition = transform.localPosition;
         }
 
-        private void OnEnable()
+        protected override void OnShotFired()
         {
-            _blaster.ShotFired += OnShotFired;
-        }
+            base.OnShotFired();
 
-        private void OnDisable()
-        {
-            _blaster.ShotFired -= OnShotFired;
-        }
-
-        private void OnShotFired()
-        {
             _currentTween?.Kill();
             transform.localPosition = _initialPosition;
 

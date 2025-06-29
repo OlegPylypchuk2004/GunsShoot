@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64b5a950de5a3b4bb5858fc2c386589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blaster: {fileID: 1725299337}
+  _blaster: {fileID: 0}
   _textMesh: {fileID: 1667525545}
 --- !u!1 &120480944
 GameObject:
@@ -1322,8 +1322,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1725299336}
   - {fileID: 66368011}
+  - {fileID: 1799894719}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1304175452
@@ -1472,7 +1472,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667525543}
   m_CullTransparentMesh: 1
---- !u!1001 &1725299335
+--- !u!1001 &1799894718
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1529,22 +1529,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e697717c4a0019d468f76771a86e0ec6, type: 3}
---- !u!4 &1725299336 stripped
+--- !u!4 &1799894719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5562601645176089751, guid: e697717c4a0019d468f76771a86e0ec6, type: 3}
-  m_PrefabInstance: {fileID: 1725299335}
+  m_PrefabInstance: {fileID: 1799894718}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1725299337 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4994769968609523123, guid: e697717c4a0019d468f76771a86e0ec6, type: 3}
-  m_PrefabInstance: {fileID: 1725299335}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3239a6d252b15d14dabb2344f3fbbe99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1818518729
 PrefabInstance:
   m_ObjectHideFlags: 0
