@@ -9,28 +9,28 @@ namespace BlasterSystem
         [field: SerializeField] public BlasterConfig Config { get; private set; }
         [SerializeField] private Transform _shootPoint;
 
-        private BlasterState _state;
-        private int _currentAmmo;
-        private float _reloadTimer;
-        private float _shootCooldownTimer;
+        public BlasterState State { get; private set; }
+        public int Ammo { get; private set; }
+        public float ReloadTime { get; private set; }
+        public float ShootCooldownTime { get; private set; }
 
         public event Action ShotFired;
 
         private void Start()
         {
-            _currentAmmo = Config.MaxAmmo;
+            Ammo = Config.Ammo;
         }
 
         private void Update()
         {
-            if (_state == BlasterState.ReadyToShoot)
+            if (State == BlasterState.ReadyToShoot)
             {
-                if (_shootCooldownTimer > 0f)
+                if (ShootCooldownTime > 0f)
                 {
-                    _shootCooldownTimer -= Time.deltaTime;
+                    ShootCooldownTime -= Time.deltaTime;
                 }
 
-                if (_shootCooldownTimer <= 0f)
+                if (ShootCooldownTime <= 0f)
                 {
                     if (Input.GetMouseButton(0))
                     {
@@ -38,21 +38,21 @@ namespace BlasterSystem
                     }
                 }
             }
-            else if (_state == BlasterState.Reloading)
+            else if (State == BlasterState.Reloading)
             {
-                _reloadTimer -= Time.deltaTime;
+                ReloadTime -= Time.deltaTime;
 
-                if (_reloadTimer <= 0f)
+                if (ReloadTime <= 0f)
                 {
-                    _state = BlasterState.ReadyToShoot;
-                    _currentAmmo = Config.MaxAmmo;
+                    State = BlasterState.ReadyToShoot;
+                    Ammo = Config.Ammo;
                 }
             }
         }
 
         private void Shoot()
         {
-            if (_currentAmmo <= 0)
+            if (Ammo <= 0)
             {
                 StartReload();
                 return;
@@ -62,10 +62,10 @@ namespace BlasterSystem
             bullet.transform.position = _shootPoint.position;
             bullet.Launch(Config.Bullet.Speed, -_shootPoint.right);
 
-            _currentAmmo--;
-            _shootCooldownTimer = Config.ShotCooldown;
+            Ammo--;
+            ShootCooldownTime = Config.ShotCooldown;
 
-            if (_currentAmmo <= 0)
+            if (Ammo <= 0)
             {
                 StartReload();
             }
@@ -75,8 +75,8 @@ namespace BlasterSystem
 
         private void StartReload()
         {
-            _state = BlasterState.Reloading;
-            _reloadTimer = Config.ReloadDuration;
+            State = BlasterState.Reloading;
+            ReloadTime = Config.ReloadDuration;
         }
     }
 }

@@ -2,7 +2,7 @@ using PauseManagment;
 using UnityEngine;
 using VContainer;
 
-namespace UI
+namespace Gameplay.UI
 {
     public class PauseDisplay : MonoBehaviour
     {

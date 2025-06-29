@@ -3,7 +3,7 @@ using Gameplay.States;
 using LeTai.Asset.TranslucentImage;
 using Patterns.StateMachine;
 using PauseManagment;
-using UI;
+using Gameplay.UI;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;

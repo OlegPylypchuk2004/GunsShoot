@@ -3,7 +3,7 @@ using LeTai.Asset.TranslucentImage;
 using UnityEngine;
 using VContainer;
 
-namespace UI
+namespace Gameplay.UI
 {
     public class BlurBackground : MonoBehaviour
     {
