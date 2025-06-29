@@ -5,7 +5,7 @@ namespace BlasterSystem
 {
     public class Blaster : MonoBehaviour
     {
-        [SerializeField] private Bullet _bulletPrefab;
+        [SerializeField] private BlasterConfig _config;
         [SerializeField] private Transform _shootPoint;
 
         private void Update()
@@ -18,9 +18,9 @@ namespace BlasterSystem
 
         private void Shoot()
         {
-            Bullet bullet = Instantiate(_bulletPrefab);
+            Bullet bullet = Instantiate(_config.Bullet.Prefab);
             bullet.transform.position = _shootPoint.position;
-            bullet.Launch(1f, -_shootPoint.right);
+            bullet.Launch(_config.Bullet.Speed, -_shootPoint.right);
         }
     }
 }
