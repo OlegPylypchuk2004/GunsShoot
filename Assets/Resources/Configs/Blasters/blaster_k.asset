@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: blaster_k
   m_EditorClassIdentifier: 
   <Bullet>k__BackingField: {fileID: 11400000, guid: caeac1b1ed86fd348a65f0ce85d15f21, type: 2}
+  <MaxAmmo>k__BackingField: 5
+  <ReloadDuration>k__BackingField: 0.75
+  <ShotCooldown>k__BackingField: 0.5
