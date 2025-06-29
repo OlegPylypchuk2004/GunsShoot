@@ -1,11 +1,12 @@
 using BulletSystem;
+using System;
 using UnityEngine;
 
 namespace BlasterSystem
 {
     public class Blaster : MonoBehaviour
     {
-        [SerializeField] private BlasterConfig _config;
+        [field: SerializeField] public BlasterConfig Config { get; private set; }
         [SerializeField] private Transform _shootPoint;
 
         private BlasterState _state;
@@ -13,9 +14,11 @@ namespace BlasterSystem
         private float _reloadTimer;
         private float _shootCooldownTimer;
 
+        public event Action ShotFired;
+
         private void Start()
         {
-            _currentAmmo = _config.MaxAmmo;
+            _currentAmmo = Config.MaxAmmo;
         }
 
         private void Update()
@@ -42,7 +45,7 @@ namespace BlasterSystem
                 if (_reloadTimer <= 0f)
                 {
                     _state = BlasterState.ReadyToShoot;
-                    _currentAmmo = _config.MaxAmmo;
+                    _currentAmmo = Config.MaxAmmo;
                 }
             }
         }
@@ -55,23 +58,25 @@ namespace BlasterSystem
                 return;
             }
 
-            Bullet bullet = Instantiate(_config.Bullet.Prefab);
+            Bullet bullet = Instantiate(Config.Bullet.Prefab);
             bullet.transform.position = _shootPoint.position;
-            bullet.Launch(_config.Bullet.Speed, -_shootPoint.right);
+            bullet.Launch(Config.Bullet.Speed, -_shootPoint.right);
 
             _currentAmmo--;
-            _shootCooldownTimer = _config.ShotCooldown;
+            _shootCooldownTimer = Config.ShotCooldown;
 
             if (_currentAmmo <= 0)
             {
                 StartReload();
             }
+
+            ShotFired?.Invoke();
         }
 
         private void StartReload()
         {
             _state = BlasterState.Reloading;
-            _reloadTimer = _config.ReloadDuration;
+            _reloadTimer = Config.ReloadDuration;
         }
     }
 }
