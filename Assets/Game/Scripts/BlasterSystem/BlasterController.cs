@@ -1,28 +1,29 @@
 using UnityEngine;
+using VContainer;
 
 namespace BlasterSystem
 {
     public class BlasterController : MonoBehaviour
     {
-        [SerializeField] private Camera _camera;
-
+        private Camera _camera;
         private float _offsetAngle;
 
-        private void Update()
+        [Inject]
+        private void Construct(Camera camera)
+        {
+            _camera = camera;
+        }
+
+        public void UpdateRotationOffset()
         {
             if (Input.GetMouseButtonDown(1))
             {
                 Vector2 initialDirection = GetInputDirection();
                 _offsetAngle = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg - transform.eulerAngles.z;
             }
-
-            if (Input.GetMouseButton(1))
-            {
-                Rotate();
-            }
         }
 
-        private void Rotate()
+        public void Rotate()
         {
             Vector2 direction = GetInputDirection();
             float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

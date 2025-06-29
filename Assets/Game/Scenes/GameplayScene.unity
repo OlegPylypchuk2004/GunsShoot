@@ -416,6 +416,7 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  _blasterController: {fileID: 1304175452}
   _translucentImageSource: {fileID: 760077360}
   _blurBackground: {fileID: 1818518730}
   _pauseDisplay: {fileID: 8926931471551831480}
