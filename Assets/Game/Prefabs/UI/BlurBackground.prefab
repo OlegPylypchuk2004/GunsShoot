@@ -116,6 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _translucentImage: {fileID: 4855610117321144027}
+  _maxAlpha: 7.5
+  _duration: 0.25
 --- !u!1 &7594055176173683648
 GameObject:
   m_ObjectHideFlags: 0
