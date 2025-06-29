@@ -36,17 +36,5 @@ namespace PauseManagment
 
         public event Action Paused;
         public event Action Unpaused;
-
-        public void Update()
-        {
-            if (Input.GetMouseButton(1))
-            {
-                IsPaused = false;
-            }
-            else
-            {
-                IsPaused = true;
-            }
-        }
     }
 }

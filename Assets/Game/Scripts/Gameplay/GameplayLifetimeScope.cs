@@ -1,4 +1,6 @@
+using Gameplay.States;
 using LeTai.Asset.TranslucentImage;
+using Patterns.StateMachine;
 using PauseManagment;
 using UI;
 using UnityEngine;
@@ -23,7 +25,14 @@ namespace Gameplay
             builder.RegisterComponent(_gameplayManager);
             builder.Register<PauseHandler>(Lifetime.Singleton);
 
+            BindStateMachine();
             BindUI();
+        }
+
+        private void BindStateMachine()
+        {
+            _builder.Register<StateMachine>(Lifetime.Singleton);
+            _builder.Register<PlayState>(Lifetime.Singleton);
         }
 
         private void BindUI()
