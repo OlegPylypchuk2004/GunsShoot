@@ -980,7 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee01e66702087b4798e633ca34c7956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blurConfig: {fileID: 11400000, guid: 69c0b043f5fbad145968b75eb6b8d463, type: 2}
+  blurConfig: {fileID: 11400000, guid: 9a50d99d33067304598934dbc4871038, type: 2}
   downsample: 0
   blurRegion:
     serializedVersion: 2

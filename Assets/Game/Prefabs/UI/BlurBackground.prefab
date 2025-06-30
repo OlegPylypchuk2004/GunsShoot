@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _translucentImage: {fileID: 4855610117321144027}
-  _blurConfig: {fileID: 11400000, guid: 69c0b043f5fbad145968b75eb6b8d463, type: 2}
+  _blurConfig: {fileID: 11400000, guid: 9a50d99d33067304598934dbc4871038, type: 2}
   _strength: 10
   _duration: 0.25
 --- !u!1 &7594055176173683648
