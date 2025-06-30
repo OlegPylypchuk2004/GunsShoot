@@ -13,6 +13,14 @@ namespace CameraManagment
         [SerializeField] private int _vibrations;
         [SerializeField] private Ease _ease;
 
+        private Vector3 _defaultPosition;
+        private Tween _shakeTween;
+
+        private void Awake()
+        {
+            _defaultPosition = transform.localPosition;
+        }
+
         private void OnValidate()
         {
             _transform ??= transform;
@@ -35,9 +43,17 @@ namespace CameraManagment
 
         public Tween Shake()
         {
-            return _transform.DOShakePosition(_duration, _strength, _vibrations)
+            _shakeTween?.Kill();
+
+            _shakeTween = _transform.DOShakePosition(_duration, _strength, _vibrations)
                 .SetEase(_ease)
-                .SetLink(gameObject);
+                .SetLink(gameObject)
+                .OnKill(() =>
+                {
+                    transform.localPosition = _defaultPosition;
+                });
+
+            return _shakeTween;
         }
     }
 }
