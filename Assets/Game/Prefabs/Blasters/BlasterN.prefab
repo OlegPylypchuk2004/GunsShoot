@@ -5218,9 +5218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blaster: {fileID: 4994769968609523123}
   _meshTransform: {fileID: 7152289329457463014}
-  _punchPositionForce: 0.1
-  _punchRotationForce: 0.125
-  _duration: 0.125
+  _punchPositionForce: 0.05
+  _punchRotationForce: 0.075
+  _duration: 0.075
   _ease: 6
 --- !u!1001 &1869760136638517133
 PrefabInstance:
