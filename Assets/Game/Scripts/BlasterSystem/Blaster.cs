@@ -1,6 +1,7 @@
 using BulletSystem;
 using System;
 using UnityEngine;
+using VContainer;
 
 namespace BlasterSystem
 {
@@ -9,12 +10,19 @@ namespace BlasterSystem
         [field: SerializeField] public BlasterConfig Config { get; private set; }
         [SerializeField] private Transform _shootPoint;
 
+        private BulletsManager _bulletsManager;
+
         public BlasterState State { get; private set; }
         public int Ammo { get; private set; }
         public float ReloadTime { get; private set; }
         public float ShootCooldownTime { get; private set; }
 
         public event Action ShotFired;
+
+        private void Awake()
+        {
+            _bulletsManager = new BulletsManager(Config);
+        }
 
         private void Start()
         {
@@ -58,7 +66,7 @@ namespace BlasterSystem
                 return;
             }
 
-            Bullet bullet = Instantiate(Config.Bullet.Prefab);
+            Bullet bullet = _bulletsManager.CreateBullet();
             bullet.transform.position = _shootPoint.position;
             bullet.Launch(Config.BulletSpeed, Config.Damage, -_shootPoint.right);
 

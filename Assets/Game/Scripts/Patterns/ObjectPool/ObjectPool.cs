@@ -9,12 +9,14 @@ namespace Patterns.ObjectPool
         private T _prefab;
         private List<T> _objects;
 
-        public ObjectPool(T prefab, int initialCount)
+        public IReadOnlyList<T> Objects => _objects;
+
+        public ObjectPool(T prefab, int defaultAmount)
         {
             _prefab = prefab;
             _objects = new List<T>();
 
-            for (int i = 0; i < initialCount; i++)
+            for (int i = 0; i < defaultAmount; i++)
             {
                 T gameObject = GameObject.Instantiate(_prefab);
                 gameObject.gameObject.SetActive(false);
