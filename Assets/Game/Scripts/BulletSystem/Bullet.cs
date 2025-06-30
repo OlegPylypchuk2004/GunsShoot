@@ -23,6 +23,17 @@ namespace BulletSystem
             }
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_state != BulletState.Launched)
+            {
+                return;
+            }
+
+            _state = BulletState.Idle;
+            Destroy(gameObject);
+        }
+
         public void Launch(float speed, Vector3 direction)
         {
             _speed = speed;
