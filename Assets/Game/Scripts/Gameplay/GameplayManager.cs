@@ -32,7 +32,7 @@ namespace Gameplay
 
         public void Dispose()
         {
-            Debug.Log("Disposed");
+            _preGameplayState.GameReady -= OnGameReady;
         }
 
         private void OnGameReady()
