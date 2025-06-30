@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Patterns.StateMachine;
 using System;
 using UnityEngine;
@@ -8,14 +9,22 @@ namespace Gameplay.States
     {
         public event Action GameReady;
 
-        public override void Update()
+        public override void Enter()
         {
-            base.Update();
+            base.Enter();
 
-            if (Input.GetMouseButtonDown(1))
-            {
-                GameReady?.Invoke();
-            }
+            CountTime().Forget();
+        }
+
+        private async UniTaskVoid CountTime()
+        {
+            Debug.Log("3");
+            await UniTask.Delay(1000);
+            Debug.Log("2");
+            await UniTask.Delay(1000);
+            Debug.Log("1");
+
+            GameReady?.Invoke();
         }
     }
 }
