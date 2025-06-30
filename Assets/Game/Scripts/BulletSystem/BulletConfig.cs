@@ -6,6 +6,5 @@ namespace BulletSystem
     public class BulletConfig : ScriptableObject
     {
         [field: SerializeField] public Bullet Prefab { get; private set; }
-        [field: SerializeField] public float Speed { get; private set; }
     }
 }

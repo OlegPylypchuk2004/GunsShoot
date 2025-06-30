@@ -60,7 +60,7 @@ namespace BlasterSystem
 
             Bullet bullet = Instantiate(Config.Bullet.Prefab);
             bullet.transform.position = _shootPoint.position;
-            bullet.Launch(Config.Bullet.Speed, -_shootPoint.right);
+            bullet.Launch(Config.BulletSpeed, Config.Damage, -_shootPoint.right);
 
             Ammo--;
             ShootCooldownTime = Config.ShotCooldown;

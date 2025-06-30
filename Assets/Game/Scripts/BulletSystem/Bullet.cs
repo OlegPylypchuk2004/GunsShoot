@@ -1,3 +1,4 @@
+using DamageSystem;
 using UnityEngine;
 
 namespace BulletSystem
@@ -8,6 +9,7 @@ namespace BulletSystem
 
         private BulletState _state;
         private float _speed;
+        private int _damage;
         private Vector3 _direction;
 
         private void Awake()
@@ -31,12 +33,19 @@ namespace BulletSystem
             }
 
             _state = BulletState.Idle;
+
+            if (other.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(_damage);
+            }
+
             Destroy(gameObject);
         }
 
-        public void Launch(float speed, Vector3 direction)
+        public void Launch(float speed, int damage, Vector3 direction)
         {
             _speed = speed;
+            _damage = damage;
             _direction = direction.normalized;
             _state = BulletState.Launched;
         }

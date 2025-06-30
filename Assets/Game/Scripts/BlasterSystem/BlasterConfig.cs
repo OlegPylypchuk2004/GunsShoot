@@ -7,6 +7,8 @@ namespace BlasterSystem
     public class BlasterConfig : ScriptableObject
     {
         [field: SerializeField] public BulletConfig Bullet { get; private set; }
+        [field: SerializeField, Min(1)] public int Damage { get; private set; }
+        [field: SerializeField, Min(1)] public float BulletSpeed { get; private set; }
         [field: SerializeField, Min(1)] public int Ammo { get; private set; }
         [field: SerializeField, Min(0f)] public float ReloadDuration { get; private set; }
         [field: SerializeField, Min(0f)] public float ShotCooldown { get; private set; }
