@@ -6,9 +6,30 @@ namespace ObstacleSystem
 {
     public class Obstacle : MonoBehaviour, IDamageable
     {
-        [field: SerializeField] public int Health { get; private set; }
+        [field: SerializeField] public int MaxHealth { get; private set; }
+
+        private int _health;
+
+        public int Health
+        {
+            get => _health;
+            set
+            {
+                if (_health != value)
+                {
+                    _health = value;
+
+                    HealthChanged?.Invoke(_health);
+                }
+            }
+        }
 
         public event Action<int> HealthChanged;
+
+        private void Awake()
+        {
+            Health = MaxHealth;
+        }
 
         public void TakeDamage(int damage)
         {
@@ -17,10 +38,12 @@ namespace ObstacleSystem
             if (Health < 0)
             {
                 Health = 0;
-                Health = 100;
             }
 
-            HealthChanged?.Invoke(Health);
+            if (Health == 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
