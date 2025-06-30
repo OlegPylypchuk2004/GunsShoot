@@ -1474,7 +1474,7 @@ MonoBehaviour:
   _blaster: {fileID: 2066335123}
   _transform: {fileID: 760077359}
   _duration: 0.25
-  _strength: 0.05
+  _strength: 0.025
   _vibrations: 15
   _ease: 6
 --- !u!1 &765039405
