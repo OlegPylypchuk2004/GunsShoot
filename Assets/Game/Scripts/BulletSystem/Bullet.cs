@@ -35,5 +35,10 @@ namespace BulletSystem
             _damage = damage;
             _direction = direction.normalized;
         }
+
+        public void SetRigidbodyPosition(Vector3 position)
+        {
+            _rigidbody.position = position;
+        }
     }
 }

@@ -68,6 +68,7 @@ namespace BlasterSystem
 
             Bullet bullet = _bulletsManager.CreateBullet();
             bullet.transform.position = _shootPoint.position;
+            bullet.SetRigidbodyPosition(_shootPoint.position);
             bullet.Launch(Config.BulletSpeed, Config.Damage, -_shootPoint.right);
 
             Ammo--;
