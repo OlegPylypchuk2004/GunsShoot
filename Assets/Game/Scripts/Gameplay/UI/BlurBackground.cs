@@ -8,7 +8,7 @@ namespace Gameplay.UI
     {
         [SerializeField] private TranslucentImage _translucentImage;
         [SerializeField] private BlurConfig _blurConfig;
-        [SerializeField] private float _maxAlpha;
+        [SerializeField] private float _strength;
         [SerializeField] private float _duration;
 
         private Sequence _currentSequence;
@@ -25,7 +25,7 @@ namespace Gameplay.UI
                 _translucentImage.gameObject.SetActive(true);
             });
 
-            _currentSequence.Append(DOTween.To(() => _blurConfig.Strength, x => _blurConfig.Strength = x, _maxAlpha, _duration)
+            _currentSequence.Append(DOTween.To(() => _blurConfig.Strength, x => _blurConfig.Strength = x, _strength, _duration)
                 .SetEase(Ease.OutQuad));
 
             return _currentSequence;
