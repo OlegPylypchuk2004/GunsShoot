@@ -1466,12 +1466,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760077356}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7714e6d9e371ebe4a8c79adcce517500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blaster: {fileID: 0}
   _transform: {fileID: 760077359}
   _duration: 0.25
   _strength: 0.025
@@ -1653,8 +1652,8 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
-  _camera: {fileID: 760077358}
   _blasterController: {fileID: 1304175452}
+  _cameraShaker: {fileID: 760077362}
   _translucentImageSource: {fileID: 760077360}
   _blurBackground: {fileID: 1818518730}
   _pauseDisplay: {fileID: 8926931471551831480}
@@ -1906,6 +1905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f367340eb1b4b45b9c05153823444b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 760077358}
 --- !u!1 &1788301546
 GameObject:
   m_ObjectHideFlags: 0

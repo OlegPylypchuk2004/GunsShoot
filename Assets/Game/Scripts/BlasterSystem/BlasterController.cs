@@ -5,14 +5,14 @@ namespace BlasterSystem
 {
     public class BlasterController : MonoBehaviour
     {
-        private Camera _camera;
+        [SerializeField] private Camera _camera;
+
         private BlasterHolder _blasterHolder;
         private float _offsetAngle;
 
         [Inject]
-        private void Construct(Camera camera, BlasterHolder blasterHolder)
+        private void Construct(BlasterHolder blasterHolder)
         {
-            _camera = camera;
             _blasterHolder = blasterHolder;
         }
 

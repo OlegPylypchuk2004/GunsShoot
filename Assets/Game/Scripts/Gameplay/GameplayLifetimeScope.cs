@@ -7,13 +7,14 @@ using Gameplay.UI;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+using CameraManagment;
 
 namespace Gameplay
 {
     public class GameplayLifetimeScope : LifetimeScope
     {
-        [Header("Gameplay"), SerializeField] private Camera _camera;
-        [SerializeField] private BlasterController _blasterController;
+        [Header("Gameplay"), SerializeField] private BlasterController _blasterController;
+        [SerializeField] private CameraShaker _cameraShaker;
 
         [Header("UI"), SerializeField] private TranslucentImageSource _translucentImageSource;
         [SerializeField] private BlurBackground _blurBackground;
@@ -29,10 +30,10 @@ namespace Gameplay
             _builder.RegisterEntryPoint<GameplayManager>(Lifetime.Singleton);
             _builder.Register<PauseHandler>(Lifetime.Singleton);
             _builder.Register<BlasterHolder>(Lifetime.Singleton)
-                .WithParameter(Resources.Load<BlasterConfig>("Configs/Blasters/blaster_k"));
+                .WithParameter(Resources.Load<BlasterConfig>("Configs/Blasters/blaster_n"));
 
-            _builder.RegisterInstance(_camera);
             _builder.RegisterComponent(_blasterController);
+            _builder.RegisterComponent(_cameraShaker);
 
             RegisterStateMachine();
             RegisterUI();

@@ -1,20 +1,27 @@
 using BlasterSystem;
 using DG.Tweening;
 using UnityEngine;
+using VContainer;
 
 namespace CameraManagment
 {
     public class CameraShaker : MonoBehaviour
     {
-        [SerializeField] private Blaster _blaster;
         [SerializeField] private Transform _transform;
         [SerializeField] private float _duration;
         [SerializeField] private float _strength;
         [SerializeField] private int _vibrations;
         [SerializeField] private Ease _ease;
 
+        private BlasterHolder _blasterHolder;
         private Vector3 _defaultPosition;
         private Tween _shakeTween;
+
+        [Inject]
+        private void Construct(BlasterHolder blasterHolder)
+        {
+            _blasterHolder = blasterHolder;
+        }
 
         private void Awake()
         {
@@ -28,12 +35,12 @@ namespace CameraManagment
 
         private void OnEnable()
         {
-            _blaster.ShotFired += OnShotFired;
+            _blasterHolder.Blaster.ShotFired += OnShotFired;
         }
 
         private void OnDisable()
         {
-            _blaster.ShotFired -= OnShotFired;
+            _blasterHolder.Blaster.ShotFired -= OnShotFired;
         }
 
         private void OnShotFired()
