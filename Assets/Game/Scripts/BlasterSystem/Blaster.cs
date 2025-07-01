@@ -1,11 +1,11 @@
+using BlasterSystem.Abstractions;
 using BulletSystem;
 using System;
 using UnityEngine;
-using VContainer;
 
 namespace BlasterSystem
 {
-    public class Blaster : MonoBehaviour
+    public class Blaster : MonoBehaviour, IBlasterShotReadonly
     {
         [field: SerializeField] public BlasterConfig Config { get; private set; }
         [SerializeField] private Transform _shootPoint;
