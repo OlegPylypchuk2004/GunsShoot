@@ -21,12 +21,15 @@ namespace Gameplay.UI
         private void OnEnable()
         {
             CreateAmmoDisplays();
+
             _blasterHolder.Blaster.AmmoAmountChanged += AmmoAmountChanged;
+            _blasterHolder.Blaster.ReloadTimeChanged += OnReloadTimeChanged;
         }
 
         private void OnDisable()
         {
             _blasterHolder.Blaster.AmmoAmountChanged -= AmmoAmountChanged;
+            _blasterHolder.Blaster.ReloadTimeChanged -= OnReloadTimeChanged;
         }
 
         private void LateUpdate()
@@ -62,6 +65,30 @@ namespace Gameplay.UI
             for (int i = 0; i < _ammoDisplays.Length; i++)
             {
                 if (i < ammoAmount)
+                {
+                    _ammoDisplays[i].Activate();
+                }
+                else
+                {
+                    _ammoDisplays[i].Deactivate();
+                }
+            }
+        }
+
+        private void OnReloadTimeChanged(float currentTime, float targetTime)
+        {
+            if (targetTime <= 0f)
+            {
+                return;
+            }
+
+            currentTime = Mathf.Clamp(currentTime, 0f, targetTime);
+            float progress = currentTime / targetTime;
+            int activeAmmoDisplaysAmount = _ammoDisplays.Length - Mathf.RoundToInt(_ammoDisplays.Length * progress);
+
+            for (int i = 0; i < _ammoDisplays.Length; i++)
+            {
+                if (i < activeAmmoDisplaysAmount)
                 {
                     _ammoDisplays[i].Activate();
                 }

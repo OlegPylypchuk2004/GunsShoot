@@ -13,7 +13,7 @@ namespace BlasterSystem
         private BulletsManager _bulletsManager;
         private BlasterState _state;
         private float _reloadTime;
-        private float ShootCooldownTime;
+        private float _shootCooldownTime;
         private int _ammoAmount;
 
         public int AmmoAmount
@@ -37,8 +37,21 @@ namespace BlasterSystem
             get => Config.AmmoAmount;
         }
 
+        public BlasterState State
+        {
+            get => _state;
+            set
+            {
+                _state = value;
+
+                StateChanged?.Invoke(State);
+            }
+        }
+
         public event Action ShotFired;
         public event Action<int> AmmoAmountChanged;
+        public event Action<BlasterState> StateChanged;
+        public event Action<float, float> ReloadTimeChanged;
 
         private void Awake()
         {
@@ -54,12 +67,12 @@ namespace BlasterSystem
         {
             if (_state == BlasterState.ReadyToShoot)
             {
-                if (ShootCooldownTime > 0f)
+                if (_shootCooldownTime > 0f)
                 {
-                    ShootCooldownTime -= Time.deltaTime;
+                    _shootCooldownTime -= Time.deltaTime;
                 }
 
-                if (ShootCooldownTime <= 0f)
+                if (_shootCooldownTime <= 0f)
                 {
                     if (Input.GetMouseButton(0))
                     {
@@ -76,6 +89,8 @@ namespace BlasterSystem
                     _state = BlasterState.ReadyToShoot;
                     AmmoAmount = Config.AmmoAmount;
                 }
+
+                ReloadTimeChanged?.Invoke(_reloadTime, Config.ReloadDuration);
             }
         }
 
@@ -93,7 +108,7 @@ namespace BlasterSystem
             bullet.Launch(Config.BulletSpeed, Config.Damage, GetBulletDirection());
 
             AmmoAmount--;
-            ShootCooldownTime = Config.ShotCooldown;
+            _shootCooldownTime = Config.ShotCooldown;
 
             if (AmmoAmount <= 0)
             {
