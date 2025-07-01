@@ -1,26 +1,52 @@
 using BlasterSystem;
-using TMPro;
+using BlasterSystem.Abstractions;
 using UnityEngine;
 
 namespace Gameplay.UI
 {
     public class AmmoDisplay : MonoBehaviour
     {
-        [SerializeField] private Blaster _blaster;
-        [SerializeField] private TextMeshProUGUI _textMesh;
+        [SerializeField] private GameObject[] _icons;
+        
+        //private IBlasterAmmoAmountReadonly _blasterAmmoAmountReadonly;
+        public Blaster _blasterAmmoAmountReadonly;
 
-        private void LateUpdate()
+        private void Awake()
         {
-            if (_blaster.State == BlasterState.Reloading)
+            //_blasterAmmoAmountReadonly = GetComponentInParent<IBlasterAmmoAmountReadonly>();
+        }
+
+        private void OnEnable()
+        {
+            if (_blasterAmmoAmountReadonly == null)
             {
-                _textMesh.text = $"{Mathf.Round(_blaster.ReloadTime * 100f) / 100f}s";
+                Debug.Log("Blaster not found");
             }
             else
             {
-                _textMesh.text = $"{_blaster.Ammo}";
+                _blasterAmmoAmountReadonly.AmmoAmountChanged += AmmoAmountChanged;
             }
+        }
 
+        private void OnDisable()
+        {
+            if (_blasterAmmoAmountReadonly == null)
+            {
+                _blasterAmmoAmountReadonly.AmmoAmountChanged -= AmmoAmountChanged;
+            }
+        }
+
+        private void LateUpdate()
+        {
             transform.rotation = Quaternion.Euler(Vector3.zero);
+        }
+
+        private void AmmoAmountChanged(int ammoAmount)
+        {
+            for (int i = 0; i < _icons.Length; i++)
+            {
+                _icons[i].SetActive(i < ammoAmount);
+            }
         }
     }
 }

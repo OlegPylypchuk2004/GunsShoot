@@ -10,7 +10,7 @@ namespace BulletSystem
 
         public BulletsManager(BlasterConfig blasterConfig)
         {
-            _objectPool = new ObjectPool<Bullet>(blasterConfig.Bullet, blasterConfig.Ammo / 10);
+            _objectPool = new ObjectPool<Bullet>(blasterConfig.Bullet, blasterConfig.AmmoAmount / 10);
         }
 
         public void Dispose()

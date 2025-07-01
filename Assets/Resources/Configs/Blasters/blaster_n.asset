@@ -15,7 +15,7 @@ MonoBehaviour:
   <Damage>k__BackingField: 3
   <Spread>k__BackingField: 0.75
   <BulletSpeed>k__BackingField: 15
-  <Ammo>k__BackingField: 30
+  <AmmoAmount>k__BackingField: 30
   <ReloadDuration>k__BackingField: 1.25
   <ShotCooldown>k__BackingField: 0.15
   <Bullet>k__BackingField: {fileID: 7564948327013881600, guid: 66eb28fed00acad47b8d4f1965ef3f11, type: 3}

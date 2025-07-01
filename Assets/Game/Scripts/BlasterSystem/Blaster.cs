@@ -5,19 +5,40 @@ using UnityEngine;
 
 namespace BlasterSystem
 {
-    public class Blaster : MonoBehaviour, IBlasterShotReadonly
+    public class Blaster : MonoBehaviour, IBlasterShotReadonly, IBlasterAmmoAmountReadonly
     {
         [field: SerializeField] public BlasterConfig Config { get; private set; }
         [SerializeField] private Transform _shootPoint;
 
         private BulletsManager _bulletsManager;
+        private BlasterState _state;
+        private float _reloadTime;
+        private float ShootCooldownTime;
+        private int _ammoAmount;
 
-        public BlasterState State { get; private set; }
-        public int Ammo { get; private set; }
-        public float ReloadTime { get; private set; }
-        public float ShootCooldownTime { get; private set; }
+        public int AmmoAmount
+        {
+            get => _ammoAmount;
+            set
+            {
+                if (value < 0)
+                {
+                    return;
+                }
+
+                _ammoAmount = value;
+
+                AmmoAmountChanged?.Invoke(_ammoAmount);
+            }
+        }
+
+        public int MaxAmmoAmount
+        {
+            get => Config.AmmoAmount;
+        }
 
         public event Action ShotFired;
+        public event Action<int> AmmoAmountChanged;
 
         private void Awake()
         {
@@ -26,12 +47,12 @@ namespace BlasterSystem
 
         private void Start()
         {
-            Ammo = Config.Ammo;
+            AmmoAmount = Config.AmmoAmount;
         }
 
         private void Update()
         {
-            if (State == BlasterState.ReadyToShoot)
+            if (_state == BlasterState.ReadyToShoot)
             {
                 if (ShootCooldownTime > 0f)
                 {
@@ -46,21 +67,21 @@ namespace BlasterSystem
                     }
                 }
             }
-            else if (State == BlasterState.Reloading)
+            else if (_state == BlasterState.Reloading)
             {
-                ReloadTime -= Time.deltaTime;
+                _reloadTime -= Time.deltaTime;
 
-                if (ReloadTime <= 0f)
+                if (_reloadTime <= 0f)
                 {
-                    State = BlasterState.ReadyToShoot;
-                    Ammo = Config.Ammo;
+                    _state = BlasterState.ReadyToShoot;
+                    AmmoAmount = Config.AmmoAmount;
                 }
             }
         }
 
         private void Shoot()
         {
-            if (Ammo <= 0)
+            if (AmmoAmount <= 0)
             {
                 StartReload();
                 return;
@@ -71,10 +92,10 @@ namespace BlasterSystem
             bullet.SetRigidbodyPosition(_shootPoint.position);
             bullet.Launch(Config.BulletSpeed, Config.Damage, GetBulletDirection());
 
-            Ammo--;
+            AmmoAmount--;
             ShootCooldownTime = Config.ShotCooldown;
 
-            if (Ammo <= 0)
+            if (AmmoAmount <= 0)
             {
                 StartReload();
             }
@@ -93,8 +114,8 @@ namespace BlasterSystem
         }
         private void StartReload()
         {
-            State = BlasterState.Reloading;
-            ReloadTime = Config.ReloadDuration;
+            _state = BlasterState.Reloading;
+            _reloadTime = Config.ReloadDuration;
         }
     }
 }
