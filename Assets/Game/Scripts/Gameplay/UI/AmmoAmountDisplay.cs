@@ -1,6 +1,8 @@
 using BlasterSystem;
+using BlasterSystem.Abstractions;
 using System;
 using UnityEngine;
+using VContainer;
 
 namespace Gameplay.UI
 {
@@ -27,7 +29,7 @@ namespace Gameplay.UI
         {
             if (_blasterAmmoAmountReadonly == null)
             {
-                throw new Exception("Blaster not found");
+                return;
             }
 
             _ammoDisplays = new AmmoDisplay[_blasterAmmoAmountReadonly.MaxAmmoAmount];
@@ -43,7 +45,7 @@ namespace Gameplay.UI
         {
             if (_blasterAmmoAmountReadonly == null)
             {
-                throw new Exception("Blaster not found");
+                return;
             }
 
             _blasterAmmoAmountReadonly.AmmoAmountChanged += AmmoAmountChanged;
@@ -53,7 +55,7 @@ namespace Gameplay.UI
         {
             if (_blasterAmmoAmountReadonly == null)
             {
-                throw new Exception("Blaster not found");
+                return;
             }
 
             _blasterAmmoAmountReadonly.AmmoAmountChanged -= AmmoAmountChanged;
@@ -75,6 +77,8 @@ namespace Gameplay.UI
                 else
                 {
                     _ammoDisplays[i].Deactivate();
+
+                    return;
                 }
             }
         }
