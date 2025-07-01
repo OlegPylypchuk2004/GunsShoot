@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc8af18e823f2e409788c49df460a69, type: 3}
   m_Name: blaster_n
   m_EditorClassIdentifier: 
-  <Bullet>k__BackingField: {fileID: 11400000, guid: caeac1b1ed86fd348a65f0ce85d15f21, type: 2}
+  <Bullet>k__BackingField: {fileID: 7564948327013881600, guid: 66eb28fed00acad47b8d4f1965ef3f11, type: 3}
   <Damage>k__BackingField: 3
   <BulletSpeed>k__BackingField: 15
   <Ammo>k__BackingField: 30
