@@ -1253,7 +1253,7 @@ MonoBehaviour:
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
   _source: {fileID: 760077361}
-  m_spriteBlending: 0.089
+  m_spriteBlending: 0
 --- !u!222 &2015191661
 CanvasRenderer:
   m_ObjectHideFlags: 0
