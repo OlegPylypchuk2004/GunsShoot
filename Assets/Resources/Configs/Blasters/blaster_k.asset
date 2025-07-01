@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc8af18e823f2e409788c49df460a69, type: 3}
   m_Name: blaster_k
   m_EditorClassIdentifier: 
-  <Bullet>k__BackingField: {fileID: 7564948327013881600, guid: 66eb28fed00acad47b8d4f1965ef3f11, type: 3}
   <Damage>k__BackingField: 7
   <BulletSpeed>k__BackingField: 15
   <Ammo>k__BackingField: 12
   <ReloadDuration>k__BackingField: 0.75
   <ShotCooldown>k__BackingField: 0.325
+  <Bullet>k__BackingField: {fileID: 7564948327013881600, guid: 66eb28fed00acad47b8d4f1965ef3f11, type: 3}
+  <Prefab>k__BackingField: {fileID: 4994769968609523123, guid: e697717c4a0019d468f76771a86e0ec6, type: 3}
+  <PreviewPrefab>k__BackingField: {fileID: 9120959046914709529, guid: 74bf4dfa9f3c06c45aa6df2c0187478d, type: 3}
+  <Type>k__BackingField: 0
