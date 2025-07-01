@@ -69,7 +69,7 @@ namespace BlasterSystem
             Bullet bullet = _bulletsManager.CreateBullet();
             bullet.transform.position = _shootPoint.position;
             bullet.SetRigidbodyPosition(_shootPoint.position);
-            bullet.Launch(Config.BulletSpeed, Config.Damage, -_shootPoint.right);
+            bullet.Launch(Config.BulletSpeed, Config.Damage, GetBulletDirection());
 
             Ammo--;
             ShootCooldownTime = Config.ShotCooldown;
@@ -82,6 +82,15 @@ namespace BlasterSystem
             ShotFired?.Invoke();
         }
 
+        private Vector3 GetBulletDirection()
+        {
+            Vector3 baseDirection = -_shootPoint.right;
+            float spreadAngleY = UnityEngine.Random.Range(-Config.Spread, Config.Spread);
+            float spreadAngleZ = UnityEngine.Random.Range(-Config.Spread, Config.Spread);
+            Quaternion spreadRotation = Quaternion.Euler(0, spreadAngleZ, spreadAngleY);
+
+            return spreadRotation * baseDirection;
+        }
         private void StartReload()
         {
             State = BlasterState.Reloading;

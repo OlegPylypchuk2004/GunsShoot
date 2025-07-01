@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: blaster_n
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 3
+  <Spread>k__BackingField: 0.75
   <BulletSpeed>k__BackingField: 15
   <Ammo>k__BackingField: 30
   <ReloadDuration>k__BackingField: 1.25
