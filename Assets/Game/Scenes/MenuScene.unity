@@ -824,8 +824,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1065719072}
+  - component: {fileID: 1065719073}
   m_Layer: 0
-  m_Name: ShopBlasterPanel
+  m_Name: ShopPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,6 +849,20 @@ Transform:
   - {fileID: 1505272445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1065719073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065719071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96810378291e3a4d904d9a38052c926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shopFramePrefab: {fileID: 8003038663053573881, guid: 367df1873a97b834b93233e51ce9fed2, type: 3}
+  _shopFramesParent: {fileID: 918751670}
 --- !u!1 &1381922274
 GameObject:
   m_ObjectHideFlags: 0
