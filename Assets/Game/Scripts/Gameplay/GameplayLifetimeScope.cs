@@ -27,6 +27,8 @@ namespace Gameplay
 
             _builder.RegisterEntryPoint<GameplayManager>(Lifetime.Singleton);
             _builder.Register<PauseHandler>(Lifetime.Singleton);
+            _builder.Register<BlasterHolder>(Lifetime.Singleton)
+                .WithParameter(Resources.Load<BlasterConfig>("Configs/Blasters/blaster_k"));
 
             _builder.RegisterInstance(_camera);
             _builder.RegisterComponent(_blasterController);

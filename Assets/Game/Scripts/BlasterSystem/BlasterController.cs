@@ -6,12 +6,29 @@ namespace BlasterSystem
     public class BlasterController : MonoBehaviour
     {
         private Camera _camera;
+        private BlasterHolder _blasterHolder;
         private float _offsetAngle;
 
         [Inject]
-        private void Construct(Camera camera)
+        private void Construct(Camera camera, BlasterHolder blasterHolder)
         {
             _camera = camera;
+            _blasterHolder = blasterHolder;
+        }
+
+        private void OnEnable()
+        {
+            if (_blasterHolder.Blaster != null)
+            {
+                _blasterHolder.Blaster.transform.SetParent(transform, false);
+            }
+
+            _blasterHolder.BlasterChanged += OnBlasterChanged;
+        }
+
+        private void OnDisable()
+        {
+            _blasterHolder.BlasterChanged -= OnBlasterChanged;
         }
 
         public void UpdateRotation()
@@ -44,6 +61,16 @@ namespace BlasterSystem
             mousePosition.z = Mathf.Abs(_camera.transform.position.z);
 
             return _camera.ScreenToWorldPoint(mousePosition);
+        }
+
+        private void OnBlasterChanged(Blaster blaster)
+        {
+            if (blaster == null)
+            {
+                return;
+            }
+
+            _blasterHolder.Blaster.transform.SetParent(transform, false);
         }
     }
 }
