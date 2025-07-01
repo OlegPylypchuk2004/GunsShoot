@@ -322,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &66368011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -420,7 +420,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ammoDisplayPrefab: {fileID: 8637974001134003969, guid: fe5509b7df9e59241abdc5ead03d2cb9, type: 3}
   _ammoDisplayParent: {fileID: 1127374738}
-  _blasterAmmoAmountReadonly: {fileID: 0}
 --- !u!1 &120480944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,6 +1658,7 @@ MonoBehaviour:
   _translucentImageSource: {fileID: 760077360}
   _blurBackground: {fileID: 1818518730}
   _pauseDisplay: {fileID: 8926931471551831480}
+  _ammoAmountDisplay: {fileID: 66368015}
 --- !u!1 &1220817635
 GameObject:
   m_ObjectHideFlags: 0

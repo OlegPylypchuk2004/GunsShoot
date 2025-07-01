@@ -1,6 +1,4 @@
 using BlasterSystem;
-using BlasterSystem.Abstractions;
-using System;
 using UnityEngine;
 using VContainer;
 
@@ -11,59 +9,52 @@ namespace Gameplay.UI
         [SerializeField] private AmmoDisplay _ammoDisplayPrefab;
         [SerializeField] private RectTransform _ammoDisplayParent;
 
-        //private IBlasterAmmoAmountReadonly _blasterAmmoAmountReadonly;
-        public Blaster _blasterAmmoAmountReadonly;
+        private BlasterHolder _blasterHolder;
         private AmmoDisplay[] _ammoDisplays;
 
-        private void Awake()
+        [Inject]
+        private void Construct(BlasterHolder blasterHolder)
         {
-            //_blasterAmmoAmountReadonly = GetComponentInParent<IBlasterAmmoAmountReadonly>();
-
-            if (_blasterAmmoAmountReadonly == null)
-            {
-                throw new Exception("Blaster not found");
-            }
-        }
-
-        private void Start()
-        {
-            if (_blasterAmmoAmountReadonly == null)
-            {
-                return;
-            }
-
-            _ammoDisplays = new AmmoDisplay[_blasterAmmoAmountReadonly.MaxAmmoAmount];
-
-            for (int i = 0; i < _ammoDisplays.Length; i++)
-            {
-                _ammoDisplays[i] = Instantiate(_ammoDisplayPrefab, _ammoDisplayParent);
-                _ammoDisplays[i].Activate();
-            }
+            _blasterHolder = blasterHolder;
         }
 
         private void OnEnable()
         {
-            if (_blasterAmmoAmountReadonly == null)
-            {
-                return;
-            }
-
-            _blasterAmmoAmountReadonly.AmmoAmountChanged += AmmoAmountChanged;
+            CreateAmmoDisplays();
+            _blasterHolder.Blaster.AmmoAmountChanged += AmmoAmountChanged;
         }
 
         private void OnDisable()
         {
-            if (_blasterAmmoAmountReadonly == null)
-            {
-                return;
-            }
-
-            _blasterAmmoAmountReadonly.AmmoAmountChanged -= AmmoAmountChanged;
+            _blasterHolder.Blaster.AmmoAmountChanged -= AmmoAmountChanged;
         }
 
         private void LateUpdate()
         {
-            transform.rotation = Quaternion.Euler(Vector3.zero);
+            transform.rotation = Quaternion.identity;
+        }
+
+        private void CreateAmmoDisplays()
+        {
+            if (_ammoDisplays != null && _ammoDisplays.Length > 0)
+            {
+                for (int i = 0; i < _ammoDisplays.Length; i++)
+                {
+                    if (_ammoDisplays[i] != null)
+                    {
+                        Destroy(_ammoDisplays[i].gameObject);
+                    }
+                }
+            }
+
+            int maxAmmo = _blasterHolder.Blaster.MaxAmmoAmount;
+            _ammoDisplays = new AmmoDisplay[maxAmmo];
+
+            for (int i = 0; i < maxAmmo; i++)
+            {
+                _ammoDisplays[i] = Instantiate(_ammoDisplayPrefab, _ammoDisplayParent);
+                _ammoDisplays[i].Activate();
+            }
         }
 
         private void AmmoAmountChanged(int ammoAmount)
@@ -77,8 +68,6 @@ namespace Gameplay.UI
                 else
                 {
                     _ammoDisplays[i].Deactivate();
-
-                    return;
                 }
             }
         }
