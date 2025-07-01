@@ -214,6 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 124444715}
+  - component: {fileID: 124444716}
   m_Layer: 0
   m_Name: Blaster
   m_TagString: Untagged
@@ -237,6 +238,20 @@ Transform:
   - {fileID: 1025284629}
   m_Father: {fileID: 1065719072}
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!114 &124444716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124444714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ea6ee2188c2f945af3b83d415346ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetTransform: {fileID: 124444715}
+  _sensitivity: -10
 --- !u!1 &265481108
 GameObject:
   m_ObjectHideFlags: 0
