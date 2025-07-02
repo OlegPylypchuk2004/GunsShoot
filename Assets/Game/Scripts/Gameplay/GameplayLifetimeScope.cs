@@ -27,16 +27,24 @@ namespace Gameplay
         {
             _builder = builder;
 
+            RegisterSystems();
+            RegisterComponents();
+            RegisterStateMachine();
+            RegisterUI();
+        }
+
+        private void RegisterSystems()
+        {
             _builder.RegisterEntryPoint<GameplayManager>(Lifetime.Singleton);
             _builder.Register<PauseHandler>(Lifetime.Singleton);
             _builder.Register<BlasterHolder>(Lifetime.Singleton)
                 .WithParameter(Resources.Load<BlasterConfig>("Configs/Blasters/blaster_n"));
+        }
 
+        private void RegisterComponents()
+        {
             _builder.RegisterComponent(_blasterController);
             _builder.RegisterComponent(_cameraShaker);
-
-            RegisterStateMachine();
-            RegisterUI();
         }
 
         private void RegisterStateMachine()
