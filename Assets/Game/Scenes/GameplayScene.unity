@@ -167,6 +167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageNumberPrefab: {fileID: 7967764690073243180, guid: 53774913a2b0220479d02d115ff45694, type: 3}
+  _spawnPositionOffset: {x: 0, y: 0.375, z: 0}
+  _spawnPositionRadius: 0.125
+  _minDistanceBetweenSpawnPositions: 1
 --- !u!1 &14878362
 GameObject:
   m_ObjectHideFlags: 0

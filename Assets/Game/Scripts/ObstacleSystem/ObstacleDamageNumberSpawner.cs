@@ -7,6 +7,8 @@ namespace ObstacleSystem
     public class ObstacleDamageNumberSpawner : MonoBehaviour
     {
         [SerializeField] private DamageNumber _damageNumberPrefab;
+        [SerializeField] private Vector3 _spawnPositionOffset;
+        [SerializeField, Min(0f)] private float _spawnPositionRadius;
 
         private ObstacleContainer _obstacleContainer;
 
@@ -51,8 +53,15 @@ namespace ObstacleSystem
         private void OnObstacleDamaged(Obstacle obstacle, int damage)
         {
             DamageNumber damageNumber = Instantiate(_damageNumberPrefab);
-            damageNumber.transform.position = obstacle.transform.position + Vector3.up * 0.275f;
+            damageNumber.transform.position = obstacle.transform.position + GetSpawnDamageNumberPosition();
             damageNumber.PlayAnimation(damage, Color.white);
+        }
+
+        private Vector3 GetSpawnDamageNumberPosition()
+        {
+            Vector3 postion = _spawnPositionOffset + new Vector3(Random.Range(-_spawnPositionRadius, _spawnPositionRadius), Random.Range(-_spawnPositionRadius, _spawnPositionRadius), 0f);
+
+            return postion;
         }
     }
 }
