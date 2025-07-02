@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 0.25
-  _strength: 0.25
+  _strength: 0.5
   _lifeTime: 0.75
   _ease: 6
   _textMesh: {fileID: 151133352408838939}

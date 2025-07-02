@@ -25,6 +25,7 @@ namespace ObstacleSystem
         }
 
         public event Action<int> HealthChanged;
+        public event Action<Obstacle, int> Damaged;
         public event Action<Obstacle> Destroyed;
 
         private void Awake()
@@ -35,6 +36,8 @@ namespace ObstacleSystem
         public void TakeDamage(int damage)
         {
             Health -= damage;
+
+            Damaged?.Invoke(this, damage);
 
             if (Health < 0)
             {
