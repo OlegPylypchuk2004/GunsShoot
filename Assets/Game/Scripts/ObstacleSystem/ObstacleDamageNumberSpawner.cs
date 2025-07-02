@@ -59,9 +59,7 @@ namespace ObstacleSystem
 
         private Vector3 GetSpawnDamageNumberPosition()
         {
-            Vector3 postion = _spawnPositionOffset + new Vector3(Random.Range(-_spawnPositionRadius, _spawnPositionRadius), Random.Range(-_spawnPositionRadius, _spawnPositionRadius), 0f);
-
-            return postion;
+            return _spawnPositionOffset + new Vector3(Random.Range(-_spawnPositionRadius, _spawnPositionRadius), Random.Range(-_spawnPositionRadius, _spawnPositionRadius), 0f);
         }
     }
 }
