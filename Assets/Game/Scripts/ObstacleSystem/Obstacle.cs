@@ -25,6 +25,7 @@ namespace ObstacleSystem
         }
 
         public event Action<int> HealthChanged;
+        public event Action<Obstacle> Destroyed;
 
         private void Awake()
         {
@@ -43,6 +44,8 @@ namespace ObstacleSystem
             if (Health == 0)
             {
                 Destroy(gameObject);
+
+                Destroyed?.Invoke(this);
             }
         }
     }
