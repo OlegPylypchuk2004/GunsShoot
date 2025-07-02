@@ -8,6 +8,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using CameraManagment;
+using ObstacleSystem;
 
 namespace Gameplay
 {
@@ -39,6 +40,7 @@ namespace Gameplay
             _builder.Register<PauseHandler>(Lifetime.Singleton);
             _builder.Register<BlasterHolder>(Lifetime.Singleton)
                 .WithParameter(Resources.Load<BlasterConfig>("Configs/Blasters/blaster_n"));
+            _builder.Register<ObstacleContainer>(Lifetime.Singleton);
         }
 
         private void RegisterComponents()
