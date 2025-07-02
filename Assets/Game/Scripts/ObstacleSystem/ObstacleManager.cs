@@ -1,9 +1,8 @@
-using ObstacleSystem;
 using System.Collections;
 using UnityEngine;
 using VContainer;
 
-namespace Gameplay.Test
+namespace ObstacleSystem
 {
     public class ObstacleManager : MonoBehaviour
     {
