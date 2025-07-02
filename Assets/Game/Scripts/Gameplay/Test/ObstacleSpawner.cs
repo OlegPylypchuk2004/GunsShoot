@@ -1,4 +1,5 @@
 using ObstacleSystem;
+using System.Collections;
 using UnityEngine;
 
 namespace Gameplay.Test
@@ -31,6 +32,13 @@ namespace Gameplay.Test
         private void OnObstacleDestroyed(Obstacle obstacle)
         {
             obstacle.Destroyed -= OnObstacleDestroyed;
+
+            StartCoroutine(SpawnObstacleWithDelay());
+        }
+
+        private IEnumerator SpawnObstacleWithDelay()
+        {
+            yield return new WaitForSeconds(1f);
 
             _currentObstacle = SpawnObstacle();
             _currentObstacle.Destroyed += OnObstacleDestroyed;
