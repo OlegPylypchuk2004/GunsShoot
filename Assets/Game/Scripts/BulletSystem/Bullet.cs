@@ -6,6 +6,7 @@ namespace BulletSystem
 {
     public class Bullet : MonoBehaviour
     {
+        [SerializeField, Range(0, 100)] private int _damageSpreadPercent;
         [SerializeField] private Rigidbody _rigidbody;
 
         private float _speed;
@@ -23,7 +24,7 @@ namespace BulletSystem
         {
             if (other.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(_damage);
+                damageable.TakeDamage(CalculateDamage());
             }
 
             Hit?.Invoke(this);
@@ -39,6 +40,14 @@ namespace BulletSystem
         public void SetRigidbodyPosition(Vector3 position)
         {
             _rigidbody.position = position;
+        }
+
+        private int CalculateDamage()
+        {
+            int maxSpread = Mathf.RoundToInt(_damage * _damageSpreadPercent / 100f);
+            int randomOffset = UnityEngine.Random.Range(-maxSpread, maxSpread + 1);
+
+            return _damage + randomOffset;
         }
     }
 }
