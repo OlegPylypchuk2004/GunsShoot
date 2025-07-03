@@ -34,10 +34,10 @@ namespace ObstacleSystem
             Health = MaxHealth;
         }
 
-        public void Launch(float force)
+        public void Launch(Vector3 direction)
         {
             _rigidbody.velocity = Vector3.zero;
-            _rigidbody.AddForce(transform.up * force, ForceMode.Impulse);
+            _rigidbody.AddForce(direction, ForceMode.Impulse);
         }
 
         public void TakeDamage(int damage)
