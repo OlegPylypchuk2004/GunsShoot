@@ -39,8 +39,7 @@ namespace Gameplay
         {
             _builder.RegisterEntryPoint<GameplayManager>(Lifetime.Singleton);
             _builder.Register<PauseHandler>(Lifetime.Singleton);
-            _builder.Register<BlasterHolder>(Lifetime.Singleton)
-                .WithParameter(Resources.Load<BlasterConfig>("Configs/Blasters/blaster_n"));
+            _builder.Register<BlasterHolder>(Lifetime.Singleton);
             _builder.Register<ObstacleContainer>(Lifetime.Singleton);
             _builder.Register<HealthManager>(Lifetime.Singleton);
         }

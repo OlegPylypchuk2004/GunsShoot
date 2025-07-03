@@ -6,12 +6,14 @@ namespace BlasterSystem
     public class BlasterHolder
     {
         public Blaster Blaster { get; private set; }
+        public BlasterConfig[] Configs { get; private set; }
 
         public event Action<Blaster> BlasterChanged;
 
-        public BlasterHolder(BlasterConfig blasterConfig)
+        public BlasterHolder()
         {
-            ChangeBlaster(blasterConfig);
+            Configs = Resources.LoadAll<BlasterConfig>("Configs/Blasters");
+            ChangeBlaster(Configs[UnityEngine.Random.Range(0, Configs.Length)]);
         }
 
         public void ChangeBlaster(BlasterConfig blasterConfig)
