@@ -15,17 +15,11 @@ namespace ObstacleSystem
 
         private ObstacleContainer _obstacleContainer;
         private Coroutine _spawnObstaclesCoroutine;
-        private List<Obstacle> _activeObstacles;
 
         [Inject]
         private void Construct(ObstacleContainer obstacleContainer)
         {
             _obstacleContainer = obstacleContainer;
-        }
-
-        private void Awake()
-        {
-            _activeObstacles = new List<Obstacle>();
         }
 
         private void Start()
@@ -38,6 +32,7 @@ namespace ObstacleSystem
             foreach (Obstacle obstacle in _obstacleContainer.Obstacles)
             {
                 obstacle.Destroyed -= OnObstacleDestroyed;
+                obstacle.Fallen -= OnObstacleFallen;
             }
         }
 
@@ -56,11 +51,11 @@ namespace ObstacleSystem
                     obstacle.transform.position = spawnPoints[i].position;
                     obstacle.Launch(spawnPoints[i].up * Random.Range(_minLaunchForce, _maxLaunchForce));
 
-                    _activeObstacles.Add(obstacle);
                     obstacle.Destroyed += OnObstacleDestroyed;
+                    obstacle.Fallen += OnObstacleFallen;
                 }
 
-                yield return new WaitUntil(() => _activeObstacles.Count == 0);
+                yield return new WaitUntil(() => _obstacleContainer.Obstacles.Count == 0);
             }
         }
 
@@ -74,8 +69,18 @@ namespace ObstacleSystem
 
         private void OnObstacleDestroyed(Obstacle obstacle)
         {
+            _obstacleContainer.TryRemoveObstacle(obstacle);
+
             obstacle.Destroyed -= OnObstacleDestroyed;
-            _activeObstacles.Remove(obstacle);
+            obstacle.Fallen -= OnObstacleFallen;
+        }
+
+        private void OnObstacleFallen(Obstacle obstacle)
+        {
+            _obstacleContainer.TryRemoveObstacle(obstacle);
+
+            obstacle.Destroyed -= OnObstacleDestroyed;
+            obstacle.Fallen -= OnObstacleFallen;
         }
     }
 }

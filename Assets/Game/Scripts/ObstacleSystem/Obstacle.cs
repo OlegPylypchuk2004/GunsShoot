@@ -8,6 +8,7 @@ namespace ObstacleSystem
     {
         [field: SerializeField] public int MaxHealth { get; private set; }
 
+        [SerializeField] private float _minYPosition;
         [SerializeField] private float _minAngularVelocity;
         [SerializeField] private float _maxAngularVelocity;
         [SerializeField] private Rigidbody _rigidbody;
@@ -31,6 +32,7 @@ namespace ObstacleSystem
         public event Action<int> HealthChanged;
         public event Action<Obstacle, int> Damaged;
         public event Action<Obstacle> Destroyed;
+        public event Action<Obstacle> Fallen;
 
         private void Awake()
         {
@@ -41,6 +43,16 @@ namespace ObstacleSystem
         {
             ApplyRotation();
             ApplyAngularVelocity();
+        }
+
+        private void Update()
+        {
+            if (transform.position.y <= _minYPosition)
+            {
+                Destroy(gameObject);
+
+                Fallen?.Invoke(this);
+            }
         }
 
         public void Launch(Vector3 direction)
