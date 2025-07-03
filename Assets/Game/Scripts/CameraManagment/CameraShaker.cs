@@ -14,6 +14,7 @@ namespace CameraManagment
         [SerializeField] private Ease _ease;
 
         private BlasterHolder _blasterHolder;
+        private Blaster _previousBlaster;
         private Vector3 _defaultPosition;
         private Tween _shakeTween;
 
@@ -35,12 +36,42 @@ namespace CameraManagment
 
         private void OnEnable()
         {
-            _blasterHolder.Blaster.ShotFired += OnShotFired;
+            _blasterHolder.BlasterChanged += OnBlasterChanged;
+
+            if (_blasterHolder.Blaster != null)
+            {
+                _previousBlaster = _blasterHolder.Blaster;
+                _previousBlaster.ShotFired += OnShotFired;
+            }
         }
 
         private void OnDisable()
         {
-            _blasterHolder.Blaster.ShotFired -= OnShotFired;
+            _blasterHolder.BlasterChanged -= OnBlasterChanged;
+
+            if (_previousBlaster != null)
+            {
+                _previousBlaster.ShotFired -= OnShotFired;
+                _previousBlaster = null;
+            }
+        }
+
+        private void OnBlasterChanged(Blaster blaster)
+        {
+            if (_previousBlaster != null)
+            {
+                _previousBlaster.ShotFired -= OnShotFired;
+            }
+
+            if (blaster != null)
+            {
+                blaster.ShotFired += OnShotFired;
+                _previousBlaster = blaster;
+            }
+            else
+            {
+                _previousBlaster = null;
+            }
         }
 
         private void OnShotFired()
