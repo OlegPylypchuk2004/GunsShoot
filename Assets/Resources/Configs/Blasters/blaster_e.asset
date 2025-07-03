@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc8af18e823f2e409788c49df460a69, type: 3}
+  m_Name: blaster_e
+  m_EditorClassIdentifier: 
+  <Damage>k__BackingField: 25
+  <Spread>k__BackingField: 0.5
+  <BulletSpeed>k__BackingField: 22.5
+  <AmmoAmount>k__BackingField: 10
+  <ReloadDuration>k__BackingField: 1.75
+  <ShotCooldown>k__BackingField: 0.5
+  <Bullet>k__BackingField: {fileID: 7564948327013881600, guid: 66eb28fed00acad47b8d4f1965ef3f11, type: 3}
+  <Prefab>k__BackingField: {fileID: 4994769968609523123, guid: b05399d27aad42f4ab25dbeca89b5cdf, type: 3}
+  <PreviewPrefab>k__BackingField: {fileID: 9120959046914709529, guid: 74bf4dfa9f3c06c45aa6df2c0187478d, type: 3}
+  <Type>k__BackingField: 2
