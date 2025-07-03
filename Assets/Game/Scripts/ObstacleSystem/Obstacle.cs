@@ -51,6 +51,11 @@ namespace ObstacleSystem
 
         public void TakeDamage(int damage)
         {
+            if (damage > Health)
+            {
+                damage = Health;
+            }
+
             Health -= damage;
 
             Damaged?.Invoke(this, damage);
