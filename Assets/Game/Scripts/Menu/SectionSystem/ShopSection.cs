@@ -1,13 +1,16 @@
 using BlasterSystem;
+using DG.Tweening;
+using ShopSystem;
 using System.Linq;
 using UnityEngine;
 
-namespace ShopSystem
+namespace Menu.SectionSystem
 {
-    public class ShopPanel : MonoBehaviour
+    public class ShopSection : Section
     {
         [SerializeField] private ShopFrame _shopFramePrefab;
         [SerializeField] private RectTransform _shopFramesParent;
+        [SerializeField] private CanvasGroup _canvasGroup;
 
         private ShopFrame[] _shopFrames;
 
@@ -27,6 +30,27 @@ namespace ShopSystem
             {
                 shopFrame.Selected -= OnShopFrameSelected;
             }
+        }
+
+        public override Sequence Appear()
+        {
+            Sequence sequence = base.Appear();
+
+            sequence.Append(_canvasGroup.DOFade(1f, _appearUIDuration)
+                .From(0f)
+                .SetEase(_appearUIEase));
+
+            return sequence;
+        }
+
+        public override Sequence Disappear()
+        {
+            Sequence sequence = base.Disappear();
+
+            sequence.Append(_canvasGroup.DOFade(1f, _disappearUIDuration)
+                .SetEase(_disappearUIEase));
+
+            return sequence;
         }
 
         private void SpawnShopFrames()
