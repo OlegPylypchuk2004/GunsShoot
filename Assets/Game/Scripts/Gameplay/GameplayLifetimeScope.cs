@@ -1,14 +1,15 @@
 using BlasterSystem;
+using CameraManagment;
 using Gameplay.States;
+using Gameplay.UI;
+using HealthSystem;
 using LeTai.Asset.TranslucentImage;
+using ObstacleSystem;
 using Patterns.StateMachine;
 using PauseManagment;
-using Gameplay.UI;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-using CameraManagment;
-using ObstacleSystem;
 
 namespace Gameplay
 {
@@ -41,6 +42,7 @@ namespace Gameplay
             _builder.Register<BlasterHolder>(Lifetime.Singleton)
                 .WithParameter(Resources.Load<BlasterConfig>("Configs/Blasters/blaster_n"));
             _builder.Register<ObstacleContainer>(Lifetime.Singleton);
+            _builder.Register<HealthManager>(Lifetime.Singleton);
         }
 
         private void RegisterComponents()

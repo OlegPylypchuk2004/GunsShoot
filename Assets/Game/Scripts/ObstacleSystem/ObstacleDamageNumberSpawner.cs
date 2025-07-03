@@ -30,7 +30,7 @@ namespace ObstacleSystem
 
             foreach (Obstacle obstacle in _obstacleContainer.Obstacles)
             {
-                obstacle.Damaged -= OnObstacleDamaged;
+                obstacle.Damaged += OnObstacleDamaged;
             }
         }
 
