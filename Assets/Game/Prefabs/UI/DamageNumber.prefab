@@ -216,8 +216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fecd2469571914895cc2e769b1ed7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 0.25
-  _strength: 0.5
+  _appearDuration: 0.25
+  _punchStrength: 0.5
   _lifeTime: 0.75
-  _ease: 6
+  _punchEase: 6
+  _disappearDuration: 0.25
+  _disappearEase: 26
   _textMesh: {fileID: 151133352408838939}
