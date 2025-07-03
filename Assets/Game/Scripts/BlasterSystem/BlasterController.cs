@@ -38,12 +38,18 @@ namespace BlasterSystem
             if (Input.GetMouseButtonDown(1))
             {
                 Vector2 initialDirection = GetInputDirection();
-                _offsetAngle = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg - transform.eulerAngles.z;
+                float angleToMouse = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg;
+                float currentZ = transform.eulerAngles.z;
+                float delta = Mathf.DeltaAngle(currentZ, angleToMouse);
+                _offsetAngle = delta;
             }
             else if (Input.GetMouseButton(1))
             {
                 Vector2 direction = GetInputDirection();
-                float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - _offsetAngle;
+                float angleToMouse = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                float targetAngle = angleToMouse - _offsetAngle;
+
+                targetAngle = Mathf.Repeat(targetAngle + 180f, 360f) - 180f;
                 targetAngle = Mathf.Clamp(targetAngle, _minRotationAngle, _maxRotationAngle);
 
                 transform.rotation = Quaternion.Euler(0, 0, targetAngle);
