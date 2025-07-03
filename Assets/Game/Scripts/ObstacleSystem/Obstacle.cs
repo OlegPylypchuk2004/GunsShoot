@@ -79,9 +79,9 @@ namespace ObstacleSystem
 
             if (Health == 0)
             {
-                Destroy(gameObject);
-
                 Destroyed?.Invoke(this);
+
+                Destroy(gameObject);
             }
         }
 
