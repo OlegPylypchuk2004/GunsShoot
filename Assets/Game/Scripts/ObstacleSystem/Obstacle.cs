@@ -7,6 +7,9 @@ namespace ObstacleSystem
     public class Obstacle : MonoBehaviour, IDamageable
     {
         [field: SerializeField] public int MaxHealth { get; private set; }
+
+        [SerializeField] private float _minAngularVelocity;
+        [SerializeField] private float _maxAngularVelocity;
         [SerializeField] private Rigidbody _rigidbody;
 
         private int _health;
@@ -34,6 +37,12 @@ namespace ObstacleSystem
             Health = MaxHealth;
         }
 
+        private void Start()
+        {
+            ApplyRotation();
+            ApplyAngularVelocity();
+        }
+
         public void Launch(Vector3 direction)
         {
             _rigidbody.velocity = Vector3.zero;
@@ -57,6 +66,20 @@ namespace ObstacleSystem
 
                 Destroyed?.Invoke(this);
             }
+        }
+
+        private void ApplyRotation()
+        {
+            transform.rotation = UnityEngine.Random.rotation;
+        }
+
+        private void ApplyAngularVelocity()
+        {
+            float randomX = UnityEngine.Random.Range(_minAngularVelocity, _maxAngularVelocity);
+            float randomY = UnityEngine.Random.Range(_minAngularVelocity, _maxAngularVelocity);
+            float randomZ = UnityEngine.Random.Range(_minAngularVelocity, _maxAngularVelocity);
+
+            _rigidbody.angularVelocity = new Vector3(randomX, randomY, randomZ);
         }
     }
 }

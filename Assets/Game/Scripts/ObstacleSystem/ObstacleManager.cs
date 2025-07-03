@@ -29,7 +29,6 @@ namespace ObstacleSystem
                 Transform spawnPoint = GetRandomSpawnPoint();
                 Obstacle obstacle = SpawnObstacle();
                 obstacle.transform.position = spawnPoint.position;
-                obstacle.transform.rotation = Random.rotation;
                 obstacle.Launch(spawnPoint.transform.up * Random.Range(_minLaunchForce, _maxLaunchForce));
                 obstacle.Destroyed += OnObstacleDestroyed;
             }
@@ -59,20 +58,6 @@ namespace ObstacleSystem
         private void OnObstacleDestroyed(Obstacle obstacle)
         {
             obstacle.Destroyed -= OnObstacleDestroyed;
-
-            //StartCoroutine(SpawnObstacleWithDelay());
         }
-
-        //private IEnumerator SpawnObstacleWithDelay()
-        //{
-        //    yield return new WaitForSeconds(1f);
-
-        //    Transform spawnPoint = GetRandomSpawnPoint();
-        //    Obstacle obstacle = SpawnObstacle();
-        //    obstacle.transform.position = spawnPoint.position;
-        //    obstacle.transform.rotation = spawnPoint.rotation;
-        //    obstacle.Launch(Random.Range(_minLaunchForce, _maxLaunchForce));
-        //    obstacle.Destroyed += OnObstacleDestroyed;
-        //}
     }
 }

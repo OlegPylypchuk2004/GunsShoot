@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 12
+  _minAngularVelocity: -0.75
+  _maxAngularVelocity: 0.75
   _rigidbody: {fileID: 7040614429003829803}
 --- !u!114 &3367719451193251555
 MonoBehaviour:
