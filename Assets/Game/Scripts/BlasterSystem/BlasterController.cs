@@ -5,6 +5,8 @@ namespace BlasterSystem
 {
     public class BlasterController : MonoBehaviour
     {
+        [SerializeField] private float _minRotationAngle;
+        [SerializeField] private float _maxRotationAngle;
         [SerializeField] private Camera _camera;
 
         private BlasterHolder _blasterHolder;
@@ -41,9 +43,10 @@ namespace BlasterSystem
             else if (Input.GetMouseButton(1))
             {
                 Vector2 direction = GetInputDirection();
-                float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - _offsetAngle;
+                targetAngle = Mathf.Clamp(targetAngle, _minRotationAngle, _maxRotationAngle);
 
-                transform.rotation = Quaternion.Euler(0, 0, targetAngle - _offsetAngle);
+                transform.rotation = Quaternion.Euler(0, 0, targetAngle);
             }
         }
 

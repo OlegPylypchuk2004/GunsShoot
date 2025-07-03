@@ -2212,6 +2212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f367340eb1b4b45b9c05153823444b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minRotationAngle: -90
+  _maxRotationAngle: 90
   _camera: {fileID: 760077358}
 --- !u!1 &1338952437
 GameObject:
