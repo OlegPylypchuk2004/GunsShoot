@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Patterns.StateMachine;
 using System;
-using UnityEngine;
 
 namespace Gameplay.States
 {
@@ -18,11 +17,7 @@ namespace Gameplay.States
 
         private async UniTaskVoid CountTime()
         {
-            Debug.Log("3");
-            await UniTask.Delay(1000);
-            Debug.Log("2");
-            await UniTask.Delay(1000);
-            Debug.Log("1");
+            await UniTask.Delay(0);
 
             GameReady?.Invoke();
         }

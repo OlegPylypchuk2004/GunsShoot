@@ -1296,13 +1296,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577322183}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.065403156, w: 0.99785894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1635507113}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 7.5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &603398353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,7 +2222,7 @@ GameObject:
   - component: {fileID: 1635507113}
   - component: {fileID: 1635507112}
   m_Layer: 0
-  m_Name: ObstacleManager
+  m_Name: ObstacleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2248,7 +2248,6 @@ MonoBehaviour:
   - {fileID: 577322184}
   _minLaunchForce: 1.5
   _maxLaunchForce: 1.5
-  _spawnDelay: 2.5
 --- !u!4 &1635507113
 Transform:
   m_ObjectHideFlags: 0
@@ -2542,13 +2541,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081419187}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.06540306, w: 0.99785894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1635507113}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -7.5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2130755530
 GameObject:
   m_ObjectHideFlags: 0
