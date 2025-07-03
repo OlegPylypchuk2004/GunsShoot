@@ -12,6 +12,7 @@ namespace Gameplay.UI
         [SerializeField] private TextMeshProUGUI _reloadTimeText;
 
         private BlasterHolder _blasterHolder;
+        private Blaster _previousBlaster;
         private AmmoDisplay[] _ammoDisplays;
 
         [Inject]
@@ -27,21 +28,57 @@ namespace Gameplay.UI
 
         private void OnEnable()
         {
-            CreateAmmoDisplays();
+            _blasterHolder.BlasterChanged += OnBlasterChanged;
 
-            _blasterHolder.Blaster.AmmoAmountChanged += AmmoAmountChanged;
-            _blasterHolder.Blaster.ReloadTimeChanged += OnReloadTimeChanged;
+            if (_blasterHolder.Blaster != null)
+            {
+                _previousBlaster = _blasterHolder.Blaster;
+
+                CreateAmmoDisplays();
+
+                _previousBlaster.AmmoAmountChanged += AmmoAmountChanged;
+                _previousBlaster.ReloadTimeChanged += OnReloadTimeChanged;
+            }
         }
 
         private void OnDisable()
         {
-            _blasterHolder.Blaster.AmmoAmountChanged -= AmmoAmountChanged;
-            _blasterHolder.Blaster.ReloadTimeChanged -= OnReloadTimeChanged;
+            _blasterHolder.BlasterChanged -= OnBlasterChanged;
+
+            if (_previousBlaster != null)
+            {
+                _previousBlaster.AmmoAmountChanged -= AmmoAmountChanged;
+                _previousBlaster.ReloadTimeChanged -= OnReloadTimeChanged;
+                _previousBlaster = null;
+            }
         }
 
         private void LateUpdate()
         {
             transform.rotation = Quaternion.identity;
+        }
+
+        private void OnBlasterChanged(Blaster blaster)
+        {
+            if (_previousBlaster != null)
+            {
+                _previousBlaster.AmmoAmountChanged -= AmmoAmountChanged;
+                _previousBlaster.ReloadTimeChanged -= OnReloadTimeChanged;
+            }
+
+            if (blaster != null)
+            {
+                CreateAmmoDisplays();
+
+                blaster.AmmoAmountChanged += AmmoAmountChanged;
+                blaster.ReloadTimeChanged += OnReloadTimeChanged;
+
+                _previousBlaster = blaster;
+            }
+            else
+            {
+                _previousBlaster = null;
+            }
         }
 
         private void CreateAmmoDisplays()
