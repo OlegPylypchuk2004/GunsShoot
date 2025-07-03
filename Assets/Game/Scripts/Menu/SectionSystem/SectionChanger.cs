@@ -1,17 +1,21 @@
+using DG.Tweening;
+using System;
 using UnityEngine;
 
 namespace Menu.SectionSystem
 {
-    public class SectionManager : MonoBehaviour
+    public class SectionChanger : MonoBehaviour
     {
         [SerializeField] private MainSection _mainSection;
         [SerializeField] private ShopSection _shopSection;
 
-        private Section _currentSetion;
+        private Section _currentSection;
+
+        public event Action<Section> Changed;
 
         private void Awake()
         {
-            _currentSetion = _mainSection;
+            _currentSection = _mainSection;
         }
 
         private void Update()
@@ -28,14 +32,21 @@ namespace Menu.SectionSystem
 
         private void ChangedSection(Section section)
         {
-            if (_currentSetion == section)
+            if (_currentSection == section)
             {
                 return;
             }
 
-            _currentSetion.Disappear();
-            _currentSetion = section;
-            _currentSetion.Appear();
+            Section previousSection = _currentSection;
+            _currentSection = section;
+
+            Changed?.Invoke(_currentSection);
+
+            previousSection.Disappear()
+                .OnKill(() =>
+                {
+                    _currentSection.Appear();
+                });
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Menu.SectionSystem
         {
             Sequence sequence = base.Disappear();
 
-            sequence.Append(_canvasGroup.DOFade(1f, _disappearUIDuration)
+            sequence.Append(_canvasGroup.DOFade(0f, _disappearUIDuration)
                 .SetEase(_disappearUIEase));
 
             return sequence;
