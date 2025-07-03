@@ -169,6 +169,8 @@ MonoBehaviour:
   _damageNumberPrefab: {fileID: 7967764690073243180, guid: 53774913a2b0220479d02d115ff45694, type: 3}
   _spawnPositionOffset: {x: 0, y: 0.125, z: -2.5}
   _spawnPositionRadius: 0.25
+  _defaultNumberColor: {r: 1, g: 1, b: 1, a: 1}
+  _criticalDamageNumberColor: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}
 --- !u!1 &14878362
 GameObject:
   m_ObjectHideFlags: 0
