@@ -1,4 +1,5 @@
 using BlasterSystem;
+using TMPro;
 using UnityEngine;
 using VContainer;
 
@@ -8,6 +9,7 @@ namespace Gameplay.UI
     {
         [SerializeField] private AmmoDisplay _ammoDisplayPrefab;
         [SerializeField] private RectTransform _ammoDisplayParent;
+        [SerializeField] private TextMeshProUGUI _reloadTimeText;
 
         private BlasterHolder _blasterHolder;
         private AmmoDisplay[] _ammoDisplays;
@@ -16,6 +18,11 @@ namespace Gameplay.UI
         private void Construct(BlasterHolder blasterHolder)
         {
             _blasterHolder = blasterHolder;
+        }
+
+        private void Awake()
+        {
+            _reloadTimeText.text = "";
         }
 
         private void OnEnable()
@@ -96,6 +103,15 @@ namespace Gameplay.UI
                 {
                     _ammoDisplays[i].Deactivate();
                 }
+            }
+
+            if (currentTime <= 0f)
+            {
+                _reloadTimeText.text = "";
+            }
+            else
+            {
+                _reloadTimeText.text = $"{Mathf.Round(currentTime * 10f) / 10f}s";
             }
         }
     }
