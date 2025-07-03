@@ -7,6 +7,7 @@ namespace ObstacleSystem
     public class Obstacle : MonoBehaviour, IDamageable
     {
         [field: SerializeField] public int MaxHealth { get; private set; }
+        [SerializeField] private Rigidbody _rigidbody;
 
         private int _health;
 
@@ -31,6 +32,12 @@ namespace ObstacleSystem
         private void Awake()
         {
             Health = MaxHealth;
+        }
+
+        public void Launch(float force)
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.AddForce(transform.up * force, ForceMode.Impulse);
         }
 
         public void TakeDamage(int damage)

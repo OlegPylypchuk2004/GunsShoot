@@ -7,6 +7,10 @@ namespace ObstacleSystem
     public class ObstacleManager : MonoBehaviour
     {
         [SerializeField] private Obstacle[] _obstaclePrefabs;
+        [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField, Min(0f)] private float _minLaunchForce;
+        [SerializeField, Min(0f)] private float _maxLaunchForce;
+        [SerializeField, Min(0f)] private float _spawnDelay;
 
         private ObstacleContainer _obstacleContainer;
 
@@ -16,10 +20,19 @@ namespace ObstacleSystem
             _obstacleContainer = obstacleContainer;
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
-            Obstacle obstacle = SpawnObstacle();
-            obstacle.Destroyed += OnObstacleDestroyed;
+            while (true)
+            {
+                yield return new WaitForSeconds(_spawnDelay);
+
+                Transform spawnPoint = GetRandomSpawnPoint();
+                Obstacle obstacle = SpawnObstacle();
+                obstacle.transform.position = spawnPoint.position;
+                obstacle.transform.rotation = spawnPoint.rotation;
+                obstacle.Launch(Random.Range(_minLaunchForce, _maxLaunchForce));
+                obstacle.Destroyed += OnObstacleDestroyed;
+            }
         }
 
         private void OnDestroy()
@@ -32,25 +45,34 @@ namespace ObstacleSystem
 
         private Obstacle SpawnObstacle()
         {
-            Obstacle obstacle = Instantiate(_obstaclePrefabs[Random.Range(0, _obstaclePrefabs.Length)], transform);
+            Obstacle obstacle = Instantiate(_obstaclePrefabs[Random.Range(0, _obstaclePrefabs.Length)]);
             _obstacleContainer.TryAddObstacle(obstacle);
 
             return obstacle;
+        }
+
+        private Transform GetRandomSpawnPoint()
+        {
+            return _spawnPoints[Random.Range(0, _spawnPoints.Length)];
         }
 
         private void OnObstacleDestroyed(Obstacle obstacle)
         {
             obstacle.Destroyed -= OnObstacleDestroyed;
 
-            StartCoroutine(SpawnObstacleWithDelay());
+            //StartCoroutine(SpawnObstacleWithDelay());
         }
 
-        private IEnumerator SpawnObstacleWithDelay()
-        {
-            yield return new WaitForSeconds(1f);
+        //private IEnumerator SpawnObstacleWithDelay()
+        //{
+        //    yield return new WaitForSeconds(1f);
 
-            Obstacle obstacle = SpawnObstacle();
-            obstacle.Destroyed += OnObstacleDestroyed;
-        }
+        //    Transform spawnPoint = GetRandomSpawnPoint();
+        //    Obstacle obstacle = SpawnObstacle();
+        //    obstacle.transform.position = spawnPoint.position;
+        //    obstacle.transform.rotation = spawnPoint.rotation;
+        //    obstacle.Launch(Random.Range(_minLaunchForce, _maxLaunchForce));
+        //    obstacle.Destroyed += OnObstacleDestroyed;
+        //}
     }
 }
