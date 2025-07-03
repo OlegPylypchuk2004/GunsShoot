@@ -587,6 +587,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73d4cf8336f3ae4cb1f3999a6a5316e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textMesh: {fileID: 2130755532}
+  _icon: {fileID: 278061370}
+  _shineIconColor: {r: 1, g: 1, b: 1, a: 1}
+  _shineDuration: 0.0625
 --- !u!1 &120480944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +1962,7 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 1635507111}
   - {fileID: 8674129}
+  - {fileID: 114148238}
   _blasterController: {fileID: 1304175452}
   _cameraShaker: {fileID: 760077362}
   _translucentImageSource: {fileID: 760077360}
