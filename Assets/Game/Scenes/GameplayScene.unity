@@ -2052,9 +2052,9 @@ MonoBehaviour:
   - {fileID: 2081419188}
   - {fileID: 150944638}
   - {fileID: 577322184}
-  _minLaunchForce: 5
-  _maxLaunchForce: 10
-  _spawnDelay: 1
+  _minLaunchForce: 1.5
+  _maxLaunchForce: 1.5
+  _spawnDelay: 2.5
 --- !u!4 &1635507113
 Transform:
   m_ObjectHideFlags: 0
