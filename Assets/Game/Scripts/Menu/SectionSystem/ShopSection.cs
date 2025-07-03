@@ -1,18 +1,24 @@
 using BlasterSystem;
-using DG.Tweening;
 using ShopSystem;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Menu.SectionSystem
 {
     public class ShopSection : Section
     {
+        [Space(10f), SerializeField] private Button _backButton;
+        [SerializeField] private Section _previousSection;
         [SerializeField] private ShopFrame _shopFramePrefab;
         [SerializeField] private RectTransform _shopFramesParent;
-        [SerializeField] private CanvasGroup _canvasGroup;
 
         private ShopFrame[] _shopFrames;
+
+        private void OnEnable()
+        {
+            _backButton.onClick.AddListener(OnBackButtonClicked);
+        }
 
         private void Start()
         {
@@ -24,6 +30,11 @@ namespace Menu.SectionSystem
             }
         }
 
+        private void OnDisable()
+        {
+            _backButton.onClick.RemoveListener(OnBackButtonClicked);
+        }
+
         private void OnDestroy()
         {
             foreach (ShopFrame shopFrame in _shopFrames)
@@ -32,25 +43,9 @@ namespace Menu.SectionSystem
             }
         }
 
-        public override Sequence Appear()
+        private void OnBackButtonClicked()
         {
-            Sequence sequence = base.Appear();
-
-            sequence.Append(_canvasGroup.DOFade(1f, _appearUIDuration)
-                .From(0f)
-                .SetEase(_appearUIEase));
-
-            return sequence;
-        }
-
-        public override Sequence Disappear()
-        {
-            Sequence sequence = base.Disappear();
-
-            sequence.Append(_canvasGroup.DOFade(0f, _disappearUIDuration)
-                .SetEase(_disappearUIEase));
-
-            return sequence;
+            _sectionChanger.Change(_previousSection);
         }
 
         private void SpawnShopFrames()

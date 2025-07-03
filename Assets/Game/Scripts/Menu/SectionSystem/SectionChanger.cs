@@ -6,8 +6,7 @@ namespace Menu.SectionSystem
 {
     public class SectionChanger : MonoBehaviour
     {
-        [SerializeField] private MainSection _mainSection;
-        [SerializeField] private ShopSection _shopSection;
+        [SerializeField] private Section _defaultSection;
 
         private Section _currentSection;
 
@@ -15,22 +14,10 @@ namespace Menu.SectionSystem
 
         private void Awake()
         {
-            _currentSection = _mainSection;
+            _currentSection = _defaultSection;
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ChangedSection(_mainSection);
-            }
-            else if (Input.GetKeyDown(KeyCode.Return))
-            {
-                ChangedSection(_shopSection);
-            }
-        }
-
-        private void ChangedSection(Section section)
+        public void Change(Section section)
         {
             if (_currentSection == section)
             {
