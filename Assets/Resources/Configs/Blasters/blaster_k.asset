@@ -20,5 +20,5 @@ MonoBehaviour:
   <ShotCooldown>k__BackingField: 0.325
   <Bullet>k__BackingField: {fileID: 7564948327013881600, guid: 66eb28fed00acad47b8d4f1965ef3f11, type: 3}
   <Prefab>k__BackingField: {fileID: 4994769968609523123, guid: e697717c4a0019d468f76771a86e0ec6, type: 3}
-  <PreviewPrefab>k__BackingField: {fileID: 9120959046914709529, guid: 74bf4dfa9f3c06c45aa6df2c0187478d, type: 3}
+  <PreviewPrefab>k__BackingField: {fileID: -5861295999002756268, guid: 0f34f87d32ead764c876501e4b5bc864, type: 3}
   <Type>k__BackingField: 0

@@ -1,4 +1,5 @@
 using BlasterSystem;
+using CameraManagment;
 using ShopSystem;
 using System.Linq;
 using UnityEngine;
@@ -12,8 +13,11 @@ namespace Menu.SectionSystem
         [SerializeField] private Section _previousSection;
         [SerializeField] private ShopFrame _shopFramePrefab;
         [SerializeField] private RectTransform _shopFramesParent;
+        [SerializeField] private OrbitCamera _orbitCamera;
 
         private ShopFrame[] _shopFrames;
+        private BlasterConfig _selectedBlasterConfig;
+        private PreviewBlaster _currentPreviewBlaster;
 
         private void OnEnable()
         {
@@ -69,7 +73,19 @@ namespace Menu.SectionSystem
 
         private void OnShopFrameSelected(BlasterConfig blasterConfig)
         {
+            _selectedBlasterConfig = blasterConfig;
 
+            if (_currentPreviewBlaster != null)
+            {
+                Destroy(_currentPreviewBlaster.gameObject);
+            }
+
+            SpawnPreviewBlaster(); 
+        }
+
+        private void SpawnPreviewBlaster()
+        {
+            _currentPreviewBlaster = Instantiate(_selectedBlasterConfig.PreviewPrefab, _orbitCamera.transform);
         }
     }
 }
