@@ -47,6 +47,20 @@ namespace Menu.SectionSystem
             }
         }
 
+        public override void Deactivate()
+        {
+            base.Deactivate();
+
+            _orbitCamera.SetInteractible(false);
+        }
+
+        protected override void OnUIAppeared()
+        {
+            base.OnUIAppeared();
+
+            _orbitCamera.SetInteractible(true);
+        }
+
         private void OnBackButtonClicked()
         {
             _sectionChanger.Change(_previousSection);

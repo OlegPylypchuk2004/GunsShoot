@@ -39,6 +39,8 @@ namespace Menu.SectionSystem
             sequence.OnComplete(() =>
             {
                 _canvasGroup.interactable = true;
+
+                OnUIAppeared();
             });
 
             return sequence;
@@ -57,7 +59,24 @@ namespace Menu.SectionSystem
             sequence.Append(_canvasGroup.DOFade(0f, _disappearUIDuration)
                 .SetEase(_disappearUIEase));
 
+            sequence.OnComplete(() =>
+            {
+                _canvasGroup.interactable = true;
+
+                OnUIDisappeared();
+            });
+
             return sequence;
+        }
+
+        protected virtual void OnUIAppeared()
+        {
+
+        }
+
+        protected virtual void OnUIDisappeared()
+        {
+
         }
     }
 }
