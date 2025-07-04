@@ -12,15 +12,20 @@ namespace Menu.SectionSystem
         [SerializeField] protected Ease _appearUIEase;
         [SerializeField] protected Ease _disappearUIEase;
 
-        public virtual Sequence Appear()
+        public virtual void Activate()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public virtual void Deactivate()
+        {
+            gameObject.SetActive(false);
+        }
+
+        public virtual Sequence AppearUI()
         {
             Sequence sequence = DOTween.Sequence();
             sequence.SetLink(gameObject);
-
-            sequence.AppendCallback(() =>
-            {
-                gameObject.SetActive(true);
-            });
 
             sequence.Append(_canvasGroup.DOFade(1f, _appearUIDuration)
                 .From(0f)
@@ -29,18 +34,13 @@ namespace Menu.SectionSystem
             return sequence;
         }
 
-        public virtual Sequence Disappear()
+        public virtual Sequence DisappearUI()
         {
             Sequence sequence = DOTween.Sequence();
             sequence.SetLink(gameObject);
 
             sequence.Append(_canvasGroup.DOFade(0f, _disappearUIDuration)
                 .SetEase(_disappearUIEase));
-
-            sequence.OnComplete(() =>
-            {
-                gameObject.SetActive(false);
-            });
 
             return sequence;
         }

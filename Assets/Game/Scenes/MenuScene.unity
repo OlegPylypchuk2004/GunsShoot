@@ -1080,6 +1080,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sectionChanger: {fileID: 1313407165}
+  _canvas:
+  - {fileID: 1505272444}
   _canvasGroup: {fileID: 1314349418}
   _appearUIDuration: 0.25
   _disappearUIDuration: 0.25
@@ -1974,6 +1976,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sectionChanger: {fileID: 1313407165}
+  _canvas:
+  - {fileID: 1980072214}
   _canvasGroup: {fileID: 933482186}
   _appearUIDuration: 0.25
   _disappearUIDuration: 0.25

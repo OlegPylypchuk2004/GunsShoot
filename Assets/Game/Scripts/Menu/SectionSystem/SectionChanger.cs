@@ -15,6 +15,7 @@ namespace Menu.SectionSystem
         private void Awake()
         {
             _currentSection = _defaultSection;
+            _currentSection.Activate();
         }
 
         public void Change(Section section)
@@ -29,10 +30,15 @@ namespace Menu.SectionSystem
 
             Changed?.Invoke(_currentSection);
 
-            previousSection.Disappear()
+            _currentSection.Activate();
+            previousSection.DisappearUI()
                 .OnKill(() =>
                 {
-                    _currentSection.Appear();
+                    _currentSection.AppearUI()
+                        .OnKill(() =>
+                        {
+                            previousSection.Deactivate();
+                        });
                 });
         }
     }
