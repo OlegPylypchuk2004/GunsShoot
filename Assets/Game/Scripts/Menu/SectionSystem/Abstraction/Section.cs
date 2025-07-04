@@ -27,9 +27,19 @@ namespace Menu.SectionSystem
             Sequence sequence = DOTween.Sequence();
             sequence.SetLink(gameObject);
 
+            sequence.AppendCallback(() =>
+            {
+                _canvasGroup.interactable = false;
+            });
+
             sequence.Append(_canvasGroup.DOFade(1f, _appearUIDuration)
                 .From(0f)
                 .SetEase(_appearUIEase));
+
+            sequence.OnComplete(() =>
+            {
+                _canvasGroup.interactable = true;
+            });
 
             return sequence;
         }
@@ -38,6 +48,11 @@ namespace Menu.SectionSystem
         {
             Sequence sequence = DOTween.Sequence();
             sequence.SetLink(gameObject);
+
+            sequence.AppendCallback(() =>
+            {
+                _canvasGroup.interactable = false;
+            });
 
             sequence.Append(_canvasGroup.DOFade(0f, _disappearUIDuration)
                 .SetEase(_disappearUIEase));
