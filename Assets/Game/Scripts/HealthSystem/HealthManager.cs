@@ -20,12 +20,18 @@ namespace HealthSystem
                 _health = value;
 
                 HealthChanged?.Invoke(Health);
+
+                if (value == 0)
+                {
+                    HealthIsOver?.Invoke();
+                }
             }
         }
 
         private ObstacleContainer _obstacleContainer;
 
         public event Action<int> HealthChanged;
+        public event Action HealthIsOver;
 
         public HealthManager(ObstacleContainer obstacleContainer)
         {
@@ -38,6 +44,8 @@ namespace HealthSystem
             {
                 obstacle.Fallen += OnObstacleFallen;
             }
+
+            Health = 1;
         }
 
         public void Dispose()

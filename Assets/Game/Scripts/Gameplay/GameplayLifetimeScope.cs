@@ -22,6 +22,7 @@ namespace Gameplay
         [SerializeField] private BlurBackground _blurBackground;
         [SerializeField] private PauseDisplay _pauseDisplay;
         [SerializeField] private AmmoAmountDisplay _ammoAmountDisplay;
+        [SerializeField] private GameOverDisplay _gameOverDisplay;
 
         private IContainerBuilder _builder;
 
@@ -56,6 +57,7 @@ namespace Gameplay
 
             _builder.Register<PreGameplayState>(Lifetime.Singleton);
             _builder.Register<GameplayState>(Lifetime.Singleton);
+            _builder.Register<GameOverState>(Lifetime.Singleton);
         }
 
         private void RegisterUI()
@@ -63,6 +65,7 @@ namespace Gameplay
             _builder.RegisterComponent<BlurBackground>(_blurBackground);
             _builder.RegisterComponent<PauseDisplay>(_pauseDisplay);
             _builder.RegisterComponent<AmmoAmountDisplay>(_ammoAmountDisplay);
+            _builder.RegisterComponent<GameOverDisplay>(_gameOverDisplay);
         }
     }
 }

@@ -1,6 +1,8 @@
 using BlasterSystem;
+using HealthSystem;
 using Patterns.StateMachine;
 using PauseManagment;
+using System;
 using UnityEngine;
 using VContainer;
 
@@ -10,12 +12,30 @@ namespace Gameplay.States
     {
         private PauseHandler _pauseHandler;
         private BlasterController _blasterController;
+        private HealthManager _healthManager;
+
+        public event Action GameOver;
 
         [Inject]
-        private void Construct(PauseHandler pauseHandler, BlasterController blasterController)
+        private void Construct(PauseHandler pauseHandler, BlasterController blasterController, HealthManager healthManager)
         {
             _pauseHandler = pauseHandler;
             _blasterController = blasterController;
+            _healthManager = healthManager;
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+
+            _healthManager.HealthIsOver += OnHealthIsOver;
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            _healthManager.HealthIsOver -= OnHealthIsOver;
         }
 
         public override void Update()
@@ -32,6 +52,11 @@ namespace Gameplay.States
             }
 
             _blasterController.UpdateRotation();
+        }
+
+        private void OnHealthIsOver()
+        {
+            GameOver?.Invoke();
         }
     }
 }
