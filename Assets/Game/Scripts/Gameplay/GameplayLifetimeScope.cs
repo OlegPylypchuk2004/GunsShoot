@@ -17,6 +17,7 @@ namespace Gameplay
     {
         [Header("Gameplay"), SerializeField] private BlasterController _blasterController;
         [SerializeField] private CameraShaker _cameraShaker;
+        [SerializeField] private ObstacleSpawner _obstacleSpawner;
 
         [Header("UI"), SerializeField] private TranslucentImageSource _translucentImageSource;
         [SerializeField] private BlurBackground _blurBackground;
@@ -49,6 +50,7 @@ namespace Gameplay
         {
             _builder.RegisterComponent(_blasterController);
             _builder.RegisterComponent(_cameraShaker);
+            _builder.RegisterComponent(_obstacleSpawner);
         }
 
         private void RegisterStateMachine()

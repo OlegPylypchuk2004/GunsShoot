@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using VContainer;
@@ -22,12 +21,16 @@ namespace ObstacleSystem
             _obstacleContainer = obstacleContainer;
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            _spawnObstaclesCoroutine = StartCoroutine(SpawnObstaclesCoroutine());
+            foreach (Obstacle obstacle in _obstacleContainer.Obstacles)
+            {
+                obstacle.Destroyed += OnObstacleDestroyed;
+                obstacle.Fallen += OnObstacleFallen;
+            }
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             foreach (Obstacle obstacle in _obstacleContainer.Obstacles)
             {
@@ -36,10 +39,28 @@ namespace ObstacleSystem
             }
         }
 
+        public void Activate()
+        {
+            if (_spawnObstaclesCoroutine != null)
+            {
+                StopCoroutine(_spawnObstaclesCoroutine);
+                _spawnObstaclesCoroutine = null;
+            }
+
+            _spawnObstaclesCoroutine = StartCoroutine(SpawnObstaclesCoroutine());
+        }
+
+        public void Deactivate()
+        {
+            if (_spawnObstaclesCoroutine != null)
+            {
+                StopCoroutine(_spawnObstaclesCoroutine);
+                _spawnObstaclesCoroutine = null;
+            }
+        }
+
         private IEnumerator SpawnObstaclesCoroutine()
         {
-            yield return new WaitForSeconds(1f);
-
             while (true)
             {
                 int obstaclesToSpawnAmount = Random.Range(1, _spawnPoints.Length + 1);

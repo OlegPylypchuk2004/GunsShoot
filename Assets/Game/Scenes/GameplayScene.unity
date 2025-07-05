@@ -2020,6 +2020,7 @@ MonoBehaviour:
   - {fileID: 114148238}
   _blasterController: {fileID: 1304175452}
   _cameraShaker: {fileID: 760077362}
+  _obstacleSpawner: {fileID: 1635507112}
   _translucentImageSource: {fileID: 760077360}
   _blurBackground: {fileID: 1818518730}
   _pauseDisplay: {fileID: 8926931471551831480}

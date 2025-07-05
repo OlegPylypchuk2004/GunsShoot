@@ -1,5 +1,6 @@
 using BlasterSystem;
 using HealthSystem;
+using ObstacleSystem;
 using Patterns.StateMachine;
 using PauseManagment;
 using System;
@@ -12,15 +13,17 @@ namespace Gameplay.States
     {
         private PauseHandler _pauseHandler;
         private BlasterController _blasterController;
+        private ObstacleSpawner _obstacleSpawner;
         private HealthManager _healthManager;
 
         public event Action GameOver;
 
         [Inject]
-        private void Construct(PauseHandler pauseHandler, BlasterController blasterController, HealthManager healthManager)
+        private void Construct(PauseHandler pauseHandler, BlasterController blasterController, ObstacleSpawner obstacleSpawner, HealthManager healthManager)
         {
             _pauseHandler = pauseHandler;
             _blasterController = blasterController;
+            _obstacleSpawner = obstacleSpawner;
             _healthManager = healthManager;
         }
 
@@ -28,6 +31,7 @@ namespace Gameplay.States
         {
             base.Enter();
 
+            _obstacleSpawner.Activate();
             _healthManager.HealthIsOver += OnHealthIsOver;
         }
 
@@ -35,6 +39,7 @@ namespace Gameplay.States
         {
             base.Exit();
 
+            _obstacleSpawner.Deactivate();
             _healthManager.HealthIsOver -= OnHealthIsOver;
         }
 
