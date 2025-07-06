@@ -1,5 +1,7 @@
+using SceneManagment;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace Menu.SectionSystem
 {
@@ -7,6 +9,14 @@ namespace Menu.SectionSystem
     {
         [Space(10f), SerializeField] private Button _shopButton;
         [SerializeField] private ShopSection _shopSection;
+
+        private SceneLoader _sceneLoader;
+
+        [Inject]
+        private void Construct(SceneLoader sceneLoader)
+        {
+            _sceneLoader = sceneLoader;
+        }
 
         private void OnEnable()
         {
@@ -16,6 +26,14 @@ namespace Menu.SectionSystem
         private void OnDisable()
         {
             _shopButton.onClick.RemoveListener(OnShopButtonClicked);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                _sceneLoader.Load(2);
+            }
         }
 
         private void OnShopButtonClicked()
