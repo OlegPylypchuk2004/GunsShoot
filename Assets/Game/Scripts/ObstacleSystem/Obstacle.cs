@@ -7,6 +7,7 @@ namespace ObstacleSystem
     public class Obstacle : MonoBehaviour, IDamageable
     {
         [field: SerializeField] public int MaxHealth { get; private set; }
+        [field: SerializeField] public ObstacleType Type { get; private set; }
 
         [SerializeField] private float _minYPosition;
         [SerializeField] private float _minAngularVelocity;

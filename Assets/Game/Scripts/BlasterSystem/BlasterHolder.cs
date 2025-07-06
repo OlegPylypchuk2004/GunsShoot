@@ -29,7 +29,22 @@ namespace BlasterSystem
 
         public void ChangeBlasterRandom()
         {
-            ChangeBlaster(Configs[UnityEngine.Random.Range(0, Configs.Length)]);
+            BlasterConfig blasterConfig = null;
+
+            if (Configs.Length > 1 && Blaster != null)
+            {
+                do
+                {
+                    blasterConfig = Configs[UnityEngine.Random.Range(0, Configs.Length)];
+                }
+                while (blasterConfig == Blaster.Config);
+            }
+            else
+            {
+                blasterConfig = Configs[UnityEngine.Random.Range(0, Configs.Length)];
+            }
+
+            ChangeBlaster(blasterConfig);
         }
     }
 }

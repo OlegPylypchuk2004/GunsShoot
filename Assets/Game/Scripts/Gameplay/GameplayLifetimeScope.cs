@@ -47,6 +47,7 @@ namespace Gameplay
             _builder.Register<StageManager>(Lifetime.Singleton);
             _builder.Register<BlasterHolder>(Lifetime.Singleton);
             _builder.Register<ObstacleContainer>(Lifetime.Singleton);
+            _builder.Register<DestroyObstacleResolver>(Lifetime.Singleton);
             _builder.Register<HealthManager>(Lifetime.Singleton);
         }
 

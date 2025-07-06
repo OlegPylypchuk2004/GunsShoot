@@ -2895,6 +2895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _obstaclePrefabs:
   - {fileID: 3769639481015148044, guid: 6ebbe0b1ec5855241a56043d391721cf, type: 3}
+  - {fileID: 3769639481015148044, guid: 63e57a4280da0c143ad2a8bf776099d4, type: 3}
   _spawnPoints:
   - {fileID: 2081419188}
   - {fileID: 150944638}

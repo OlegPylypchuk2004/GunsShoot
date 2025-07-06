@@ -15,13 +15,15 @@ namespace ObstacleSystem
 
         private ObstacleContainer _obstacleContainer;
         private StageManager _stageManager;
+        private DestroyObstacleResolver _destroyObstacleResolver;
         private Coroutine _spawnObstaclesCoroutine;
 
         [Inject]
-        private void Construct(ObstacleContainer obstacleContainer, StageManager stageManager)
+        private void Construct(ObstacleContainer obstacleContainer, StageManager stageManager, DestroyObstacleResolver destroyObstacleResolver)
         {
             _obstacleContainer = obstacleContainer;
             _stageManager = stageManager;
+            _destroyObstacleResolver = destroyObstacleResolver;
         }
 
         private void OnEnable()
@@ -96,6 +98,7 @@ namespace ObstacleSystem
         private void OnObstacleDestroyed(Obstacle obstacle)
         {
             _obstacleContainer.TryRemoveObstacle(obstacle);
+            _destroyObstacleResolver.Resolve(obstacle);
 
             obstacle.Destroyed -= OnObstacleDestroyed;
             obstacle.Fallen -= OnObstacleFallen;
