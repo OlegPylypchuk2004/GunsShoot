@@ -10,15 +10,11 @@ namespace Menu
         [SerializeField] private TextMeshProUGUI _valueText;
         [SerializeField] private Image _fillImage;
 
-        public void Initialize(string name)
+        public void SetValue(StatData statData, float value)
         {
-            _nameText.text = name;
-        }
-
-        public void SetValue(float value, float maxValue)
-        {
+            _nameText.text = statData.Name;
             _valueText.text = $"{value}";
-            _fillImage.fillAmount = value / maxValue;
+            _fillImage.fillAmount = value / statData.MaxValue;
         }
     }
 }

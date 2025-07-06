@@ -1,6 +1,7 @@
 using BlasterSystem;
 using CameraManagment;
 using ShopSystem;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,8 @@ namespace Menu.SectionSystem
         private ShopFrame[] _shopFrames;
         private BlasterConfig _selectedBlasterConfig;
         private PreviewBlaster _currentPreviewBlaster;
+
+        public event Action<PreviewBlaster> PreviewBlasterChanged;
 
         private void OnEnable()
         {
@@ -100,6 +103,8 @@ namespace Menu.SectionSystem
         private void SpawnPreviewBlaster()
         {
             _currentPreviewBlaster = Instantiate(_selectedBlasterConfig.PreviewPrefab, _orbitCamera.transform);
+
+            PreviewBlasterChanged?.Invoke(_currentPreviewBlaster);
         }
     }
 }

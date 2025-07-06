@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a37fdc047b9f5e4d9363b59abd240f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Config>k__BackingField: {fileID: 11400000, guid: d8ec4386bffcec947ba14c1a8886d629, type: 2}
