@@ -1,3 +1,4 @@
+using StageSystem;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -13,12 +14,14 @@ namespace ObstacleSystem
         [SerializeField, Min(0f)] private float _maxLaunchForce;
 
         private ObstacleContainer _obstacleContainer;
+        private StageManager _stageManager;
         private Coroutine _spawnObstaclesCoroutine;
 
         [Inject]
-        private void Construct(ObstacleContainer obstacleContainer)
+        private void Construct(ObstacleContainer obstacleContainer, StageManager stageManager)
         {
             _obstacleContainer = obstacleContainer;
+            _stageManager = stageManager;
         }
 
         private void OnEnable()
@@ -70,13 +73,15 @@ namespace ObstacleSystem
                 {
                     Obstacle obstacle = SpawnObstacle();
                     obstacle.transform.position = spawnPoints[i].position;
-                    obstacle.Launch(spawnPoints[i].up * Random.Range(_minLaunchForce, _maxLaunchForce), 1f);
+                    obstacle.Launch(spawnPoints[i].up * Random.Range(_minLaunchForce, _maxLaunchForce) * _stageManager.StageData.ObstacleLaunchForceMultiplier, _stageManager.StageData.ObstacleGravityMultiplier);
 
                     obstacle.Destroyed += OnObstacleDestroyed;
                     obstacle.Fallen += OnObstacleFallen;
                 }
 
                 yield return new WaitUntil(() => _obstacleContainer.Obstacles.Count == 0);
+
+                _stageManager.IncreaseStageNumber();
             }
         }
 
