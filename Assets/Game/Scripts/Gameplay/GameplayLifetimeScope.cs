@@ -7,6 +7,7 @@ using LeTai.Asset.TranslucentImage;
 using ObstacleSystem;
 using Patterns.StateMachine;
 using PauseManagment;
+using SceneManagment;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -40,6 +41,7 @@ namespace Gameplay
         private void RegisterSystems()
         {
             _builder.RegisterEntryPoint<GameplayManager>(Lifetime.Singleton);
+            _builder.Register<SceneLoader>(Lifetime.Singleton);
             _builder.Register<PauseHandler>(Lifetime.Singleton);
             _builder.Register<BlasterHolder>(Lifetime.Singleton);
             _builder.Register<ObstacleContainer>(Lifetime.Singleton);
