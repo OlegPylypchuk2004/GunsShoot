@@ -7,11 +7,13 @@ namespace BulletSystem
     public class Bullet : MonoBehaviour
     {
         [SerializeField, Range(0, 100)] private int _damageSpreadPercent;
+        [SerializeField, Min(1)] private int _collisionsAmount;
         [SerializeField] private Rigidbody _rigidbody;
 
         private float _speed;
         private int _damage;
         private Vector3 _direction;
+        private int _currentCollisionsAmount;
 
         public event Action<Bullet> Hit;
 
@@ -22,12 +24,28 @@ namespace BulletSystem
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.CompareTag("MapBorder"))
+            {
+                _currentCollisionsAmount = 0;
+
+                Hit?.Invoke(this);
+
+                return;
+            }
+
             if (other.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(CalculateDamage());
             }
 
-            Hit?.Invoke(this);
+            _currentCollisionsAmount++;
+
+            if (_currentCollisionsAmount >= _collisionsAmount)
+            {
+                _currentCollisionsAmount = 0;
+
+                Hit?.Invoke(this);
+            }
         }
 
         public void Launch(float speed, int damage, Vector3 direction)
