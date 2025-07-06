@@ -59,6 +59,7 @@ namespace SceneManagment
                 }
 
                 _background.gameObject.SetActive(true);
+                _blurBackground.gameObject.SetActive(true);
             });
 
             _currentSequence.Append(_blurBackground.Appear());
@@ -98,6 +99,7 @@ namespace SceneManagment
                 }
 
                 _background.gameObject.SetActive(false);
+                _blurBackground.gameObject.SetActive(false);
             });
 
             return _currentSequence;
