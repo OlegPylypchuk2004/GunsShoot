@@ -71,14 +71,6 @@ namespace BlasterSystem
                 {
                     _shootCooldownTime -= Time.deltaTime;
                 }
-
-                if (_shootCooldownTime <= 0f)
-                {
-                    if (Input.GetMouseButton(0))
-                    {
-                        Shoot();
-                    }
-                }
             }
             else if (_state == BlasterState.Reloading)
             {
@@ -94,11 +86,22 @@ namespace BlasterSystem
             }
         }
 
-        private void Shoot()
+        public void Shoot()
         {
+            if (_state != BlasterState.ReadyToShoot)
+            {
+                return;
+            }
+
+            if (_shootCooldownTime > 0f)
+            {
+                return;
+            }
+
             if (AmmoAmount <= 0)
             {
                 StartReload();
+
                 return;
             }
 

@@ -12,6 +12,7 @@ namespace Gameplay.States
     public class GameplayState : State
     {
         private PauseHandler _pauseHandler;
+        private BlasterHolder _blasterHolder;
         private BlasterController _blasterController;
         private ObstacleSpawner _obstacleSpawner;
         private HealthManager _healthManager;
@@ -19,9 +20,10 @@ namespace Gameplay.States
         public event Action GameOver;
 
         [Inject]
-        private void Construct(PauseHandler pauseHandler, BlasterController blasterController, ObstacleSpawner obstacleSpawner, HealthManager healthManager)
+        private void Construct(PauseHandler pauseHandler, BlasterHolder blasterHolder, BlasterController blasterController, ObstacleSpawner obstacleSpawner, HealthManager healthManager)
         {
             _pauseHandler = pauseHandler;
+            _blasterHolder = blasterHolder;
             _blasterController = blasterController;
             _obstacleSpawner = obstacleSpawner;
             _healthManager = healthManager;
@@ -50,6 +52,11 @@ namespace Gameplay.States
             if (Input.GetMouseButton(1))
             {
                 _pauseHandler.IsPaused = false;
+
+                if (Input.GetMouseButton(0))
+                {
+                    _blasterHolder.Blaster?.Shoot();
+                }
             }
             else
             {
