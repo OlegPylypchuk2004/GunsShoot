@@ -70,7 +70,7 @@ namespace ObstacleSystem
                 {
                     Obstacle obstacle = SpawnObstacle();
                     obstacle.transform.position = spawnPoints[i].position;
-                    obstacle.Launch(spawnPoints[i].up * Random.Range(_minLaunchForce, _maxLaunchForce));
+                    obstacle.Launch(spawnPoints[i].up * Random.Range(_minLaunchForce, _maxLaunchForce), 1f);
 
                     obstacle.Destroyed += OnObstacleDestroyed;
                     obstacle.Fallen += OnObstacleFallen;

@@ -82,7 +82,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 8
@@ -104,6 +104,7 @@ MonoBehaviour:
   _minAngularVelocity: -0.75
   _maxAngularVelocity: 0.75
   _rigidbody: {fileID: 7040614429003829803}
+  _gravityMultiplier: 1
 --- !u!114 &4782777836804002868
 MonoBehaviour:
   m_ObjectHideFlags: 0

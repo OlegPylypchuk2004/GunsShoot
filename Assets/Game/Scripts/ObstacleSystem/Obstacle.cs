@@ -13,6 +13,7 @@ namespace ObstacleSystem
         [SerializeField] private float _maxAngularVelocity;
         [SerializeField] private Rigidbody _rigidbody;
 
+        private float _gravityMultiplier;
         private int _health;
 
         public int Health
@@ -55,10 +56,18 @@ namespace ObstacleSystem
             }
         }
 
-        public void Launch(Vector3 direction)
+        private void FixedUpdate()
+        {
+            Vector3 gravity = Physics.gravity * _gravityMultiplier;
+            _rigidbody.AddForce(gravity, ForceMode.Acceleration);
+        }
+
+        public void Launch(Vector3 direction, float gravityMultiplier)
         {
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.AddForce(direction, ForceMode.Impulse);
+
+            _gravityMultiplier = gravityMultiplier;
         }
 
         public void TakeDamage(int damage)
