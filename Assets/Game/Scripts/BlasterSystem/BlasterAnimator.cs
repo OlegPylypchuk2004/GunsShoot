@@ -11,6 +11,11 @@ namespace BlasterSystem
 
         }
 
+        protected virtual void Start()
+        {
+
+        }
+
         protected virtual void OnEnable()
         {
             _blaster.ShotFired += OnShotFired;

@@ -13,7 +13,6 @@ namespace BlasterSystem
         public BlasterHolder()
         {
             Configs = Resources.LoadAll<BlasterConfig>("Configs/Blasters");
-            ChangeBlaster(Configs[UnityEngine.Random.Range(0, Configs.Length)]);
         }
 
         public void ChangeBlaster(BlasterConfig blasterConfig)
@@ -26,6 +25,11 @@ namespace BlasterSystem
             Blaster = GameObject.Instantiate(blasterConfig.Prefab);
 
             BlasterChanged?.Invoke(Blaster);
+        }
+
+        public void ChangeBlasterRandom()
+        {
+            ChangeBlaster(Configs[UnityEngine.Random.Range(0, Configs.Length)]);
         }
     }
 }

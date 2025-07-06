@@ -283,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5562601645176089751}
   - component: {fileID: 4994769968609523123}
+  - component: {fileID: -1365144499267950865}
   m_Layer: 0
   m_Name: BlasterK
   m_TagString: Untagged
@@ -320,6 +321,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 11400000, guid: d8ec4386bffcec947ba14c1a8886d629, type: 2}
   _shootPoint: {fileID: 5111457769825561240}
+--- !u!114 &-1365144499267950865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972505582854923798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23740b4ad975e20468aaa908d6852bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blaster: {fileID: 4994769968609523123}
+  _duration: 0.25
+  _ease: 27
+  _meshTransform: {fileID: 3813668815797338187}
 --- !u!1001 &413736128607305676
 PrefabInstance:
   m_ObjectHideFlags: 0
