@@ -1,10 +1,10 @@
 using BlasterSystem;
 using HealthSystem;
+using InputSystem;
 using ObstacleSystem;
 using Patterns.StateMachine;
 using PauseManagment;
 using System;
-using UnityEngine;
 using VContainer;
 
 namespace Gameplay.States
@@ -12,6 +12,7 @@ namespace Gameplay.States
     public class GameplayState : State
     {
         private PauseHandler _pauseHandler;
+        private IInputHandler _inputHandler;
         private BlasterHolder _blasterHolder;
         private BlasterController _blasterController;
         private ObstacleSpawner _obstacleSpawner;
@@ -20,9 +21,10 @@ namespace Gameplay.States
         public event Action GameOver;
 
         [Inject]
-        private void Construct(PauseHandler pauseHandler, BlasterHolder blasterHolder, BlasterController blasterController, ObstacleSpawner obstacleSpawner, HealthManager healthManager)
+        private void Construct(PauseHandler pauseHandler, IInputHandler inputHandler, BlasterHolder blasterHolder, BlasterController blasterController, ObstacleSpawner obstacleSpawner, HealthManager healthManager)
         {
             _pauseHandler = pauseHandler;
+            _inputHandler = inputHandler;
             _blasterHolder = blasterHolder;
             _blasterController = blasterController;
             _obstacleSpawner = obstacleSpawner;
@@ -49,11 +51,11 @@ namespace Gameplay.States
         {
             base.Update();
 
-            if (Input.GetMouseButton(1))
+            if (_inputHandler.IsAim)
             {
                 _pauseHandler.IsPaused = false;
 
-                if (Input.GetMouseButton(0))
+                if (_inputHandler.IsShoot)
                 {
                     _blasterHolder.Blaster?.Shoot();
                 }

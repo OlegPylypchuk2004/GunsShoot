@@ -3,6 +3,7 @@ using CameraManagment;
 using Gameplay.States;
 using Gameplay.UI;
 using HealthSystem;
+using InputSystem;
 using LeTai.Asset.TranslucentImage;
 using ObstacleSystem;
 using Patterns.StateMachine;
@@ -43,6 +44,10 @@ namespace Gameplay
         {
             _builder.RegisterEntryPoint<GameplayManager>(Lifetime.Singleton);
             _builder.Register<SceneLoader>(Lifetime.Singleton);
+#if true
+            _builder.Register<InputHandler>(Lifetime.Singleton)
+                .As<IInputHandler>();
+#endif
             _builder.Register<PauseHandler>(Lifetime.Singleton);
             _builder.Register<StageManager>(Lifetime.Singleton);
             _builder.Register<BlasterHolder>(Lifetime.Singleton);
