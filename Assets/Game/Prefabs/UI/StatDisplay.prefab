@@ -143,6 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1619297150316478898}
+  - component: {fileID: 2307141220080271966}
   m_Layer: 0
   m_Name: StatDisplay
   m_TagString: Untagged
@@ -167,11 +168,26 @@ RectTransform:
   - {fileID: 5640689166220824946}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2307141220080271966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893415258020208405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8edda80e6c82254408b28533f07ff250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameText: {fileID: 3125868769257209090}
+  _valueText: {fileID: 3029511931479297598}
+  _fillImage: {fileID: 2640020917670918615}
 --- !u!1 &5543577049465698695
 GameObject:
   m_ObjectHideFlags: 0
