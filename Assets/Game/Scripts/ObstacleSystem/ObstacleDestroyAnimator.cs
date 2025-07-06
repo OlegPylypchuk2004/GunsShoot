@@ -1,4 +1,4 @@
-using DG.Tweening;
+using Effects;
 using UnityEngine;
 
 namespace ObstacleSystem
@@ -6,9 +6,8 @@ namespace ObstacleSystem
     public class ObstacleDestroyAnimator : MonoBehaviour
     {
         [SerializeField] private Obstacle _obstacle;
-        [SerializeField, Min(0f)] private float _duration;
-        [SerializeField, Min(0f)] private float _delay;
-        [SerializeField] private Ease _ease;
+        [SerializeField] private ObstacleDestroyEffect _effectPrefab;
+        [SerializeField] private Vector3 _effectPositionOffset;
 
         private void OnEnable()
         {
@@ -24,16 +23,7 @@ namespace ObstacleSystem
         {
             _obstacle.Destroyed -= OnObstacleDestroyed;
 
-            transform.SetParent(null);
-
-            transform.DOScale(0f, _duration)
-                .SetEase(_ease)
-                .SetDelay(_delay)
-                .SetLink(gameObject)
-                .OnKill(() =>
-                {
-                    Destroy(gameObject);
-                });
+            Instantiate(_effectPrefab, transform.position + _effectPositionOffset, Quaternion.Euler(Vector3.zero));
         }
     }
 }
