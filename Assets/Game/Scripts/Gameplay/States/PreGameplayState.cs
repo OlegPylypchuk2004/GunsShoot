@@ -17,7 +17,7 @@ namespace Gameplay.States
 
         private async UniTaskVoid CountTime()
         {
-            await UniTask.Delay(0);
+            await UniTask.Delay(1000);
 
             GameReady?.Invoke();
         }

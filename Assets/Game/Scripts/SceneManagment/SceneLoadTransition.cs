@@ -84,6 +84,9 @@ namespace SceneManagment
                 {
                     _eventSystem.gameObject.SetActive(false);
                 }
+
+                _background.gameObject.SetActive(true);
+                _blurBackground.gameObject.SetActive(true);
             });
 
             _currentSequence.Append(_background.DOFade(0f, _backgroundTransitionDuration)
