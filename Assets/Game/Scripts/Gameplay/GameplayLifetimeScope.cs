@@ -35,6 +35,7 @@ namespace Gameplay
             _builder = builder;
 
             RegisterSystems();
+            RegisterInputHandler();
             RegisterComponents();
             RegisterStateMachine();
             RegisterUI();
@@ -44,16 +45,23 @@ namespace Gameplay
         {
             _builder.RegisterEntryPoint<GameplayManager>(Lifetime.Singleton);
             _builder.Register<SceneLoader>(Lifetime.Singleton);
-#if true
-            _builder.Register<InputHandler>(Lifetime.Singleton)
-                .As<IInputHandler>();
-#endif
             _builder.Register<PauseHandler>(Lifetime.Singleton);
             _builder.Register<StageManager>(Lifetime.Singleton);
             _builder.Register<BlasterHolder>(Lifetime.Singleton);
             _builder.Register<ObstacleContainer>(Lifetime.Singleton);
             _builder.Register<DestroyObstacleResolver>(Lifetime.Singleton);
             _builder.Register<HealthManager>(Lifetime.Singleton);
+        }
+
+        private void RegisterInputHandler()
+        {
+#if UNITY_EDITOR
+            _builder.Register<MouseInputHandler>(Lifetime.Singleton)
+                .As<IInputHandler>();
+#else
+            _builder.Register<MobileInputHandler>(Lifetime.Singleton)
+                .As<IInputHandler>();
+#endif
         }
 
         private void RegisterComponents()

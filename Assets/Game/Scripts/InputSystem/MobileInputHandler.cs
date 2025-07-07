@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace InputSystem
 {
-    public class InputHandler : IInputHandler
+    public class MobileInputHandler : IInputHandler
     {
         public bool IsAim
         {
