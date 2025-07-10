@@ -18,7 +18,8 @@ MonoBehaviour:
   <AmmoAmount>k__BackingField: 10
   <ReloadDuration>k__BackingField: 1.75
   <ShotCooldown>k__BackingField: 0.5
+  <Type>k__BackingField: 2
   <Bullet>k__BackingField: {fileID: 7564948327013881600, guid: b8cc2b2e6e6c43d4385165fd784ed4a3, type: 3}
   <Prefab>k__BackingField: {fileID: 4994769968609523123, guid: b05399d27aad42f4ab25dbeca89b5cdf, type: 3}
   <PreviewPrefab>k__BackingField: {fileID: 7985933730467472062, guid: 3816f76e0f5f67b45b37c22786a1980d, type: 3}
-  <Type>k__BackingField: 2
+  <Icon>k__BackingField: {fileID: 21300000, guid: fe590d36c57c0d042a80c6ee6160ee0f, type: 3}

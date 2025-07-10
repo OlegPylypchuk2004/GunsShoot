@@ -8,6 +8,7 @@ namespace ShopSystem
     public class ShopFrame : MonoBehaviour
     {
         [SerializeField] private Button _button;
+        [SerializeField] private Image _iconImage;
 
         private BlasterConfig _blasterConfig;
 
@@ -26,6 +27,7 @@ namespace ShopSystem
         public void Initialize(BlasterConfig blasterConfig)
         {
             _blasterConfig = blasterConfig;
+            _iconImage.sprite = blasterConfig.Icon;
         }
 
         private void OnButtonClicked()
