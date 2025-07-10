@@ -161,7 +161,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &3769639481015148044
 MonoBehaviour:
@@ -178,9 +178,10 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 10
   <Type>k__BackingField: 1
   _minYPosition: -2.25
-  _minAngularVelocity: -0.75
-  _maxAngularVelocity: 0.75
+  _minAngularVelocity: -25
+  _maxAngularVelocity: 25
   _rigidbody: {fileID: 7040614429003829803}
+  _meshTransform: {fileID: 7642580325283420003}
   _canvas: {fileID: 5356938297155623480}
   _blasterPreviewImage: {fileID: 1553495645123044159}
 --- !u!114 &4782777836804002868

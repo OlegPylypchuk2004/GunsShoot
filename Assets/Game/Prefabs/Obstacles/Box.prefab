@@ -85,7 +85,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &3769639481015148044
 MonoBehaviour:
@@ -100,10 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 12
+  <Type>k__BackingField: 0
   _minYPosition: -2.25
-  _minAngularVelocity: -0.75
-  _maxAngularVelocity: 0.75
+  _minAngularVelocity: -25
+  _maxAngularVelocity: 25
   _rigidbody: {fileID: 7040614429003829803}
+  _meshTransform: {fileID: 7642580325283420003}
 --- !u!114 &4782777836804002868
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,9 +13,11 @@ namespace ObstacleSystem
         [SerializeField] private float _minAngularVelocity;
         [SerializeField] private float _maxAngularVelocity;
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private Transform _meshTransform;
 
         private float _gravityMultiplier;
         private int _health;
+        private Vector3 _meshAngularVelocity;
 
         public int Health
         {
@@ -25,7 +27,6 @@ namespace ObstacleSystem
                 if (_health != value)
                 {
                     _health = value;
-
                     HealthChanged?.Invoke(_health);
                 }
             }
@@ -44,7 +45,6 @@ namespace ObstacleSystem
         private void Start()
         {
             ApplyRotation();
-            ApplyAngularVelocity();
         }
 
         private void Update()
@@ -52,9 +52,10 @@ namespace ObstacleSystem
             if (transform.position.y <= _minYPosition)
             {
                 Destroy(gameObject);
-
                 Fallen?.Invoke(this);
             }
+
+            _meshTransform.Rotate(_meshAngularVelocity * Time.deltaTime);
         }
 
         private void FixedUpdate()
@@ -67,46 +68,36 @@ namespace ObstacleSystem
         {
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.AddForce(direction, ForceMode.Impulse);
-
             _gravityMultiplier = gravityMultiplier;
         }
 
         public void TakeDamage(int damage)
         {
             if (damage > Health)
-            {
                 damage = Health;
-            }
 
             Health -= damage;
-
             Damaged?.Invoke(this, damage);
 
             if (Health < 0)
-            {
                 Health = 0;
-            }
 
             if (Health == 0)
             {
                 Destroyed?.Invoke(this);
-
                 Destroy(gameObject);
             }
         }
 
         private void ApplyRotation()
         {
-            transform.rotation = UnityEngine.Random.rotation;
-        }
+            _meshTransform.rotation = UnityEngine.Random.rotation;
 
-        private void ApplyAngularVelocity()
-        {
             float randomX = UnityEngine.Random.Range(_minAngularVelocity, _maxAngularVelocity);
             float randomY = UnityEngine.Random.Range(_minAngularVelocity, _maxAngularVelocity);
             float randomZ = UnityEngine.Random.Range(_minAngularVelocity, _maxAngularVelocity);
 
-            _rigidbody.angularVelocity = new Vector3(randomX, randomY, randomZ);
+            _meshAngularVelocity = new Vector3(randomX, randomY, randomZ);
         }
     }
 }
