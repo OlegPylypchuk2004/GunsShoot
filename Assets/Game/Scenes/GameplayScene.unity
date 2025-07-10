@@ -2757,8 +2757,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bee7f68c573bd4da4b25fe9a519e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _obstaclePrefabs:
-  - {fileID: 3769639481015148044, guid: 6ebbe0b1ec5855241a56043d391721cf, type: 3}
+  _obstaclePrefab: {fileID: 3769639481015148044, guid: 6ebbe0b1ec5855241a56043d391721cf, type: 3}
+  _specialObstaclePrefabs:
   - {fileID: 3769639481015148044, guid: 63e57a4280da0c143ad2a8bf776099d4, type: 3}
   _spawnPoints:
   - {fileID: 2081419188}

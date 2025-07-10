@@ -8,7 +8,8 @@ namespace ObstacleSystem
 {
     public class ObstacleSpawner : MonoBehaviour
     {
-        [SerializeField] private Obstacle[] _obstaclePrefabs;
+        [SerializeField] private Obstacle _obstaclePrefab;
+        [SerializeField] private Obstacle[] _specialObstaclePrefabs;
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField, Min(0f)] private float _minLaunchForce;
         [SerializeField, Min(0f)] private float _maxLaunchForce;
@@ -17,6 +18,7 @@ namespace ObstacleSystem
         private StageManager _stageManager;
         private DestroyObstacleResolver _destroyObstacleResolver;
         private Coroutine _spawnObstaclesCoroutine;
+        private int _obstaclesBeforeSpecial;
 
         [Inject]
         private void Construct(ObstacleContainer obstacleContainer, StageManager stageManager, DestroyObstacleResolver destroyObstacleResolver)
@@ -24,6 +26,11 @@ namespace ObstacleSystem
             _obstacleContainer = obstacleContainer;
             _stageManager = stageManager;
             _destroyObstacleResolver = destroyObstacleResolver;
+        }
+
+        private void Awake()
+        {
+            _obstaclesBeforeSpecial = Random.Range(5, 10);
         }
 
         private void OnEnable()
@@ -89,7 +96,19 @@ namespace ObstacleSystem
 
         private Obstacle SpawnObstacle()
         {
-            Obstacle obstacle = Instantiate(_obstaclePrefabs[Random.Range(0, _obstaclePrefabs.Length)]);
+            Obstacle obstaclePrefab = _obstaclePrefab;
+
+            if (_obstaclesBeforeSpecial <= 0)
+            {
+                obstaclePrefab = _specialObstaclePrefabs[Random.Range(0, _specialObstaclePrefabs.Length)];
+                _obstaclesBeforeSpecial = Random.Range(5, 10);
+            }
+            else
+            {
+                _obstaclesBeforeSpecial -= 1;
+            }
+
+            Obstacle obstacle = Instantiate(obstaclePrefab);
             _obstacleContainer.TryAddObstacle(obstacle);
 
             return obstacle;
