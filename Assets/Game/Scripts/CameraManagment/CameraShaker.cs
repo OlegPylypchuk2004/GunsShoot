@@ -1,5 +1,6 @@
 using BlasterSystem;
 using DG.Tweening;
+using ObstacleSystem;
 using UnityEngine;
 using VContainer;
 
@@ -7,21 +8,21 @@ namespace CameraManagment
 {
     public class CameraShaker : MonoBehaviour
     {
+        [SerializeField] private ShakeData _shootShakeData;
+        [SerializeField] private ShakeData _obstacleDestroyShakeData;
         [SerializeField] private Transform _transform;
-        [SerializeField] private float _duration;
-        [SerializeField] private float _strength;
-        [SerializeField] private int _vibrations;
-        [SerializeField] private Ease _ease;
 
-        private BlasterHolder _blasterHolder;
-        private Blaster _previousBlaster;
         private Vector3 _defaultPosition;
         private Tween _shakeTween;
+        private BlasterHolder _blasterHolder;
+        private Blaster _previousBlaster;
+        private ObstacleContainer _obstacleContainer;
 
         [Inject]
-        private void Construct(BlasterHolder blasterHolder)
+        private void Construct(BlasterHolder blasterHolder, ObstacleContainer obstacleContainer)
         {
             _blasterHolder = blasterHolder;
+            _obstacleContainer = obstacleContainer;
         }
 
         private void Awake()
@@ -43,6 +44,9 @@ namespace CameraManagment
                 _previousBlaster = _blasterHolder.Blaster;
                 _previousBlaster.ShotFired += OnShotFired;
             }
+
+            _obstacleContainer.ObstacleAdded += OnObstacleAdded;
+            _obstacleContainer.ObstacleRemoved += OnObstacleRemoved;
         }
 
         private void OnDisable()
@@ -54,6 +58,24 @@ namespace CameraManagment
                 _previousBlaster.ShotFired -= OnShotFired;
                 _previousBlaster = null;
             }
+
+            _obstacleContainer.ObstacleAdded -= OnObstacleAdded;
+            _obstacleContainer.ObstacleRemoved -= OnObstacleRemoved;
+        }
+
+        public Tween Shake(ShakeData shakeData)
+        {
+            _shakeTween?.Kill();
+
+            _shakeTween = _transform.DOShakePosition(shakeData.Duration, shakeData.Strength, shakeData.Vibrations)
+                .SetEase(shakeData.Ease)
+                .SetLink(gameObject)
+                .OnKill(() =>
+                {
+                    transform.localPosition = _defaultPosition;
+                });
+
+            return _shakeTween;
         }
 
         private void OnBlasterChanged(Blaster blaster)
@@ -76,22 +98,22 @@ namespace CameraManagment
 
         private void OnShotFired()
         {
-            Shake();
+            Shake(_shootShakeData);
         }
 
-        public Tween Shake()
+        private void OnObstacleAdded(Obstacle obstacle)
         {
-            _shakeTween?.Kill();
+            obstacle.Destroyed += OnObstacleDestroyed;
+        }
 
-            _shakeTween = _transform.DOShakePosition(_duration, _strength, _vibrations)
-                .SetEase(_ease)
-                .SetLink(gameObject)
-                .OnKill(() =>
-                {
-                    transform.localPosition = _defaultPosition;
-                });
+        private void OnObstacleRemoved(Obstacle obstacle)
+        {
+            obstacle.Destroyed -= OnObstacleDestroyed;
+        }
 
-            return _shakeTween;
+        private void OnObstacleDestroyed(Obstacle obstacle)
+        {
+            Shake(_obstacleDestroyShakeData);
         }
     }
 }
