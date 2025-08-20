@@ -79,6 +79,13 @@ namespace Menu.SectionSystem
                 _shopFrames[i] = Instantiate(_shopFramePrefab, _shopFramesParent);
                 _shopFrames[i].Initialize(blasterConfigs[i]);
             }
+
+            //Test spawn fake buttons to test UI
+
+            for (int i = 0; i < 24; i++)
+            {
+                Instantiate(_shopFramePrefab, _shopFramesParent);
+            }
         }
 
         private BlasterConfig[] LoadBlasterConfigs()
