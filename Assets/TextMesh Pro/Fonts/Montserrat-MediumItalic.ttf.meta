@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fe334b2d7ac067f46bad218e2b7a225f
+guid: 7688f4d08964c9d41bdf019aa1fdd0d5
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Lilita One
+  - Montserrat
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
