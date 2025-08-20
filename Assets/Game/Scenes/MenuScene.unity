@@ -1506,8 +1506,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sectionChanger: {fileID: 1313407165}
   _canvasGroup: {fileID: 1314349418}
-  _appearUIDuration: 0.25
-  _disappearUIDuration: 0.25
+  _minUIScale: 0.95
+  _appearUIDuration: 0.125
+  _disappearUIDuration: 0.125
   _appearUIEase: 6
   _disappearUIEase: 5
   _backButton: {fileID: 1886555156}
@@ -2840,8 +2841,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sectionChanger: {fileID: 1313407165}
   _canvasGroup: {fileID: 933482186}
-  _appearUIDuration: 0.25
-  _disappearUIDuration: 0.25
+  _minUIScale: 0.95
+  _appearUIDuration: 0.125
+  _disappearUIDuration: 0.125
   _appearUIEase: 6
   _disappearUIEase: 5
   _shopButton: {fileID: 171279552}
