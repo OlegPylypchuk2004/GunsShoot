@@ -9,6 +9,8 @@ namespace Menu.SectionSystem
     {
         [Space(10f), SerializeField] private Button _shopButton;
         [SerializeField] private ShopSection _shopSection;
+        [SerializeField] private Button _settingsButton;
+        [SerializeField] private SettingsSection _settingsSection;
 
         private SceneLoader _sceneLoader;
 
@@ -21,11 +23,13 @@ namespace Menu.SectionSystem
         private void OnEnable()
         {
             _shopButton.onClick.AddListener(OnShopButtonClicked);
+            _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
         }
 
         private void OnDisable()
         {
             _shopButton.onClick.RemoveListener(OnShopButtonClicked);
+            _settingsButton.onClick.RemoveListener(OnSettingsButtonClicked);
         }
 
         private void Update()
@@ -39,6 +43,11 @@ namespace Menu.SectionSystem
         private void OnShopButtonClicked()
         {
             _sectionChanger.Change(_shopSection);
+        }
+
+        private void OnSettingsButtonClicked()
+        {
+            _sectionChanger.Change(_settingsSection);
         }
     }
 }
