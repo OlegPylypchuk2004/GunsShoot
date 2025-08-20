@@ -30,10 +30,11 @@ namespace Menu.SectionSystem
 
             Changed?.Invoke(_currentSection);
 
-            _currentSection.Activate();
             previousSection.DisappearUI()
                 .OnKill(() =>
                 {
+                    _currentSection.Activate();
+
                     _currentSection.AppearUI()
                         .OnKill(() =>
                         {
