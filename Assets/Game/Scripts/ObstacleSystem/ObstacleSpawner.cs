@@ -75,14 +75,26 @@ namespace ObstacleSystem
         {
             while (true)
             {
-                int obstaclesToSpawnAmount = Random.Range(1, _spawnPoints.Length + 1);
+                Debug.Log($"Stage: {_stageManager.StageNumber}");
+
+                StageData stageData = _stageManager.StageData;
+                int obstaclesToSpawnCount = Random.Range(stageData.MinObstaclesCount, stageData.MaxObstaclesCount);
+
+                if (obstaclesToSpawnCount > _spawnPoints.Length)
+                {
+                    obstaclesToSpawnCount = _spawnPoints.Length;
+                }
+
                 Transform[] spawnPoints = _spawnPoints.OrderBy(x => Random.value).ToArray();
 
-                for (int i = 0; i < obstaclesToSpawnAmount; i++)
+                for (int i = 0; i < obstaclesToSpawnCount; i++)
                 {
                     Obstacle obstacle = SpawnObstacle();
                     obstacle.transform.position = spawnPoints[i].position;
-                    obstacle.Launch(spawnPoints[i].up * Random.Range(_minLaunchForce, _maxLaunchForce) * _stageManager.StageData.ObstacleLaunchForceMultiplier, _stageManager.StageData.ObstacleGravityMultiplier);
+
+                    Vector3 launchDirection = spawnPoints[i].up * Random.Range(_minLaunchForce, _maxLaunchForce) * stageData.ObstacleLaunchForceMultiplier;
+                    float gravityMultiplier = stageData.ObstacleGravityMultiplier;
+                    obstacle.Launch(launchDirection, gravityMultiplier);
 
                     obstacle.Destroyed += OnObstacleDestroyed;
                     obstacle.Fallen += OnObstacleFallen;
