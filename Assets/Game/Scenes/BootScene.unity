@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5669b1b7e6501bf45ba0d7e799d9e6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _editorTool: {fileID: 632981988}
   _initialBoughtBlasters:
   - {fileID: 11400000, guid: d8ec4386bffcec947ba14c1a8886d629, type: 2}
 --- !u!1 &632981987
