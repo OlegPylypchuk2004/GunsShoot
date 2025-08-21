@@ -1,14 +1,29 @@
+using CurrencyManagment;
 using SaveSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VContainer;
 
 namespace EditorTools
 {
     public class EditorTool : MonoBehaviour
     {
+        [SerializeField] private CurrencyConfig _creditsCurrencyConfig;
+        [SerializeField] private CurrencyConfig _energyCurrencyConfig;
+
+        private CurrencyWallet _currencyWallet;
+
+        [Inject]
+        private void Construct(CurrencyWallet currencyWallet)
+        {
+            _currencyWallet = currencyWallet;
+        }
+
         private void Awake()
         {
-            DontDestroyOnLoad(this);
+#if !UNITY_EDITOR
+            Destroy(gameObject);
+#endif
         }
 
         private void Update()
@@ -20,6 +35,14 @@ namespace EditorTools
             else if (Input.GetKeyDown(KeyCode.I))
             {
                 SaveManager.LogSavePath();
+            }
+            else if (Input.GetKeyDown(KeyCode.C))
+            {
+                _currencyWallet.TryIncrease(new WalletOperationData(_creditsCurrencyConfig, 1));
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                _currencyWallet.TryIncrease(new WalletOperationData(_energyCurrencyConfig, 1));
             }
             else if (Input.GetKeyDown(KeyCode.Delete))
             {

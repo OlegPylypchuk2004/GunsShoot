@@ -1,5 +1,6 @@
 using BlasterSystem;
 using CameraManagment;
+using CurrencyManagment;
 using SaveSystem;
 using ShopSystem;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace Menu.SectionSystem
 {
@@ -22,11 +24,18 @@ namespace Menu.SectionSystem
         [SerializeField] private Image _priceCurrencyIconImage;
         [SerializeField] private TextMeshProUGUI _buyButtonTextMesh;
 
+        private CurrencyWallet _currencyWallet;
         private ShopFrame[] _shopFrames;
         private BlasterConfig _selectedBlasterConfig;
         private PreviewBlaster _currentPreviewBlaster;
 
         public event Action<PreviewBlaster> PreviewBlasterChanged;
+
+        [Inject]
+        private void Construct(CurrencyWallet currencyWallet)
+        {
+            _currencyWallet = currencyWallet;
+        }
 
         private void Awake()
         {
@@ -37,16 +46,14 @@ namespace Menu.SectionSystem
         {
             foreach (ShopFrame shopFrame in _shopFrames)
             {
-                shopFrame.UpdateDisplay(SaveManager.Data.IsBlasterPurchased(shopFrame.BlasterConfig));
-
                 shopFrame.Selected += OnShopFrameSelected;
             }
 
             _backButton.onClick.AddListener(OnBackButtonClicked);
+            _buyButton.onClick.AddListener(OnBuyButtonClicked);
 
             SpawnPreviewBlaster();
-            UpdatePriceDisplay();
-            UpdateBuyButtonDisplay();
+            UpdateDisplay();
         }
 
         private void OnDisable()
@@ -57,6 +64,7 @@ namespace Menu.SectionSystem
             }
 
             _backButton.onClick.RemoveListener(OnBackButtonClicked);
+            _buyButton.onClick.RemoveListener(OnBuyButtonClicked);
         }
 
         public override void Deactivate()
@@ -76,6 +84,28 @@ namespace Menu.SectionSystem
         private void OnBackButtonClicked()
         {
             _sectionChanger.Change(_previousSection);
+        }
+
+        private void OnBuyButtonClicked()
+        {
+            if (_selectedBlasterConfig == null)
+            {
+                return;
+            }
+
+            if (SaveManager.Data.IsBlasterPurchased(_selectedBlasterConfig))
+            {
+                return;
+            }
+
+            if (_currencyWallet.TryReduce(new WalletOperationData(_selectedBlasterConfig.Price.CurrencyConfig, _selectedBlasterConfig.Price.Count)))
+            {
+                BlasterData blasterData = new BlasterData(_selectedBlasterConfig.ID, 1);
+                SaveManager.Data.Blasters.Add(blasterData);
+                SaveManager.Save();
+
+                UpdateDisplay();
+            }
         }
 
         private void SpawnShopFrames()
@@ -98,20 +128,6 @@ namespace Menu.SectionSystem
                 .ToArray();
         }
 
-        private void OnShopFrameSelected(BlasterConfig blasterConfig)
-        {
-            _selectedBlasterConfig = blasterConfig;
-
-            if (_currentPreviewBlaster != null)
-            {
-                Destroy(_currentPreviewBlaster.gameObject);
-            }
-
-            SpawnPreviewBlaster();
-            UpdatePriceDisplay();
-            UpdateBuyButtonDisplay();
-        }
-
         private void SpawnPreviewBlaster()
         {
             if (_selectedBlasterConfig == null)
@@ -119,9 +135,37 @@ namespace Menu.SectionSystem
                 return;
             }
 
+            if (_currentPreviewBlaster != null)
+            {
+                Destroy(_currentPreviewBlaster.gameObject);
+            }
+
             _currentPreviewBlaster = Instantiate(_selectedBlasterConfig.PreviewPrefab, _orbitCamera.transform);
 
             PreviewBlasterChanged?.Invoke(_currentPreviewBlaster);
+        }
+
+        private void OnShopFrameSelected(BlasterConfig blasterConfig)
+        {
+            _selectedBlasterConfig = blasterConfig;
+
+            SpawnPreviewBlaster();
+            UpdateDisplay();
+        }
+
+        private void UpdateDisplay()
+        {
+            UpdateShopFramesDisplay();
+            UpdatePriceDisplay();
+            UpdateBuyButtonDisplay();
+        }
+
+        private void UpdateShopFramesDisplay()
+        {
+            foreach (ShopFrame shopFrame in _shopFrames)
+            {
+                shopFrame.UpdateDisplay(SaveManager.Data.IsBlasterPurchased(shopFrame.BlasterConfig));
+            }
         }
 
         private void UpdatePriceDisplay()

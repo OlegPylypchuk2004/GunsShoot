@@ -42,7 +42,7 @@ namespace CurrencyManagment
             throw new Exception($"Currency: {currencyConfig.ID} not found.");
         }
 
-        public bool TryAddCount(WalletOperationData operationData)
+        public bool TryIncrease(WalletOperationData operationData)
         {
             if (operationData.Count < 0)
             {
@@ -73,7 +73,7 @@ namespace CurrencyManagment
             }
         }
 
-        public bool TryReduceCount(WalletOperationData operationData)
+        public bool TryReduce(WalletOperationData operationData)
         {
             if (operationData.Count < 0)
             {
