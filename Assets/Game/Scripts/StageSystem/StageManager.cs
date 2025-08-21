@@ -1,5 +1,5 @@
 using GameModeSystem;
-using UnityEngine;
+using Global;
 
 namespace StageSystem
 {
@@ -27,7 +27,7 @@ namespace StageSystem
         public StageManager()
         {
             StageNumber = 1;
-            _gameModeConfig = Resources.Load<GameModeConfig>("Configs/GameModes/game_mode_classic");
+            _gameModeConfig = LocalGameData.GameModeConfig;
         }
 
         public void IncreaseStageNumber()

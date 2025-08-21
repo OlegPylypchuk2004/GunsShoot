@@ -1,3 +1,5 @@
+using GameModeSystem;
+using Global;
 using SceneManagment;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +13,7 @@ namespace Menu.SectionSystem
         [SerializeField] private ShopSection _shopSection;
         [SerializeField] private Button _settingsButton;
         [SerializeField] private SettingsSection _settingsSection;
+        [SerializeField] private GameModeButton[] _gameModeButtons;
 
         private SceneLoader _sceneLoader;
 
@@ -24,19 +27,21 @@ namespace Menu.SectionSystem
         {
             _shopButton.onClick.AddListener(OnShopButtonClicked);
             _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
+
+            foreach (GameModeButton gameModeButton in _gameModeButtons)
+            {
+                gameModeButton.Selected += OnGameModeSelected;
+            }
         }
 
         private void OnDisable()
         {
             _shopButton.onClick.RemoveListener(OnShopButtonClicked);
             _settingsButton.onClick.RemoveListener(OnSettingsButtonClicked);
-        }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Return))
+            foreach (GameModeButton gameModeButton in _gameModeButtons)
             {
-                _sceneLoader.Load(2);
+                gameModeButton.Selected -= OnGameModeSelected;
             }
         }
 
@@ -48,6 +53,17 @@ namespace Menu.SectionSystem
         private void OnSettingsButtonClicked()
         {
             _sectionChanger.Change(_settingsSection);
+        }
+
+        private void OnGameModeSelected(GameModeConfig gameModeConfig)
+        {
+            if (gameModeConfig == null)
+            {
+                return;
+            }
+
+            LocalGameData.GameModeConfig = gameModeConfig;
+            _sceneLoader.Load(gameModeConfig.SceneIndex);
         }
     }
 }

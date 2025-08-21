@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee39d5cde470738498ce475270bc795d, type: 3}
   m_Name: game_mode_classic
   m_EditorClassIdentifier: 
+  <ID>k__BackingField: game_mode_normal
+  <DisplayName>k__BackingField: Normal
+  <SceneIndex>k__BackingField: 2
   <Stages>k__BackingField:
   - ObstacleLaunchForceMultiplier: 1
     ObstacleGravityMultiplier: 1

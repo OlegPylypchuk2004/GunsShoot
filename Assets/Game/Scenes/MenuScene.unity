@@ -467,6 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetTransform: {fileID: 124444715}
   _sensitivity: -10
+  _eventSystem: {fileID: 638604029}
 --- !u!1 &127251184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3973,6 +3974,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2952673452451500899, guid: cfe739bfe6f66c34c922ccf4ce120c5b, type: 3}
   m_PrefabInstance: {fileID: 1688843835}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1688843837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4040737092158850691, guid: cfe739bfe6f66c34c922ccf4ce120c5b, type: 3}
+  m_PrefabInstance: {fileID: 1688843835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f770ccdef6c7e4a9443cf9d329c9db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1886555154
 GameObject:
   m_ObjectHideFlags: 0
@@ -4525,6 +4537,8 @@ MonoBehaviour:
   _shopSection: {fileID: 1065719073}
   _settingsButton: {fileID: 1512001165}
   _settingsSection: {fileID: 1119927455}
+  _gameModeButtons:
+  - {fileID: 1688843837}
 --- !u!1 &2138558807
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace CameraManagment
 {
@@ -6,6 +7,7 @@ namespace CameraManagment
     {
         [SerializeField] private Transform _targetTransform;
         [SerializeField] private float _sensitivity;
+        [SerializeField] private EventSystem _eventSystem;
 
         private Vector3 _defaultRotation;
         private float _mouseX;
@@ -25,6 +27,11 @@ namespace CameraManagment
         private void Update()
         {
             if (!IsInteractible)
+            {
+                return;
+            }
+
+            if (_eventSystem.IsPointerOverGameObject())
             {
                 return;
             }

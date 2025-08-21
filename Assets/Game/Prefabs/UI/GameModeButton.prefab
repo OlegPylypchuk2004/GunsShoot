@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5618990364316585941}
   - component: {fileID: 1790786518920883778}
   m_Layer: 0
-  m_Name: TitleText
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 5590069383588999384}
   - component: {fileID: 6818441280158857868}
   - component: {fileID: 7439488475021136659}
+  - component: {fileID: 4040737092158850691}
   m_Layer: 0
   m_Name: GameModeButton
   m_TagString: Untagged
@@ -391,6 +392,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4040737092158850691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209922189656375526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f770ccdef6c7e4a9443cf9d329c9db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameModeConfig: {fileID: 11400000, guid: 8cea26aeeda318f4c8bb8cd4ceec477b, type: 2}
+  _button: {fileID: 7439488475021136659}
+  _nameTextMesh: {fileID: 1790786518920883778}
 --- !u!1 &8573166736102193666
 GameObject:
   m_ObjectHideFlags: 0
