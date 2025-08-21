@@ -4,6 +4,7 @@ using SaveSystem;
 using ShopSystem;
 using System;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,9 @@ namespace Menu.SectionSystem
         [SerializeField] private ShopFrame _shopFramePrefab;
         [SerializeField] private RectTransform _shopFramesParent;
         [SerializeField] private OrbitCamera _orbitCamera;
+        [SerializeField] private Button _buyButton;
+        [SerializeField] private TextMeshProUGUI _priceTextMesh;
+        [SerializeField] private Image _priceCurrencyIconImage;
 
         private ShopFrame[] _shopFrames;
         private BlasterConfig _selectedBlasterConfig;
@@ -38,6 +42,9 @@ namespace Menu.SectionSystem
             }
 
             _backButton.onClick.AddListener(OnBackButtonClicked);
+
+            SpawnPreviewBlaster();
+            UpdatePriceDisplay();
         }
 
         private void OnDisable()
@@ -80,13 +87,6 @@ namespace Menu.SectionSystem
                 _shopFrames[i].Initialize(blasterConfigs[i]);
                 _shopFrames[i].UpdateDisplay(SaveManager.Data.IsBlasterBought(blasterConfigs[i]));
             }
-
-            //Test spawn fake buttons to test UI
-
-            for (int i = 0; i < 24; i++)
-            {
-                Instantiate(_shopFramePrefab, _shopFramesParent);
-            }
         }
 
         private BlasterConfig[] LoadBlasterConfigs()
@@ -106,13 +106,32 @@ namespace Menu.SectionSystem
             }
 
             SpawnPreviewBlaster();
+            UpdatePriceDisplay();
         }
 
         private void SpawnPreviewBlaster()
         {
+            if (_selectedBlasterConfig == null)
+            {
+                return;
+            }
+
             _currentPreviewBlaster = Instantiate(_selectedBlasterConfig.PreviewPrefab, _orbitCamera.transform);
 
             PreviewBlasterChanged?.Invoke(_currentPreviewBlaster);
+        }
+
+        private void UpdatePriceDisplay()
+        {
+            if (_selectedBlasterConfig == null)
+            {
+                return;
+            }
+
+            _priceTextMesh.text = $"{_selectedBlasterConfig.Price.Count}";
+
+            _priceCurrencyIconImage.sprite = _selectedBlasterConfig.Price.CurrencyConfig.Icon;
+            _priceCurrencyIconImage.SetNativeSize();
         }
     }
 }

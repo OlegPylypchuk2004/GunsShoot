@@ -1,4 +1,5 @@
 using BulletSystem;
+using CurrencyManagment;
 using UnityEngine;
 
 namespace BlasterSystem
@@ -8,6 +9,7 @@ namespace BlasterSystem
     {
         [field: SerializeField] public string ID { get; private set; }
         [field: SerializeField] public string DisplayName { get; private set; }
+        [field: SerializeField] public WalletOperationData Price { get; private set; }
 
         [field: Space(25f), SerializeField, Min(1)] public int Damage { get; private set; }
         [field: SerializeField, Range(0f, 10f)] public float Spread { get; private set; }

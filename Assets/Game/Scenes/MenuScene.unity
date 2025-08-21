@@ -2471,6 +2471,9 @@ MonoBehaviour:
   _shopFramePrefab: {fileID: 8003038663053573881, guid: 367df1873a97b834b93233e51ce9fed2, type: 3}
   _shopFramesParent: {fileID: 918751670}
   _orbitCamera: {fileID: 124444716}
+  _buyButton: {fileID: 1668886109}
+  _priceTextMesh: {fileID: 906189636}
+  _priceCurrencyIconImage: {fileID: 1679702931}
 --- !u!1 &1119927453
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ID>k__BackingField: blaster_k
   <DisplayName>k__BackingField: 
+  <Price>k__BackingField:
+    <CurrencyConfig>k__BackingField: {fileID: 11400000, guid: e1a0e423aeb84ee44a8439432efab00e, type: 2}
+    <Count>k__BackingField: 0
   <Damage>k__BackingField: 7
   <Spread>k__BackingField: 1.5
   <BulletSpeed>k__BackingField: 15
