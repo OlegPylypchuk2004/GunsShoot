@@ -1,11 +1,10 @@
 using DG.Tweening;
-using PauseManagment;
 using UnityEngine;
 using VContainer;
 
 namespace Gameplay.UI
 {
-    public class PauseDisplay : MonoBehaviour
+    public class Panel : MonoBehaviour
     {
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField, Min(0f)] protected float _minUIScale;
@@ -14,36 +13,20 @@ namespace Gameplay.UI
         [SerializeField] protected Ease _appearUIEase;
         [SerializeField] protected Ease _disappearUIEase;
 
-        private PauseHandler _pauseHandler;
         private BlurBackground _blurBackground;
-
         private Sequence _currentSequence;
 
         [Inject]
-        private void Construct(PauseHandler pauseHandler, BlurBackground blurBackground)
+        private void Construct(BlurBackground blurBackground)
         {
-            _pauseHandler = pauseHandler;
             _blurBackground = blurBackground;
         }
 
-        private void OnEnable()
-        {
-            _pauseHandler.Paused += OnPaused;
-            _pauseHandler.Unpaused += OnUnpaused;
-        }
-
-        private void OnDisable()
-        {
-            _pauseHandler.Paused -= OnPaused;
-            _pauseHandler.Unpaused -= OnUnpaused;
-        }
-
-        private void OnPaused()
+        public Sequence Appear()
         {
             _currentSequence?.Kill();
 
             _currentSequence = DOTween.Sequence();
-            _currentSequence.SetUpdate(true);
             _currentSequence.SetLink(gameObject);
 
             _currentSequence.AppendCallback(() =>
@@ -66,14 +49,15 @@ namespace Gameplay.UI
             {
                 _canvasGroup.interactable = true;
             });
+
+            return _currentSequence;
         }
 
-        private void OnUnpaused()
+        public Sequence Disappear()
         {
             _currentSequence?.Kill();
 
             _currentSequence = DOTween.Sequence();
-            _currentSequence.SetUpdate(true);
             _currentSequence.SetLink(gameObject);
 
             _currentSequence.AppendCallback(() =>
@@ -93,6 +77,8 @@ namespace Gameplay.UI
             {
                 _canvasGroup.gameObject.SetActive(false);
             });
+
+            return _currentSequence;
         }
     }
 }

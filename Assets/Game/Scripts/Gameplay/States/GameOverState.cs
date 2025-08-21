@@ -5,9 +5,9 @@ namespace Gameplay.States
 {
     public class GameOverState : State
     {
-        private GameOverDisplay _gameOverDisplay;
+        private GameOverPanel _gameOverDisplay;
 
-        public GameOverState(GameOverDisplay gameOverDisplay)
+        public GameOverState(GameOverPanel gameOverDisplay)
         {
             _gameOverDisplay = gameOverDisplay;
         }

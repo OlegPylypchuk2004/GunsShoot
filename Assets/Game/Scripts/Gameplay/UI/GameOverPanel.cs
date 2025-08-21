@@ -4,7 +4,7 @@ using VContainer;
 
 namespace Gameplay.UI
 {
-    public class GameOverDisplay : MonoBehaviour
+    public class GameOverPanel : MonoBehaviour
     {
         private BlurBackground _blurBackground;
 

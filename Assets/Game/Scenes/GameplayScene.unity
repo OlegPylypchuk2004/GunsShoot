@@ -2345,16 +2345,16 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects:
+  - {fileID: 1719696718}
   - {fileID: 1635507111}
   - {fileID: 8674129}
   - {fileID: 114148238}
-  - {fileID: 1719696718}
+  - {fileID: 8926931471551831479}
   _blasterController: {fileID: 1304175452}
   _cameraShaker: {fileID: 760077362}
   _obstacleSpawner: {fileID: 1635507112}
   _translucentImageSource: {fileID: 760077360}
   _blurBackground: {fileID: 1818518730}
-  _pauseDisplay: {fileID: 8926931471551831480}
   _ammoAmountDisplay: {fileID: 66368015}
   _gameOverDisplay: {fileID: 1309810785}
 --- !u!1 &1220817635
@@ -2755,6 +2755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abdcc531a118728459c8987d97e9efc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _blurBackground: {fileID: 0}
 --- !u!1 &1335584597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3663,15 +3664,15 @@ GameObject:
   - component: {fileID: 6242435331578573250}
   - component: {fileID: 4339111287121389530}
   - component: {fileID: 4982825348426350686}
-  - component: {fileID: 8926931471551831480}
+  - component: {fileID: 8926931471551831481}
   m_Layer: 5
-  m_Name: PauseDisplay
+  m_Name: PausePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8926931471551831480
+--- !u!114 &8926931471551831481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3680,7 +3681,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8926931471551831479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e084f225abcf1b4f861ce98af207f14, type: 3}
+  m_Script: {fileID: 11500000, guid: 60b868f7c5f081b4fadf71a8ef51ecb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 163334588}
