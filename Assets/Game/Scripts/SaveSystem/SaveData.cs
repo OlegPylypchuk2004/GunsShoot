@@ -15,7 +15,7 @@ namespace SaveSystem
             Blasters = new List<BlasterData>();
         }
 
-        public bool IsBlasterBought(BlasterConfig blasterConfig)
+        public bool IsBlasterPurchased(BlasterConfig blasterConfig)
         {
             return Blasters.Any(blaster => blaster.ID == blasterConfig.ID);
         }

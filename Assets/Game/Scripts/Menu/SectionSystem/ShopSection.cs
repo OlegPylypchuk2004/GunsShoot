@@ -20,6 +20,7 @@ namespace Menu.SectionSystem
         [SerializeField] private Button _buyButton;
         [SerializeField] private TextMeshProUGUI _priceTextMesh;
         [SerializeField] private Image _priceCurrencyIconImage;
+        [SerializeField] private TextMeshProUGUI _buyButtonTextMesh;
 
         private ShopFrame[] _shopFrames;
         private BlasterConfig _selectedBlasterConfig;
@@ -36,7 +37,7 @@ namespace Menu.SectionSystem
         {
             foreach (ShopFrame shopFrame in _shopFrames)
             {
-                shopFrame.UpdateDisplay(SaveManager.Data.IsBlasterBought(shopFrame.BlasterConfig));
+                shopFrame.UpdateDisplay(SaveManager.Data.IsBlasterPurchased(shopFrame.BlasterConfig));
 
                 shopFrame.Selected += OnShopFrameSelected;
             }
@@ -45,6 +46,7 @@ namespace Menu.SectionSystem
 
             SpawnPreviewBlaster();
             UpdatePriceDisplay();
+            UpdateBuyButtonDisplay();
         }
 
         private void OnDisable()
@@ -85,7 +87,7 @@ namespace Menu.SectionSystem
             {
                 _shopFrames[i] = Instantiate(_shopFramePrefab, _shopFramesParent);
                 _shopFrames[i].Initialize(blasterConfigs[i]);
-                _shopFrames[i].UpdateDisplay(SaveManager.Data.IsBlasterBought(blasterConfigs[i]));
+                _shopFrames[i].UpdateDisplay(SaveManager.Data.IsBlasterPurchased(blasterConfigs[i]));
             }
         }
 
@@ -107,6 +109,7 @@ namespace Menu.SectionSystem
 
             SpawnPreviewBlaster();
             UpdatePriceDisplay();
+            UpdateBuyButtonDisplay();
         }
 
         private void SpawnPreviewBlaster()
@@ -132,6 +135,27 @@ namespace Menu.SectionSystem
 
             _priceCurrencyIconImage.sprite = _selectedBlasterConfig.Price.CurrencyConfig.Icon;
             _priceCurrencyIconImage.SetNativeSize();
+        }
+
+        private void UpdateBuyButtonDisplay()
+        {
+            if (_selectedBlasterConfig == null)
+            {
+                return;
+            }
+
+            bool isBlasterPurchased = SaveManager.Data.IsBlasterPurchased(_selectedBlasterConfig);
+
+            if (isBlasterPurchased)
+            {
+                _buyButtonTextMesh.text = "Purchased";
+            }
+            else
+            {
+                _buyButtonTextMesh.text = "Buy";
+            }
+
+            _buyButton.interactable = !isBlasterPurchased;
         }
     }
 }

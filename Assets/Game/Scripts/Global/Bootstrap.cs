@@ -32,7 +32,7 @@ namespace Global
 
             foreach (BlasterConfig initialBoughtBlaster in _initialBoughtBlasters)
             {
-                if (!saveData.IsBlasterBought(initialBoughtBlaster))
+                if (!saveData.IsBlasterPurchased(initialBoughtBlaster))
                 {
                     BlasterData blasterData = new BlasterData(initialBoughtBlaster.ID, 1);
                     saveData.Blasters.Add(blasterData);
