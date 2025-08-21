@@ -23,32 +23,31 @@ namespace Menu.SectionSystem
 
         public event Action<PreviewBlaster> PreviewBlasterChanged;
 
+        private void Awake()
+        {
+            SpawnShopFrames();
+        }
+
         private void OnEnable()
         {
+            foreach (ShopFrame shopFrame in _shopFrames)
+            {
+                shopFrame.UpdateDisplay(IsBlasterBought(shopFrame.BlasterConfig));
+
+                shopFrame.Selected += OnShopFrameSelected;
+            }
+
             _backButton.onClick.AddListener(OnBackButtonClicked);
         }
 
-        private void Start()
-        {
-            SpawnShopFrames();
-
-            foreach (ShopFrame shopFrame in _shopFrames)
-            {
-                shopFrame.Selected += OnShopFrameSelected;
-            }
-        }
-
         private void OnDisable()
-        {
-            _backButton.onClick.RemoveListener(OnBackButtonClicked);
-        }
-
-        private void OnDestroy()
         {
             foreach (ShopFrame shopFrame in _shopFrames)
             {
                 shopFrame.Selected -= OnShopFrameSelected;
             }
+
+            _backButton.onClick.RemoveListener(OnBackButtonClicked);
         }
 
         public override void Deactivate()

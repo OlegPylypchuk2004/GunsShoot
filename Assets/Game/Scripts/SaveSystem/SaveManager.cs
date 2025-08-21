@@ -41,5 +41,20 @@ namespace SaveSystem
                 Save();
             }
         }
+
+        public static void Delete()
+        {
+            if (File.Exists(FilePath))
+            {
+                File.Delete(FilePath);
+            }
+
+            _cachedData = new SaveData();
+        }
+
+        public static void LogSavePath()
+        {
+            Debug.Log($"Save file path: {FilePath}");
+        }
     }
 }

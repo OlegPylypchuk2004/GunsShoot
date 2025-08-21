@@ -6,6 +6,12 @@ namespace SaveSystem
     public class BlasterData
     {
         public string ID;
-        public string Level;
+        public int Level;
+
+        public BlasterData(string id, int level)
+        {
+            ID = id;
+            Level = level;
+        }
     }
 }

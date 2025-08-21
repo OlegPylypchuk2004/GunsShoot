@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc8af18e823f2e409788c49df460a69, type: 3}
   m_Name: blaster_n
   m_EditorClassIdentifier: 
+  <ID>k__BackingField: blaster_n
+  <DisplayName>k__BackingField: 
   <Damage>k__BackingField: 5
   <Spread>k__BackingField: 2.5
   <BulletSpeed>k__BackingField: 15

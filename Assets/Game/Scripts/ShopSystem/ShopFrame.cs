@@ -11,7 +11,7 @@ namespace ShopSystem
         [SerializeField] private Image _iconImage;
         [SerializeField] private GameObject[] _notBoughtDisplayObjects;
 
-        private BlasterConfig _blasterConfig;
+        public BlasterConfig BlasterConfig { get; private set; }
 
         public event Action<BlasterConfig> Selected;
 
@@ -27,7 +27,7 @@ namespace ShopSystem
 
         public void Initialize(BlasterConfig blasterConfig)
         {
-            _blasterConfig = blasterConfig;
+            BlasterConfig = blasterConfig;
             _iconImage.sprite = blasterConfig.Icon;
         }
 
@@ -41,7 +41,7 @@ namespace ShopSystem
 
         private void OnButtonClicked()
         {
-            Selected?.Invoke(_blasterConfig);
+            Selected?.Invoke(BlasterConfig);
         }
     }
 }
