@@ -8,6 +8,11 @@ namespace Gameplay.UI
     public class PauseDisplay : MonoBehaviour
     {
         [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField, Min(0f)] protected float _minUIScale;
+        [SerializeField, Min(0f)] protected float _appearUIDuration;
+        [SerializeField, Min(0f)] protected float _disappearUIDuration;
+        [SerializeField] protected Ease _appearUIEase;
+        [SerializeField] protected Ease _disappearUIEase;
 
         private PauseHandler _pauseHandler;
         private BlurBackground _blurBackground;
@@ -43,20 +48,24 @@ namespace Gameplay.UI
 
             _currentSequence.AppendCallback(() =>
             {
+                _canvasGroup.gameObject.SetActive(true);
                 _canvasGroup.interactable = false;
             });
 
             _currentSequence.Append(_blurBackground.Appear());
 
-            _currentSequence.AppendCallback(() =>
-            {
-                _canvasGroup.gameObject.SetActive(true);
-                _canvasGroup.interactable = true;
-            });
-
-            _currentSequence.Join(_canvasGroup.DOFade(1f, 0.25f)
+            _currentSequence.Join(_canvasGroup.DOFade(1f, _appearUIDuration)
                 .From(0f)
                 .SetEase(Ease.OutQuad));
+
+            _currentSequence.Join(_canvasGroup.transform.DOScale(1f, _appearUIDuration)
+                .From(_minUIScale)
+                .SetEase(_appearUIEase));
+
+            _currentSequence.AppendCallback(() =>
+            {
+                _canvasGroup.interactable = true;
+            });
         }
 
         private void OnUnpaused()
@@ -72,10 +81,13 @@ namespace Gameplay.UI
                 _canvasGroup.interactable = false;
             });
 
-            _currentSequence.Append(_blurBackground.Disappear());
-
-            _currentSequence.Join(_canvasGroup.DOFade(0f, 0.25f)
+            _currentSequence.Append(_canvasGroup.DOFade(0f, _disappearUIDuration)
                 .SetEase(Ease.InQuad));
+
+            _currentSequence.Join(_canvasGroup.transform.DOScale(_minUIScale, _disappearUIDuration)
+                .SetEase(_disappearUIEase));
+
+            _currentSequence.Join(_blurBackground.Disappear());
 
             _currentSequence.AppendCallback(() =>
             {

@@ -118,7 +118,7 @@ MonoBehaviour:
   _translucentImage: {fileID: 4855610117321144027}
   _blurConfig: {fileID: 11400000, guid: 9a50d99d33067304598934dbc4871038, type: 2}
   _strength: 10
-  _duration: 0.25
+  _duration: 0.125
 --- !u!1 &7594055176173683648
 GameObject:
   m_ObjectHideFlags: 0
