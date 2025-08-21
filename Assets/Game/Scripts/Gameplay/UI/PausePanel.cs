@@ -14,14 +14,18 @@ namespace Gameplay.UI
             _pauseHandler = pauseHandler;
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+
             _pauseHandler.Paused += OnPaused;
             _pauseHandler.Unpaused += OnUnpaused;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
+
             _pauseHandler.Paused -= OnPaused;
             _pauseHandler.Unpaused -= OnUnpaused;
         }

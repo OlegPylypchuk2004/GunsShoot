@@ -22,6 +22,16 @@ namespace Gameplay.UI
             _blurBackground = blurBackground;
         }
 
+        protected virtual void OnEnable()
+        {
+
+        }
+
+        protected virtual void OnDisable()
+        {
+
+        }
+
         public Sequence Appear()
         {
             _currentSequence?.Kill();
