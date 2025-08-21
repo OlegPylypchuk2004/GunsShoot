@@ -24,7 +24,6 @@ namespace Gameplay
 
         [Header("UI"), SerializeField] private TranslucentImageSource _translucentImageSource;
         [SerializeField] private BlurBackground _blurBackground;
-        [SerializeField] private AmmoAmountDisplay _ammoAmountDisplay;
         [SerializeField] private GameOverPanel _gameOverDisplay;
 
         private IContainerBuilder _builder;
@@ -82,7 +81,6 @@ namespace Gameplay
         private void RegisterUI()
         {
             _builder.RegisterComponent<BlurBackground>(_blurBackground);
-            _builder.RegisterComponent<AmmoAmountDisplay>(_ammoAmountDisplay);
             _builder.RegisterComponent<GameOverPanel>(_gameOverDisplay);
         }
     }

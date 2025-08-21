@@ -2144,6 +2144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 901909327}
+  - component: {fileID: 901909328}
   m_Layer: 0
   m_Name: CanvasGroup
   m_TagString: Untagged
@@ -2171,6 +2172,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &901909328
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901909326}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1051656532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2349,13 +2362,13 @@ MonoBehaviour:
   - {fileID: 1635507111}
   - {fileID: 8674129}
   - {fileID: 114148238}
+  - {fileID: 66368010}
   - {fileID: 8926931471551831479}
   _blasterController: {fileID: 1304175452}
   _cameraShaker: {fileID: 760077362}
   _obstacleSpawner: {fileID: 1635507112}
   _translucentImageSource: {fileID: 760077360}
   _blurBackground: {fileID: 1818518730}
-  _ammoAmountDisplay: {fileID: 66368015}
   _gameOverDisplay: {fileID: 1309810785}
 --- !u!1 &1220817635
 GameObject:
@@ -2654,7 +2667,7 @@ GameObject:
   - component: {fileID: 1309810782}
   - component: {fileID: 1309810785}
   m_Layer: 0
-  m_Name: GameOverDisplay
+  m_Name: GameOverPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2752,10 +2765,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1309810780}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abdcc531a118728459c8987d97e9efc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b13201275eec6244a85946c9c71307ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blurBackground: {fileID: 0}
+  _canvasGroup: {fileID: 901909328}
+  _minUIScale: 0.95
+  _appearUIDuration: 0.125
+  _disappearUIDuration: 0.125
+  _appearUIEase: 6
+  _disappearUIEase: 5
 --- !u!1 &1335584597
 GameObject:
   m_ObjectHideFlags: 0
