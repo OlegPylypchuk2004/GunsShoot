@@ -1,5 +1,7 @@
+using BlasterSystem;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SaveSystem
 {
@@ -11,6 +13,11 @@ namespace SaveSystem
         public SaveData()
         {
             Blasters = new List<BlasterData>();
+        }
+
+        public bool IsBlasterBought(BlasterConfig blasterConfig)
+        {
+            return Blasters.Any(blaster => blaster.ID == blasterConfig.ID);
         }
     }
 }

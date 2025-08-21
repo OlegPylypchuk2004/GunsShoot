@@ -32,7 +32,7 @@ namespace Menu.SectionSystem
         {
             foreach (ShopFrame shopFrame in _shopFrames)
             {
-                shopFrame.UpdateDisplay(IsBlasterBought(shopFrame.BlasterConfig));
+                shopFrame.UpdateDisplay(SaveManager.Data.IsBlasterBought(shopFrame.BlasterConfig));
 
                 shopFrame.Selected += OnShopFrameSelected;
             }
@@ -78,7 +78,7 @@ namespace Menu.SectionSystem
             {
                 _shopFrames[i] = Instantiate(_shopFramePrefab, _shopFramesParent);
                 _shopFrames[i].Initialize(blasterConfigs[i]);
-                _shopFrames[i].UpdateDisplay(IsBlasterBought(blasterConfigs[i]));
+                _shopFrames[i].UpdateDisplay(SaveManager.Data.IsBlasterBought(blasterConfigs[i]));
             }
 
             //Test spawn fake buttons to test UI
@@ -113,11 +113,6 @@ namespace Menu.SectionSystem
             _currentPreviewBlaster = Instantiate(_selectedBlasterConfig.PreviewPrefab, _orbitCamera.transform);
 
             PreviewBlasterChanged?.Invoke(_currentPreviewBlaster);
-        }
-
-        private bool IsBlasterBought(BlasterConfig blasterConfig)
-        {
-            return SaveManager.Data.Blasters.Any(blaster => blaster.ID == blasterConfig.ID);
         }
     }
 }

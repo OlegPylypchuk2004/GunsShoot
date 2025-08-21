@@ -6,6 +6,11 @@ namespace EditorTools
 {
     public class EditorTool : MonoBehaviour
     {
+        private void Awake()
+        {
+            DontDestroyOnLoad(this);
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.S))
