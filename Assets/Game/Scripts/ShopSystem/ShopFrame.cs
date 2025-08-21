@@ -9,6 +9,7 @@ namespace ShopSystem
     {
         [SerializeField] private Button _button;
         [SerializeField] private Image _iconImage;
+        [SerializeField] private GameObject[] _notBoughtDisplayObjects;
 
         private BlasterConfig _blasterConfig;
 
@@ -28,6 +29,14 @@ namespace ShopSystem
         {
             _blasterConfig = blasterConfig;
             _iconImage.sprite = blasterConfig.Icon;
+        }
+
+        public void UpdateDisplay(bool isBought)
+        {
+            foreach (GameObject notBoughtDisplayObject in _notBoughtDisplayObjects)
+            {
+                notBoughtDisplayObject.SetActive(!isBought);
+            }
         }
 
         private void OnButtonClicked()

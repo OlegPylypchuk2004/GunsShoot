@@ -6,7 +6,10 @@ namespace BlasterSystem
     [CreateAssetMenu(fileName = "BlasterConfig", menuName = "Configs/Blaster")]
     public class BlasterConfig : ScriptableObject
     {
-        [field: SerializeField, Min(1)] public int Damage { get; private set; }
+        [field: SerializeField] public string ID { get; private set; }
+        [field: SerializeField] public string DisplayName { get; private set; }
+
+        [field: Space(25f), SerializeField, Min(1)] public int Damage { get; private set; }
         [field: SerializeField, Range(0f, 10f)] public float Spread { get; private set; }
         [field: SerializeField, Min(1)] public float BulletSpeed { get; private set; }
         [field: SerializeField, Min(1)] public int AmmoAmount { get; private set; }
