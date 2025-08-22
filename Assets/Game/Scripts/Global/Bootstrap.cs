@@ -8,10 +8,12 @@ namespace Global
     public class Bootstrap : MonoBehaviour
     {
         [SerializeField] private BlasterConfig[] _initialBoughtBlasters;
+        [SerializeField] private BlasterConfig _initialSelectedBlaster;
 
         private void Start()
         {
             BuyInitialBlasters();
+            SetInitialSelectedBlaster();
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
@@ -28,6 +30,17 @@ namespace Global
                     saveData.Blasters.Add(blasterData);
                     SaveManager.Save();
                 }
+            }
+        }
+
+        private void SetInitialSelectedBlaster()
+        {
+            SaveData saveData = SaveManager.Data;
+
+            if (string.IsNullOrEmpty(saveData.SelectedBlasterID))
+            {
+                saveData.SelectedBlasterID = _initialSelectedBlaster.ID;
+                SaveManager.Save();
             }
         }
     }

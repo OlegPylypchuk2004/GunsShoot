@@ -39,6 +39,7 @@ namespace Menu.SectionSystem
 
         private void Awake()
         {
+            UpdateSelectedBlaster();
             SpawnShopFrames();
         }
 
@@ -102,6 +103,7 @@ namespace Menu.SectionSystem
             {
                 BlasterData blasterData = new BlasterData(_selectedBlasterConfig.ID, 1);
                 SaveManager.Data.Blasters.Add(blasterData);
+                SaveManager.Data.SelectedBlasterID = _selectedBlasterConfig.ID;
                 SaveManager.Save();
 
                 UpdateDisplay();
@@ -149,8 +151,25 @@ namespace Menu.SectionSystem
         {
             _selectedBlasterConfig = blasterConfig;
 
+            SelectBlaster();
             SpawnPreviewBlaster();
             UpdateDisplay();
+        }
+
+        private void SelectBlaster()
+        {
+            if (_selectedBlasterConfig == null)
+            {
+                return;
+            }
+
+            if (!SaveManager.Data.IsBlasterPurchased(_selectedBlasterConfig))
+            {
+                return;
+            }
+
+            SaveManager.Data.SelectedBlasterID = _selectedBlasterConfig.ID;
+            SaveManager.Save();
         }
 
         private void UpdateDisplay()
@@ -158,6 +177,38 @@ namespace Menu.SectionSystem
             UpdateShopFramesDisplay();
             UpdatePriceDisplay();
             UpdateBuyButtonDisplay();
+        }
+
+        private void UpdateSelectedBlaster()
+        {
+            if (_selectedBlasterConfig != null)
+            {
+                return;
+            }
+
+            BlasterConfig[] blasterConfigs = LoadBlasterConfigs();
+
+            string selectedBlasterID = SaveManager.Data.SelectedBlasterID;
+            bool isSelectedBlasterIDFound = false;
+
+            foreach (BlasterConfig blasterConfig in blasterConfigs)
+            {
+                if (blasterConfig.ID == selectedBlasterID)
+                {
+                    if (SaveManager.Data.IsBlasterPurchased(blasterConfig))
+                    {
+                        _selectedBlasterConfig = blasterConfig;
+                        isSelectedBlasterIDFound = true;
+
+                        break;
+                    }
+                }
+            }
+
+            if (!isSelectedBlasterIDFound)
+            {
+                SaveManager.Data.SelectedBlasterID = _shopFrames[0].BlasterConfig.ID;
+            }
         }
 
         private void UpdateShopFramesDisplay()

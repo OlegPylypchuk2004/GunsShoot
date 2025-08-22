@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialBoughtBlasters:
   - {fileID: 11400000, guid: d8ec4386bffcec947ba14c1a8886d629, type: 2}
+  _initialSelectedBlaster: {fileID: 11400000, guid: d8ec4386bffcec947ba14c1a8886d629, type: 2}
 --- !u!1 &760077356
 GameObject:
   m_ObjectHideFlags: 0

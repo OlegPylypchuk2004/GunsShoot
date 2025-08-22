@@ -9,6 +9,7 @@ namespace SaveSystem
     public class SaveData
     {
         public List<BlasterData> Blasters;
+        public string SelectedBlasterID;
 
         public SaveData()
         {
