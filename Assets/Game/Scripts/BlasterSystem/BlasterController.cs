@@ -72,7 +72,7 @@ namespace BlasterSystem
             return _camera.ScreenToWorldPoint(mousePosition);
         }
 
-        private void OnBlasterChanged(Blaster blaster)
+        private void OnBlasterChanged(PhysicalProjectilesBlaster blaster)
         {
             if (blaster == null)
             {

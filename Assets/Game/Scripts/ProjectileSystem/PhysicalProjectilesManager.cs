@@ -4,14 +4,9 @@ using System;
 
 namespace ProjectileSystem
 {
-    public class PhysicalProjectilesManager : IDisposable
+    public class PhysicalProjectilesManager : ProjectilesManager, IDisposable
     {
         private ObjectPool<PhysicalProjectile> _objectPool;
-
-        public PhysicalProjectilesManager(BlasterConfig blasterConfig)
-        {
-            _objectPool = new ObjectPool<PhysicalProjectile>((PhysicalProjectile)blasterConfig.Projectile, blasterConfig.AmmoAmount / 10);
-        }
 
         public void Dispose()
         {
@@ -21,7 +16,12 @@ namespace ProjectileSystem
             }
         }
 
-        public PhysicalProjectile CreatePhysicalProjectile()
+        public override void Initialize(BlasterConfig blasterConfig)
+        {
+            _objectPool = new ObjectPool<PhysicalProjectile>((PhysicalProjectile)blasterConfig.Projectile, blasterConfig.AmmoAmount / 10);
+        }
+
+        public override PhysicalProjectile CreatePhysicalProjectile()
         {
             PhysicalProjectile physicalProjectile = _objectPool.Get();
             physicalProjectile.Hit += OnPhysicalProjectileHit;

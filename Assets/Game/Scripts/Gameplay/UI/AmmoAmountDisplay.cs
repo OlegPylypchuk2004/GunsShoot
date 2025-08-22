@@ -11,7 +11,7 @@ namespace Gameplay.UI
         [SerializeField] private RectTransform _ammoDisplayParent;
 
         private BlasterHolder _blasterHolder;
-        private Blaster _previousBlaster;
+        private PhysicalProjectilesBlaster _previousBlaster;
         private AmmoDisplay[] _ammoDisplays;
 
         [Inject]
@@ -52,7 +52,7 @@ namespace Gameplay.UI
             transform.rotation = Quaternion.identity;
         }
 
-        private void OnBlasterChanged(Blaster blaster)
+        private void OnBlasterChanged(PhysicalProjectilesBlaster blaster)
         {
             if (_previousBlaster != null)
             {

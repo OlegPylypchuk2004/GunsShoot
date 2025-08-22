@@ -20,7 +20,7 @@ namespace BlasterSystem
         [field: SerializeField] public BlasterType Type { get; private set; }
 
         [field: Space(25f), SerializeField] public Projectile Projectile { get; private set; }
-        [field: SerializeField] public Blaster Prefab { get; private set; }
+        [field: SerializeField] public PhysicalProjectilesBlaster Prefab { get; private set; }
         [field: SerializeField] public PreviewBlaster PreviewPrefab { get; private set; }
         [field: SerializeField] public Sprite Icon { get; private set; }
     }

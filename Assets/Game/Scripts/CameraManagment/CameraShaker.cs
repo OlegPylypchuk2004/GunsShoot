@@ -15,7 +15,7 @@ namespace CameraManagment
         private Vector3 _defaultPosition;
         private Tween _shakeTween;
         private BlasterHolder _blasterHolder;
-        private Blaster _previousBlaster;
+        private PhysicalProjectilesBlaster _previousBlaster;
         private ObstacleContainer _obstacleContainer;
 
         [Inject]
@@ -78,7 +78,7 @@ namespace CameraManagment
             return _shakeTween;
         }
 
-        private void OnBlasterChanged(Blaster blaster)
+        private void OnBlasterChanged(PhysicalProjectilesBlaster blaster)
         {
             if (_previousBlaster != null)
             {
