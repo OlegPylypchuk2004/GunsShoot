@@ -47,6 +47,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Blaster
+    uniqueID: 471349447
+    locked: 0
   - name: UI
     uniqueID: 4230708867
     locked: 0
