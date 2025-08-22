@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510c61cdec524e86b647525bb5947f82, type: 3}
   m_Name: OverlayBlurConfig
   m_EditorClassIdentifier: 
-  radius: 0
-  iteration: 0
-  strength: 0
+  radius: 2.5
+  iteration: 2
+  strength: 10
