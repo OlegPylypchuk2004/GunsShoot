@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Gameplay.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,7 +11,6 @@ namespace SceneManagment
         [SerializeField, Range(0f, 1f)] private float _maxBackgroundAlpha;
         [SerializeField, Range(0f, 1f)] private float _backgroundTransitionDuration;
         [SerializeField] private EventSystem _eventSystem;
-        [SerializeField] private BlurBackground _blurBackground;
         [SerializeField] private Image _background;
 
         private SceneLoader _sceneLoader;
@@ -59,12 +57,9 @@ namespace SceneManagment
                 }
 
                 _background.gameObject.SetActive(true);
-                _blurBackground.gameObject.SetActive(true);
             });
 
-            _currentSequence.Append(_blurBackground.Appear());
-
-            _currentSequence.Join(_background.DOFade(_maxBackgroundAlpha, _backgroundTransitionDuration)
+            _currentSequence.Append(_background.DOFade(_maxBackgroundAlpha, _backgroundTransitionDuration)
                 .From(0f)
                 .SetEase(Ease.OutQuad));
 
@@ -86,13 +81,10 @@ namespace SceneManagment
                 }
 
                 _background.gameObject.SetActive(true);
-                _blurBackground.gameObject.SetActive(true);
             });
 
             _currentSequence.Append(_background.DOFade(0f, _backgroundTransitionDuration)
                 .SetEase(Ease.InQuad));
-
-            _currentSequence.Join(_blurBackground.Disappear());
 
             _currentSequence.AppendCallback(() =>
             {
@@ -102,7 +94,6 @@ namespace SceneManagment
                 }
 
                 _background.gameObject.SetActive(false);
-                _blurBackground.gameObject.SetActive(false);
             });
 
             return _currentSequence;
