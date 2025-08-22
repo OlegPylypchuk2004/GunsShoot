@@ -1,0 +1,16 @@
+{
+  "Stages": [
+    {
+      "ObstacleLaunchForceMultiplier": 1.5,
+      "ObstacleGravityMultiplier": 1.2,
+      "MinObstaclesCount": 5,
+      "MaxObstaclesCount": 7
+    },
+    {
+      "ObstacleLaunchForceMultiplier": 2.0,
+      "ObstacleGravityMultiplier": 1.5,
+      "MinObstaclesCount": 1,
+      "MaxObstaclesCount": 1
+    }
+  ]
+}

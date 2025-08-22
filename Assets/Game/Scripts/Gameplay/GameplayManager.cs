@@ -22,8 +22,8 @@ namespace Gameplay
 
         public void Start()
         {
-            _stateMachine.ChangeState(_preGameplayState);
             _preGameplayState.GameReady += OnGameReady;
+            _stateMachine.ChangeState(_preGameplayState);
         }
 
         public void Tick()

@@ -1,11 +1,13 @@
+using Cysharp.Threading.Tasks;
 using GameModeSystem;
 using Global;
+using UnityEngine;
 
 namespace StageSystem
 {
     public class StageManager
     {
-        private GameModeConfig _gameModeConfig;
+        private StagesWrapper _stagesWrapper;
 
         public int StageNumber { get; private set; }
 
@@ -13,21 +15,40 @@ namespace StageSystem
         {
             get
             {
-                int stageIndex = StageNumber - 1;
-
-                if (stageIndex > _gameModeConfig.Stages.Length - 1)
+                if (_stagesWrapper == null)
                 {
-                    stageIndex = _gameModeConfig.Stages.Length - 1;
+                    return null;
                 }
 
-                return _gameModeConfig.Stages[stageIndex];
+                int stageIndex = StageNumber - 1;
+
+                if (stageIndex > _stagesWrapper.Stages.Length - 1)
+                {
+                    stageIndex = _stagesWrapper.Stages.Length - 1;
+                }
+
+                return _stagesWrapper.Stages[stageIndex];
             }
         }
 
         public StageManager()
         {
             StageNumber = 1;
-            _gameModeConfig = LocalGameData.GameModeConfig;
+        }
+
+        public async UniTask LoadStages()
+        {
+            JsonDataLoader jsonDataLoader = new JsonDataLoader();
+            _stagesWrapper = await jsonDataLoader.LoadJsonDataAsync<StagesWrapper>(LocalGameData.GameModeConfig.StagesConfigFilePath);
+
+            if (_stagesWrapper == null)
+            {
+                Debug.LogError("Failed to load stages config file.");
+            }
+            else
+            {
+                Debug.Log("Stages config file loading completed.");
+            }
         }
 
         public void IncreaseStageNumber()
