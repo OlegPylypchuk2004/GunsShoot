@@ -1,0 +1,24 @@
+using UnityEngine;
+
+namespace ProjectileSystem
+{
+    public abstract class Projectile : MonoBehaviour
+    {
+        [SerializeField, Range(0, 100)] private int _damageSpreadPercent;
+
+        protected ProjectileData _projectileData;
+
+        public virtual void Initialize(ProjectileData projectileData)
+        {
+            _projectileData = projectileData;
+        }
+
+        protected int CalculateDamage()
+        {
+            int maxSpread = Mathf.RoundToInt(_projectileData.Damage * _damageSpreadPercent / 100f);
+            int randomOffset = Random.Range(-maxSpread, maxSpread + 1);
+
+            return _projectileData.Damage + randomOffset;
+        }
+    }
+}

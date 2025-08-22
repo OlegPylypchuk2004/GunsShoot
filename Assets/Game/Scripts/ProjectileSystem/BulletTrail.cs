@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BulletSystem
+namespace ProjectileSystem
 {
     public class BulletTrail : MonoBehaviour
     {

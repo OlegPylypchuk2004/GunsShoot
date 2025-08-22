@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 6751645196087063259}
   - component: {fileID: 7564948327013881600}
   m_Layer: 0
-  m_Name: SimpleBullet
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,5 +354,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageSpreadPercent: 25
-  _collisionsAmount: 1
   _rigidbody: {fileID: 2545336126734606704}
+  _collisionsCount: 1

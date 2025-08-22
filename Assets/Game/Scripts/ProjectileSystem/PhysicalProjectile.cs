@@ -2,24 +2,21 @@ using DamageSystem;
 using System;
 using UnityEngine;
 
-namespace BulletSystem
+namespace ProjectileSystem
 {
-    public class Bullet : MonoBehaviour
+    public abstract class PhysicalProjectile : Projectile
     {
-        [SerializeField, Range(0, 100)] private int _damageSpreadPercent;
-        [SerializeField, Min(1)] private int _collisionsAmount;
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField, Min(1)] private int _collisionsCount;
 
-        private float _speed;
-        private int _damage;
-        private Vector3 _direction;
         private int _currentCollisionsAmount;
+        private PhysicalProjectileData _physicalProjectileData;
 
-        public event Action<Bullet> Hit;
+        public event Action<PhysicalProjectile> Hit;
 
         private void FixedUpdate()
         {
-            _rigidbody.velocity = _direction * _speed;
+            _rigidbody.velocity = _physicalProjectileData.Direction * _physicalProjectileData.Speed;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -40,7 +37,7 @@ namespace BulletSystem
 
             _currentCollisionsAmount++;
 
-            if (_currentCollisionsAmount >= _collisionsAmount)
+            if (_currentCollisionsAmount >= _collisionsCount)
             {
                 _currentCollisionsAmount = 0;
 
@@ -48,24 +45,16 @@ namespace BulletSystem
             }
         }
 
-        public void Launch(float speed, int damage, Vector3 direction)
+        public override void Initialize(ProjectileData projectileData)
         {
-            _speed = speed;
-            _damage = damage;
-            _direction = direction.normalized;
+            base.Initialize(projectileData);
+
+            _physicalProjectileData = (PhysicalProjectileData)projectileData;
         }
 
         public void SetRigidbodyPosition(Vector3 position)
         {
             _rigidbody.position = position;
-        }
-
-        private int CalculateDamage()
-        {
-            int maxSpread = Mathf.RoundToInt(_damage * _damageSpreadPercent / 100f);
-            int randomOffset = UnityEngine.Random.Range(-maxSpread, maxSpread + 1);
-
-            return _damage + randomOffset;
         }
     }
 }

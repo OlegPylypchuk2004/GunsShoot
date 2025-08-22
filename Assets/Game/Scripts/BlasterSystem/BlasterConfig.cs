@@ -1,4 +1,4 @@
-using BulletSystem;
+using ProjectileSystem;
 using CurrencyManagment;
 using UnityEngine;
 

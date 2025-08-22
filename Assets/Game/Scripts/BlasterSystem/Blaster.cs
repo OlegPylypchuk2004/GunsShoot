@@ -1,5 +1,5 @@
 using BlasterSystem.Abstractions;
-using BulletSystem;
+using ProjectileSystem;
 using System;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace BlasterSystem
         [field: SerializeField] public BlasterConfig Config { get; private set; }
         [SerializeField] private Transform _shootPoint;
 
-        private BulletsManager _bulletsManager;
+        private PhysicalProjectilesManager _bulletsManager;
         private BlasterState _state;
         private float _reloadTime;
         private float _shootCooldownTime;
@@ -55,7 +55,7 @@ namespace BlasterSystem
 
         private void Awake()
         {
-            _bulletsManager = new BulletsManager(Config);
+            _bulletsManager = new PhysicalProjectilesManager(Config);
         }
 
         private void Start()
@@ -105,10 +105,15 @@ namespace BlasterSystem
                 return;
             }
 
-            Bullet bullet = _bulletsManager.CreateBullet();
-            bullet.transform.position = _shootPoint.position;
-            bullet.SetRigidbodyPosition(_shootPoint.position);
-            bullet.Launch(Config.BulletSpeed, Config.Damage, GetBulletDirection());
+            PhysicalProjectileData physicalProjectileData = new PhysicalProjectileData();
+            physicalProjectileData.Damage = Config.Damage;
+            physicalProjectileData.Direction = GetProjectileDirection();
+            physicalProjectileData.Speed = Config.BulletSpeed;
+
+            PhysicalProjectile projectile = _bulletsManager.CreatePhysicalProjectile();
+            projectile.transform.position = _shootPoint.position;
+            projectile.SetRigidbodyPosition(_shootPoint.position);
+            projectile.Initialize(physicalProjectileData);
 
             AmmoAmount--;
             _shootCooldownTime = Config.ShotCooldown;
@@ -121,7 +126,7 @@ namespace BlasterSystem
             ShotFired?.Invoke();
         }
 
-        private Vector3 GetBulletDirection()
+        private Vector3 GetProjectileDirection()
         {
             Vector3 baseDirection = -_shootPoint.right;
             float spreadAngleY = UnityEngine.Random.Range(-Config.Spread, Config.Spread);
