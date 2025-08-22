@@ -8,7 +8,7 @@ namespace ProjectileSystem
 
         protected ProjectileData _projectileData;
 
-        public virtual void Initialize(ProjectileData projectileData)
+        public virtual void Launch(ProjectileData projectileData)
         {
             _projectileData = projectileData;
         }

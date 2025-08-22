@@ -1,12 +1,13 @@
 using ProjectileSystem;
+using UnityEngine;
 
 namespace BlasterSystem
 {
-    public class PhysicalProjectilesBlaster : Blaster
+    public class RaycastProjectileBlaster : Blaster
     {
         private void Awake()
         {
-            _projectilesManager = new PhysicalProjectilesManager();
+            _projectilesManager = new RaycastProjectilesManager();
             _projectilesManager.Initialize(Config);
         }
 
@@ -17,14 +18,12 @@ namespace BlasterSystem
 
         protected override void LauchProjectile()
         {
-            PhysicalProjectileData projectileData = new PhysicalProjectileData();
+            RaycastProjectileData projectileData = new RaycastProjectileData();
             projectileData.Damage = Config.Damage;
             projectileData.Direction = GetProjectileDirection();
-            projectileData.Speed = Config.ProjectileSpeed;
 
-            PhysicalProjectile projectile = (PhysicalProjectile)_projectilesManager.CreateProjectile();
+            RaycastProjectile projectile = (RaycastProjectile)_projectilesManager.CreateProjectile();
             projectile.transform.position = _shootPoint.position;
-            projectile.SetRigidbodyPosition(_shootPoint.position);
             projectile.Launch(projectileData);
         }
     }

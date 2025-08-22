@@ -1,10 +1,11 @@
+using BlasterSystem.Abstractions;
 using ProjectileSystem;
 using System;
 using UnityEngine;
 
 namespace BlasterSystem
 {
-    public abstract class Blaster : MonoBehaviour
+    public abstract class Blaster : MonoBehaviour, IBlasterShotReadonly, IBlasterAmmoAmountReadonly
     {
         [field: SerializeField] public BlasterConfig Config { get; private set; }
         [SerializeField] protected Transform _shootPoint;
@@ -105,6 +106,16 @@ namespace BlasterSystem
         {
             _state = BlasterState.Reloading;
             _reloadTime = Config.ReloadDuration;
+        }
+
+        protected Vector3 GetProjectileDirection()
+        {
+            Vector3 baseDirection = -_shootPoint.right;
+            float spreadAngleY = UnityEngine.Random.Range(-Config.Spread, Config.Spread);
+            float spreadAngleZ = UnityEngine.Random.Range(-Config.Spread, Config.Spread);
+            Quaternion spreadRotation = Quaternion.Euler(0, spreadAngleZ, spreadAngleY);
+
+            return spreadRotation * baseDirection;
         }
 
         protected abstract void LauchProjectile();

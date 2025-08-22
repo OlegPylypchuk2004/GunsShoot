@@ -5,10 +5,10 @@ namespace BlasterSystem
 {
     public class BlasterHolder
     {
-        public PhysicalProjectilesBlaster Blaster { get; private set; }
+        public Blaster Blaster { get; private set; }
         public BlasterConfig[] Configs { get; private set; }
 
-        public event Action<PhysicalProjectilesBlaster> BlasterChanged;
+        public event Action<Blaster> BlasterChanged;
 
         public BlasterHolder()
         {

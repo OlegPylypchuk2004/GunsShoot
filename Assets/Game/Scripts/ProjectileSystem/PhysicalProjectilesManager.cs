@@ -12,7 +12,7 @@ namespace ProjectileSystem
         {
             foreach (PhysicalProjectile physicalProjectile in _objectPool.Objects)
             {
-                physicalProjectile.Hit -= OnPhysicalProjectileHit;
+                physicalProjectile.Hit -= OnProjectileHit;
             }
         }
 
@@ -21,18 +21,18 @@ namespace ProjectileSystem
             _objectPool = new ObjectPool<PhysicalProjectile>((PhysicalProjectile)blasterConfig.Projectile, blasterConfig.AmmoAmount / 10);
         }
 
-        public override PhysicalProjectile CreatePhysicalProjectile()
+        public override Projectile CreateProjectile()
         {
-            PhysicalProjectile physicalProjectile = _objectPool.Get();
-            physicalProjectile.Hit += OnPhysicalProjectileHit;
+            PhysicalProjectile projectile = _objectPool.Get();
+            projectile.Hit += OnProjectileHit;
 
-            return physicalProjectile;
+            return projectile;
         }
 
-        private void OnPhysicalProjectileHit(PhysicalProjectile physicalProjectile)
+        private void OnProjectileHit(PhysicalProjectile projectile)
         {
-            physicalProjectile.Hit -= OnPhysicalProjectileHit;
-            _objectPool.Release(physicalProjectile);
+            projectile.Hit -= OnProjectileHit;
+            _objectPool.Release(projectile);
         }
     }
 }

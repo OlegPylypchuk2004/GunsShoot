@@ -45,9 +45,9 @@ namespace ProjectileSystem
             }
         }
 
-        public override void Initialize(ProjectileData projectileData)
+        public override void Launch(ProjectileData projectileData)
         {
-            base.Initialize(projectileData);
+            base.Launch(projectileData);
 
             _physicalProjectileData = (PhysicalProjectileData)projectileData;
         }

@@ -4,7 +4,7 @@ namespace BlasterSystem
 {
     public class BlasterAnimator : MonoBehaviour
     {
-        [SerializeField] protected PhysicalProjectilesBlaster _blaster;
+        [SerializeField] protected Blaster _blaster;
 
         protected virtual void Awake()
         {
