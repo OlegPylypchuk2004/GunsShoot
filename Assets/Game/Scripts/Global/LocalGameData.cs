@@ -9,7 +9,7 @@ namespace Global
 
         static LocalGameData()
         {
-            GameModeConfig = Resources.Load<GameModeConfig>("Configs/GameModes/game_mode_classic");
+            GameModeConfig = Resources.Load<GameModeConfig>("Configs/GameModes/game_mode_normal");
         }
     }
 }
