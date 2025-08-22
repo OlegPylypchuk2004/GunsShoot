@@ -10,7 +10,7 @@ namespace ProjectileSystem
 
         public PhysicalProjectilesManager(BlasterConfig blasterConfig)
         {
-            _objectPool = new ObjectPool<PhysicalProjectile>(blasterConfig.Bullet, blasterConfig.AmmoAmount / 10);
+            _objectPool = new ObjectPool<PhysicalProjectile>((PhysicalProjectile)blasterConfig.Projectile, blasterConfig.AmmoAmount / 10);
         }
 
         public void Dispose()

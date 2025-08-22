@@ -108,7 +108,7 @@ namespace BlasterSystem
             PhysicalProjectileData physicalProjectileData = new PhysicalProjectileData();
             physicalProjectileData.Damage = Config.Damage;
             physicalProjectileData.Direction = GetProjectileDirection();
-            physicalProjectileData.Speed = Config.BulletSpeed;
+            physicalProjectileData.Speed = Config.ProjectileSpeed;
 
             PhysicalProjectile projectile = _bulletsManager.CreatePhysicalProjectile();
             projectile.transform.position = _shootPoint.position;
