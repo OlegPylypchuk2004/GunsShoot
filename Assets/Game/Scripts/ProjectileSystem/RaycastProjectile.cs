@@ -6,6 +6,8 @@ namespace ProjectileSystem
 {
     public class RaycastProjectile : Projectile
     {
+        [SerializeField, Min(0f)] private float _lifeTime;
+
         public event Action<RaycastProjectile> Expired;
 
         private Coroutine _lifeTimeCoroutine;
@@ -25,7 +27,7 @@ namespace ProjectileSystem
 
         private IEnumerator CountLifeTime()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(_lifeTime);
 
             _lifeTimeCoroutine = null;
 
