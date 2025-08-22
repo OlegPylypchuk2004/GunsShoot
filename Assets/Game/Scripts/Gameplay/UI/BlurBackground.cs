@@ -13,6 +13,16 @@ namespace Gameplay.UI
 
         private Sequence _currentSequence;
 
+        private void Awake()
+        {
+            ResetBlur();
+        }
+
+        public void ResetBlur()
+        {
+            _blurConfig.Strength = 0f;
+        }
+
         public Sequence Appear()
         {
             _currentSequence?.Kill();
