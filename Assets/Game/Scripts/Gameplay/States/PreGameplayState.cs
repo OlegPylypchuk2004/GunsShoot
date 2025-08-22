@@ -32,7 +32,7 @@ namespace Gameplay.States
         {
             await UniTask.Delay(500);
 
-            _blasterHolder.ChangeBlasterRandom();
+            _blasterHolder.SpawnBlaster();
 
             await UniTask.Delay(500);
 

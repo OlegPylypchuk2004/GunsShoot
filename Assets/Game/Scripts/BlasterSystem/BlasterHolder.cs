@@ -1,3 +1,4 @@
+using SaveSystem;
 using System;
 using UnityEngine;
 
@@ -13,6 +14,24 @@ namespace BlasterSystem
         public BlasterHolder()
         {
             Configs = Resources.LoadAll<BlasterConfig>("Configs/Blasters");
+        }
+
+        public void SpawnBlaster()
+        {
+            BlasterConfig blasterConfig = Configs[0];
+            string selectedBlasterID = SaveManager.Data.SelectedBlasterID;
+
+            for (int i = 0; i < Configs.Length; i++)
+            {
+                if (Configs[i].ID == selectedBlasterID)
+                {
+                    blasterConfig = Configs[i];
+
+                    break;
+                }
+            }
+
+            ChangeBlaster(blasterConfig);
         }
 
         public void ChangeBlaster(BlasterConfig blasterConfig)
