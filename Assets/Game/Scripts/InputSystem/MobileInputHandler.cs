@@ -12,7 +12,7 @@ namespace InputSystem
                 {
                     foreach (Touch touch in Input.touches)
                     {
-                        if (GetScreenPercentX(touch.position.x) >= 0.75f)
+                        if (GetScreenPercentX(touch.position.x) >= 0.65f)
                         {
                             return true;
                         }
@@ -36,7 +36,7 @@ namespace InputSystem
                 {
                     foreach (Touch touch in Input.touches)
                     {
-                        if (GetScreenPercentX(touch.position.x) < 0.75f)
+                        if (GetScreenPercentX(touch.position.x) < 0.35f)
                         {
                             return true;
                         }

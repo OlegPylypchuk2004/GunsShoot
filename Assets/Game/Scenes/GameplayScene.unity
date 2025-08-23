@@ -4246,6 +4246,9 @@ MonoBehaviour:
   _disappearUIDuration: 0.125
   _appearUIEase: 6
   _disappearUIEase: 5
+  _inputZonesParentRectTransform: {fileID: 313882382}
+  _shootInputZoneRectTransform: {fileID: 120480945}
+  _aimInputZoneRectTransform: {fileID: 27068351}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

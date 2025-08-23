@@ -1,11 +1,16 @@
 using DG.Tweening;
 using PauseManagment;
+using UnityEngine;
 using VContainer;
 
 namespace Gameplay.UI
 {
     public class PausePanel : Panel
     {
+        [SerializeField] private RectTransform _inputZonesParentRectTransform;
+        [SerializeField] private RectTransform _shootInputZoneRectTransform;
+        [SerializeField] private RectTransform _aimInputZoneRectTransform;
+
         private PauseHandler _pauseHandler;
 
         [Inject]
@@ -18,6 +23,8 @@ namespace Gameplay.UI
         {
             base.OnEnable();
 
+            UpdateInputZonesSize();
+
             _pauseHandler.Paused += OnPaused;
             _pauseHandler.Unpaused += OnUnpaused;
         }
@@ -28,6 +35,18 @@ namespace Gameplay.UI
 
             _pauseHandler.Paused -= OnPaused;
             _pauseHandler.Unpaused -= OnUnpaused;
+        }
+
+        private void LateUpdate()
+        {
+            UpdateInputZonesSize();
+        }
+
+        private void UpdateInputZonesSize()
+        {
+            float inputZonesParentRectTransformWidth = _inputZonesParentRectTransform.rect.size.x;
+            _shootInputZoneRectTransform.sizeDelta = new Vector2(inputZonesParentRectTransformWidth * 0.65f - 62.5f, _shootInputZoneRectTransform.sizeDelta.y);
+            _aimInputZoneRectTransform.sizeDelta = new Vector2(inputZonesParentRectTransformWidth * 0.35f - 62.5f, _aimInputZoneRectTransform.sizeDelta.y);
         }
 
         private void OnPaused()
