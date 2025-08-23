@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageSpreadPercent: 25
-  _lifeTime: 0.25
   _distance: 25
+  _lifeTime: 0.25
 --- !u!1 &7627786487209376085
 GameObject:
   m_ObjectHideFlags: 0

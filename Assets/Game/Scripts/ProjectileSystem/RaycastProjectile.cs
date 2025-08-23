@@ -1,3 +1,4 @@
+using DamageSystem;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -6,6 +7,7 @@ namespace ProjectileSystem
 {
     public class RaycastProjectile : Projectile
     {
+        [SerializeField, Min(0f)] private float _distance;
         [SerializeField, Min(0f)] private float _lifeTime;
 
         public event Action<RaycastProjectile> Expired;
@@ -22,7 +24,27 @@ namespace ProjectileSystem
                 _lifeTimeCoroutine = null;
             }
 
+            UpdateRotation();
+            PerformRaycast();
+
             _lifeTimeCoroutine = StartCoroutine(CountLifeTime());
+        }
+
+        private void PerformRaycast()
+        {
+            Ray ray = new Ray(transform.position, transform.right);
+            RaycastHit[] hits = Physics.RaycastAll(ray, _distance);
+
+            if (hits.Length > 0)
+            {
+                foreach (RaycastHit hit in hits)
+                {
+                    if (hit.collider.TryGetComponent(out IDamageable damageable))
+                    {
+                        damageable.TakeDamage(CalculateDamage());
+                    }
+                }
+            }
         }
 
         private IEnumerator CountLifeTime()
@@ -32,6 +54,12 @@ namespace ProjectileSystem
             _lifeTimeCoroutine = null;
 
             Expired?.Invoke(this);
+        }
+
+        private void UpdateRotation()
+        {
+            float angle = Mathf.Atan2(_projectileData.Direction.y, _projectileData.Direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
     }
 }
