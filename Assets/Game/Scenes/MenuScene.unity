@@ -3290,6 +3290,8 @@ MonoBehaviour:
   _disappearUIEase: 5
   _backButton: {fileID: 739637802}
   _previousSection: {fileID: 2062103001}
+  _secretCodeButton: {fileID: 2098899843}
+  _resetProgressButton: {fileID: 332656496}
 --- !u!1 &1227753286
 GameObject:
   m_ObjectHideFlags: 0
@@ -4581,6 +4583,7 @@ MonoBehaviour:
   - {fileID: 747446139}
   - {fileID: 2062102999}
   - {fileID: 1065719071}
+  - {fileID: 1119927453}
 --- !u!1 &1668886107
 GameObject:
   m_ObjectHideFlags: 0
@@ -5548,7 +5551,7 @@ GameObject:
   - component: {fileID: 2098899844}
   - component: {fileID: 2098899843}
   m_Layer: 0
-  m_Name: SecrectCodeButton
+  m_Name: SecretCodeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
