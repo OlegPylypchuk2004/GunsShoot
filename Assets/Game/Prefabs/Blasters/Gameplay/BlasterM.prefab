@@ -281,9 +281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blaster: {fileID: 4994769968609523123}
   _meshTransform: {fileID: 3895169156282330492}
-  _punchPositionForce: 0.2
-  _punchRotationForce: 0.05
-  _duration: 0.1
+  _punchPositionForce: 0.125
+  _punchRotationForce: 0.125
+  _duration: 0.125
   _ease: 6
 --- !u!1 &8998520117531534412
 GameObject:
