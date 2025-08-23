@@ -119,7 +119,11 @@ namespace Menu.SectionSystem
             {
                 _shopFrames[i] = Instantiate(_shopFramePrefab, _shopFramesParent);
                 _shopFrames[i].Initialize(blasterConfigs[i]);
-                _shopFrames[i].UpdateDisplay(SaveManager.Data.IsBlasterPurchased(blasterConfigs[i]));
+
+                bool isBlasterPuchased = SaveManager.Data.IsBlasterPurchased(_shopFrames[i].BlasterConfig);
+                bool isSelected = isBlasterPuchased && _shopFrames[i].BlasterConfig == _selectedBlasterConfig;
+
+                _shopFrames[i].UpdateDisplay(isBlasterPuchased, isSelected);
             }
         }
 
@@ -216,7 +220,10 @@ namespace Menu.SectionSystem
         {
             foreach (ShopFrame shopFrame in _shopFrames)
             {
-                shopFrame.UpdateDisplay(SaveManager.Data.IsBlasterPurchased(shopFrame.BlasterConfig));
+                bool isBlasterPuchased = SaveManager.Data.IsBlasterPurchased(shopFrame.BlasterConfig);
+                bool isSelected = isBlasterPuchased && shopFrame.BlasterConfig == _selectedBlasterConfig;
+
+                shopFrame.UpdateDisplay(isBlasterPuchased, isSelected);
             }
         }
 
