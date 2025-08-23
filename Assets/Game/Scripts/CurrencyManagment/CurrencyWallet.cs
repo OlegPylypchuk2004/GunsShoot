@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaveSystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -36,7 +37,17 @@ namespace CurrencyManagment
         {
             if (_currency.Contains(currencyConfig))
             {
-                return PlayerPrefs.GetInt($"{currencyConfig.ID}Count", 0);
+                SaveData saveData = SaveManager.Data;
+
+                if (saveData.Currencies.ContainsKey(currencyConfig.ID))
+                {
+                    return saveData.Currencies[currencyConfig.ID];
+                }
+
+                saveData.Currencies.Add(currencyConfig.ID, 0);
+                SaveManager.Save();
+
+                return 0;
             }
 
             throw new Exception($"Currency: {currencyConfig.ID} not found.");
@@ -51,7 +62,7 @@ namespace CurrencyManagment
 
             if (_currency.Contains(operationData.CurrencyConfig))
             {
-                int currentCount = PlayerPrefs.GetInt($"{operationData.CurrencyConfig.ID}Count", 0);
+                int currentCount = GetCount(operationData.CurrencyConfig);
                 int newCount = currentCount + operationData.Count;
                 int maxCount = operationData.CurrencyConfig.MaxCount;
 
@@ -60,7 +71,8 @@ namespace CurrencyManagment
                     newCount = maxCount;
                 }
 
-                PlayerPrefs.SetInt($"{operationData.CurrencyConfig.ID}Count", newCount);
+                SaveManager.Data.Currencies[operationData.CurrencyConfig.ID] = newCount;
+                SaveManager.Save();
 
                 CurrencyCountChanged?.Invoke(new WalletOperationData(operationData.CurrencyConfig, newCount));
                 CurrencyIncreased?.Invoke(new WalletOperationData(operationData.CurrencyConfig, newCount), operationData.Count);
@@ -80,7 +92,7 @@ namespace CurrencyManagment
                 return false;
             }
 
-            int currentCount = PlayerPrefs.GetInt($"{operationData.CurrencyConfig.ID}Count", 0);
+            int currentCount = GetCount(operationData.CurrencyConfig);
 
             if (currentCount < operationData.Count)
             {
@@ -90,7 +102,8 @@ namespace CurrencyManagment
             if (_currency.Contains(operationData.CurrencyConfig))
             {
                 currentCount -= operationData.Count;
-                PlayerPrefs.SetInt($"{operationData.CurrencyConfig.ID}Count", currentCount);
+                SaveManager.Data.Currencies[operationData.CurrencyConfig.ID] = currentCount;
+                SaveManager.Save();
 
                 CurrencyCountChanged?.Invoke(new WalletOperationData(operationData.CurrencyConfig, currentCount));
                 CurrencyReduced?.Invoke(new WalletOperationData(operationData.CurrencyConfig, operationData.Count));

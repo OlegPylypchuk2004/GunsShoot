@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace SaveSystem
 {
@@ -24,7 +25,7 @@ namespace SaveSystem
 
         public static void Save()
         {
-            string json = JsonUtility.ToJson(_cachedData, true);
+            string json = JsonConvert.SerializeObject(_cachedData, Formatting.Indented);
             File.WriteAllText(FilePath, json);
         }
 
@@ -33,7 +34,13 @@ namespace SaveSystem
             if (File.Exists(FilePath))
             {
                 string json = File.ReadAllText(FilePath);
-                _cachedData = JsonUtility.FromJson<SaveData>(json);
+                _cachedData = JsonConvert.DeserializeObject<SaveData>(json);
+
+                if (_cachedData == null)
+                {
+                    _cachedData = new SaveData();
+                    Save();
+                }
             }
             else
             {

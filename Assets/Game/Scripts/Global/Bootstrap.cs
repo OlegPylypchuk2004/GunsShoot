@@ -1,24 +1,53 @@
 using BlasterSystem;
+using CurrencyManagment;
 using SaveSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VContainer;
 
 namespace Global
 {
     public class Bootstrap : MonoBehaviour
     {
+        [SerializeField] private WalletOperationData[] _initialCurrency;
         [SerializeField] private BlasterConfig[] _initialBoughtBlasters;
         [SerializeField] private BlasterConfig _initialSelectedBlaster;
 
+        private CurrencyWallet _currencyWallet;
+
+        [Inject]
+        private void Construct(CurrencyWallet currencyWallet)
+        {
+            _currencyWallet = currencyWallet;
+        }
+
         private void Start()
         {
-            BuyInitialBlasters();
+            AddInitialCurrency();
+            AddInitialBlasters();
             SetInitialSelectedBlaster();
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-        private void BuyInitialBlasters()
+        private void AddInitialCurrency()
+        {
+            SaveData saveData = SaveManager.Data;
+
+            if (saveData.IsInitialCurrencyAdded)
+            {
+                return;
+            }
+
+            saveData.IsInitialCurrencyAdded = true;
+
+            foreach (WalletOperationData initialCurrency in _initialCurrency)
+            {
+                _currencyWallet.TryIncrease(initialCurrency);
+            }
+        }
+
+        private void AddInitialBlasters()
         {
             SaveData saveData = SaveManager.Data;
 

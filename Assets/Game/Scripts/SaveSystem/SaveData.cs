@@ -8,11 +8,14 @@ namespace SaveSystem
     [Serializable]
     public class SaveData
     {
+        public bool IsInitialCurrencyAdded;
+        public Dictionary<string, int> Currencies;
         public List<BlasterData> Blasters;
         public string SelectedBlasterID;
 
         public SaveData()
         {
+            Currencies = new Dictionary<string, int>();
             Blasters = new List<BlasterData>();
         }
 
