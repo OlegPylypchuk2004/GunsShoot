@@ -175,6 +175,7 @@ namespace Menu.SectionSystem
         private void UpdateDisplay()
         {
             UpdateShopFramesDisplay();
+            UpdatePreviewBlaster();
             UpdatePriceDisplay();
             UpdateBuyButtonDisplay();
         }
@@ -217,6 +218,16 @@ namespace Menu.SectionSystem
             {
                 shopFrame.UpdateDisplay(SaveManager.Data.IsBlasterPurchased(shopFrame.BlasterConfig));
             }
+        }
+
+        private void UpdatePreviewBlaster()
+        {
+            if (_selectedBlasterConfig == null || _currentPreviewBlaster == null)
+            {
+                return;
+            }
+
+            _currentPreviewBlaster.UpdateDisplay(SaveManager.Data.IsBlasterPurchased(_selectedBlasterConfig));
         }
 
         private void UpdatePriceDisplay()

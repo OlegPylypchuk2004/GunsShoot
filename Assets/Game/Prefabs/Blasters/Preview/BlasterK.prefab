@@ -129,3 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 11400000, guid: d8ec4386bffcec947ba14c1a8886d629, type: 2}
+  _meshRenderers:
+  - {fileID: 4896871606327716202}
+  _notAvailableMaterial: {fileID: 2100000, guid: 2b7c6db3aaa5fa54388d180a57bfffe7, type: 2}

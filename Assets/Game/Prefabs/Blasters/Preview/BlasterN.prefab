@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 11400000, guid: 6ebd2c8edecadf549b54890066c7998c, type: 2}
+  _meshRenderers:
+  - {fileID: 8289197943265625481}
+  _notAvailableMaterial: {fileID: 2100000, guid: 2b7c6db3aaa5fa54388d180a57bfffe7, type: 2}
 --- !u!1 &7496762665450120284
 GameObject:
   m_ObjectHideFlags: 0
