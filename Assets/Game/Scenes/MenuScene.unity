@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetTransform: {fileID: 124444715}
-  _sensitivity: -10
+  _sensitivity: -2.5
   _eventSystem: {fileID: 638604029}
 --- !u!1 &127251184
 GameObject:
