@@ -59,9 +59,9 @@ namespace HealthSystem
             }
         }
 
-        public void IncreaseHealth(int amount = 1)
+        public void IncreaseHealth(int count = 1)
         {
-            Health += amount;
+            Health += count;
         }
 
         private void OnObstacleAdded(Obstacle obstacle)
