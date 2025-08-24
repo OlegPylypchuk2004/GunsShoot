@@ -2047,9 +2047,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootShakeData:
-    Duration: 0.25
-    Strength: 0.025
-    Vibrations: 15
+    Duration: 0.175
+    Strength: 0.075
+    Vibrations: 20
     Ease: 6
   _obstacleDestroyShakeData:
     Duration: 0.25
