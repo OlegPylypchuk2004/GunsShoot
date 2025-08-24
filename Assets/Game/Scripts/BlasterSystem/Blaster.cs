@@ -8,7 +8,7 @@ namespace BlasterSystem
     public abstract class Blaster : MonoBehaviour, IBlasterShotReadonly, IBlasterAmmoAmountReadonly
     {
         [field: SerializeField] public BlasterConfig Config { get; private set; }
-        [SerializeField] protected Transform _shootPoint;
+        [SerializeField] protected Transform[] _shootPoints;
 
         protected ProjectilesManager _projectilesManager;
         private BlasterState _state;
@@ -76,6 +76,21 @@ namespace BlasterSystem
             }
         }
 
+        private void OnDrawGizmos()
+        {
+            if (_shootPoints == null || _shootPoints.Length == 0)
+            {
+                return;
+            }
+
+            Gizmos.color = Color.white;
+
+            foreach (Transform shootPoint in _shootPoints)
+            {
+                Gizmos.DrawLine(shootPoint.position, shootPoint.position + shootPoint.right * -1f);
+            }
+        }
+
         public void Shoot()
         {
             if (_state != BlasterState.ReadyToShoot || _shootCooldownTime > 0f)
@@ -90,7 +105,7 @@ namespace BlasterSystem
                 return;
             }
 
-            LauchProjectile();
+            LauchProjectiles();
             AmmoAmount--;
             _shootCooldownTime = Config.ShotCooldown;
 
@@ -108,16 +123,23 @@ namespace BlasterSystem
             _reloadTime = Config.ReloadDuration;
         }
 
-        protected Vector3 GetProjectileDirection()
+        protected Vector3[] GetProjectilesDirections()
         {
-            Vector3 baseDirection = -_shootPoint.right;
-            float spreadAngleY = UnityEngine.Random.Range(-Config.Spread, Config.Spread);
-            float spreadAngleZ = UnityEngine.Random.Range(-Config.Spread, Config.Spread);
-            Quaternion spreadRotation = Quaternion.Euler(0, spreadAngleZ, spreadAngleY);
+            Vector3[] directions = new Vector3[_shootPoints.Length];
 
-            return spreadRotation * baseDirection;
+            for (int i = 0; i < _shootPoints.Length; i++)
+            {
+                Vector3 baseDirection = -_shootPoints[i].right;
+                float spreadAngleY = UnityEngine.Random.Range(-Config.Spread, Config.Spread);
+                float spreadAngleZ = UnityEngine.Random.Range(-Config.Spread, Config.Spread);
+                Quaternion spreadRotation = Quaternion.Euler(0, spreadAngleZ, spreadAngleY);
+
+                directions[i] = spreadRotation * baseDirection;
+            }
+
+            return directions;
         }
 
-        protected abstract void LauchProjectile();
+        protected abstract void LauchProjectiles();
     }
 }

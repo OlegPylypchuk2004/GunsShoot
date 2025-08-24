@@ -16,15 +16,20 @@ namespace BlasterSystem
             AmmoAmount = Config.AmmoAmount;
         }
 
-        protected override void LauchProjectile()
+        protected override void LauchProjectiles()
         {
-            RaycastProjectileData projectileData = new RaycastProjectileData();
-            projectileData.Damage = Config.Damage;
-            projectileData.Direction = GetProjectileDirection();
+            Vector3[] projectilesDirections = GetProjectilesDirections();
 
-            RaycastProjectile projectile = (RaycastProjectile)_projectilesManager.CreateProjectile();
-            projectile.transform.position = _shootPoint.position;
-            projectile.Launch(projectileData);
+            for (int i = 0; i < projectilesDirections.Length; i++)
+            {
+                RaycastProjectileData projectileData = new RaycastProjectileData();
+                projectileData.Damage = Config.Damage;
+                projectileData.Direction = projectilesDirections[i];
+
+                RaycastProjectile projectile = (RaycastProjectile)_projectilesManager.CreateProjectile();
+                projectile.transform.position = _shootPoints[i].position;
+                projectile.Launch(projectileData);
+            }
         }
     }
 }

@@ -213,7 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 11400000, guid: 6ebd2c8edecadf549b54890066c7998c, type: 2}
-  _shootPoint: {fileID: 5111457769825561240}
+  _shootPoints:
+  - {fileID: 5111457769825561240}
 --- !u!114 &-6391580102795631929
 MonoBehaviour:
   m_ObjectHideFlags: 0

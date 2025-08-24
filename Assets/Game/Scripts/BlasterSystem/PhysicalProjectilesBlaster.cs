@@ -1,4 +1,5 @@
 using ProjectileSystem;
+using UnityEngine;
 
 namespace BlasterSystem
 {
@@ -15,17 +16,22 @@ namespace BlasterSystem
             AmmoAmount = Config.AmmoAmount;
         }
 
-        protected override void LauchProjectile()
+        protected override void LauchProjectiles()
         {
-            PhysicalProjectileData projectileData = new PhysicalProjectileData();
-            projectileData.Damage = Config.Damage;
-            projectileData.Direction = GetProjectileDirection();
-            projectileData.Speed = Config.ProjectileSpeed;
+            Vector3[] projectilesDirections = GetProjectilesDirections();
 
-            PhysicalProjectile projectile = (PhysicalProjectile)_projectilesManager.CreateProjectile();
-            projectile.transform.position = _shootPoint.position;
-            projectile.SetRigidbodyPosition(_shootPoint.position);
-            projectile.Launch(projectileData);
+            for (int i = 0; i < projectilesDirections.Length; i++)
+            {
+                PhysicalProjectileData projectileData = new PhysicalProjectileData();
+                projectileData.Damage = Config.Damage;
+                projectileData.Direction = projectilesDirections[i];
+                projectileData.Speed = Config.ProjectileSpeed;
+
+                PhysicalProjectile projectile = (PhysicalProjectile)_projectilesManager.CreateProjectile();
+                projectile.transform.position = _shootPoints[i].position;
+                projectile.SetRigidbodyPosition(_shootPoints[i].position);
+                projectile.Launch(projectileData);
+            }
         }
     }
 }
