@@ -1,3 +1,4 @@
+using InputSystem;
 using UnityEngine;
 using VContainer;
 
@@ -9,11 +10,13 @@ namespace BlasterSystem
         [SerializeField] private float _maxRotationAngle;
         [SerializeField] private Camera _camera;
 
+        private IInputHandler _inputHandler;
         private BlasterHolder _blasterHolder;
 
         [Inject]
-        private void Construct(BlasterHolder blasterHolder)
+        private void Construct(IInputHandler inputHandler, BlasterHolder blasterHolder)
         {
+            _inputHandler = inputHandler;   
             _blasterHolder = blasterHolder;
         }
 
@@ -53,11 +56,11 @@ namespace BlasterSystem
 
         private Vector3 GetMouseWorldPosition()
         {
-            Vector2 mousePosition = Input.mousePosition;
-            mousePosition.y = Mathf.Clamp(mousePosition.y, 0, Screen.height);
-            mousePosition.x = Mathf.Clamp(mousePosition.x, 0, Screen.width);
+            Vector2 pointerPosition = _inputHandler.AimPointerPosition;
+            pointerPosition.y = Mathf.Clamp(pointerPosition.y, 0, Screen.height);
+            pointerPosition.x = Mathf.Clamp(pointerPosition.x, 0, Screen.width);
 
-            Vector3 position = new Vector3(mousePosition.x, mousePosition.y, Mathf.Abs(_camera.transform.position.z));
+            Vector3 position = new Vector3(pointerPosition.x, pointerPosition.y, Mathf.Abs(_camera.transform.position.z));
 
             return _camera.ScreenToWorldPoint(position);
         }

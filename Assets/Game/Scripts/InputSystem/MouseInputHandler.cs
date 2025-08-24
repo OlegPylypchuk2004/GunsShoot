@@ -4,6 +4,14 @@ namespace InputSystem
 {
     public class MouseInputHandler : IInputHandler
     {
+        public Vector2 AimPointerPosition
+        {
+            get
+            {
+                return Input.mousePosition;
+            }
+        }
+
         public bool IsAim
         {
             get
