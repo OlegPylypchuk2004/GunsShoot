@@ -17,9 +17,9 @@ MonoBehaviour:
   <Price>k__BackingField:
     <CurrencyConfig>k__BackingField: {fileID: 11400000, guid: e1a0e423aeb84ee44a8439432efab00e, type: 2}
     <Count>k__BackingField: 3
-  <Damage>k__BackingField: 5
+  <Damage>k__BackingField: 4
   <Spread>k__BackingField: 0
-  <ProjectileSpeed>k__BackingField: 9
+  <ProjectileSpeed>k__BackingField: 11
   <AmmoAmount>k__BackingField: 8
   <ReloadDuration>k__BackingField: 1.95
   <ShotCooldown>k__BackingField: 0.375
