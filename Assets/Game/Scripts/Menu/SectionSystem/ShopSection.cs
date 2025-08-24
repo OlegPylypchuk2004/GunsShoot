@@ -28,6 +28,7 @@ namespace Menu.SectionSystem
         private ShopFrame[] _shopFrames;
         private BlasterConfig _selectedBlasterConfig;
         private PreviewBlaster _currentPreviewBlaster;
+        private BlasterConfig[] _blasterConfigs;
 
         public event Action<PreviewBlaster> PreviewBlasterChanged;
 
@@ -39,8 +40,10 @@ namespace Menu.SectionSystem
 
         private void Awake()
         {
-            UpdateSelectedBlaster();
-            SpawnShopFrames();
+            _blasterConfigs = LoadBlasterConfigs();
+
+            UpdateSelectedBlaster(_blasterConfigs);
+            SpawnShopFrames(_blasterConfigs);
         }
 
         private void OnEnable()
@@ -110,9 +113,8 @@ namespace Menu.SectionSystem
             }
         }
 
-        private void SpawnShopFrames()
+        private void SpawnShopFrames(BlasterConfig[] blasterConfigs)
         {
-            BlasterConfig[] blasterConfigs = LoadBlasterConfigs();
             _shopFrames = new ShopFrame[blasterConfigs.Length];
 
             for (int i = 0; i < blasterConfigs.Length; i++)
@@ -184,14 +186,12 @@ namespace Menu.SectionSystem
             UpdateBuyButtonDisplay();
         }
 
-        private void UpdateSelectedBlaster()
+        private void UpdateSelectedBlaster(BlasterConfig[] blasterConfigs)
         {
             if (_selectedBlasterConfig != null)
             {
                 return;
             }
-
-            BlasterConfig[] blasterConfigs = LoadBlasterConfigs();
 
             string selectedBlasterID = SaveManager.Data.SelectedBlasterID;
             bool isSelectedBlasterIDFound = false;
@@ -210,7 +210,7 @@ namespace Menu.SectionSystem
                 }
             }
 
-            if (!isSelectedBlasterIDFound)
+            if (!isSelectedBlasterIDFound && _shopFrames != null && _shopFrames.Length > 0)
             {
                 SaveManager.Data.SelectedBlasterID = _shopFrames[0].BlasterConfig.ID;
             }
