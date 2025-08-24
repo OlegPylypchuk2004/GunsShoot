@@ -27,6 +27,9 @@ namespace Global
             AddInitialBlasters();
             SetInitialSelectedBlaster();
 
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 120;
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
