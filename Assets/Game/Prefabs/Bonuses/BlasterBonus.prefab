@@ -257,14 +257,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f572ef2e9a5654ab3f16b9cc506412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 10
-  <Type>k__BackingField: 1
+  <MaxHealth>k__BackingField: 1
+  <Type>k__BackingField: 2
   _minYPosition: -2.25
   _minAngularVelocity: -25
   _maxAngularVelocity: 25
   _rigidbody: {fileID: 7040614429003829803}
   _meshTransform: {fileID: 7497168703865941081}
-  _canvas: {fileID: 5356938297155623480}
   _blasterPreviewImage: {fileID: 1553495645123044159}
 --- !u!114 &4782777836804002868
 MonoBehaviour:
