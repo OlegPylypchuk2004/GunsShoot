@@ -1,4 +1,3 @@
-using InputSystem;
 using UnityEngine;
 using VContainer;
 
@@ -10,13 +9,11 @@ namespace BlasterSystem
         [SerializeField] private float _maxRotationAngle;
         [SerializeField] private Camera _camera;
 
-        private IInputHandler _inputHandler;
         private BlasterHolder _blasterHolder;
 
         [Inject]
-        private void Construct(IInputHandler inputHandler, BlasterHolder blasterHolder)
+        private void Construct(BlasterHolder blasterHolder)
         {
-            _inputHandler = inputHandler;
             _blasterHolder = blasterHolder;
         }
 
@@ -37,16 +34,13 @@ namespace BlasterSystem
 
         public void UpdateRotation()
         {
-            if (_inputHandler.IsAim)
-            {
-                Vector2 direction = GetInputDirection();
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Vector2 direction = GetInputDirection();
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-                angle = Mathf.Repeat(angle + 180f, 360f) - 180f;
-                angle = Mathf.Clamp(angle, _minRotationAngle, _maxRotationAngle);
+            angle = Mathf.Repeat(angle + 180f, 360f) - 180f;
+            angle = Mathf.Clamp(angle, _minRotationAngle, _maxRotationAngle);
 
-                transform.rotation = Quaternion.Euler(0, 0, angle);
-            }
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
         private Vector2 GetInputDirection()

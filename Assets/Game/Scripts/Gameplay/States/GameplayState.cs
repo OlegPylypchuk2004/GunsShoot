@@ -54,6 +54,7 @@ namespace Gameplay.States
             if (_inputHandler.IsAim)
             {
                 _pauseHandler.IsPaused = false;
+                _blasterController.UpdateRotation();
 
                 if (_inputHandler.IsShoot)
                 {
@@ -64,8 +65,6 @@ namespace Gameplay.States
             {
                 _pauseHandler.IsPaused = true;
             }
-
-            _blasterController.UpdateRotation();
         }
 
         private void OnHealthIsOver()
