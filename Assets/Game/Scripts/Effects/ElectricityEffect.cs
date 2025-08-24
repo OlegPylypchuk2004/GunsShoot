@@ -4,19 +4,10 @@ namespace Effects
 {
     public class ElectricityEffect : MonoBehaviour
     {
-        [SerializeField] private Transform _firstPoint;
-        [SerializeField] private Transform _secondPoint;
+        [SerializeField] private Animator _animator;
 
         private Vector3 _initialPoint;
         private Vector3 _targetPoint;
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                Play(_firstPoint.position, _secondPoint.position);
-            }
-        }
 
         public void Play(Vector3 initialPoint, Vector3 targetPoint)
         {
@@ -26,6 +17,8 @@ namespace Effects
             UpdatePosition();
             UpdateRotation();
             UpdateScale();
+
+            _animator.SetTrigger("Play");
         }
 
         private void UpdatePosition()
