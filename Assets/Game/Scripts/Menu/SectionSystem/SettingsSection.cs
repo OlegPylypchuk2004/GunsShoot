@@ -12,7 +12,6 @@ namespace Menu.SectionSystem
         [SerializeField] private Section _previousSection;
         [SerializeField] private Button _secretCodeButton;
         [SerializeField] private Button _resetProgressButton;
-        [SerializeField] private GameObject _fpsDisplay;
 
         private SceneLoader _sceneLoader;
 
@@ -24,8 +23,6 @@ namespace Menu.SectionSystem
 
         private void OnEnable()
         {
-            _fpsDisplay.SetActive(!_fpsDisplay.activeInHierarchy);
-
             _backButton.onClick.AddListener(OnBackButtonClicked);
             _secretCodeButton.onClick.AddListener(OnSecretCodeButtonClicked);
             _resetProgressButton.onClick.AddListener(OnResetProgressButtonClicked);
