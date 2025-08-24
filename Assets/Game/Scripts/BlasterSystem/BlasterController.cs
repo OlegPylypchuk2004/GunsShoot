@@ -1,3 +1,4 @@
+using InputSystem;
 using UnityEngine;
 using VContainer;
 
@@ -9,12 +10,15 @@ namespace BlasterSystem
         [SerializeField] private float _maxRotationAngle;
         [SerializeField] private Camera _camera;
 
+        private IInputHandler _inputHandler;
         private BlasterHolder _blasterHolder;
         private float _offsetAngle;
+        private bool _isAimCashed;
 
         [Inject]
-        private void Construct(BlasterHolder blasterHolder)
+        private void Construct(IInputHandler inputHandler, BlasterHolder blasterHolder)
         {
+            _inputHandler = inputHandler;
             _blasterHolder = blasterHolder;
         }
 
@@ -35,25 +39,32 @@ namespace BlasterSystem
 
         public void UpdateRotation()
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                Vector2 initialDirection = GetInputDirection();
-                float angleToMouse = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg;
-                float currentZ = transform.eulerAngles.z;
-                float delta = Mathf.DeltaAngle(currentZ, angleToMouse);
-                _offsetAngle = delta;
-            }
-            else if (Input.GetMouseButton(1))
-            {
-                Vector2 direction = GetInputDirection();
-                float angleToMouse = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                float targetAngle = angleToMouse - _offsetAngle;
+            bool isAim = _inputHandler.IsAim;
 
-                targetAngle = Mathf.Repeat(targetAngle + 180f, 360f) - 180f;
-                targetAngle = Mathf.Clamp(targetAngle, _minRotationAngle, _maxRotationAngle);
+            if (isAim)
+            {
+                if (!_isAimCashed)
+                {
+                    Vector2 initialDirection = GetInputDirection();
+                    float angleToMouse = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg;
+                    float currentZ = transform.eulerAngles.z;
+                    float delta = Mathf.DeltaAngle(currentZ, angleToMouse);
+                    _offsetAngle = delta;
+                }
+                else
+                {
+                    Vector2 direction = GetInputDirection();
+                    float angleToMouse = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    float targetAngle = angleToMouse - _offsetAngle;
 
-                transform.rotation = Quaternion.Euler(0, 0, targetAngle);
+                    targetAngle = Mathf.Repeat(targetAngle + 180f, 360f) - 180f;
+                    targetAngle = Mathf.Clamp(targetAngle, _minRotationAngle, _maxRotationAngle);
+
+                    transform.rotation = Quaternion.Euler(0, 0, targetAngle);
+                }
             }
+
+            _isAimCashed = isAim;
         }
 
         private Vector2 GetInputDirection()
