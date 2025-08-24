@@ -12,8 +12,6 @@ namespace BlasterSystem
 
         private IInputHandler _inputHandler;
         private BlasterHolder _blasterHolder;
-        private float _offsetAngle;
-        private bool _isAimCashed;
 
         [Inject]
         private void Construct(IInputHandler inputHandler, BlasterHolder blasterHolder)
@@ -39,32 +37,16 @@ namespace BlasterSystem
 
         public void UpdateRotation()
         {
-            bool isAim = _inputHandler.IsAim;
-
-            if (isAim)
+            if (_inputHandler.IsAim)
             {
-                if (!_isAimCashed)
-                {
-                    Vector2 initialDirection = GetInputDirection();
-                    float angleToMouse = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg;
-                    float currentZ = transform.eulerAngles.z;
-                    float delta = Mathf.DeltaAngle(currentZ, angleToMouse);
-                    _offsetAngle = delta;
-                }
-                else
-                {
-                    Vector2 direction = GetInputDirection();
-                    float angleToMouse = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                    float targetAngle = angleToMouse - _offsetAngle;
+                Vector2 direction = GetInputDirection();
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-                    targetAngle = Mathf.Repeat(targetAngle + 180f, 360f) - 180f;
-                    targetAngle = Mathf.Clamp(targetAngle, _minRotationAngle, _maxRotationAngle);
+                angle = Mathf.Repeat(angle + 180f, 360f) - 180f;
+                angle = Mathf.Clamp(angle, _minRotationAngle, _maxRotationAngle);
 
-                    transform.rotation = Quaternion.Euler(0, 0, targetAngle);
-                }
+                transform.rotation = Quaternion.Euler(0, 0, angle);
             }
-
-            _isAimCashed = isAim;
         }
 
         private Vector2 GetInputDirection()
@@ -77,10 +59,13 @@ namespace BlasterSystem
 
         private Vector3 GetMouseWorldPosition()
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = Mathf.Abs(_camera.transform.position.z);
+            Vector2 mousePosition = Input.mousePosition;
+            mousePosition.y = Mathf.Clamp(mousePosition.y, 0, Screen.height);
+            mousePosition.x = Mathf.Clamp(mousePosition.x, 0, Screen.width);
 
-            return _camera.ScreenToWorldPoint(mousePosition);
+            Vector3 position = new Vector3(mousePosition.x, mousePosition.y, Mathf.Abs(_camera.transform.position.z));
+
+            return _camera.ScreenToWorldPoint(position);
         }
 
         private void OnBlasterChanged(Blaster blaster)
