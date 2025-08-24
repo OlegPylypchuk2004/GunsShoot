@@ -8,14 +8,11 @@ namespace InputSystem
         {
             get
             {
-                if (Input.touchCount > 0)
+                foreach (Touch touch in Input.touches)
                 {
-                    foreach (Touch touch in Input.touches)
+                    if (GetScreenPercentX(touch.position.x) >= 0.65f)
                     {
-                        if (GetScreenPercentX(touch.position.x) >= 0.65f)
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                 }
 
@@ -27,19 +24,11 @@ namespace InputSystem
         {
             get
             {
-                if (!IsAim)
+                foreach (Touch touch in Input.touches)
                 {
-                    return false;
-                }
-
-                if (Input.touchCount > 0)
-                {
-                    foreach (Touch touch in Input.touches)
+                    if (GetScreenPercentX(touch.position.x) < 0.35f)
                     {
-                        if (GetScreenPercentX(touch.position.x) < 0.35f)
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                 }
 
