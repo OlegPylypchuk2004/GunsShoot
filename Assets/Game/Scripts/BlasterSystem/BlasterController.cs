@@ -13,10 +13,13 @@ namespace BlasterSystem
         private IInputHandler _inputHandler;
         private BlasterHolder _blasterHolder;
 
+        private bool _wasAim;
+        private float _angleOffset;
+
         [Inject]
         private void Construct(IInputHandler inputHandler, BlasterHolder blasterHolder)
         {
-            _inputHandler = inputHandler;   
+            _inputHandler = inputHandler;
             _blasterHolder = blasterHolder;
         }
 
@@ -37,13 +40,33 @@ namespace BlasterSystem
 
         public void UpdateRotation()
         {
-            Vector2 direction = GetInputDirection();
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            bool isAim = _inputHandler.IsAim;
 
-            angle = Mathf.Repeat(angle + 180f, 360f) - 180f;
-            angle = Mathf.Clamp(angle, _minRotationAngle, _maxRotationAngle);
+            if (isAim && !_wasAim)
+            {
+                Vector2 direction = GetInputDirection();
+                float rawAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                rawAngle = Mathf.Repeat(rawAngle + 180f, 360f) - 180f;
 
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+                float currentAngle = transform.rotation.eulerAngles.z;
+                currentAngle = Mathf.Repeat(currentAngle + 180f, 360f) - 180f;
+
+                _angleOffset = currentAngle - rawAngle;
+            }
+
+            _wasAim = isAim;
+
+            if (isAim)
+            {
+                Vector2 aimDirection = GetInputDirection();
+                float aimRawAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+                aimRawAngle = Mathf.Repeat(aimRawAngle + 180f, 360f) - 180f;
+
+                float finalAngle = aimRawAngle + _angleOffset;
+                finalAngle = Mathf.Clamp(finalAngle, _minRotationAngle, _maxRotationAngle);
+
+                transform.rotation = Quaternion.Euler(0, 0, finalAngle);
+            }
         }
 
         private Vector2 GetInputDirection()
