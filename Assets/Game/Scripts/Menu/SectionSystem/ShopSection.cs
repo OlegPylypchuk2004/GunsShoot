@@ -27,7 +27,6 @@ namespace Menu.SectionSystem
         private CurrencyWallet _currencyWallet;
         private ShopFrame[] _shopFrames;
         private BlasterConfig _selectedBlasterConfig;
-        private BlasterConfig _previousSelectedBlasterConfig;
         private PreviewBlaster _currentPreviewBlaster;
         private BlasterConfig[] _blasterConfigs;
 
@@ -125,7 +124,7 @@ namespace Menu.SectionSystem
 
                 bool isBlasterPuchased = SaveManager.Data.IsBlasterPurchased(_shopFrames[i].BlasterConfig);
                 string selectedBlasterID = SaveManager.Data.SelectedBlasterID;
-                bool isSelected = _shopFrames[i].BlasterConfig.ID == selectedBlasterID;
+                bool isSelected = isBlasterPuchased && _shopFrames[i].BlasterConfig.ID == selectedBlasterID;
 
                 _shopFrames[i].UpdateDisplay(isBlasterPuchased, isSelected);
             }
@@ -157,7 +156,6 @@ namespace Menu.SectionSystem
 
         private void OnShopFrameSelected(BlasterConfig blasterConfig)
         {
-            _previousSelectedBlasterConfig = _selectedBlasterConfig;
             _selectedBlasterConfig = blasterConfig;
 
             SelectBlaster();
@@ -205,7 +203,6 @@ namespace Menu.SectionSystem
                 {
                     if (SaveManager.Data.IsBlasterPurchased(blasterConfig))
                     {
-                        _previousSelectedBlasterConfig = _selectedBlasterConfig;
                         _selectedBlasterConfig = blasterConfig;
                         isSelectedBlasterIDFound = true;
 
@@ -222,12 +219,14 @@ namespace Menu.SectionSystem
 
         private void UpdateShopFramesDisplay()
         {
+            string selectedBlasterID = SaveManager.Data.SelectedBlasterID;
+
             foreach (ShopFrame shopFrame in _shopFrames)
             {
-                bool isBlasterPuchased = SaveManager.Data.IsBlasterPurchased(shopFrame.BlasterConfig);
-                bool isSelected = shopFrame.BlasterConfig == _selectedBlasterConfig || shopFrame == _previousSelectedBlasterConfig;
+                bool isBlasterPurchased = SaveManager.Data.IsBlasterPurchased(shopFrame.BlasterConfig);
+                bool isSelected = isBlasterPurchased && shopFrame.BlasterConfig.ID == selectedBlasterID;
 
-                shopFrame.UpdateDisplay(isBlasterPuchased, isSelected);
+                shopFrame.UpdateDisplay(isBlasterPurchased, isSelected);
             }
         }
 
