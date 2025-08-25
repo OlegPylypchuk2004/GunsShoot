@@ -7,4 +7,5 @@ public class StageData
     public float ObstacleGravityMultiplier;
     public int MinObstaclesCount;
     public int MaxObstaclesCount;
+    public int SpawnBonusChance;
 }
