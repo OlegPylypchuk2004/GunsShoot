@@ -7,6 +7,7 @@ namespace ProjectileSystem
     public abstract class PhysicalProjectile : Projectile
     {
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private float _gravity;
         [SerializeField, Min(1)] private int _collisionsCount;
 
         private int _currentCollisionsAmount;
@@ -16,6 +17,7 @@ namespace ProjectileSystem
 
         private void FixedUpdate()
         {
+            _physicalProjectileData.Direction += Vector3.down * _gravity * Time.fixedDeltaTime;
             _rigidbody.velocity = _physicalProjectileData.Direction * _physicalProjectileData.Speed;
         }
 
