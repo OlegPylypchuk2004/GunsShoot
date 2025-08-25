@@ -45,7 +45,7 @@ namespace BlasterSystem
         public BlasterState State
         {
             get => _state;
-            set
+            private set
             {
                 _state = value;
 
@@ -55,20 +55,20 @@ namespace BlasterSystem
 
         protected virtual void Update()
         {
-            if (_state == BlasterState.ReadyToShoot)
+            if (State == BlasterState.ReadyToShoot)
             {
                 if (_shootCooldownTime > 0f)
                 {
                     _shootCooldownTime -= Time.deltaTime;
                 }
             }
-            else if (_state == BlasterState.Reloading)
+            else if (State == BlasterState.Reloading)
             {
                 _reloadTime -= Time.deltaTime;
 
                 if (_reloadTime <= 0f)
                 {
-                    _state = BlasterState.ReadyToShoot;
+                    State = BlasterState.ReadyToShoot;
                     AmmoAmount = Config.AmmoAmount;
                 }
 
@@ -93,7 +93,7 @@ namespace BlasterSystem
 
         public void Shoot()
         {
-            if (_state != BlasterState.ReadyToShoot || _shootCooldownTime > 0f)
+            if (State != BlasterState.ReadyToShoot || _shootCooldownTime > 0f)
             {
                 return;
             }
@@ -119,7 +119,7 @@ namespace BlasterSystem
 
         private void StartReload()
         {
-            _state = BlasterState.Reloading;
+            State = BlasterState.Reloading;
             _reloadTime = Config.ReloadDuration;
         }
 
