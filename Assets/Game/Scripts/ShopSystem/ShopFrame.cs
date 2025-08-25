@@ -34,7 +34,6 @@ namespace ShopSystem
         public void Initialize(BlasterConfig blasterConfig)
         {
             BlasterConfig = blasterConfig;
-            _iconImage.sprite = blasterConfig.Icon;
         }
 
         public void UpdateDisplay(bool isBought, bool isSelected)
@@ -42,6 +41,15 @@ namespace ShopSystem
             foreach (GameObject notBoughtDisplayObject in _notBoughtDisplayObjects)
             {
                 notBoughtDisplayObject.SetActive(!isBought);
+            }
+
+            if (isBought)
+            {
+                _iconImage.sprite = BlasterConfig.Icon;
+            }
+            else
+            {
+                _iconImage.sprite = BlasterConfig.LockedIcon;
             }
 
             _checkmark.gameObject.SetActive(isSelected);

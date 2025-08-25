@@ -23,5 +23,6 @@ namespace BlasterSystem
         [field: SerializeField] public Blaster Prefab { get; private set; }
         [field: SerializeField] public PreviewBlaster PreviewPrefab { get; private set; }
         [field: SerializeField] public Sprite Icon { get; private set; }
+        [field: SerializeField] public Sprite LockedIcon { get; private set; }
     }
 }
