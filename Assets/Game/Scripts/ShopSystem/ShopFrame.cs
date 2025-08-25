@@ -16,6 +16,7 @@ namespace ShopSystem
         [SerializeField] private Ease _checkmarkAppearEase;
 
         private Tween _checkmarkTween;
+        private bool _isSelected;
 
         public BlasterConfig BlasterConfig { get; private set; }
 
@@ -38,6 +39,9 @@ namespace ShopSystem
 
         public void UpdateDisplay(bool isBought, bool isSelected)
         {
+            bool wasSelected = _isSelected;
+            _isSelected = isSelected;
+
             foreach (GameObject notBoughtDisplayObject in _notBoughtDisplayObjects)
             {
                 notBoughtDisplayObject.SetActive(!isBought);
@@ -52,9 +56,10 @@ namespace ShopSystem
                 _iconImage.sprite = BlasterConfig.LockedIcon;
             }
 
+            _button.interactable = !_isSelected;
             _checkmark.gameObject.SetActive(isSelected);
 
-            if (isSelected)
+            if (_isSelected && !wasSelected)
             {
                 PlayAppearCheckmarkTween();
             }
