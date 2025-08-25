@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 5562601645176089751}
   - component: {fileID: 4994769968609523123}
   - component: {fileID: -6391580102795631929}
+  - component: {fileID: -7507310471551023976}
   m_Layer: 0
   m_Name: BlasterN
   m_TagString: Untagged
@@ -231,6 +232,21 @@ MonoBehaviour:
   _duration: 0.25
   _ease: 27
   _meshTransform: {fileID: 7152289329457463014}
+--- !u!114 &-7507310471551023976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972505582854923798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596cad4c395748e40a07c0ac2165154c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blaster: {fileID: 4994769968609523123}
+  _delay: 0.125
+  _ease: 6
 --- !u!1 &7496762665450120284
 GameObject:
   m_ObjectHideFlags: 0

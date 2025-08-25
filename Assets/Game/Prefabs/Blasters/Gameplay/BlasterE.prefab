@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 5562601645176089751}
   - component: {fileID: 4994769968609523123}
   - component: {fileID: 3240817319867523046}
+  - component: {fileID: -8135699136333720642}
   m_Layer: 0
   m_Name: BlasterE
   m_TagString: Untagged
@@ -399,6 +400,21 @@ MonoBehaviour:
   _duration: 0.25
   _ease: 27
   _meshTransform: {fileID: 3895169156282330492}
+--- !u!114 &-8135699136333720642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972505582854923798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596cad4c395748e40a07c0ac2165154c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blaster: {fileID: 4994769968609523123}
+  _delay: 0.125
+  _ease: 6
 --- !u!1 &7104091577411809776
 GameObject:
   m_ObjectHideFlags: 0
