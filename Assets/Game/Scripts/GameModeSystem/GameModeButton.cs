@@ -9,13 +9,15 @@ namespace GameModeSystem
     {
         [SerializeField] private GameModeConfig _gameModeConfig;
         [SerializeField] private Button _button;
-        [SerializeField] private TextMeshProUGUI _nameTextMesh;
+        [SerializeField] private TextMeshProUGUI _titleTextMesh;
+        [SerializeField] private TextMeshProUGUI _subtitileTextMesh;
+        [SerializeField] private TextMeshProUGUI _bottomTextMesh;
 
         public event Action<GameModeConfig> Selected;
 
         private void Awake()
         {
-            _nameTextMesh.text = _gameModeConfig.DisplayName;
+            UpdateDisplay();
         }
 
         private void OnEnable()
@@ -28,8 +30,25 @@ namespace GameModeSystem
             _button.onClick.RemoveListener(OnButtonClicked);
         }
 
+        protected virtual void UpdateDisplay()
+        {
+            if (_gameModeConfig == null)
+            {
+                return;
+            }
+
+            _titleTextMesh.text = _gameModeConfig.DisplayName;
+            _subtitileTextMesh.text = _gameModeConfig.DisplaySubtitle;
+            _bottomTextMesh.text = string.Empty;
+        }
+
         private void OnButtonClicked()
         {
+            if (_gameModeConfig == null)
+            {
+                return;
+            }
+
             Selected?.Invoke(_gameModeConfig);
         }
     }

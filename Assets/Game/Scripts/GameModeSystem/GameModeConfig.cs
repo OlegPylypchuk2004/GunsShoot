@@ -7,6 +7,7 @@ namespace GameModeSystem
     {
         [field: SerializeField] public string ID { get; private set; }
         [field: SerializeField] public string DisplayName { get; private set; }
+        [field: SerializeField] public string DisplaySubtitle { get; private set; }
         [field: SerializeField] public int SceneIndex { get; private set; }
         [field: SerializeField] public string StagesConfigFilePath { get; private set; }
     }
