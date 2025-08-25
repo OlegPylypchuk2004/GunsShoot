@@ -1,5 +1,6 @@
 using BlasterSystem;
 using Cysharp.Threading.Tasks;
+using InputSystem;
 using Patterns.StateMachine;
 using StageSystem;
 using System;
@@ -10,13 +11,15 @@ namespace Gameplay.States
     {
         private BlasterHolder _blasterHolder;
         private StageManager _stageManager;
+        private IInputHandler _inputHandler;
 
         public event Action GameReady;
 
-        public PreGameplayState(BlasterHolder blasterHolder, StageManager stageManager)
+        public PreGameplayState(BlasterHolder blasterHolder, StageManager stageManager, IInputHandler inputHandler)
         {
             _blasterHolder = blasterHolder;
             _stageManager = stageManager;
+            _inputHandler = inputHandler;
         }
 
         public override async void Enter()
@@ -35,6 +38,8 @@ namespace Gameplay.States
             _blasterHolder.SpawnBlaster();
 
             await UniTask.Delay(500);
+
+            await UniTask.WaitUntil(() => _inputHandler.IsAim);
 
             GameReady?.Invoke();
         }
