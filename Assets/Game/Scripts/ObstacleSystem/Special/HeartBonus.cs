@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ObstacleSystem.Special
 {
-    public class HeartBonus : Obstacle
+    public class HeartBonus : Bonus
     {
 
     }
