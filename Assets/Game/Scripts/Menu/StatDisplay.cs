@@ -1,3 +1,4 @@
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,7 @@ namespace Menu
         public void SetValue(StatData statData, float value)
         {
             _nameText.text = statData.Name;
-            _valueText.text = $"{value}";
+            _valueText.text = value.ToString(CultureInfo.InvariantCulture);
             _fillImage.fillAmount = value / statData.MaxValue;
         }
     }
