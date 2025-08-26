@@ -24,6 +24,9 @@ namespace Global
 
         private void Start()
         {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 120;
+
             _saveData = SaveManager.Data;
 
             if (_saveData.IsFirstEntry)
@@ -36,9 +39,6 @@ namespace Global
                 _saveData.IsFirstEntry = false;
                 SaveManager.Save();
             }
-
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = 120;
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
