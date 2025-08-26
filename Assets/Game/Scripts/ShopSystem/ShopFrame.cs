@@ -56,7 +56,6 @@ namespace ShopSystem
                 _iconImage.sprite = BlasterConfig.LockedIcon;
             }
 
-            _button.interactable = !_isSelected;
             _checkmark.gameObject.SetActive(isSelected);
 
             if (_isSelected && !wasSelected)
