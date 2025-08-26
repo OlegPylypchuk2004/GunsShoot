@@ -57,8 +57,7 @@ namespace Global
             {
                 if (!_saveData.IsBlasterPurchased(initialBoughtBlaster))
                 {
-                    BlasterData blasterData = new BlasterData(initialBoughtBlaster.ID, 1);
-                    _saveData.Blasters.Add(blasterData);
+                    _saveData.Blasters.Add(initialBoughtBlaster.ID, 1);
                     SaveManager.Save();
                 }
             }

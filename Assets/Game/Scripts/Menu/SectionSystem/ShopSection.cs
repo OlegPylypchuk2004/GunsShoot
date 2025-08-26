@@ -104,8 +104,7 @@ namespace Menu.SectionSystem
 
             if (_currencyWallet.TryReduce(new WalletOperationData(_selectedBlasterConfig.Price.CurrencyConfig, _selectedBlasterConfig.Price.Count)))
             {
-                BlasterData blasterData = new BlasterData(_selectedBlasterConfig.ID, 1);
-                SaveManager.Data.Blasters.Add(blasterData);
+                SaveManager.Data.Blasters.Add(_selectedBlasterConfig.ID, 1);
                 SaveManager.Data.SelectedBlasterID = _selectedBlasterConfig.ID;
                 SaveManager.Save();
 
