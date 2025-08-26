@@ -61,7 +61,7 @@ namespace UI
 
         private void OnButtonClicked()
         {
-            if (_currentTween != null && _currentTween.IsPlaying())
+            if (_currentTween != null && _currentTween.IsActive())
             {
                 return;
             }
