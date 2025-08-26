@@ -10,6 +10,7 @@ namespace SaveSystem
         //Player data
         public Dictionary<string, int> Currencies;
         public Dictionary<string, int> Blasters;
+        public Dictionary<string, int> GameModes;
         public string SelectedBlasterID;
         public bool IsFirstEntry;
 
@@ -22,6 +23,7 @@ namespace SaveSystem
         {
             Currencies = new Dictionary<string, int>();
             Blasters = new Dictionary<string, int>();
+            GameModes = new Dictionary<string, int>();
             IsFirstEntry = true;
         }
 
