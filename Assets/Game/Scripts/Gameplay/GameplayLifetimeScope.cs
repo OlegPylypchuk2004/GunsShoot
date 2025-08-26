@@ -1,5 +1,7 @@
 using BlasterSystem;
 using CameraManagment;
+using GameModeSystem;
+using GameModeSystem.Modes;
 using Gameplay.States;
 using Gameplay.UI;
 using HealthSystem;
@@ -32,11 +34,18 @@ namespace Gameplay
         {
             _builder = builder;
 
+            RegisterGameMode();
             RegisterSystems();
             RegisterInputHandler();
             RegisterComponents();
             RegisterStateMachine();
             RegisterUI();
+        }
+
+        private void RegisterGameMode()
+        {
+            _builder.Register<EndlessGameMode>(Lifetime.Singleton)
+                .As<IGameMode>();
         }
 
         private void RegisterSystems()

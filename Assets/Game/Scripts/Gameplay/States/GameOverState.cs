@@ -1,16 +1,17 @@
+using GameModeSystem;
 using Gameplay.UI;
-using Global;
 using Patterns.StateMachine;
-using SaveSystem;
 
 namespace Gameplay.States
 {
     public class GameOverState : State
     {
+        private IGameMode _gameMode;
         private GameOverPanel _gameOverDisplay;
 
-        public GameOverState(GameOverPanel gameOverDisplay)
+        public GameOverState(IGameMode gameMode, GameOverPanel gameOverDisplay)
         {
+            _gameMode = gameMode;
             _gameOverDisplay = gameOverDisplay;
         }
 
@@ -18,25 +19,8 @@ namespace Gameplay.States
         {
             base.Enter();
 
-            SaveData();
+            _gameMode.SaveData();
             _gameOverDisplay.Appear();
-        }
-
-        private void SaveData()
-        {
-            string gameModeID = LocalGameData.GameModeConfig.ID;
-            SaveData saveData = SaveManager.Data;
-
-            if (saveData.GameModes.ContainsKey(gameModeID))
-            {
-                saveData.GameModes[gameModeID] = 100;
-            }
-            else
-            {
-                saveData.GameModes.Add(gameModeID, 50);
-            }
-
-            SaveManager.Save();
         }
     }
 }
