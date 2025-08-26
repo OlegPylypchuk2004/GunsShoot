@@ -9,6 +9,8 @@ namespace UI
     {
         [SerializeField] private Button _button;
         [SerializeField] private RectTransform _pointerRectTransform;
+        [SerializeField, Min(0f)] private float _pointerAnimationDuration;
+        [SerializeField] private Ease _pointerAnimationEase;
 
         private bool _isEnabled;
         private float _initialPointerPositionX;
@@ -72,8 +74,8 @@ namespace UI
         {
             _currentTween?.Kill();
 
-            _currentTween = _pointerRectTransform.DOAnchorPosX(GetPointerTargetPositionX(), 0.125f)
-                .SetEase(Ease.OutQuad)
+            _currentTween = _pointerRectTransform.DOAnchorPosX(GetPointerTargetPositionX(), _pointerAnimationDuration)
+                .SetEase(_pointerAnimationEase)
                 .SetLink(gameObject);
 
             return _currentTween;

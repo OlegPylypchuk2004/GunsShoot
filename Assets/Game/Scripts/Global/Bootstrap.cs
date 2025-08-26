@@ -13,6 +13,7 @@ namespace Global
         [SerializeField] private BlasterConfig[] _initialBoughtBlasters;
         [SerializeField] private BlasterConfig _initialSelectedBlaster;
 
+        private SaveData _saveData;
         private CurrencyWallet _currencyWallet;
 
         [Inject]
@@ -23,9 +24,18 @@ namespace Global
 
         private void Start()
         {
-            AddInitialCurrency();
-            AddInitialBlasters();
-            SetInitialSelectedBlaster();
+            _saveData = SaveManager.Data;
+
+            if (_saveData.IsFirstEntry)
+            {
+                AddInitialCurrency();
+                AddInitialBlasters();
+                SetInitialSelectedBlaster();
+                SetInitialSettings();
+
+                _saveData.IsFirstEntry = false;
+                SaveManager.Save();
+            }
 
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = 120;
@@ -35,15 +45,6 @@ namespace Global
 
         private void AddInitialCurrency()
         {
-            SaveData saveData = SaveManager.Data;
-
-            if (saveData.IsInitialCurrencyAdded)
-            {
-                return;
-            }
-
-            saveData.IsInitialCurrencyAdded = true;
-
             foreach (WalletOperationData initialCurrency in _initialCurrency)
             {
                 _currencyWallet.TryIncrease(initialCurrency);
@@ -52,14 +53,12 @@ namespace Global
 
         private void AddInitialBlasters()
         {
-            SaveData saveData = SaveManager.Data;
-
             foreach (BlasterConfig initialBoughtBlaster in _initialBoughtBlasters)
             {
-                if (!saveData.IsBlasterPurchased(initialBoughtBlaster))
+                if (!_saveData.IsBlasterPurchased(initialBoughtBlaster))
                 {
                     BlasterData blasterData = new BlasterData(initialBoughtBlaster.ID, 1);
-                    saveData.Blasters.Add(blasterData);
+                    _saveData.Blasters.Add(blasterData);
                     SaveManager.Save();
                 }
             }
@@ -67,13 +66,18 @@ namespace Global
 
         private void SetInitialSelectedBlaster()
         {
-            SaveData saveData = SaveManager.Data;
-
-            if (string.IsNullOrEmpty(saveData.SelectedBlasterID))
+            if (string.IsNullOrEmpty(_saveData.SelectedBlasterID))
             {
-                saveData.SelectedBlasterID = _initialSelectedBlaster.ID;
+                _saveData.SelectedBlasterID = _initialSelectedBlaster.ID;
                 SaveManager.Save();
             }
+        }
+
+        private void SetInitialSettings()
+        {
+            _saveData.IsSoundEnabled = true;
+            _saveData.IsMusicEnabled = true;
+            _saveData.IsShowFPS = false;
         }
     }
 }

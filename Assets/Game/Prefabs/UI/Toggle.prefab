@@ -287,3 +287,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 61623145520081580}
   _pointerRectTransform: {fileID: 1055735036669931872}
+  _pointerAnimationDuration: 0.125
+  _pointerAnimationEase: 6
