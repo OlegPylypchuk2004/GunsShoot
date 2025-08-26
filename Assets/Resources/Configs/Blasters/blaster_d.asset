@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc8af18e823f2e409788c49df460a69, type: 3}
+  m_Name: blaster_d
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: blaster_d
+  <DisplayName>k__BackingField: 
+  <Price>k__BackingField:
+    <CurrencyConfig>k__BackingField: {fileID: 11400000, guid: e1a0e423aeb84ee44a8439432efab00e, type: 2}
+    <Count>k__BackingField: 1
+  <Damage>k__BackingField: 7
+  <Spread>k__BackingField: 2
+  <ProjectileSpeed>k__BackingField: 17.5
+  <AmmoAmount>k__BackingField: 30
+  <ReloadDuration>k__BackingField: 1.5
+  <ShotCooldown>k__BackingField: 0.2
+  <Type>k__BackingField: 1
+  <Projectile>k__BackingField: {fileID: 7564948327013881600, guid: c4b400da97644a44dbd1a5d31b25afd5, type: 3}
+  <Prefab>k__BackingField: {fileID: 4994769968609523123, guid: b547d73643582774b8cf124300a2410a, type: 3}
+  <PreviewPrefab>k__BackingField: {fileID: 5808283827897309172, guid: 8af07cf8e39cfd1409d6f2b6635c5920, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 20020b56085e3d5408777f6aa641e157, type: 3}
+  <LockedIcon>k__BackingField: {fileID: 21300000, guid: baacc59883c57144486b0e0871b44500, type: 3}
