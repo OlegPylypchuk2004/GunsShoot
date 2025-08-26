@@ -1,0 +1,11 @@
+{
+	"Stages": [
+		{
+			"ObstacleLaunchForceMultiplier": 1,
+			"ObstacleGravityMultiplier": 1,
+			"MinObstaclesCount": 1,
+			"MaxObstaclesCount": 1,
+			"SpawnBonusChance": 0
+		}
+	]
+}
