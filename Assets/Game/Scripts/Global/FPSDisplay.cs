@@ -58,10 +58,10 @@ namespace Global
         {
             while (_isShowing)
             {
+                _textMesh.text = $"FPS: {GetValue()}";
+
                 yield return new WaitForSeconds(_updateDelay);
             }
-
-            _textMesh.text = $"FPS: {GetValue()}";
 
             _updateCoroutine = null;
         }

@@ -5,15 +5,16 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class Toggle : MonoBehaviour
+    public class ToggleButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
         [SerializeField] private RectTransform _pointerRectTransform;
         [SerializeField, Min(0f)] private float _pointerAnimationDuration;
         [SerializeField] private Ease _pointerAnimationEase;
+        [SerializeField] private Vector2 _enabledPointerPosition;
+        [SerializeField] private Vector2 _disabledPointerPosition;
 
         private bool _isEnabled;
-        private float _initialPointerPositionX;
         private Tween _currentTween;
 
         public event Action<bool> StateChanged;
@@ -37,17 +38,8 @@ namespace UI
             }
         }
 
-        private void Awake()
-        {
-            _initialPointerPositionX = _pointerRectTransform.anchoredPosition.x;
-        }
-
         private void OnEnable()
         {
-            _currentTween?.Kill();
-
-            _pointerRectTransform.anchoredPosition = new Vector2(GetPointerTargetPositionX(), _pointerRectTransform.anchoredPosition.y);
-
             _button.onClick.AddListener(OnButtonClicked);
         }
 
@@ -56,6 +48,15 @@ namespace UI
             _currentTween?.Kill();
 
             _button.onClick.RemoveListener(OnButtonClicked);
+        }
+
+        public void Initialize(bool isEnabled)
+        {
+            _isEnabled = isEnabled;
+
+            _currentTween?.Kill();
+
+            _pointerRectTransform.anchoredPosition = GetPointerTargetAnchor();
         }
 
         private void OnButtonClicked()
@@ -74,23 +75,16 @@ namespace UI
         {
             _currentTween?.Kill();
 
-            _currentTween = _pointerRectTransform.DOAnchorPosX(GetPointerTargetPositionX(), _pointerAnimationDuration)
+            _currentTween = _pointerRectTransform.DOAnchorPos(GetPointerTargetAnchor(), _pointerAnimationDuration)
                 .SetEase(_pointerAnimationEase)
                 .SetLink(gameObject);
 
             return _currentTween;
         }
 
-        private float GetPointerTargetPositionX()
+        private Vector2 GetPointerTargetAnchor()
         {
-            if (IsEnabled)
-            {
-                return _initialPointerPositionX;
-            }
-            else
-            {
-                return -_initialPointerPositionX;
-            }
+            return IsEnabled ? _enabledPointerPosition : _disabledPointerPosition;
         }
     }
 }

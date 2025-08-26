@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 61623145520081580}
   - component: {fileID: 4348995806089089345}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: ToggleButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,3 +289,5 @@ MonoBehaviour:
   _pointerRectTransform: {fileID: 1055735036669931872}
   _pointerAnimationDuration: 0.125
   _pointerAnimationEase: 6
+  _enabledPointerPosition: {x: 13, y: 0}
+  _disabledPointerPosition: {x: -13, y: 0}
