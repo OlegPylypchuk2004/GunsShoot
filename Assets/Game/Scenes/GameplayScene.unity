@@ -2312,6 +2312,7 @@ MonoBehaviour:
   _translucentImageSource: {fileID: 760077360}
   _blurBackground: {fileID: 1818518730}
   _gameOverDisplay: {fileID: 1309810785}
+  _scoreDisplayPrefab: {fileID: 2151108607546229226, guid: 638f8830b872d8945ae8916177e9f31d, type: 3}
 --- !u!1 &1220817635
 GameObject:
   m_ObjectHideFlags: 0

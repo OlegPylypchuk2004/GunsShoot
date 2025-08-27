@@ -12,6 +12,7 @@ using ObstacleSystem;
 using Patterns.StateMachine;
 using PauseManagment;
 using SceneManagment;
+using ScoreSystem;
 using StageSystem;
 using System;
 using UnityEngine;
@@ -30,7 +31,23 @@ namespace Gameplay
         [SerializeField] private BlurBackground _blurBackground;
         [SerializeField] private GameOverPanel _gameOverDisplay;
 
+        [Header("Prefabs"), SerializeField] private ScoreDisplay _scoreDisplayPrefab;
+
         private IContainerBuilder _builder;
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            switch (LocalGameData.GameModeConfig.Type)
+            {
+                case GameModeType.Endless:
+
+                    Container.Resolve<ScoreDisplay>();
+
+                    break;
+            }
+        }
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -52,6 +69,9 @@ namespace Gameplay
 
                     _builder.Register<EndlessGameMode>(Lifetime.Singleton)
                         .As<IGameMode>();
+
+                    _builder.Register<ScoreCounter>(Lifetime.Singleton);
+                    _builder.RegisterComponentInNewPrefab(_scoreDisplayPrefab, Lifetime.Singleton);
 
                     break;
 
