@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 1908861788102042033}
   - component: {fileID: 3254496724864832640}
   m_Layer: 6
-  m_Name: HeartBonusDestroyAnimation
+  m_Name: DestroyAnimation
   m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,7 +340,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a4841a67b84244eaf81b4a52fc33f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshTransform: {fileID: 7497168703865941081}
+  _meshRenderer: {fileID: 6267738479349935186}
+  _iconImage: {fileID: 1553495645123044159}
+  _textMesh: {fileID: 4607217820571497885}
+  _animationPrefab: {fileID: 0}
   _canvasGroup: {fileID: 2675101357543942757}
   _duration: 0.375
   _canvasGroupYMoveDistance: 275

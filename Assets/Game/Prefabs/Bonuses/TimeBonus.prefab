@@ -378,7 +378,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bonus: {fileID: 4410149609199696814}
-  _animationPrefab: {fileID: -6219823479079934703, guid: 7fd11c76167999a4b9d6f9f459a3bf7e, type: 3}
+  _meshRenderer: {fileID: 3621588774503269368}
+  _iconImage: {fileID: 6512102996646988085}
+  _textMesh: {fileID: 3492026030603423815}
+  _animationPrefab: {fileID: 3254496724864832640, guid: fdaebc6819192204fb6683aa4dc3f040, type: 3}
 --- !u!1 &7550068428047357749
 GameObject:
   m_ObjectHideFlags: 0

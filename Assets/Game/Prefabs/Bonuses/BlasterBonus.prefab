@@ -170,7 +170,6 @@ GameObject:
   - component: {fileID: 3454986054652005346}
   - component: {fileID: 7040614429003829803}
   - component: {fileID: 3769639481015148044}
-  - component: {fileID: -1801816805467524827}
   m_Layer: 6
   m_Name: BlasterBonus
   m_TagString: Prop
@@ -264,20 +263,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 7040614429003829803}
   _meshTransform: {fileID: 7497168703865941081}
   _blasterPreviewImage: {fileID: 1553495645123044159}
---- !u!114 &-1801816805467524827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6349217611291156273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319d049cfb5d28645a86b92853eeff6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bonus: {fileID: 0}
-  _animationPrefab: {fileID: 0}
 --- !u!1 &7088911674364703921
 GameObject:
   m_ObjectHideFlags: 0

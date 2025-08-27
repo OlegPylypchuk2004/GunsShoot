@@ -411,6 +411,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bonus: {fileID: 3769639481015148044}
+  _meshRenderer: {fileID: 6267738479349935186}
+  _iconImage: {fileID: 1553495645123044159}
+  _textMesh: {fileID: 4607217820571497885}
   _animationPrefab: {fileID: 3254496724864832640, guid: fdaebc6819192204fb6683aa4dc3f040, type: 3}
 --- !u!1 &7088911674364703921
 GameObject:
