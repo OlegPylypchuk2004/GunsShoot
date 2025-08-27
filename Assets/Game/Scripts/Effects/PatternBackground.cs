@@ -37,6 +37,7 @@ namespace Effects
             return chunk.transform.DOLocalMoveY(_minYPosition, _speed)
                 .SetEase(Ease.Linear)
                 .SetSpeedBased()
+                .SetUpdate(true)
                 .SetLink(gameObject)
                 .OnComplete(() =>
                 {
