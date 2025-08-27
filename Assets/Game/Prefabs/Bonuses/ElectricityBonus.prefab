@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7e48be60a49af4387864f5f865f0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 1
+  <MaxHealth>k__BackingField: 0
   <Type>k__BackingField: 1
   _minYPosition: -2.25
   _minAngularVelocity: -25

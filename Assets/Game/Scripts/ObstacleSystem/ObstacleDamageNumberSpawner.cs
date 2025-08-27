@@ -57,6 +57,11 @@ namespace ObstacleSystem
 
         private void OnObstacleDamaged(Obstacle obstacle, int damage)
         {
+            if (damage <= 0)
+            {
+                return;
+            }
+
             DamageNumber damageNumber = Instantiate(_damageNumberPrefab);
             damageNumber.transform.position = obstacle.transform.position + GetSpawnDamageNumberPosition();
             damageNumber.PlayAnimation(damage, GetNumberColor(damage));
