@@ -273,8 +273,7 @@ GameObject:
   - component: {fileID: 7815598879482623891}
   - component: {fileID: 2941305539297248890}
   - component: {fileID: 4410149609199696814}
-  - component: {fileID: 4194876844548223785}
-  - component: {fileID: 6999291717017574586}
+  - component: {fileID: -6349324799457434762}
   m_Layer: 6
   m_Name: TimeBonus
   m_TagString: Prop
@@ -366,7 +365,7 @@ MonoBehaviour:
   _maxAngularVelocity: 25
   _rigidbody: {fileID: 2941305539297248890}
   _meshTransform: {fileID: 6731385836814284698}
---- !u!114 &4194876844548223785
+--- !u!114 &-6349324799457434762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -375,29 +374,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7246283749395422043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5c730e658a3ac488ed06cbfa9c42f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 319d049cfb5d28645a86b92853eeff6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 0.25
-  _strength: 0.25
-  _ease: 6
-  _obstacle: {fileID: 4410149609199696814}
-  _meshTransform: {fileID: 6731385836814284698}
---- !u!114 &6999291717017574586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7246283749395422043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e2be4a68c3e6a418e77675db3e3f04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _obstacle: {fileID: 4410149609199696814}
-  _effectPrefab: {fileID: 3763482976989715535, guid: d44cf001c4b7fe141b56f3ee39cfaea3, type: 3}
-  _effectPositionOffset: {x: 0, y: 0, z: 0.5}
+  _bonus: {fileID: 4410149609199696814}
+  _animationPrefab: {fileID: -6219823479079934703, guid: 7fd11c76167999a4b9d6f9f459a3bf7e, type: 3}
 --- !u!1 &7550068428047357749
 GameObject:
   m_ObjectHideFlags: 0
