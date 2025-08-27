@@ -4,6 +4,7 @@ using GameModeSystem;
 using GameModeSystem.Modes;
 using Gameplay.States;
 using Gameplay.UI;
+using Global;
 using HealthSystem;
 using InputSystem;
 using LeTai.Asset.TranslucentImage;
@@ -12,6 +13,7 @@ using Patterns.StateMachine;
 using PauseManagment;
 using SceneManagment;
 using StageSystem;
+using System;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -44,8 +46,18 @@ namespace Gameplay
 
         private void RegisterGameMode()
         {
-            _builder.Register<EndlessGameMode>(Lifetime.Singleton)
-                .As<IGameMode>();
+            switch (LocalGameData.GameModeConfig.Type)
+            {
+                case GameModeType.Endless:
+
+                    _builder.Register<EndlessGameMode>(Lifetime.Singleton)
+                        .As<IGameMode>();
+
+                    break;
+
+                default:
+                    throw new Exception("Game mode type not defined");
+            }
         }
 
         private void RegisterSystems()
