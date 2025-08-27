@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textMesh: {fileID: 8124171204683380103}
+  _animationDuration: 0.25
+  _animationEase: 1
 --- !u!1 &6405651934867898594
 GameObject:
   m_ObjectHideFlags: 0

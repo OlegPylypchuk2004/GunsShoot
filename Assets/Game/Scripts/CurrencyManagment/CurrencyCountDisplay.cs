@@ -13,7 +13,8 @@ namespace CurrencyManagment
         [SerializeField] private Ease _animationEase;
 
         private CurrencyWallet _currencyWallet;
-        private int _currentDisplayedAmount;
+        private Tween _currentTween;
+        private int _currentDisplayedCount;
 
         [Inject]
         private void Construct(CurrencyWallet curencyWallet)
@@ -25,8 +26,8 @@ namespace CurrencyManagment
         {
             _currencyWallet.CurrencyCountChanged += OnCurrencyAmountChanged;
 
-            _currentDisplayedAmount = _currencyWallet.GetCount(_currencyConfig);
-            UpdateTextMesh($"{_currentDisplayedAmount}");
+            _currentDisplayedCount = _currencyWallet.GetCount(_currencyConfig);
+            UpdateTextMesh($"{_currentDisplayedCount}");
         }
 
         private void OnDestroy()
@@ -41,7 +42,9 @@ namespace CurrencyManagment
                 return;
             }
 
-            DOTween.To(() => _currentDisplayedAmount, value => { _currentDisplayedAmount = value; UpdateTextMesh($"{value}"); }, walletOperationData.Count, _animationDuration)
+            _currentTween?.Kill();
+
+            _currentTween = DOTween.To(() => _currentDisplayedCount, value => { _currentDisplayedCount = value; UpdateTextMesh($"{value}"); }, walletOperationData.Count, _animationDuration)
                 .SetEase(_animationEase)
                 .SetLink(gameObject);
         }

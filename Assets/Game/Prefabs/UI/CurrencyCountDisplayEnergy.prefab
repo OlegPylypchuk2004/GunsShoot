@@ -481,5 +481,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currencyConfig: {fileID: 11400000, guid: 9f7ab3066f2edfc4984934f83b60ccea, type: 2}
   _textMesh: {fileID: 8516706344571672926}
-  _animationDuration: 0.125
+  _animationDuration: 0.25
   _animationEase: 1
