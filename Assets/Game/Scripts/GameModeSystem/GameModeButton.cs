@@ -1,3 +1,4 @@
+using SaveSystem;
 using System;
 using TMPro;
 using UnityEngine;
@@ -39,7 +40,26 @@ namespace GameModeSystem
 
             _titleTextMesh.text = _gameModeConfig.DisplayName;
             _subtitileTextMesh.text = _gameModeConfig.DisplaySubtitle;
-            _bottomTextMesh.text = string.Empty;
+
+            SaveData saveData = SaveManager.Data;
+
+            switch (_gameModeConfig.Type)
+            {
+                case GameModeType.Endless:
+
+                    if (saveData.GameModes.ContainsKey(_gameModeConfig.ID))
+                    {
+                        _bottomTextMesh.text = $"{saveData.GameModes[_gameModeConfig.ID]}";
+                    }
+
+                    break;
+
+                default:
+
+                    _bottomTextMesh.text = string.Empty;
+
+                    break;
+            }
         }
 
         private void OnButtonClicked()
