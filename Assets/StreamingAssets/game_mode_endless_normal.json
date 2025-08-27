@@ -5,14 +5,14 @@
 			"ObstacleGravityMultiplier": 1,
 			"MinObstaclesCount": 1,
 			"MaxObstaclesCount": 1,
-			"SpawnBonusChance": 0
+			"SpawnBonusChance": 100
 		},
 		{
 			"ObstacleLaunchForceMultiplier": 1.125,
 			"ObstacleGravityMultiplier": 1.25,
 			"MinObstaclesCount": 2,
 			"MaxObstaclesCount": 2,
-			"SpawnBonusChance": 100
+			"SpawnBonusChance": 0
 		},
 		{
 			"ObstacleLaunchForceMultiplier": 1.25,
