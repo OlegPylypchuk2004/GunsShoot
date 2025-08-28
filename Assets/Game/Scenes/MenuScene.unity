@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 127251187}
   - component: {fileID: 127251186}
   m_Layer: 5
-  m_Name: ValueText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1466,7 +1466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 447134386}
   m_Layer: 5
-  m_Name: LevelDisplay
+  m_Name: NameDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3589,6 +3589,7 @@ MonoBehaviour:
   _shopFramesParent: {fileID: 918751670}
   _orbitCamera: {fileID: 124444716}
   _buyButton: {fileID: 1668886109}
+  _nameTextMesh: {fileID: 127251186}
   _priceTextMesh: {fileID: 906189636}
   _priceCurrencyIconImage: {fileID: 1679702931}
   _buyButtonTextMesh: {fileID: 2950061318813702724}

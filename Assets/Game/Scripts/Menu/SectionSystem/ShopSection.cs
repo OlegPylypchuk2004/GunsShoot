@@ -20,6 +20,7 @@ namespace Menu.SectionSystem
         [SerializeField] private RectTransform _shopFramesParent;
         [SerializeField] private OrbitCamera _orbitCamera;
         [SerializeField] private Button _buyButton;
+        [SerializeField] private TextMeshProUGUI _nameTextMesh;
         [SerializeField] private TextMeshProUGUI _priceTextMesh;
         [SerializeField] private Image _priceCurrencyIconImage;
         [SerializeField] private TextMeshProUGUI _buyButtonTextMesh;
@@ -246,6 +247,7 @@ namespace Menu.SectionSystem
                 return;
             }
 
+            _nameTextMesh.text = _selectedBlasterConfig.DisplayName;
             _priceTextMesh.text = $"{_selectedBlasterConfig.Price.Count}";
 
             _priceCurrencyIconImage.sprite = _selectedBlasterConfig.Price.CurrencyConfig.Icon;
