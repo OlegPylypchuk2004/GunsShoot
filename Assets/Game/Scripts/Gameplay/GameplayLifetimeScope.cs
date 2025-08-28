@@ -1,5 +1,6 @@
 using BlasterSystem;
 using CameraManagment;
+using ComboSystem;
 using GameModeSystem;
 using GameModeSystem.Modes;
 using Gameplay.States;
@@ -90,6 +91,7 @@ namespace Gameplay
             _builder.Register<ObstacleContainer>(Lifetime.Singleton);
             _builder.Register<DestroyObstacleResolver>(Lifetime.Singleton);
             _builder.Register<HealthManager>(Lifetime.Singleton);
+            _builder.Register<ComboCounter>(Lifetime.Singleton);
         }
 
         private void RegisterInputHandler()

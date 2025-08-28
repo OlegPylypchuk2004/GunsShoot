@@ -1,10 +1,12 @@
 using BlasterSystem;
+using ComboSystem;
 using HealthSystem;
 using InputSystem;
 using ObstacleSystem;
 using Patterns.StateMachine;
 using PauseManagment;
 using System;
+using UnityEngine;
 using VContainer;
 
 namespace Gameplay.States
@@ -17,11 +19,12 @@ namespace Gameplay.States
         private BlasterController _blasterController;
         private ObstacleSpawner _obstacleSpawner;
         private HealthManager _healthManager;
+        private ComboCounter _comboCounter;
 
         public event Action GameOver;
 
         [Inject]
-        private void Construct(PauseHandler pauseHandler, IInputHandler inputHandler, BlasterHolder blasterHolder, BlasterController blasterController, ObstacleSpawner obstacleSpawner, HealthManager healthManager)
+        private void Construct(PauseHandler pauseHandler, IInputHandler inputHandler, BlasterHolder blasterHolder, BlasterController blasterController, ObstacleSpawner obstacleSpawner, HealthManager healthManager, ComboCounter comboCounter)
         {
             _pauseHandler = pauseHandler;
             _inputHandler = inputHandler;
@@ -29,6 +32,7 @@ namespace Gameplay.States
             _blasterController = blasterController;
             _obstacleSpawner = obstacleSpawner;
             _healthManager = healthManager;
+            _comboCounter = comboCounter;
         }
 
         public override void Enter()
@@ -59,6 +63,10 @@ namespace Gameplay.States
                 {
                     _blasterHolder.Blaster?.Shoot();
                 }
+
+                _comboCounter.Update();
+
+                Debug.LogWarning($"Combo: {_comboCounter.Combo}; Time: {Mathf.Round(_comboCounter.Time * 100f) / 100f}");
             }
             else
             {
