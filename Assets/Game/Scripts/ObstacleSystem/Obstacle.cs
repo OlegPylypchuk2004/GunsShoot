@@ -7,7 +7,6 @@ namespace ObstacleSystem
     public class Obstacle : MonoBehaviour, IDamageable
     {
         [field: SerializeField] public int MaxHealth { get; private set; }
-        [field: SerializeField] public ObstacleType Type { get; private set; }
 
         [SerializeField] private float _minYPosition;
         [SerializeField] private float _minAngularVelocity;
@@ -27,6 +26,7 @@ namespace ObstacleSystem
                 if (_health != value)
                 {
                     _health = value;
+
                     HealthChanged?.Invoke(_health);
                 }
             }
@@ -52,6 +52,7 @@ namespace ObstacleSystem
             if (transform.position.y <= _minYPosition)
             {
                 Destroy(gameObject);
+
                 Fallen?.Invoke(this);
             }
 
@@ -74,19 +75,30 @@ namespace ObstacleSystem
         public void TakeDamage(int damage)
         {
             if (damage > Health)
+            {
                 damage = Health;
+            }
 
             Health -= damage;
+
             Damaged?.Invoke(this, damage);
 
             if (Health < 0)
+            {
                 Health = 0;
+            }
 
             if (Health == 0)
             {
                 Destroyed?.Invoke(this);
-                Destroy(gameObject);
+
+                Kill();
             }
+        }
+
+        protected virtual void Kill()
+        {
+            Destroy(gameObject);
         }
 
         private void ApplyRotation()

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace ObstacleSystem
 {
@@ -15,17 +16,17 @@ namespace ObstacleSystem
         [SerializeField, Min(0f)] private float _minLaunchForce;
         [SerializeField, Min(0f)] private float _maxLaunchForce;
 
+        private IObjectResolver _objectResolver;
         private ObstacleContainer _obstacleContainer;
         private StageManager _stageManager;
-        private DestroyObstacleResolver _destroyObstacleResolver;
         private Coroutine _spawnObstaclesCoroutine;
 
         [Inject]
-        private void Construct(ObstacleContainer obstacleContainer, StageManager stageManager, DestroyObstacleResolver destroyObstacleResolver)
+        private void Construct(IObjectResolver objectResolver, ObstacleContainer obstacleContainer, StageManager stageManager)
         {
+            _objectResolver = objectResolver;
             _obstacleContainer = obstacleContainer;
             _stageManager = stageManager;
-            _destroyObstacleResolver = destroyObstacleResolver;
         }
 
         private void OnEnable()
@@ -113,7 +114,7 @@ namespace ObstacleSystem
 
         private Obstacle SpawnObstacle(Obstacle obstaclePrefab)
         {
-            Obstacle obstacle = Instantiate(obstaclePrefab);
+            Obstacle obstacle = _objectResolver.Instantiate(obstaclePrefab);
             _obstacleContainer.TryAddObstacle(obstacle);
 
             return obstacle;
@@ -122,7 +123,6 @@ namespace ObstacleSystem
         private void OnObstacleDestroyed(Obstacle obstacle)
         {
             _obstacleContainer.TryRemoveObstacle(obstacle);
-            _destroyObstacleResolver.Resolve(obstacle);
 
             obstacle.Destroyed -= OnObstacleDestroyed;
             obstacle.Fallen -= OnObstacleFallen;
