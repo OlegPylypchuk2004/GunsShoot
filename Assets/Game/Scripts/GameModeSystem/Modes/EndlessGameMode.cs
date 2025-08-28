@@ -26,7 +26,14 @@ namespace GameModeSystem.Modes
             _healthManager.HealthIsOver -= OnHealthIsOver;
         }
 
-        public void SaveData()
+        private void OnHealthIsOver()
+        {
+            SaveData();
+
+            GameOver?.Invoke(false);
+        }
+
+        private void SaveData()
         {
             string gameModeID = LocalGameData.GameModeConfig.ID;
             int score = _scoreCounter.Score;
@@ -45,16 +52,6 @@ namespace GameModeSystem.Modes
             }
 
             SaveManager.Save();
-        }
-
-        public bool IsStagesEndless()
-        {
-            return true;
-        }
-
-        private void OnHealthIsOver()
-        {
-            GameOver?.Invoke(false);
         }
     }
 }

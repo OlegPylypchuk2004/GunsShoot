@@ -1,4 +1,6 @@
+using Global;
 using HealthSystem;
+using SaveSystem;
 using StageSystem;
 using System;
 
@@ -26,11 +28,6 @@ namespace GameModeSystem
             _stageManager.StagesAreOver -= OnStagesAreOver;
         }
 
-        public void SaveData()
-        {
-
-        }
-
         private void OnHealthIsOver()
         {
             GameOver?.Invoke(false);
@@ -38,7 +35,30 @@ namespace GameModeSystem
 
         private void OnStagesAreOver()
         {
+            SaveData();
+
             GameOver?.Invoke(true);
+        }
+
+        private void SaveData()
+        {
+            string gameModeID = LocalGameData.GameModeConfig.ID;
+            int levelNumber = /*LocalGameData.LevelConfig.Number*/100;
+            SaveData saveData = SaveManager.Data;
+
+            if (saveData.GameModes.ContainsKey(gameModeID))
+            {
+                if (levelNumber > saveData.GameModes[gameModeID])
+                {
+                    saveData.GameModes[gameModeID] = levelNumber;
+                }
+            }
+            else
+            {
+                saveData.GameModes.Add(gameModeID, levelNumber);
+            }
+
+            SaveManager.Save();
         }
     }
 }
