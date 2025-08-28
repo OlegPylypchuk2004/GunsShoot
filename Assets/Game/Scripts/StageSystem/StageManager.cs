@@ -51,7 +51,7 @@ namespace StageSystem
         public async UniTask LoadStages()
         {
             JsonDataLoader jsonDataLoader = new JsonDataLoader();
-            _stagesWrapper = await jsonDataLoader.LoadJsonDataAsync<StagesWrapper>(LocalGameData.GameModeConfig.StagesConfigFilePath);
+            _stagesWrapper = await jsonDataLoader.LoadJsonDataAsync<StagesWrapper>(LocalGameData.GameModeConfig.GetStagesConfigFilePath());
 
             if (_stagesWrapper == null)
             {

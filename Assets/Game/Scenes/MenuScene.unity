@@ -3777,6 +3777,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4040737092158850691, guid: cfe739bfe6f66c34c922ccf4ce120c5b, type: 3}
+      propertyPath: _gameModeConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 8cea26aeeda318f4c8bb8cd4ceec477b, type: 2}
     - target: {fileID: 5209922189656375526, guid: cfe739bfe6f66c34c922ccf4ce120c5b, type: 3}
       propertyPath: m_Name
       value: GameModeButton (1)

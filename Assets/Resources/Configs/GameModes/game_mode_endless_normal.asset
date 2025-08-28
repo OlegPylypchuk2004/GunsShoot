@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee39d5cde470738498ce475270bc795d, type: 3}
+  m_Script: {fileID: 11500000, guid: 57cdce137e5e23d4f89c730402056090, type: 3}
   m_Name: game_mode_endless_normal
   m_EditorClassIdentifier: 
   <ID>k__BackingField: game_mode_endless_normal
   <DisplayName>k__BackingField: Endless
   <DisplaySubtitle>k__BackingField: Normal
   <SceneIndex>k__BackingField: 2
-  <StagesConfigFilePath>k__BackingField: game_mode_endless_normal.json
+  <Type>k__BackingField: 0
+  StagesConfigFilePath: Configs/GameModeStages/Endless/game_mode_endless_normal.json
