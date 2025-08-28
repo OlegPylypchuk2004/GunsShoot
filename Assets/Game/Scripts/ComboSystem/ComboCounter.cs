@@ -9,6 +9,7 @@ namespace ComboSystem
 
         private ComboStageData[] _stages;
         private int _stageIndex;
+        private int _cashedStageIndex;
         private int _combo;
         private float _time;
 
@@ -24,6 +25,7 @@ namespace ComboSystem
             _obstacleContainer.ObstacleRemoved += OnObstacleRemoved;
 
             _stageIndex = -1;
+            _cashedStageIndex = 0;
         }
 
         ~ComboCounter()
@@ -82,7 +84,7 @@ namespace ComboSystem
         {
             get
             {
-                return _time / _stages[_stageIndex].Time;
+                return _time / _stages[_cashedStageIndex].Time;
             }
         }
 
@@ -129,6 +131,8 @@ namespace ComboSystem
             {
                 _stageIndex = _stages.Length - 1;
             }
+
+            _cashedStageIndex = _stageIndex;
 
             Combo++;
             Time = _stages[_stageIndex].Time;
