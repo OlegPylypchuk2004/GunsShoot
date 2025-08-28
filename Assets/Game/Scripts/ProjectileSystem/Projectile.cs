@@ -1,3 +1,4 @@
+using DamageSystem;
 using UnityEngine;
 
 namespace ProjectileSystem
@@ -20,5 +21,7 @@ namespace ProjectileSystem
 
             return _projectileData.Damage + randomOffset;
         }
+
+        protected abstract void PerformHit(IDamageable damageable);
     }
 }

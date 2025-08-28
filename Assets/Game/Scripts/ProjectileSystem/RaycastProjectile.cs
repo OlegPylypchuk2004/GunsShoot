@@ -30,6 +30,11 @@ namespace ProjectileSystem
             _lifeTimeCoroutine = StartCoroutine(CountLifeTime());
         }
 
+        protected override void PerformHit(IDamageable damageable)
+        {
+            damageable.TakeDamage(CalculateDamage());
+        }
+
         private void PerformRaycast()
         {
             Ray ray = new Ray(transform.position, transform.right);
@@ -41,7 +46,7 @@ namespace ProjectileSystem
                 {
                     if (hit.collider.TryGetComponent(out IDamageable damageable))
                     {
-                        damageable.TakeDamage(CalculateDamage());
+                        PerformHit(damageable);
                     }
                 }
             }

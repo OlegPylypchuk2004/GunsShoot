@@ -167,7 +167,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.025
-  m_Center: {x: -0.0125, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7672135438376883875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,13 +177,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6220704300907747389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae05eec2dac3ed849a0220623d16c9dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 04ec78f4bd1c65c4f90dc20a46c03eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damageSpreadPercent: 25
   _rigidbody: {fileID: 7332741505478137145}
   _gravity: 1.75
   _collisionsCount: 1
+  _splashDamage: 10
+  _splashRadius: 1.25
 --- !u!1 &8922613635783348389
 GameObject:
   m_ObjectHideFlags: 0

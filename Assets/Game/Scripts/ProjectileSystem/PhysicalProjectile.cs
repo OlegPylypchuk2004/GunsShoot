@@ -34,7 +34,7 @@ namespace ProjectileSystem
 
             if (other.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(CalculateDamage());
+                PerformHit(damageable);
             }
 
             _currentCollisionsAmount++;
@@ -57,6 +57,11 @@ namespace ProjectileSystem
         public void SetRigidbodyPosition(Vector3 position)
         {
             _rigidbody.position = position;
+        }
+
+        protected override void PerformHit(IDamageable damageable)
+        {
+            damageable.TakeDamage(CalculateDamage());
         }
     }
 }

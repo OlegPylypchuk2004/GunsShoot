@@ -326,7 +326,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.025
-  m_Center: {x: -0.0125, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7564948327013881600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,4 +341,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageSpreadPercent: 25
   _rigidbody: {fileID: 2545336126734606704}
+  _gravity: 0
   _collisionsCount: 1
