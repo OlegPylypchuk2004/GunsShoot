@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ID>k__BackingField: game_mode_daily
   <DisplayName>k__BackingField: Daily
-  <DisplaySubtitle>k__BackingField: 
+  <DisplaySubtitle>k__BackingField: Challenge
   <SceneIndex>k__BackingField: 2
   <Type>k__BackingField: 0
   StagesConfigFilePath: Configs/GameModeStages/Endless/game_mode_daily.json
