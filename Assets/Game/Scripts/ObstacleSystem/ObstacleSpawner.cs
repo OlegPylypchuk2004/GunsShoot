@@ -74,6 +74,12 @@ namespace ObstacleSystem
                 Debug.Log($"Stage: {_stageManager.StageNumber}");
 
                 StageData stageData = _stageManager.StageData;
+
+                if (stageData == null)
+                {
+                    yield break;
+                }
+
                 int obstaclesToSpawnCount = Random.Range(stageData.MinObstaclesCount, stageData.MaxObstaclesCount);
 
                 if (obstaclesToSpawnCount > _spawnPoints.Length)

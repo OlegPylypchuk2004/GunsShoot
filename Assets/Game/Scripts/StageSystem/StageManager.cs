@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using GameModeSystem;
 using Global;
+using System;
 using UnityEngine;
 
 namespace StageSystem
@@ -10,6 +11,13 @@ namespace StageSystem
         private StagesWrapper _stagesWrapper;
 
         public int StageNumber { get; private set; }
+
+        public event Action StagesAreOver;
+
+        public StageManager()
+        {
+            StageNumber = 1;
+        }
 
         public StageData StageData
         {
@@ -24,16 +32,20 @@ namespace StageSystem
 
                 if (stageIndex > _stagesWrapper.Stages.Length - 1)
                 {
-                    stageIndex = _stagesWrapper.Stages.Length - 1;
+                    if (LocalGameData.GameModeConfig.Type == GameModeType.Endless)
+                    {
+                        stageIndex = _stagesWrapper.Stages.Length - 1;
+                    }
+                    else
+                    {
+                        StagesAreOver?.Invoke();
+
+                        return null;
+                    }
                 }
 
                 return _stagesWrapper.Stages[stageIndex];
             }
-        }
-
-        public StageManager()
-        {
-            StageNumber = 1;
         }
 
         public async UniTask LoadStages()

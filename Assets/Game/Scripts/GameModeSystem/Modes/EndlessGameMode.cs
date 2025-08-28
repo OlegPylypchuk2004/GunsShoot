@@ -47,6 +47,11 @@ namespace GameModeSystem.Modes
             SaveManager.Save();
         }
 
+        public bool IsStagesEndless()
+        {
+            return true;
+        }
+
         private void OnHealthIsOver()
         {
             GameOver?.Invoke(false);
