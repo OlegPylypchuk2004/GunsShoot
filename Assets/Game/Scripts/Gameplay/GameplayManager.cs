@@ -1,3 +1,4 @@
+using GameModeSystem;
 using Gameplay.States;
 using Patterns.StateMachine;
 using System;
@@ -7,13 +8,15 @@ namespace Gameplay
 {
     public class GameplayManager : IStartable, ITickable, IDisposable
     {
+        private readonly IGameMode _gameMode;
         private readonly StateMachine _stateMachine;
         private readonly PreGameplayState _preGameplayState;
         private readonly GameplayState _gameplayState;
         private readonly GameOverState _gameOverState;
 
-        public GameplayManager(StateMachine stateMachine, PreGameplayState preGameState, GameplayState playState, GameOverState gameOverState)
+        public GameplayManager(IGameMode gameMode, StateMachine stateMachine, PreGameplayState preGameState, GameplayState playState, GameOverState gameOverState)
         {
+            _gameMode = gameMode;
             _stateMachine = stateMachine;
             _preGameplayState = preGameState;
             _gameplayState = playState;
@@ -34,19 +37,19 @@ namespace Gameplay
         public void Dispose()
         {
             _preGameplayState.GameReady -= OnGameReady;
-            _gameplayState.GameOver -= OnGameOver;
+            _gameMode.GameOver -= OnGameOver;
         }
 
         private void OnGameReady()
         {
             _preGameplayState.GameReady -= OnGameReady;
             _stateMachine.ChangeState(_gameplayState);
-            _gameplayState.GameOver += OnGameOver;
+            _gameMode.GameOver += OnGameOver;
         }
 
-        private void OnGameOver()
+        private void OnGameOver(bool isCompleted)
         {
-            _gameplayState.GameOver -= OnGameOver;
+            _gameMode.GameOver -= OnGameOver;
             _stateMachine.ChangeState(_gameOverState);
         }
     }

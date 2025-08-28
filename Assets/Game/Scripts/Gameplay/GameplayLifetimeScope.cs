@@ -75,8 +75,12 @@ namespace Gameplay
                     _builder.Register<EndlessGameMode>(Lifetime.Singleton)
                         .As<IGameMode>();
 
-                    _builder.Register<ScoreCounter>(Lifetime.Singleton);
-                    _builder.RegisterComponentInNewPrefab(_scoreDisplayPrefab, Lifetime.Singleton);
+                    break;
+
+                case GameModeType.Level:
+
+                    _builder.Register<LevelGameMode>(Lifetime.Singleton)
+                        .As<IGameMode>();
 
                     break;
 
@@ -94,6 +98,7 @@ namespace Gameplay
             _builder.Register<BlasterHolder>(Lifetime.Singleton);
             _builder.Register<ObstacleContainer>(Lifetime.Singleton);
             _builder.Register<HealthManager>(Lifetime.Singleton);
+            _builder.Register<ScoreCounter>(Lifetime.Singleton);
 
             _builder.Register<ComboCounter>(Lifetime.Singleton)
                 .WithParameter(_comboConfig);
@@ -133,6 +138,7 @@ namespace Gameplay
         {
             _builder.RegisterComponent<BlurBackground>(_blurBackground);
             _builder.RegisterComponent<GameOverPanel>(_gameOverDisplay);
+            _builder.RegisterComponentInNewPrefab(_scoreDisplayPrefab, Lifetime.Singleton);
         }
     }
 }
