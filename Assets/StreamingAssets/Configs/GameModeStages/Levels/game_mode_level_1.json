@@ -6,6 +6,20 @@
 			"MinObstaclesCount": 1,
 			"MaxObstaclesCount": 1,
 			"SpawnBonusChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 1,
+			"ObstacleGravityMultiplier": 1,
+			"MinObstaclesCount": 1,
+			"MaxObstaclesCount": 1,
+			"SpawnBonusChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 1,
+			"ObstacleGravityMultiplier": 1,
+			"MinObstaclesCount": 2,
+			"MaxObstaclesCount": 2,
+			"SpawnBonusChance": 0
 		}
 	]
 }
