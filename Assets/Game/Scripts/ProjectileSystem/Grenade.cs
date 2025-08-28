@@ -53,10 +53,10 @@ namespace ProjectileSystem
                 return 0;
             }
 
-            float damageFactor = 1.0f - (distance / _splashRadius);
-            float finalDamage = _splashDamage * damageFactor;
+            float damageFactor = 1f - (distance / _splashRadius);
+            float damage = _splashDamage * damageFactor;
 
-            return Mathf.FloorToInt(finalDamage);
+            return Mathf.FloorToInt(damage);
         }
     }
 }
