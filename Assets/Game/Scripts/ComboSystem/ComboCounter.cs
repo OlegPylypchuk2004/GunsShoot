@@ -68,7 +68,7 @@ namespace ComboSystem
         {
             if (_time > 0f)
             {
-                _time -= UnityEngine.Time.deltaTime;
+                Time -= UnityEngine.Time.deltaTime;
 
                 if (_time <= 0f)
                 {
@@ -101,14 +101,14 @@ namespace ComboSystem
 
         private void IncreaseCombo()
         {
-            _combo++;
-            _time = 5f;
+            Combo++;
+            Time = 5f;
         }
 
         private void ResetCombo()
         {
-            _combo = 0;
-            _time = 0f;
+            Combo = 0;
+            Time = 0f;
         }
     }
 }

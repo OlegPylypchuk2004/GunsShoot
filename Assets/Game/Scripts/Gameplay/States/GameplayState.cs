@@ -65,8 +65,6 @@ namespace Gameplay.States
                 }
 
                 _comboCounter.Update();
-
-                Debug.LogWarning($"Combo: {_comboCounter.Combo}; Time: {Mathf.Round(_comboCounter.Time * 100f) / 100f}");
             }
             else
             {
