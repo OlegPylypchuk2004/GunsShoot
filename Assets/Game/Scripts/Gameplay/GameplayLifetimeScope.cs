@@ -51,6 +51,12 @@ namespace Gameplay
                     Container.Resolve<ScoreDisplay>();
 
                     break;
+
+                case GameModeType.Level:
+
+                    Container.Resolve<ScoreDisplay>();
+
+                    break;
             }
         }
 
