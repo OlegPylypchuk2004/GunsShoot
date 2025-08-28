@@ -1,3 +1,4 @@
+using ScoreSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,11 +12,13 @@ namespace ComboSystem
         [SerializeField] private Image _fillImage;
 
         private ComboCounter _comboCounter;
+        private ScoreCounter _scoreCounter;
 
         [Inject]
-        private void Construct(ComboCounter comboCounter)
+        private void Construct(ComboCounter comboCounter, ScoreCounter scoreCounter)
         {
             _comboCounter = comboCounter;
+            _scoreCounter = scoreCounter;
         }
 
         private void OnEnable()
@@ -32,7 +35,10 @@ namespace ComboSystem
 
         private void OnComboChanged(int combo)
         {
-            _textMesh.text = $"{combo}";
+            float scoreMultiplier = _scoreCounter.Multiplier;
+            string formattedScoreMultiplier = scoreMultiplier.ToString(System.Globalization.CultureInfo.InvariantCulture);
+
+            _textMesh.text = $"x{formattedScoreMultiplier}";
         }
 
         private void OnTimeChanged(float time)

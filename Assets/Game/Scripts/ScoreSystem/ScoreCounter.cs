@@ -1,14 +1,32 @@
+using ComboSystem;
 using ObstacleSystem;
 using System;
+using UnityEngine;
 
 namespace ScoreSystem
 {
     public class ScoreCounter
     {
-        private int _score;
         private ObstacleContainer _obstacleContainer;
+        private ComboCounter _comboCounter;
+        private int _score;
 
         public event Action<int> ScoreChanged;
+
+        public ScoreCounter(ObstacleContainer obstacleContainer, ComboCounter comboCounter)
+        {
+            _obstacleContainer = obstacleContainer;
+            _comboCounter = comboCounter;
+
+            _obstacleContainer.ObstacleAdded += OnObstacleAdded;
+            _obstacleContainer.ObstacleRemoved += OnObstacleRemoved;
+        }
+
+        ~ScoreCounter()
+        {
+            _obstacleContainer.ObstacleAdded -= OnObstacleAdded;
+            _obstacleContainer.ObstacleRemoved -= OnObstacleRemoved;
+        }
 
         public int Score
         {
@@ -29,17 +47,12 @@ namespace ScoreSystem
             }
         }
 
-        public ScoreCounter(ObstacleContainer obstacleContainer)
+        public float Multiplier
         {
-            _obstacleContainer = obstacleContainer;
-            _obstacleContainer.ObstacleAdded += OnObstacleAdded;
-            _obstacleContainer.ObstacleRemoved += OnObstacleRemoved;
-        }
-
-        ~ScoreCounter()
-        {
-            _obstacleContainer.ObstacleAdded -= OnObstacleAdded;
-            _obstacleContainer.ObstacleRemoved -= OnObstacleRemoved;
+            get
+            {
+                return 1f + _comboCounter.Combo * 0.1f;
+            }
         }
 
         private void OnObstacleAdded(Obstacle obstacle)
@@ -54,7 +67,7 @@ namespace ScoreSystem
 
         private void OnObstacleDestroyed(Obstacle obstacle)
         {
-            Score += obstacle.MaxHealth;
+            Score += Mathf.FloorToInt(obstacle.MaxHealth * Multiplier);
         }
     }
 }

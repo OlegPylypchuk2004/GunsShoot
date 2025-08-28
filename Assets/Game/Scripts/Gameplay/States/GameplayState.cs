@@ -58,13 +58,12 @@ namespace Gameplay.States
             if (_inputHandler.IsAim)
             {
                 _pauseHandler.IsPaused = false;
+                _comboCounter.Update();
 
                 if (_inputHandler.IsShoot)
                 {
                     _blasterHolder.Blaster?.Shoot();
                 }
-
-                _comboCounter.Update();
             }
             else
             {
