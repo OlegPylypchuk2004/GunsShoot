@@ -47,14 +47,6 @@ namespace ScoreSystem
             }
         }
 
-        public float Multiplier
-        {
-            get
-            {
-                return 1f + _comboCounter.Combo * 0.1f;
-            }
-        }
-
         private void OnObstacleAdded(Obstacle obstacle)
         {
             obstacle.Destroyed += OnObstacleDestroyed;
@@ -67,7 +59,7 @@ namespace ScoreSystem
 
         private void OnObstacleDestroyed(Obstacle obstacle)
         {
-            Score += Mathf.FloorToInt(obstacle.MaxHealth * Multiplier);
+            Score += Mathf.FloorToInt(obstacle.MaxHealth * _comboCounter.ScoreMultiplier);
         }
     }
 }

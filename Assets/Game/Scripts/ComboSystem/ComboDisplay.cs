@@ -1,5 +1,4 @@
 using DG.Tweening;
-using ScoreSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,15 +17,13 @@ namespace ComboSystem
         [SerializeField] private Ease _disappearEase;
 
         private ComboCounter _comboCounter;
-        private ScoreCounter _scoreCounter;
         private Sequence _currentSequence;
         private bool _isActive;
 
         [Inject]
-        private void Construct(ComboCounter comboCounter, ScoreCounter scoreCounter)
+        private void Construct(ComboCounter comboCounter)
         {
             _comboCounter = comboCounter;
-            _scoreCounter = scoreCounter;
         }
 
         private void Awake()
@@ -50,7 +47,7 @@ namespace ComboSystem
         {
             if (combo >= 1)
             {
-                float scoreMultiplier = _scoreCounter.Multiplier;
+                float scoreMultiplier = _comboCounter.ScoreMultiplier;
                 string formattedScoreMultiplier = scoreMultiplier.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
                 _textMesh.text = $"x{formattedScoreMultiplier}";
@@ -66,7 +63,7 @@ namespace ComboSystem
 
         private void OnTimeChanged(float time)
         {
-            _fillImage.fillAmount = time / 5f;
+            _fillImage.fillAmount = _comboCounter.NormalizedTime;
 
             if (time <= 0f)
             {

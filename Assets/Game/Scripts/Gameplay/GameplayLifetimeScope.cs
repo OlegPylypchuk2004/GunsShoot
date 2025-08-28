@@ -34,6 +34,8 @@ namespace Gameplay
 
         [Header("Prefabs"), SerializeField] private ScoreDisplay _scoreDisplayPrefab;
 
+        [Header("Configs"), SerializeField] private ComboConfig _comboConfig;
+
         private IContainerBuilder _builder;
 
         protected override void Awake()
@@ -91,7 +93,8 @@ namespace Gameplay
             _builder.Register<ObstacleContainer>(Lifetime.Singleton);
             _builder.Register<DestroyObstacleResolver>(Lifetime.Singleton);
             _builder.Register<HealthManager>(Lifetime.Singleton);
-            _builder.Register<ComboCounter>(Lifetime.Singleton);
+            _builder.Register<ComboCounter>(Lifetime.Singleton)
+                .WithParameter(_comboConfig);
         }
 
         private void RegisterInputHandler()

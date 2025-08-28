@@ -7,17 +7,23 @@ namespace ComboSystem
     {
         private ObstacleContainer _obstacleContainer;
 
+        private ComboStageData[] _stages;
+        private int _stageIndex;
         private int _combo;
         private float _time;
 
         public event Action<int> ComboChanged;
         public event Action<float> TimeChanged;
 
-        public ComboCounter(ObstacleContainer obstacleContainer)
+        public ComboCounter(ObstacleContainer obstacleContainer, ComboConfig comboConfig)
         {
             _obstacleContainer = obstacleContainer;
+            _stages = comboConfig.Stages;
+
             _obstacleContainer.ObstacleAdded += OnObstacleAdded;
             _obstacleContainer.ObstacleRemoved += OnObstacleRemoved;
+
+            _stageIndex = -1;
         }
 
         ~ComboCounter()
@@ -64,6 +70,22 @@ namespace ComboSystem
             }
         }
 
+        public float ScoreMultiplier
+        {
+            get
+            {
+                return _stages[_stageIndex].ScoreMultiplier;
+            }
+        }
+
+        public float NormalizedTime
+        {
+            get
+            {
+                return _time / _stages[_stageIndex].Time;
+            }
+        }
+
         public void Update()
         {
             if (_time > 0f)
@@ -101,12 +123,21 @@ namespace ComboSystem
 
         private void IncreaseCombo()
         {
+            _stageIndex++;
+
+            if (_stageIndex >= _stages.Length)
+            {
+                _stageIndex = _stages.Length - 1;
+            }
+
             Combo++;
-            Time = 5f;
+            Time = _stages[_stageIndex].Time;
         }
 
         private void ResetCombo()
         {
+            _stageIndex = -1;
+
             Combo = 0;
             Time = 0f;
         }
