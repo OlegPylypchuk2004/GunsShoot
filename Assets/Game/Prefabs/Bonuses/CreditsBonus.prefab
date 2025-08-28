@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c9d90be5dda593e49aaea9b313f5bd9d, type: 2}
+  - {fileID: 2100000, guid: 07d2719829cd49b439d6c7173ecec379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4ea710ad7722c754b8e5f4ebc68e4613, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0f327d5bda911d44a31fd2d7a321228, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 4410149609199696814}
   - component: {fileID: -6349324799457434762}
   m_Layer: 6
-  m_Name: TimeBonus
+  m_Name: CreditsBonus
   m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,9 +446,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Slow
+  m_text: '+10
 
-    Time'
+    Credits'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41452616eadfc9d4fa2d29b10df282b3, type: 2}
   m_sharedMaterial: {fileID: -899510591713818393, guid: 41452616eadfc9d4fa2d29b10df282b3, type: 2}
