@@ -16,5 +16,6 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Level
   <DisplaySubtitle>k__BackingField: 
   <SceneIndex>k__BackingField: 2
+  <EnergyPrice>k__BackingField: 1
   <Type>k__BackingField: 1
   StagesConfigFilePath: Configs/GameModeStages/Levels/game_mode_level_

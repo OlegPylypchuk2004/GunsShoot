@@ -13,6 +13,7 @@ namespace GameModeSystem
         [SerializeField] private TextMeshProUGUI _titleTextMesh;
         [SerializeField] private TextMeshProUGUI _subtitileTextMesh;
         [SerializeField] private TextMeshProUGUI _bottomTextMesh;
+        [SerializeField] private TextMeshProUGUI _energyPriceTextMesh;
 
         public event Action<GameModeConfig> Selected;
 
@@ -51,15 +52,28 @@ namespace GameModeSystem
                     {
                         _bottomTextMesh.text = $"{saveData.GameModes[_gameModeConfig.ID]}";
                     }
+                    else
+                    {
+                        _bottomTextMesh.text = string.Empty;
+                    }
 
                     break;
 
                 default:
 
-                    _bottomTextMesh.text = string.Empty;
+                    if (saveData.GameModes.ContainsKey(_gameModeConfig.ID))
+                    {
+                        _bottomTextMesh.text = $"{saveData.GameModes[_gameModeConfig.ID]}";
+                    }
+                    else
+                    {
+                        _bottomTextMesh.text = string.Empty;
+                    }
 
                     break;
             }
+
+            _energyPriceTextMesh.text = $"{_gameModeConfig.EnergyPrice}";
         }
 
         private void OnButtonClicked()

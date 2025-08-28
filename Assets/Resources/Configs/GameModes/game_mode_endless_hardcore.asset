@@ -16,5 +16,6 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Endless
   <DisplaySubtitle>k__BackingField: Hardcore
   <SceneIndex>k__BackingField: 2
+  <EnergyPrice>k__BackingField: 2
   <Type>k__BackingField: 0
   StagesConfigFilePath: Configs/GameModeStages/Endless/game_mode_endless_hardcore.json
