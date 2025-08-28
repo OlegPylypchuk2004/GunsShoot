@@ -16,6 +16,7 @@ using SceneManagment;
 using ScoreSystem;
 using StageSystem;
 using System;
+using TimeManagment;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -35,6 +36,7 @@ namespace Gameplay
         [Header("Prefabs"), SerializeField] private ScoreDisplay _scoreDisplayPrefab;
 
         [Header("Configs"), SerializeField] private ComboConfig _comboConfig;
+        [SerializeField] private TimeConfig _timeConfig;
 
         private IContainerBuilder _builder;
 
@@ -92,8 +94,12 @@ namespace Gameplay
             _builder.Register<BlasterHolder>(Lifetime.Singleton);
             _builder.Register<ObstacleContainer>(Lifetime.Singleton);
             _builder.Register<HealthManager>(Lifetime.Singleton);
+
             _builder.Register<ComboCounter>(Lifetime.Singleton)
                 .WithParameter(_comboConfig);
+
+            _builder.Register<TimeScaler>(Lifetime.Singleton)
+                .WithParameter(_timeConfig);
         }
 
         private void RegisterInputHandler()
