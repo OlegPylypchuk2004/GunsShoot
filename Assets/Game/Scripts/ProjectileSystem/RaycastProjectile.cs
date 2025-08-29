@@ -8,7 +8,7 @@ namespace ProjectileSystem
     public class RaycastProjectile : Projectile
     {
         [SerializeField, Min(0f)] private float _distance;
-        [SerializeField, Min(0f)] private float _lifeTime;
+        [SerializeField, Min(0f)] protected float _lifeTime;
 
         public event Action<RaycastProjectile> Expired;
 

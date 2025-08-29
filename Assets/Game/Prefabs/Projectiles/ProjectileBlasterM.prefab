@@ -48,6 +48,9 @@ MonoBehaviour:
   _damageSpreadPercent: 25
   _distance: 25
   _lifeTime: 0.25
+  _spriteRenderer: {fileID: 2652575717975636818}
+  _maxSpriteAlpha: 1
+  _disappearEase: 5
 --- !u!1 &7627786487209376085
 GameObject:
   m_ObjectHideFlags: 0

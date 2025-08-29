@@ -299,7 +299,7 @@ MonoBehaviour:
   _blaster: {fileID: 4994769968609523123}
   _meshTransform: {fileID: 3895169156282330492}
   _punchPositionForce: 0.175
-  _punchRotationForce: 0.075
+  _punchRotationForce: 0.025
   _duration: 0.125
   _ease: 6
 --- !u!1 &8998520117531534412

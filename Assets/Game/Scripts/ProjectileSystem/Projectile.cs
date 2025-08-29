@@ -12,6 +12,13 @@ namespace ProjectileSystem
         public virtual void Launch(ProjectileData projectileData)
         {
             _projectileData = projectileData;
+
+            OnLaunched();
+        }
+
+        protected virtual void OnLaunched()
+        {
+
         }
 
         protected int CalculateDamage()
