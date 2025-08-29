@@ -396,6 +396,7 @@ MonoBehaviour:
   _minAngularVelocity: -25
   _maxAngularVelocity: 25
   _rigidbody: {fileID: 7040614429003829803}
+  _collider: {fileID: 3454986054652005346}
   _meshTransform: {fileID: 7497168703865941081}
 --- !u!114 &7197829078765608668
 MonoBehaviour:

@@ -256,11 +256,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 0
-  <Type>k__BackingField: 2
   _minYPosition: -2.25
   _minAngularVelocity: -25
   _maxAngularVelocity: 25
   _rigidbody: {fileID: 7040614429003829803}
+  _collider: {fileID: 3454986054652005346}
   _meshTransform: {fileID: 7497168703865941081}
   _blasterPreviewImage: {fileID: 1553495645123044159}
 --- !u!1 &7088911674364703921

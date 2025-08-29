@@ -12,6 +12,7 @@ namespace ObstacleSystem
         [SerializeField] private float _minAngularVelocity;
         [SerializeField] private float _maxAngularVelocity;
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private Collider _collider;
         [SerializeField] private Transform _meshTransform;
 
         private float _gravityMultiplier;
@@ -90,6 +91,8 @@ namespace ObstacleSystem
 
             if (Health == 0)
             {
+                _collider.enabled = false;
+
                 Destroyed?.Invoke(this);
 
                 Kill();

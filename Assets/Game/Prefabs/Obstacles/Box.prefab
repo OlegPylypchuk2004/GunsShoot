@@ -100,11 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 12
-  <Type>k__BackingField: 0
   _minYPosition: -2.25
   _minAngularVelocity: -25
   _maxAngularVelocity: 25
   _rigidbody: {fileID: 7040614429003829803}
+  _collider: {fileID: 3454986054652005346}
   _meshTransform: {fileID: 7642580325283420003}
 --- !u!114 &4782777836804002868
 MonoBehaviour:
