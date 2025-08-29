@@ -18,6 +18,7 @@ namespace Menu.SectionSystem
         [SerializeField] private Button _secretCodeButton;
         [SerializeField] private Button _resetProgressButton;
         [SerializeField] private FPSDisplay _fpsDisplay;
+        [SerializeField] private SecretCodeSection _secretCodeSection;
 
         private SceneLoader _sceneLoader;
 
@@ -94,7 +95,7 @@ namespace Menu.SectionSystem
 
         private void OnSecretCodeButtonClicked()
         {
-
+            _sectionChanger.Change(_secretCodeSection);
         }
 
         private void OnResetProgressButtonClicked()
