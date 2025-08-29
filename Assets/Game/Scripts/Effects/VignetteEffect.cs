@@ -12,7 +12,8 @@ namespace Effects
         [SerializeField] private Ease _appearEase;
         [SerializeField] private Ease _disappearEase;
 
-        private Tween _tween;
+        private Tween _currentTween;
+        private Sequence _currentSequence;
 
         private void Awake()
         {
@@ -22,27 +23,41 @@ namespace Effects
             _image.color = imageTargetColor;
         }
 
+        protected Sequence Blink()
+        {
+            _currentTween?.Kill();
+            _currentSequence?.Kill();
+
+            _currentSequence = DOTween.Sequence();
+            _currentSequence.SetLink(gameObject);
+
+            _currentSequence.Append(Appear());
+            _currentSequence.Append(Disappear());
+
+            return _currentSequence;
+        }
+
         protected Tween Appear()
         {
-            _tween?.Kill();
+            _currentTween?.Kill();
 
             _image.gameObject.SetActive(true);
 
-            _tween = _image.DOFade(_maxImageAlpha, _animationDuration)
+            _currentTween = _image.DOFade(_maxImageAlpha, _animationDuration)
                 .SetEase(_appearEase)
                 .SetUpdate(true)
                 .SetLink(gameObject);
 
-            return _tween;
+            return _currentTween;
         }
 
         protected Tween Disappear()
         {
-            _tween?.Kill();
+            _currentTween?.Kill();
 
             _image.gameObject.SetActive(true);
 
-            _tween = _image.DOFade(0f, _animationDuration)
+            _currentTween = _image.DOFade(0f, _animationDuration)
                 .SetEase(_disappearEase)
                 .SetUpdate(true)
                 .SetLink(gameObject)
@@ -51,7 +66,7 @@ namespace Effects
                     _image.gameObject.SetActive(false);
                 });
 
-            return _tween;
+            return _currentTween;
         }
     }
 }

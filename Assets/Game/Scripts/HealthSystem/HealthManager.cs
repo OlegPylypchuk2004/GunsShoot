@@ -7,6 +7,28 @@ namespace HealthSystem
     {
         private int _health;
 
+        private ObstacleContainer _obstacleContainer;
+
+        public event Action<int> HealthIncreased;
+        public event Action<int> HealthReduced;
+        public event Action<int> HealthChanged;
+        public event Action HealthIsOver;
+
+        public HealthManager(ObstacleContainer obstacleContainer)
+        {
+            _obstacleContainer = obstacleContainer;
+
+            _obstacleContainer.ObstacleAdded += OnObstacleAdded;
+            _obstacleContainer.ObstacleRemoved += OnObstacleRemoved;
+
+            foreach (Obstacle obstacle in _obstacleContainer.Obstacles)
+            {
+                obstacle.Fallen += OnObstacleFallen;
+            }
+
+            Health = 1;
+        }
+
         public int Health
         {
             get => _health;
@@ -28,26 +50,6 @@ namespace HealthSystem
             }
         }
 
-        private ObstacleContainer _obstacleContainer;
-
-        public event Action<int> HealthChanged;
-        public event Action HealthIsOver;
-
-        public HealthManager(ObstacleContainer obstacleContainer)
-        {
-            _obstacleContainer = obstacleContainer;
-
-            _obstacleContainer.ObstacleAdded += OnObstacleAdded;
-            _obstacleContainer.ObstacleRemoved += OnObstacleRemoved;
-
-            foreach (Obstacle obstacle in _obstacleContainer.Obstacles)
-            {
-                obstacle.Fallen += OnObstacleFallen;
-            }
-
-            Health = 1;
-        }
-
         public void Dispose()
         {
             _obstacleContainer.ObstacleAdded += OnObstacleAdded;
@@ -62,6 +64,8 @@ namespace HealthSystem
         public void IncreaseHealth(int count = 1)
         {
             Health += count;
+
+            HealthIncreased?.Invoke(Health);
         }
 
         private void OnObstacleAdded(Obstacle obstacle)
@@ -77,6 +81,8 @@ namespace HealthSystem
         private void OnObstacleFallen(Obstacle obstacle)
         {
             Health -= 1;
+
+            HealthReduced?.Invoke(Health);
         }
     }
 }

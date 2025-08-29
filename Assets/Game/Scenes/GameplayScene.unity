@@ -2816,6 +2816,7 @@ MonoBehaviour:
   - {fileID: 66368010}
   - {fileID: 8926931471551831479}
   - {fileID: 586923259}
+  - {fileID: 2084691842}
   - {fileID: 1016901626}
   _blasterController: {fileID: 1304175452}
   _cameraShaker: {fileID: 760077362}
