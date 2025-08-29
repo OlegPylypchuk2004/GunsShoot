@@ -35,9 +35,9 @@ namespace GameModeSystem.Modes
 
         private void SaveData()
         {
+            SaveData saveData = SaveManager.Data;
             string gameModeID = LocalGameData.GameModeConfig.ID;
             int score = _scoreCounter.Score;
-            SaveData saveData = SaveManager.Data;
 
             if (saveData.GameModes.ContainsKey(gameModeID))
             {

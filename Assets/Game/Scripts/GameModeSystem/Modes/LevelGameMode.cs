@@ -42,12 +42,14 @@ namespace GameModeSystem
 
         private void SaveData()
         {
-            string gameModeID = LocalGameData.GameModeConfig.ID;
-            int levelNumber = /*LocalGameData.LevelConfig.Number*/100;
             SaveData saveData = SaveManager.Data;
+            string gameModeID = LocalGameData.GameModeConfig.ID;
+            int levelNumber = 1;
 
             if (saveData.GameModes.ContainsKey(gameModeID))
             {
+                levelNumber = saveData.GameModes[gameModeID] + 1;
+
                 if (levelNumber > saveData.GameModes[gameModeID])
                 {
                     saveData.GameModes[gameModeID] = levelNumber;
