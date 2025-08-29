@@ -16,6 +16,8 @@ namespace Menu.SectionSystem
     {
         [Space(10f), SerializeField] private Button _backButton;
         [SerializeField] private Section _previousSection;
+        [SerializeField] private Button _marketButton;
+        [SerializeField] private MarketSection _marketSection;
         [SerializeField] private ShopFrame _shopFramePrefab;
         [SerializeField] private RectTransform _shopFramesParent;
         [SerializeField] private OrbitCamera _orbitCamera;
@@ -56,6 +58,7 @@ namespace Menu.SectionSystem
 
             _backButton.onClick.AddListener(OnBackButtonClicked);
             _buyButton.onClick.AddListener(OnBuyButtonClicked);
+            _marketButton.onClick.AddListener(OnMarketButtonClicked);
 
             SpawnPreviewBlaster();
             UpdateDisplay();
@@ -70,6 +73,7 @@ namespace Menu.SectionSystem
 
             _backButton.onClick.RemoveListener(OnBackButtonClicked);
             _buyButton.onClick.RemoveListener(OnBuyButtonClicked);
+            _marketButton.onClick.RemoveListener(OnMarketButtonClicked);
         }
 
         public override void Deactivate()
@@ -89,6 +93,11 @@ namespace Menu.SectionSystem
         private void OnBackButtonClicked()
         {
             _sectionChanger.Change(_previousSection);
+        }
+
+        private void OnMarketButtonClicked()
+        {
+            _sectionChanger.Change(_marketSection);
         }
 
         private void OnBuyButtonClicked()
