@@ -11,6 +11,7 @@ namespace SaveSystem
         public Dictionary<string, int> Currencies;
         public Dictionary<string, int> Blasters;
         public Dictionary<string, int> GameModes;
+        public List<string> EnteredSecretCodes;
         public string SelectedBlasterID;
         public bool IsFirstEntry;
 
@@ -24,6 +25,7 @@ namespace SaveSystem
             Currencies = new Dictionary<string, int>();
             Blasters = new Dictionary<string, int>();
             GameModes = new Dictionary<string, int>();
+            EnteredSecretCodes = new List<string>();
             IsFirstEntry = true;
         }
 
