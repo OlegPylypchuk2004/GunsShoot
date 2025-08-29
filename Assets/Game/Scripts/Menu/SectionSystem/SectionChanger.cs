@@ -20,7 +20,7 @@ namespace Menu.SectionSystem
 
         public void Change(Section section)
         {
-            if (_currentSection == section)
+            if (section == null || _currentSection == section)
             {
                 return;
             }
