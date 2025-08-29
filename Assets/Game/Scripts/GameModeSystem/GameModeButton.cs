@@ -59,6 +59,17 @@ namespace GameModeSystem
 
                     break;
 
+                case GameModeType.Level:
+
+                    if (saveData.GameModes.ContainsKey(_gameModeConfig.ID))
+                    {
+                        _titleTextMesh.text += $" {saveData.GameModes[_gameModeConfig.ID]}";
+                    }
+
+                    _bottomTextMesh.text = string.Empty;
+
+                    break;
+
                 default:
 
                     if (saveData.GameModes.ContainsKey(_gameModeConfig.ID))
