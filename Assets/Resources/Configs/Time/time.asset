@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6ce3d952d261143b55e198cdd09123, type: 3}
   m_Name: time
   m_EditorClassIdentifier: 
-  <SlowDownValue>k__BackingField: 0.625
+  <SlowDownValue>k__BackingField: 0.5

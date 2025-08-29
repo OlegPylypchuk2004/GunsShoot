@@ -111,7 +111,7 @@ namespace Gameplay
             _builder.Register<ComboCounter>(Lifetime.Singleton)
                 .WithParameter(_comboConfig);
 
-            _builder.Register<TimeScaler>(Lifetime.Singleton)
+            _builder.Register<TimeSlower>(Lifetime.Singleton)
                 .WithParameter(_timeConfig);
         }
 

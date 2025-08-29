@@ -6,6 +6,10 @@ namespace PauseManagment
     public class PauseHandler
     {
         private bool _isPaused;
+        private float _cashedTimeScale;
+
+        public event Action Paused;
+        public event Action Unpaused;
 
         public bool IsPaused
         {
@@ -21,20 +25,18 @@ namespace PauseManagment
 
                 if (_isPaused)
                 {
+                    _cashedTimeScale = Time.timeScale;
                     Time.timeScale = 0f;
 
                     Paused?.Invoke();
                 }
                 else
                 {
-                    Time.timeScale = 1f;
+                    Time.timeScale = _cashedTimeScale;
 
                     Unpaused?.Invoke();
                 }
             }
         }
-
-        public event Action Paused;
-        public event Action Unpaused;
     }
 }

@@ -1,14 +1,17 @@
 using TimeManagment;
+using UnityEngine;
 using VContainer;
 
 namespace ObstacleSystem.Special
 {
     public class TimeBonus : Bonus
     {
-        private TimeScaler _timeScaler;
+        [SerializeField] private float _slowDownTime;
+
+        private TimeSlower _timeScaler;
 
         [Inject]
-        private void Construct(TimeScaler timeScaler)
+        private void Construct(TimeSlower timeScaler)
         {
             _timeScaler = timeScaler;
         }
@@ -17,7 +20,7 @@ namespace ObstacleSystem.Special
         {
             base.Kill();
 
-            _timeScaler.SlowDown();
+            _timeScaler.SlowDown(_slowDownTime);
         }
     }
 }

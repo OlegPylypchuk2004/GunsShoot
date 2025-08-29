@@ -4,6 +4,7 @@ using InputSystem;
 using ObstacleSystem;
 using Patterns.StateMachine;
 using PauseManagment;
+using TimeManagment;
 using VContainer;
 
 namespace Gameplay.States
@@ -16,9 +17,10 @@ namespace Gameplay.States
         private BlasterController _blasterController;
         private ObstacleSpawner _obstacleSpawner;
         private ComboCounter _comboCounter;
+        private TimeSlower _timeSlower;
 
         [Inject]
-        private void Construct(PauseHandler pauseHandler, IInputHandler inputHandler, BlasterHolder blasterHolder, BlasterController blasterController, ObstacleSpawner obstacleSpawner, ComboCounter comboCounter)
+        private void Construct(PauseHandler pauseHandler, IInputHandler inputHandler, BlasterHolder blasterHolder, BlasterController blasterController, ObstacleSpawner obstacleSpawner, ComboCounter comboCounter, TimeSlower timeSlower)
         {
             _pauseHandler = pauseHandler;
             _inputHandler = inputHandler;
@@ -26,6 +28,7 @@ namespace Gameplay.States
             _blasterController = blasterController;
             _obstacleSpawner = obstacleSpawner;
             _comboCounter = comboCounter;
+            _timeSlower = timeSlower;
         }
 
         public override void Enter()
@@ -50,6 +53,7 @@ namespace Gameplay.States
             {
                 _pauseHandler.IsPaused = false;
                 _comboCounter.Update();
+                _timeSlower.Update();
 
                 if (_inputHandler.IsShoot)
                 {

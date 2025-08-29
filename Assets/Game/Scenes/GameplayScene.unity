@@ -3531,7 +3531,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _obstaclePrefab: {fileID: 3769639481015148044, guid: 6ebbe0b1ec5855241a56043d391721cf, type: 3}
   _bonusPrefabs:
-  - {fileID: 3769639481015148044, guid: f1b5dc84ad93c0a4aaa293d88a748ad8, type: 3}
   - {fileID: 4410149609199696814, guid: ddc5a3bcf11e1534f8e8849a6c6679ce, type: 3}
   _spawnPoints:
   - {fileID: 2081419188}
