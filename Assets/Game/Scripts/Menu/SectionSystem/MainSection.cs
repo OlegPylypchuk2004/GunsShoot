@@ -13,6 +13,8 @@ namespace Menu.SectionSystem
         [SerializeField] private ShopSection _shopSection;
         [SerializeField] private Button _settingsButton;
         [SerializeField] private SettingsSection _settingsSection;
+        [SerializeField] private Button[] _marketButtons;
+        [SerializeField] private MarketSection _marketSection;
         [SerializeField] private GameModeButton[] _gameModeButtons;
 
         private SceneLoader _sceneLoader;
@@ -28,6 +30,11 @@ namespace Menu.SectionSystem
             _shopButton.onClick.AddListener(OnShopButtonClicked);
             _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
 
+            foreach (Button marketButton in _marketButtons)
+            {
+                marketButton.onClick.AddListener(OnMarketButtonClicked);
+            }
+
             foreach (GameModeButton gameModeButton in _gameModeButtons)
             {
                 gameModeButton.Selected += OnGameModeSelected;
@@ -38,6 +45,11 @@ namespace Menu.SectionSystem
         {
             _shopButton.onClick.RemoveListener(OnShopButtonClicked);
             _settingsButton.onClick.RemoveListener(OnSettingsButtonClicked);
+
+            foreach (Button marketButton in _marketButtons)
+            {
+                marketButton.onClick.RemoveListener(OnMarketButtonClicked);
+            }
 
             foreach (GameModeButton gameModeButton in _gameModeButtons)
             {
@@ -53,6 +65,11 @@ namespace Menu.SectionSystem
         private void OnSettingsButtonClicked()
         {
             _sectionChanger.Change(_settingsSection);
+        }
+
+        private void OnMarketButtonClicked()
+        {
+            _sectionChanger.Change(_marketSection);
         }
 
         private void OnGameModeSelected(GameModeConfig gameModeConfig)
