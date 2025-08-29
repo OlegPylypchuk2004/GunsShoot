@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace TimeManagment
@@ -7,6 +8,9 @@ namespace TimeManagment
         private TimeConfig _timeConfig;
         private bool _isSlowDown;
         private float _time;
+
+        public event Action SlowDownStarted;
+        public event Action SlowDownCompleted;
 
         public TimeSlower(TimeConfig timeConfig)
         {
@@ -27,6 +31,8 @@ namespace TimeManagment
                         _time = 0f;
 
                         Time.timeScale = 1f;
+
+                        SlowDownCompleted?.Invoke();
                     }
                 }
             }
@@ -38,6 +44,8 @@ namespace TimeManagment
             _time = time;
 
             Time.timeScale = _timeConfig.SlowDownValue;
+
+            SlowDownStarted?.Invoke();
         }
     }
 }

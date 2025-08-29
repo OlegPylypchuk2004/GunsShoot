@@ -2336,6 +2336,38 @@ Transform:
   - {fileID: 1120555122}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &802143836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802143837}
+  m_Layer: 0
+  m_Name: Effects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &802143837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802143836}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1016901630}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &901909326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,8 +2431,9 @@ GameObject:
   - component: {fileID: 1016901629}
   - component: {fileID: 1016901628}
   - component: {fileID: 1016901627}
+  - component: {fileID: 1016901631}
   m_Layer: 5
-  m_Name: VignetteEffect
+  m_Name: SlowDownEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2482,13 +2515,30 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2096813601}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 802143837}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1016901631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016901626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb7374b54a865e408c25d99927483a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 2096813602}
+  _maxImageAlpha: 0.125
+  _animationDuration: 0.25
+  _appearEase: 6
+  _disappearEase: 5
 --- !u!1 &1079583997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2765,6 +2815,7 @@ MonoBehaviour:
   - {fileID: 66368010}
   - {fileID: 8926931471551831479}
   - {fileID: 586923259}
+  - {fileID: 1016901626}
   _blasterController: {fileID: 1304175452}
   _cameraShaker: {fileID: 760077362}
   _obstacleSpawner: {fileID: 1635507112}
@@ -4431,7 +4482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
+  m_Color: {r: 0.20392157, g: 0.59607846, b: 0.85882354, a: 0.1254902}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4726,7 +4777,7 @@ SceneRoots:
   - {fileID: 1304175451}
   - {fileID: 1635507113}
   - {fileID: 8674130}
-  - {fileID: 1016901630}
+  - {fileID: 802143837}
   - {fileID: 129666781}
   - {fileID: 1719696717}
   - {fileID: 1770579152}
