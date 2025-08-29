@@ -19,6 +19,7 @@ namespace Menu.SectionSystem
         [SerializeField] private Button _resetProgressButton;
         [SerializeField] private FPSDisplay _fpsDisplay;
         [SerializeField] private SecretCodeSection _secretCodeSection;
+        [SerializeField] private ConfirmSection _confirmSection;
 
         private SceneLoader _sceneLoader;
 
@@ -100,8 +101,21 @@ namespace Menu.SectionSystem
 
         private void OnResetProgressButtonClicked()
         {
-            SaveManager.Delete();
-            _sceneLoader.Load(0);
+            _confirmSection.SetPreviousSection(this);
+            _sectionChanger.Change(_confirmSection);
+
+            _confirmSection.ChoiseMade += OnConfirmSectionChoiseMade;
+        }
+
+        private void OnConfirmSectionChoiseMade(bool isPositive)
+        {
+            _confirmSection.ChoiseMade -= OnConfirmSectionChoiseMade;
+
+            if (isPositive)
+            {
+                SaveManager.Delete();
+                _sceneLoader.Load(0);
+            }
         }
     }
 }

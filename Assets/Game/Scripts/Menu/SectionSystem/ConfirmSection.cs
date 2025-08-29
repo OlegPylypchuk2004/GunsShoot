@@ -28,7 +28,7 @@ namespace Menu.SectionSystem
             _yesButton.onClick.RemoveListener(OnYesButtonClicked);
         }
 
-        public void Initialize(Section previousSection)
+        public void SetPreviousSection(Section previousSection)
         {
             _previousSection = previousSection;
         }
@@ -40,6 +40,8 @@ namespace Menu.SectionSystem
 
         private void OnNoButtonClicked()
         {
+            _sectionChanger.Change(_previousSection);
+
             ChoiseMade?.Invoke(false);
         }
 
