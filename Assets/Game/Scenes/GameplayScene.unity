@@ -1770,10 +1770,12 @@ MonoBehaviour:
   _canvasGroup: {fileID: 1079583999}
   _textMesh: {fileID: 147140518}
   _fillImage: {fileID: 301737985}
+  _flameImage: {fileID: 947721506}
   _animationDuration: 0.25
   _maxCanvasGroupScale: 1.25
   _appearEase: 6
   _disappearEase: 5
+  _flameCombo: 5
 --- !u!1 &603398353
 GameObject:
   m_ObjectHideFlags: 0

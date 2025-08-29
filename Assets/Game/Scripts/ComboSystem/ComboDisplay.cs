@@ -11,14 +11,18 @@ namespace ComboSystem
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private TMP_Text _textMesh;
         [SerializeField] private Image _fillImage;
+        [SerializeField] private Image _flameImage;
         [SerializeField] private float _animationDuration;
         [SerializeField] private float _maxCanvasGroupScale;
         [SerializeField] private Ease _appearEase;
         [SerializeField] private Ease _disappearEase;
+        [SerializeField] private int _flameCombo;
 
         private ComboCounter _comboCounter;
         private Sequence _currentSequence;
         private bool _isActive;
+        private bool _isFlameActive;
+        private Tween _flameTween;
 
         [Inject]
         private void Construct(ComboCounter comboCounter)
@@ -29,6 +33,8 @@ namespace ComboSystem
         private void Awake()
         {
             _canvasGroup.alpha = 0f;
+
+            ResetFlame();
         }
 
         private void OnEnable()
@@ -51,6 +57,20 @@ namespace ComboSystem
                 string formattedScoreMultiplier = scoreMultiplier.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
                 _textMesh.text = $"x{formattedScoreMultiplier}";
+
+                if (combo >= _flameCombo)
+                {
+                    if (!_isFlameActive)
+                    {
+                        _isFlameActive = true;
+
+                        AppearFlame();
+                    }
+                }
+                else
+                {
+                    ResetFlame();
+                }
             }
 
             if (!_isActive)
@@ -70,6 +90,7 @@ namespace ComboSystem
                 if (_isActive)
                 {
                     _isActive = false;
+                    _isFlameActive = false;
 
                     Disappear();
                 }
@@ -110,6 +131,26 @@ namespace ComboSystem
                 .SetEase(_disappearEase));
 
             return _currentSequence;
+        }
+
+        private Tween AppearFlame()
+        {
+            _flameTween?.Kill();
+
+            _flameTween = _flameImage.DOFade(1f, _animationDuration)
+                .From(0f)
+                .SetEase(_appearEase)
+                .SetLink(gameObject);
+
+            return _flameTween;
+        }
+
+        private void ResetFlame()
+        {
+            Color flameTargetColor = _flameImage.color;
+            flameTargetColor.a = 0f;
+
+            _flameImage.color = flameTargetColor;
         }
     }
 }
