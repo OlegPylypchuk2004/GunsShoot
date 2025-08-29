@@ -10,13 +10,28 @@ namespace StageSystem
     {
         private StagesWrapper _stagesWrapper;
 
-        public int StageNumber { get; private set; }
-
+        public event Action StagesLoaded;
+        public event Action<int> StageNumberChanged;
         public event Action StagesAreOver;
 
         public StageManager()
         {
             StageNumber = 1;
+        }
+
+        public int StageNumber { get; private set; }
+
+        public int StagesLeft
+        {
+            get
+            {
+                if (_stagesWrapper == null)
+                {
+                    return 0;
+                }
+
+                return _stagesWrapper.Stages.Length + 1 - StageNumber;
+            }
         }
 
         public StageData StageData
@@ -60,12 +75,16 @@ namespace StageSystem
             else
             {
                 Debug.Log("Stages config file loading completed.");
+
+                StagesLoaded?.Invoke();
             }
         }
 
         public void IncreaseStageNumber()
         {
             StageNumber++;
+
+            StageNumberChanged?.Invoke(StageNumber);
         }
     }
 }

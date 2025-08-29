@@ -12,8 +12,8 @@ namespace GameModeSystem
 
             if (saveData.GameModes.ContainsKey(ID))
             {
-                int completedLevelsCount = saveData.GameModes[ID];
-                string path = $"{StagesConfigFilePath}{completedLevelsCount + 1}.json";
+                int levelNumber = saveData.GameModes[ID];
+                string path = $"{StagesConfigFilePath}{levelNumber}.json";
 
                 return path;
             }

@@ -2772,6 +2772,7 @@ MonoBehaviour:
   _blurBackground: {fileID: 1818518730}
   _gameOverDisplay: {fileID: 1309810785}
   _scoreDisplayPrefab: {fileID: 2151108607546229226, guid: 638f8830b872d8945ae8916177e9f31d, type: 3}
+  _starsLeftDisplayPrefab: {fileID: 4440711487180573034, guid: 091b4a31e2e65c34c814a0c1de259b38, type: 3}
   _comboConfig: {fileID: 11400000, guid: 8209b7c294d241245b7e2898e70b105b, type: 2}
   _timeConfig: {fileID: 11400000, guid: a475175e15daf174284a10de362e4025, type: 2}
 --- !u!1 &1220817635

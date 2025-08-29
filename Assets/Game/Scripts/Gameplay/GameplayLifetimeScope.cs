@@ -34,6 +34,7 @@ namespace Gameplay
         [SerializeField] private GameOverPanel _gameOverDisplay;
 
         [Header("Prefabs"), SerializeField] private ScoreDisplay _scoreDisplayPrefab;
+        [SerializeField] private StagesLeftDisplay _starsLeftDisplayPrefab;
 
         [Header("Configs"), SerializeField] private ComboConfig _comboConfig;
         [SerializeField] private TimeConfig _timeConfig;
@@ -55,6 +56,7 @@ namespace Gameplay
                 case GameModeType.Level:
 
                     Container.Resolve<ScoreDisplay>();
+                    Container.Resolve<StagesLeftDisplay>();
 
                     break;
             }
@@ -145,6 +147,7 @@ namespace Gameplay
             _builder.RegisterComponent<BlurBackground>(_blurBackground);
             _builder.RegisterComponent<GameOverPanel>(_gameOverDisplay);
             _builder.RegisterComponentInNewPrefab(_scoreDisplayPrefab, Lifetime.Singleton);
+            _builder.RegisterComponentInNewPrefab(_starsLeftDisplayPrefab, Lifetime.Singleton);
         }
     }
 }
