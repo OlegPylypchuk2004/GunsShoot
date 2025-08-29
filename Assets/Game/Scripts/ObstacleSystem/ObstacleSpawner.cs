@@ -11,6 +11,7 @@ namespace ObstacleSystem
     public class ObstacleSpawner : MonoBehaviour
     {
         [SerializeField] private Obstacle _obstaclePrefab;
+        [SerializeField] private Obstacle _grenadePrefab;
         [SerializeField] private Bonus[] _bonusPrefabs;
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField, Min(0f)] private float _minLaunchForce;
@@ -98,6 +99,17 @@ namespace ObstacleSystem
                         if (Random.Range(0, 100) < stageData.SpawnBonusChance)
                         {
                             obstaclePrefab = _bonusPrefabs[Random.Range(0, _bonusPrefabs.Length)];
+                        }
+                        else if (Random.Range(0, 100) < stageData.SpawnGrenadeChance)
+                        {
+                            obstaclePrefab = _grenadePrefab;
+                        }
+                    }
+                    else
+                    {
+                        if (Random.Range(0, 100) < stageData.SpawnGrenadeChance)
+                        {
+                            obstaclePrefab = _grenadePrefab;
                         }
                     }
 

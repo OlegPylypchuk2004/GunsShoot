@@ -8,4 +8,5 @@ public class StageData
     public int MinObstaclesCount;
     public int MaxObstaclesCount;
     public int SpawnBonusChance;
+    public int SpawnGrenadeChance;
 }
