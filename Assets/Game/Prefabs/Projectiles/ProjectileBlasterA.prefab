@@ -357,5 +357,5 @@ MonoBehaviour:
   _rigidbody: {fileID: 7332741505478137145}
   _gravity: 1.75
   _collisionsCount: 1
-  _splashDamage: 10
+  _splashDamage: 16
   _splashRadius: 1.25
