@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageSpreadPercent: 25
   _rigidbody: {fileID: 7332741505478137145}
-  _gravity: 1.75
+  _gravity: 1.5
   _collisionsCount: 1
   _splashDamage: 16
   _splashRadius: 1.25
