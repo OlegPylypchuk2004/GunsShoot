@@ -5,7 +5,8 @@
 			"ObstacleGravityMultiplier": 1,
 			"MinObstaclesCount": 1,
 			"MaxObstaclesCount": 1,
-			"SpawnBonusChance": 0
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 100
 		}
 	]
 }
