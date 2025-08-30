@@ -19,11 +19,10 @@ MonoBehaviour:
     <Count>k__BackingField: 3
   <Damage>k__BackingField: 28
   <Spread>k__BackingField: 4.5
-  <ProjectileSpeed>k__BackingField: 4.75
+  <ProjectileSpeed>k__BackingField: 5.25
   <AmmoAmount>k__BackingField: 5
   <ReloadDuration>k__BackingField: 0.75
   <ShotCooldown>k__BackingField: 0.5
-  <Type>k__BackingField: 0
   <Projectile>k__BackingField: {fileID: 7672135438376883875, guid: b739c69275d07b44b99fbf721eb11b92, type: 3}
   <Prefab>k__BackingField: {fileID: 4994769968609523123, guid: fdcefb426d2880f439800a06012305ac, type: 3}
   <PreviewPrefab>k__BackingField: {fileID: 8125070670997346300, guid: 33d54b9b4e3973a469f37e469e9cb3fd, type: 3}
