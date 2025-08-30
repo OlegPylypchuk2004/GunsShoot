@@ -66,7 +66,7 @@ namespace ObstacleSystem
             _rigidbody.AddForce(gravity, ForceMode.Acceleration);
         }
 
-        public void Launch(Vector3 direction, float gravityMultiplier)
+        public virtual void Launch(Vector3 direction, float gravityMultiplier)
         {
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.AddForce(direction, ForceMode.Impulse);

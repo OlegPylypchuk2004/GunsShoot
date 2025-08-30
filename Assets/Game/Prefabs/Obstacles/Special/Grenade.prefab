@@ -128,7 +128,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3301498323511879207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a33d1c9d0b58949914298e22c4ef67, type: 3}
+  m_Script: {fileID: 11500000, guid: 8eada7dc6153f2d47bf26ec8952505b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 9
@@ -138,6 +138,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 1007905541136995588}
   _collider: {fileID: 7217848366670325861}
   _meshTransform: {fileID: 8868214003471856420}
+  _explodeDelay: 2.5
 --- !u!114 &2090691905550934503
 MonoBehaviour:
   m_ObjectHideFlags: 0
