@@ -142,7 +142,6 @@ namespace Menu.SectionSystem
         private BlasterConfig[] LoadBlasterConfigs()
         {
             return Resources.LoadAll<BlasterConfig>("Configs/Blasters")
-                .OrderBy(blasterConfig => blasterConfig.Type)
                 .ToArray();
         }
 
