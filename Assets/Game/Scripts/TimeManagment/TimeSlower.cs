@@ -47,5 +47,13 @@ namespace TimeManagment
 
             SlowDownStarted?.Invoke();
         }
+
+        public void ResetTime()
+        {
+            _isSlowDown = false;
+            _time = 0f;
+
+            Time.timeScale = 1f;
+        }
     }
 }
