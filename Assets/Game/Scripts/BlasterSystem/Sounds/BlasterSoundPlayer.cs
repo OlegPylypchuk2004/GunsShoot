@@ -8,6 +8,7 @@ namespace BlasterSystem.Sounds
     {
         [SerializeField] protected Blaster _blaster;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField, Range(0f, 1f)] private float _pitchSpread;
 
         private void Awake()
         {
@@ -43,6 +44,7 @@ namespace BlasterSystem.Sounds
 
         protected virtual void Play(AudioClip audioClip)
         {
+            _audioSource.pitch = 1f + UnityEngine.Random.Range(-_pitchSpread, _pitchSpread);
             _audioSource.PlayOneShot(audioClip);
         }
     }
