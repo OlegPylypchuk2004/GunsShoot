@@ -7873,6 +7873,7 @@ MonoBehaviour:
   - {fileID: 2062102999}
   - {fileID: 1065719071}
   - {fileID: 1119927453}
+  _energySystemConfig: {fileID: 11400000, guid: 64955625c0109964ba9bcb2119aac026, type: 2}
 --- !u!1 &1668886107
 GameObject:
   m_ObjectHideFlags: 0
