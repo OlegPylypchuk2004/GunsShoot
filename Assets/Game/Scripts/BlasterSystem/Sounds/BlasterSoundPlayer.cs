@@ -1,3 +1,4 @@
+using SaveSystem;
 using System;
 using UnityEngine;
 
@@ -7,6 +8,20 @@ namespace BlasterSystem.Sounds
     {
         [SerializeField] protected Blaster _blaster;
         [SerializeField] private AudioSource _audioSource;
+
+        private void Awake()
+        {
+            bool isSoundEnabled = SaveManager.Data.IsSoundEnabled;
+
+            if (isSoundEnabled)
+            {
+                _audioSource.volume = 1f;
+            }
+            else
+            {
+                _audioSource.volume = 0f;
+            }
+        }
 
         protected virtual void OnEnable()
         {
