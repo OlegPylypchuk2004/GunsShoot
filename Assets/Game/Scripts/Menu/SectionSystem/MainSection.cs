@@ -1,3 +1,4 @@
+using CurrencyManagment;
 using GameModeSystem;
 using Global;
 using SceneManagment;
@@ -16,13 +17,16 @@ namespace Menu.SectionSystem
         [SerializeField] private Button[] _marketButtons;
         [SerializeField] private MarketSection _marketSection;
         [SerializeField] private GameModeButton[] _gameModeButtons;
+        [SerializeField] private CurrencyConfig _energyCurrencyConfig;
 
         private SceneLoader _sceneLoader;
+        private CurrencyWallet _currencyWallet;
 
         [Inject]
-        private void Construct(SceneLoader sceneLoader)
+        private void Construct(SceneLoader sceneLoader, CurrencyWallet currencyWallet)
         {
             _sceneLoader = sceneLoader;
+            _currencyWallet = currencyWallet;
         }
 
         private void OnEnable()
@@ -79,8 +83,11 @@ namespace Menu.SectionSystem
                 return;
             }
 
-            LocalGameData.GameModeConfig = gameModeConfig;
-            _sceneLoader.Load(gameModeConfig.SceneIndex);
+            if (_currencyWallet.TryReduce(new WalletOperationData(_energyCurrencyConfig, gameModeConfig.EnergyPrice)))
+            {
+                LocalGameData.GameModeConfig = gameModeConfig;
+                _sceneLoader.Load(gameModeConfig.SceneIndex);
+            }
         }
     }
 }

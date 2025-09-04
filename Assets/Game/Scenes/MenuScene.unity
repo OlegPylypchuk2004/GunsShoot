@@ -10164,6 +10164,7 @@ MonoBehaviour:
   - {fileID: 1204102080}
   - {fileID: 1581069822}
   - {fileID: 2052284541}
+  _energyCurrencyConfig: {fileID: 11400000, guid: 9f7ab3066f2edfc4984934f83b60ccea, type: 2}
 --- !u!1 &2082372865
 GameObject:
   m_ObjectHideFlags: 0
