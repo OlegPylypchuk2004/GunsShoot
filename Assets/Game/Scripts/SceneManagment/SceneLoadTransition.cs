@@ -10,6 +10,7 @@ namespace SceneManagment
     {
         [SerializeField, Range(0f, 1f)] private float _maxBackgroundAlpha;
         [SerializeField, Range(0f, 1f)] private float _backgroundTransitionDuration;
+        [SerializeField, Min(0f)] private float _appearDelay;
         [SerializeField] private EventSystem _eventSystem;
         [SerializeField] private Image _background;
 
@@ -58,6 +59,8 @@ namespace SceneManagment
 
                 _background.gameObject.SetActive(true);
             });
+
+            _currentSequence.AppendInterval(_appearDelay);
 
             _currentSequence.Append(_background.DOFade(_maxBackgroundAlpha, _backgroundTransitionDuration)
                 .From(0f)

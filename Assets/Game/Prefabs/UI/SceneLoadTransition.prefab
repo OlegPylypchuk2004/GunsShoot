@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxBackgroundAlpha: 1
   _backgroundTransitionDuration: 0.125
+  _appearDelay: 0.125
   _eventSystem: {fileID: 0}
   _background: {fileID: 9150925272980597311}
 --- !u!1 &7745753298389831433
