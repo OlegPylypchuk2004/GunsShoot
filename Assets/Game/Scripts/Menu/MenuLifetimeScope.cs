@@ -1,5 +1,6 @@
 using CurrencyManagment;
 using EnergySystem;
+using Global;
 using SceneManagment;
 using UnityEngine;
 using VContainer;
@@ -17,9 +18,15 @@ namespace Menu
         {
             _builder = builder;
 
+            RegisterTimeTracker();
             RegiterSceneLoader();
             RegisterCurrencyWallet();
             RegisterEnergySystem();
+        }
+
+        private void RegisterTimeTracker()
+        {
+            _builder.Register<TimeTracker>(Lifetime.Singleton);
         }
 
         private void RegiterSceneLoader()

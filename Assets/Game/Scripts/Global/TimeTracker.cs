@@ -1,26 +1,29 @@
 using SaveSystem;
 using System;
 
-public class TimeTracker
+namespace Global
 {
-    public void SaveExitTime()
+    public class TimeTracker
     {
-        long currentTime = DateTime.UtcNow.ToBinary();
-        SaveManager.Data.LastExitTime = currentTime.ToString();
-        SaveManager.Save();
-    }
-
-    public TimeSpan GetTimeSinceLastExit()
-    {
-        string savedTime = SaveManager.Data.LastExitTime;
-
-        if (long.TryParse(savedTime, out long binaryTime))
+        public void SaveExitTime()
         {
-            DateTime lastExitTime = DateTime.FromBinary(binaryTime);
-
-            return DateTime.UtcNow - lastExitTime;
+            long currentTime = DateTime.UtcNow.ToBinary();
+            SaveManager.Data.LastExitTime = currentTime.ToString();
+            SaveManager.Save();
         }
 
-        return TimeSpan.Zero;
+        public TimeSpan GetTimeSinceLastExit()
+        {
+            string savedTime = SaveManager.Data.LastExitTime;
+
+            if (long.TryParse(savedTime, out long binaryTime))
+            {
+                DateTime lastExitTime = DateTime.FromBinary(binaryTime);
+
+                return DateTime.UtcNow - lastExitTime;
+            }
+
+            return TimeSpan.Zero;
+        }
     }
 }
