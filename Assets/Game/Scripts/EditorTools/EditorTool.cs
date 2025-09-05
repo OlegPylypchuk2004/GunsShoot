@@ -47,7 +47,7 @@ namespace EditorTools
 
         private void OnDestroy()
         {
-            //_energyManager.Dispose();
+            _energyManager.Dispose();
         }
 
         private void Update()
