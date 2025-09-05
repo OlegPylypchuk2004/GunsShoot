@@ -20,6 +20,9 @@ namespace SaveSystem
         public bool IsMusicEnabled;
         public bool IsShowFPS;
 
+        //Other
+        public string LastExitTime;
+
         public SaveData()
         {
             Currencies = new Dictionary<string, int>();
