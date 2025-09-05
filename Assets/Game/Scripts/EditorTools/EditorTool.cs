@@ -1,6 +1,7 @@
 using CurrencyManagment;
 using EnergySystem;
 using SaveSystem;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VContainer;
@@ -29,9 +30,24 @@ namespace EditorTools
 #endif
         }
 
+        private void Start()
+        {
+            if (long.TryParse(SaveManager.Data.LastExitTime, out long binary1))
+            {
+                DateTime lastExitTime = DateTime.FromBinary(binary1);
+                Debug.LogWarning("Last Exit Time: " + lastExitTime.ToString("HH:mm:ss"));
+            }
+
+            if (long.TryParse(SaveManager.Data.EnergyLastRecoveryTime, out long binary2))
+            {
+                DateTime lastRecoveryTime = DateTime.FromBinary(binary2);
+                Debug.LogWarning("Last Recovery Time: " + lastRecoveryTime.ToString("HH:mm:ss"));
+            }
+        }
+
         private void OnDestroy()
         {
-            _energyManager.Dispose();
+            //_energyManager.Dispose();
         }
 
         private void Update()

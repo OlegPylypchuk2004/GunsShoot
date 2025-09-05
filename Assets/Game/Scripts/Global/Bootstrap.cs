@@ -2,6 +2,7 @@ using BlasterSystem;
 using CurrencyManagment;
 using GameModeSystem;
 using SaveSystem;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VContainer;
@@ -37,6 +38,7 @@ namespace Global
                 SetInitialSelectedBlaster();
                 InitializeGameModes();
                 SetInitialSettings();
+                SetInitialTime();
 
                 _saveData.IsFirstEntry = false;
 
@@ -95,6 +97,14 @@ namespace Global
             _saveData.IsSoundEnabled = true;
             _saveData.IsMusicEnabled = true;
             _saveData.IsShowFPS = false;
+        }
+
+        private void SetInitialTime()
+        {
+            DateTime nowTime = DateTime.UtcNow;
+
+            SaveManager.Data.LastExitTime = nowTime.ToBinary().ToString();
+            SaveManager.Data.EnergyLastRecoveryTime = nowTime.ToBinary().ToString();
         }
     }
 }

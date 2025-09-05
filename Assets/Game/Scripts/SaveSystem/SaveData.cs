@@ -13,7 +13,6 @@ namespace SaveSystem
         public Dictionary<string, int> GameModes;
         public List<string> EnteredSecretCodes;
         public string SelectedBlasterID;
-        public bool IsFirstEntry;
 
         //Settings data
         public bool IsSoundEnabled;
@@ -21,6 +20,7 @@ namespace SaveSystem
         public bool IsShowFPS;
 
         //Other
+        public bool IsFirstEntry;
         public string LastExitTime;
         public string EnergyLastRecoveryTime;
 
