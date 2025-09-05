@@ -39,9 +39,9 @@ namespace EnergySystem
             _increaseValue = energySystemConfig.IncreaseValue;
             _isEnergyMax = _currencyWallet.GetCount(_energyCurrencyConfig) >= _energyCurrencyConfig.MaxCount;
 
-            //RestoreEnergyFromOffline();
+            RestoreEnergyFromOffline();
 
-            //_currencyWallet.CurrencyCountChanged += OnCurrencyCountChanged;
+            _currencyWallet.CurrencyCountChanged += OnCurrencyCountChanged;
         }
 
         public void Dispose()
@@ -103,9 +103,9 @@ namespace EnergySystem
 
         private void SaveLastRecoveryTime()
         {
-            //DateTime lastRecoveryMoment = DateTime.UtcNow.AddSeconds(-RecoveryTime + _delay);
-            //SaveManager.Data.EnergyLastRecoveryTime = lastRecoveryMoment.ToBinary().ToString();
-            //SaveManager.Save();
+            DateTime lastRecoveryMoment = DateTime.UtcNow.AddSeconds(-RecoveryTime + _delay);
+            SaveManager.Data.EnergyLastRecoveryTime = lastRecoveryMoment.ToBinary().ToString();
+            SaveManager.Save();
         }
 
         private DateTime LoadLastRecoveryTime()
