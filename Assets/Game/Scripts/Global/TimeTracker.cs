@@ -8,6 +8,7 @@ namespace Global
         public void SaveExitTime()
         {
             long currentTime = DateTime.UtcNow.ToBinary();
+
             SaveManager.Data.LastExitTime = currentTime.ToString();
             SaveManager.Save();
         }

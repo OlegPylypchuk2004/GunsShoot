@@ -1,4 +1,6 @@
 using CurrencyManagment;
+using Global;
+using SaveSystem;
 using System;
 using UnityEngine;
 
@@ -10,17 +12,34 @@ namespace EnergySystem
         private CurrencyConfig _energyCurrencyConfig;
         private float _delay;
         private int _increaseValue;
-        private float _currentTime;
+        private float _recoveryTime;
         private bool _isEnergyMax;
 
-        public EnergyManager(CurrencyWallet currencyWallet, EnergySystemConfig energySystemConfig)
+        public event Action<float> RecoveryTimeChanged;
+
+        public float RecoveryTime
+        {
+            get
+            {
+                return _recoveryTime;
+            }
+            private set
+            {
+                _recoveryTime = value;
+
+                RecoveryTimeChanged?.Invoke(_recoveryTime);
+            }
+        }
+
+        public EnergyManager(CurrencyWallet currencyWallet, EnergySystemConfig energySystemConfig, TimeTracker timeTracker)
         {
             _currencyWallet = currencyWallet;
             _energyCurrencyConfig = energySystemConfig.EnergyCurrencyConfig;
             _delay = energySystemConfig.Delay;
             _increaseValue = energySystemConfig.IncreaseValue;
-
             _isEnergyMax = _currencyWallet.GetCount(_energyCurrencyConfig) >= _energyCurrencyConfig.MaxCount;
+
+            RestoreEnergyFromOffline();
 
             _currencyWallet.CurrencyCountChanged += OnCurrencyCountChanged;
         }
@@ -28,6 +47,7 @@ namespace EnergySystem
         public void Dispose()
         {
             _currencyWallet.CurrencyCountChanged -= OnCurrencyCountChanged;
+            SaveLastRecoveryTime();
         }
 
         public void Update()
@@ -37,19 +57,73 @@ namespace EnergySystem
                 return;
             }
 
-            _currentTime += Time.deltaTime;
+            RecoveryTime -= Time.deltaTime;
 
-            if (_currentTime >= _delay)
+            if (_recoveryTime <= 0f)
+            {
+                ResetTime();
+                _currencyWallet.TryIncrease(new WalletOperationData(_energyCurrencyConfig, _increaseValue));
+                SaveLastRecoveryTime();
+            }
+        }
+
+        private void RestoreEnergyFromOffline()
+        {
+            if (_isEnergyMax)
+            {
+                return;
+            }
+
+            DateTime now = DateTime.UtcNow;
+            DateTime lastRecovery = LoadLastRecoveryTime();
+
+            if (lastRecovery == DateTime.MinValue)
             {
                 ResetTime();
 
-                _currencyWallet.TryIncrease(new WalletOperationData(_energyCurrencyConfig, _increaseValue));
+                return;
             }
+
+            TimeSpan passed = now - lastRecovery;
+            int cycles = Mathf.FloorToInt((float)(passed.TotalSeconds / _delay));
+            double leftover = passed.TotalSeconds % _delay;
+
+            if (cycles > 0)
+            {
+                _currencyWallet.TryIncrease(new WalletOperationData(_energyCurrencyConfig, cycles * _increaseValue));
+            }
+
+            RecoveryTime = _delay - (float)leftover;
+
+            if (_currencyWallet.GetCount(_energyCurrencyConfig) >= _energyCurrencyConfig.MaxCount)
+            {
+                _isEnergyMax = true;
+            }
+        }
+
+        private void SaveLastRecoveryTime()
+        {
+            DateTime lastRecoveryMoment = DateTime.UtcNow.AddSeconds(-RecoveryTime + _delay);
+            SaveManager.Data.EnergyLastRecoveryTime = lastRecoveryMoment.ToBinary().ToString();
+            SaveManager.Save();
+        }
+
+        private DateTime LoadLastRecoveryTime()
+        {
+            string saved = SaveManager.Data.EnergyLastRecoveryTime;
+
+            if (long.TryParse(saved, out long binary))
+            {
+                return DateTime.FromBinary(binary);
+            }
+
+            return DateTime.MinValue;
         }
 
         public void ResetTime()
         {
-            _currentTime = 0f;
+            RecoveryTime = _delay;
+            SaveLastRecoveryTime();
         }
 
         private void OnCurrencyCountChanged(WalletOperationData walletOperationData)

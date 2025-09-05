@@ -24,13 +24,16 @@ namespace CurrencyManagment
 
         private void Start()
         {
-            _currencyWallet.CurrencyCountChanged += OnCurrencyAmountChanged;
-
             _currentDisplayedCount = _currencyWallet.GetCount(_currencyConfig);
             UpdateTextMesh($"{_currentDisplayedCount}");
         }
 
-        private void OnDestroy()
+        protected virtual void OnEnable()
+        {
+            _currencyWallet.CurrencyCountChanged += OnCurrencyAmountChanged;
+        }
+
+        protected virtual void OnDisable()
         {
             _currencyWallet.CurrencyCountChanged -= OnCurrencyAmountChanged;
         }

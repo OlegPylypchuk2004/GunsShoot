@@ -18,6 +18,14 @@ namespace Global
             Debug.Log($"Time since last exit: {_timeTracker.GetTimeSinceLastExit()}");
         }
 
+        private void OnApplicationPause(bool pause)
+        {
+            if (pause)
+            {
+                _timeTracker.SaveExitTime();
+            }
+        }
+
         private void OnApplicationQuit()
         {
             _timeTracker.SaveExitTime();

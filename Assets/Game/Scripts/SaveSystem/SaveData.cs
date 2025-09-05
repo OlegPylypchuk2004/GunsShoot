@@ -22,6 +22,7 @@ namespace SaveSystem
 
         //Other
         public string LastExitTime;
+        public string EnergyLastRecoveryTime;
 
         public SaveData()
         {

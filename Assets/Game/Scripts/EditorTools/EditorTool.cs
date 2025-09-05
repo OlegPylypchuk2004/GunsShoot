@@ -1,4 +1,5 @@
 using CurrencyManagment;
+using EnergySystem;
 using SaveSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,11 +13,13 @@ namespace EditorTools
         [SerializeField] private CurrencyConfig _energyCurrencyConfig;
 
         private CurrencyWallet _currencyWallet;
+        private EnergyManager _energyManager;
 
         [Inject]
-        private void Construct(CurrencyWallet currencyWallet)
+        private void Construct(CurrencyWallet currencyWallet, EnergyManager energyManager)
         {
             _currencyWallet = currencyWallet;
+            _energyManager = energyManager;
         }
 
         private void Awake()
@@ -24,6 +27,11 @@ namespace EditorTools
 #if !UNITY_EDITOR
             Destroy(gameObject);
 #endif
+        }
+
+        private void OnDestroy()
+        {
+            _energyManager.Dispose();
         }
 
         private void Update()
@@ -43,6 +51,10 @@ namespace EditorTools
             else if (Input.GetKeyDown(KeyCode.E))
             {
                 _currencyWallet.TryIncrease(new WalletOperationData(_energyCurrencyConfig, 1));
+            }
+            else if (Input.GetKeyDown(KeyCode.M))
+            {
+                _currencyWallet.TryReduce(new WalletOperationData(_energyCurrencyConfig, 1));
             }
             else if (Input.GetKeyDown(KeyCode.Delete))
             {
