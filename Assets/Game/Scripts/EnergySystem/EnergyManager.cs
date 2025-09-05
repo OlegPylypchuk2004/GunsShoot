@@ -80,7 +80,6 @@ namespace EnergySystem
             if (lastRecovery == DateTime.MinValue)
             {
                 ResetTime();
-
                 return;
             }
 
@@ -103,7 +102,7 @@ namespace EnergySystem
 
         private void SaveLastRecoveryTime()
         {
-            DateTime lastRecoveryMoment = DateTime.UtcNow.AddSeconds(-RecoveryTime + _delay);
+            DateTime lastRecoveryMoment = DateTime.UtcNow.AddSeconds(-_delay + RecoveryTime);
             SaveManager.Data.EnergyLastRecoveryTime = lastRecoveryMoment.ToBinary().ToString();
             SaveManager.Save();
         }
