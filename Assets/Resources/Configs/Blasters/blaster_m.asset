@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: blaster_m
   m_EditorClassIdentifier: 
   <ID>k__BackingField: blaster_m
-  <DisplayName>k__BackingField: None
+  <DisplayName>k__BackingField: Photon
   <PriorityIndex>k__BackingField: 7
   <Price>k__BackingField:
     <CurrencyConfig>k__BackingField: {fileID: 11400000, guid: e1a0e423aeb84ee44a8439432efab00e, type: 2}
