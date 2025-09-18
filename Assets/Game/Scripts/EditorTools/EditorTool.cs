@@ -35,13 +35,13 @@ namespace EditorTools
             if (long.TryParse(SaveManager.Data.LastExitTime, out long binary1))
             {
                 DateTime lastExitTime = DateTime.FromBinary(binary1);
-                Debug.LogWarning("Last Exit Time: " + lastExitTime.ToString("HH:mm:ss"));
+                Debug.Log("Last Exit Time: " + lastExitTime.ToString("HH:mm:ss"));
             }
 
             if (long.TryParse(SaveManager.Data.EnergyLastRecoveryTime, out long binary2))
             {
                 DateTime lastRecoveryTime = DateTime.FromBinary(binary2);
-                Debug.LogWarning("Last Recovery Time: " + lastRecoveryTime.ToString("HH:mm:ss"));
+                Debug.Log("Last Recovery Time: " + lastRecoveryTime.ToString("HH:mm:ss"));
             }
         }
 
