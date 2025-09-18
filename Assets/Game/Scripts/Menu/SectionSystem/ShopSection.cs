@@ -31,7 +31,6 @@ namespace Menu.SectionSystem
         private ShopFrame[] _shopFrames;
         private BlasterConfig _selectedBlasterConfig;
         private PreviewBlaster _currentPreviewBlaster;
-        private BlasterConfig[] _blasterConfigs;
 
         public event Action<PreviewBlaster> PreviewBlasterChanged;
 
@@ -43,10 +42,12 @@ namespace Menu.SectionSystem
 
         private void Awake()
         {
-            _blasterConfigs = LoadBlasterConfigs();
+            BlasterConfig[] blasterConfigs = LoadBlasterConfigs()
+                .OrderBy(blasterConfig => blasterConfig.PriorityIndex)
+                .ToArray();
 
-            UpdateSelectedBlaster(_blasterConfigs);
-            SpawnShopFrames(_blasterConfigs);
+            UpdateSelectedBlaster(blasterConfigs);
+            SpawnShopFrames(blasterConfigs);
         }
 
         private void OnEnable()

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ID>k__BackingField: blaster_m
   <DisplayName>k__BackingField: None
+  <PriorityIndex>k__BackingField: 7
   <Price>k__BackingField:
     <CurrencyConfig>k__BackingField: {fileID: 11400000, guid: e1a0e423aeb84ee44a8439432efab00e, type: 2}
     <Count>k__BackingField: 5
@@ -23,7 +24,6 @@ MonoBehaviour:
   <AmmoAmount>k__BackingField: 5
   <ReloadDuration>k__BackingField: 1.5
   <ShotCooldown>k__BackingField: 0.625
-  <Type>k__BackingField: 2
   <Projectile>k__BackingField: {fileID: 1248414419027078620, guid: 8a65b3042a6073f40a6258e53735c18e, type: 3}
   <Prefab>k__BackingField: {fileID: 4994769968609523123, guid: c5549a87ed53e6a4d90c1a62797b644b, type: 3}
   <PreviewPrefab>k__BackingField: {fileID: -8957396865980517781, guid: bf0e930baac0b824eaf087133d9833a6, type: 3}
