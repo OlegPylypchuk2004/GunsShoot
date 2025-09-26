@@ -268,6 +268,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1200936515}
     m_Modifications:
+    - target: {fileID: 61623145520081580, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 821324596660409300, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -347,6 +351,38 @@ PrefabInstance:
     - target: {fileID: 821324596660409300, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222382686307142620, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222382686307142620, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222382686307142620, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222382686307142620, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998889063909180917, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998889063909180917, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998889063909180917, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998889063909180917, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.78431374
       objectReference: {fileID: 0}
     - target: {fileID: 8328997054501747805, guid: 519ef5644f9bb9c4097475c0cb0d4b7d, type: 3}
       propertyPath: m_Name
@@ -9953,8 +9989,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 2164260863
+  m_fontColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
