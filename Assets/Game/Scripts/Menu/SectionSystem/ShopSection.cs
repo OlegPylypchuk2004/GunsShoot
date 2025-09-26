@@ -24,6 +24,8 @@ namespace Menu.SectionSystem
         [SerializeField] private Button _buyButton;
         [SerializeField] private TextMeshProUGUI _nameTextMesh;
         [SerializeField] private TextMeshProUGUI _priceTextMesh;
+        [SerializeField] private Color _priceTextColorNormal;
+        [SerializeField] private Color _priceTextColorNotEnough;
         [SerializeField] private Image _priceCurrencyIconImage;
         [SerializeField] private TextMeshProUGUI _buyButtonTextMesh;
 
@@ -258,6 +260,15 @@ namespace Menu.SectionSystem
 
             _nameTextMesh.text = _selectedBlasterConfig.DisplayName;
             _priceTextMesh.text = $"{_selectedBlasterConfig.Price.Count}";
+
+            if (_currencyWallet.GetCount(_selectedBlasterConfig.Price.CurrencyConfig) >= _selectedBlasterConfig.Price.Count)
+            {
+                _priceTextMesh.color = _priceTextColorNormal;
+            }
+            else
+            {
+                _priceTextMesh.color = _priceTextColorNotEnough;
+            }
 
             _priceCurrencyIconImage.sprite = _selectedBlasterConfig.Price.CurrencyConfig.Icon;
             _priceCurrencyIconImage.SetNativeSize();

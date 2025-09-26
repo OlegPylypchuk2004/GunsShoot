@@ -4965,6 +4965,8 @@ MonoBehaviour:
   _buyButton: {fileID: 1668886109}
   _nameTextMesh: {fileID: 127251186}
   _priceTextMesh: {fileID: 906189636}
+  _priceTextColorNormal: {r: 1, g: 1, b: 1, a: 1}
+  _priceTextColorNotEnough: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}
   _priceCurrencyIconImage: {fileID: 1679702931}
   _buyButtonTextMesh: {fileID: 2950061318813702724}
 --- !u!1001 &1070903186
