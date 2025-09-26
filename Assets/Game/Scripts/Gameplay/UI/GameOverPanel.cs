@@ -1,4 +1,7 @@
+using GameModeSystem;
+using Global;
 using SceneManagment;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
@@ -10,6 +13,7 @@ namespace Gameplay.UI
         [SerializeField] private Button _tryAgainButton;
         [SerializeField] private Button _continueButton;
         [SerializeField, Min(0)] private int _menuSceneIndex;
+        [SerializeField] private TMP_Text _gameModeDisplayTextMesh;
 
         private SceneLoader _sceneLoader;
 
@@ -17,6 +21,12 @@ namespace Gameplay.UI
         private void Construct(SceneLoader sceneLoader)
         {
             _sceneLoader = sceneLoader;
+        }
+
+        private void Start()
+        {
+            GameModeConfig gameModeConfig = LocalGameData.GameModeConfig;
+            _gameModeDisplayTextMesh.text = $"{gameModeConfig.DisplayName}({gameModeConfig.DisplaySubtitle})";
         }
 
         protected override void OnEnable()
