@@ -17,7 +17,7 @@ MonoBehaviour:
   <PriorityIndex>k__BackingField: 3
   <Price>k__BackingField:
     <CurrencyConfig>k__BackingField: {fileID: 11400000, guid: e1a0e423aeb84ee44a8439432efab00e, type: 2}
-    <Count>k__BackingField: 1
+    <Count>k__BackingField: 375
   <Damage>k__BackingField: 25
   <Spread>k__BackingField: 0.5
   <ProjectileSpeed>k__BackingField: 22.5
