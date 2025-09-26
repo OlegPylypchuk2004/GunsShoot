@@ -19,3 +19,4 @@ MonoBehaviour:
   <EnergyPrice>k__BackingField: 1
   <Type>k__BackingField: 1
   StagesConfigFilePath: Configs/GameModeStages/Levels/game_mode_level_
+  <LevelsCount>k__BackingField: 10
