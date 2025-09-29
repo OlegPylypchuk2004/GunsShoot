@@ -32,7 +32,7 @@ namespace Gameplay.UI
 
         }
 
-        public Sequence Appear()
+        public virtual Sequence Appear()
         {
             _currentSequence?.Kill();
 
@@ -63,7 +63,7 @@ namespace Gameplay.UI
             return _currentSequence;
         }
 
-        public Sequence Disappear()
+        public virtual Sequence Disappear()
         {
             _currentSequence?.Kill();
 

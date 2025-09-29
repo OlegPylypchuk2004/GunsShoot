@@ -1,3 +1,4 @@
+using DG.Tweening;
 using GameModeSystem;
 using Global;
 using SaveSystem;
@@ -28,7 +29,45 @@ namespace Gameplay.UI
             _scoreCounter = scoreCounter;
         }
 
-        private void Start()
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            _tryAgainButton.onClick.AddListener(OnTryAgainButtonClicked);
+            _continueButton.onClick.AddListener(OnContinueButtonClicked);
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            _tryAgainButton.onClick.RemoveListener(OnTryAgainButtonClicked);
+            _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
+        }
+
+        public override Sequence Appear()
+        {
+            Sequence sequence = base.Appear();
+
+            sequence.AppendCallback(() =>
+            {
+                UpdateDisplay();
+            });
+
+            return sequence;
+        }
+
+        private void OnTryAgainButtonClicked()
+        {
+            _sceneLoader.Load(_sceneLoader.CurrentSceneIndex);
+        }
+
+        private void OnContinueButtonClicked()
+        {
+            _sceneLoader.Load(_menuSceneIndex);
+        }
+
+        private void UpdateDisplay()
         {
             GameModeConfig gameModeConfig = LocalGameData.GameModeConfig;
 
@@ -57,32 +96,6 @@ namespace Gameplay.UI
 
                     break;
             }
-        }
-
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-
-            _tryAgainButton.onClick.AddListener(OnTryAgainButtonClicked);
-            _continueButton.onClick.AddListener(OnContinueButtonClicked);
-        }
-
-        protected override void OnDisable()
-        {
-            base.OnDisable();
-
-            _tryAgainButton.onClick.RemoveListener(OnTryAgainButtonClicked);
-            _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
-        }
-
-        private void OnTryAgainButtonClicked()
-        {
-            _sceneLoader.Load(_sceneLoader.CurrentSceneIndex);
-        }
-
-        private void OnContinueButtonClicked()
-        {
-            _sceneLoader.Load(_menuSceneIndex);
         }
     }
 }
