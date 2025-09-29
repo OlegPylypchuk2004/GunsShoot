@@ -1,3 +1,4 @@
+using CurrencyManagment;
 using UnityEngine;
 
 namespace SecretCodeSystem
@@ -6,5 +7,6 @@ namespace SecretCodeSystem
     public class SecretCodeConfig : ScriptableObject
     {
         [field: SerializeField] public string Key { get; private set; }
+        [field: SerializeField] public WalletOperationData Reward { get; private set; }
     }
 }

@@ -1,8 +1,10 @@
+using CurrencyManagment;
 using SaveSystem;
 using SecretCodeSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace Menu.SectionSystem
 {
@@ -14,8 +16,15 @@ namespace Menu.SectionSystem
         [SerializeField] private Button _enterButton;
         [SerializeField] private TMP_Text _hintTextMesh;
 
+        private CurrencyWallet _currencyWallet;
         private SecretCodeConfig[] _codeConfigs;
         private SecretCodeConfig _enteredCodeConfig;
+
+        [Inject]
+        private void Construct(CurrencyWallet currencyWallet)
+        {
+            _currencyWallet = currencyWallet;
+        }
 
         private void Awake()
         {
@@ -87,13 +96,21 @@ namespace Menu.SectionSystem
                 return;
             }
 
+            if (_enteredCodeConfig == null)
+            {
+                _enteredCodeConfig = FindCode(_inputField.text);
+            }
+
+            if (_enteredCodeConfig != null && _enteredCodeConfig.Reward != null)
+            {
+                _currencyWallet.TryIncrease(_enteredCodeConfig.Reward);
+            }
+
             SaveManager.Data.EnteredSecretCodes.Add(_enteredCodeConfig.Key);
             SaveManager.Save();
 
             _inputField.text = string.Empty;
             _hintTextMesh.text = string.Empty;
-
-            //TO DO: Add reward
         }
 
         private SecretCodeConfig FindCode(string key)
