@@ -4202,6 +4202,8 @@ MonoBehaviour:
   _tryAgainButton: {fileID: 1751687011}
   _continueButton: {fileID: 2083347685}
   _menuSceneIndex: 1
+  _completeTitleTextColor: {r: 0.18039216, g: 0.8, b: 0.44313726, a: 1}
+  _titleTextMesh: {fileID: 1335584599}
   _gameModeDisplayTextMesh: {fileID: 283496674}
   _resultDisplayTextMesh: {fileID: 1407919955}
   _bestResultDisplayTextMesh: {fileID: 1671853362}

@@ -10,8 +10,11 @@ namespace GameModeSystem
     {
         private HealthManager _healthManager;
         private StageManager _stageManager;
+        private bool _isCompleted;
 
         public event Action<bool> GameOver;
+
+        public bool IsCompleted => _isCompleted;
 
         public LevelGameMode(HealthManager healthManager, StageManager stageManager)
         {
@@ -36,6 +39,8 @@ namespace GameModeSystem
         private void OnStagesAreOver()
         {
             SaveData();
+
+            _isCompleted = true;
 
             GameOver?.Invoke(true);
         }

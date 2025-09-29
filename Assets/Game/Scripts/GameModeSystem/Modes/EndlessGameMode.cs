@@ -10,8 +10,11 @@ namespace GameModeSystem.Modes
     {
         private HealthManager _healthManager;
         private ScoreCounter _scoreCounter;
+        private bool _isCompleted;
 
         public event Action<bool> GameOver;
+
+        public bool IsCompleted => _isCompleted;
 
         public EndlessGameMode(HealthManager healthManager, ScoreCounter scoreCounter)
         {

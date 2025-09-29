@@ -16,18 +16,22 @@ namespace Gameplay.UI
         [SerializeField] private Button _tryAgainButton;
         [SerializeField] private Button _continueButton;
         [SerializeField, Min(0)] private int _menuSceneIndex;
+        [SerializeField] private Color _completeTitleTextColor;
+        [SerializeField] private TMP_Text _titleTextMesh;
         [SerializeField] private TMP_Text _gameModeDisplayTextMesh;
         [SerializeField] private TMP_Text _resultDisplayTextMesh;
         [SerializeField] private TMP_Text _bestResultDisplayTextMesh;
 
         private SceneLoader _sceneLoader;
         private ScoreCounter _scoreCounter;
+        private IGameMode _gameMode;
 
         [Inject]
-        private void Construct(SceneLoader sceneLoader, ScoreCounter scoreCounter)
+        private void Construct(SceneLoader sceneLoader, ScoreCounter scoreCounter, IGameMode gameMode)
         {
             _sceneLoader = sceneLoader;
             _scoreCounter = scoreCounter;
+            _gameMode = gameMode;
         }
 
         protected override void OnEnable()
@@ -65,9 +69,39 @@ namespace Gameplay.UI
 
         private void UpdateDisplay()
         {
+            UpdateTitleDisplay();
             UpdateGameModeDisplay();
             UpdateResultDisplay();
             UpdateBestResultDisplay();
+        }
+
+        private void UpdateTitleDisplay()
+        {
+            GameModeConfig gameModeConfig = LocalGameData.GameModeConfig;
+
+            switch (gameModeConfig.Type)
+            {
+                case GameModeType.Endless:
+
+                    _titleTextMesh.text = $"Game over";
+
+                    break;
+
+                case GameModeType.Level:
+
+                    if (_gameMode.IsCompleted)
+                    {
+                        _titleTextMesh.color = _completeTitleTextColor;
+                        _titleTextMesh.text = $"Level completed";
+                    }
+                    else
+                    {
+                        _titleTextMesh.text = $"Game over";
+                    }
+
+
+                    break;
+            }
         }
 
         private void UpdateGameModeDisplay()
