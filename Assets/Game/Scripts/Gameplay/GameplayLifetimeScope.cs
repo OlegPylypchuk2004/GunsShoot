@@ -1,6 +1,7 @@
 using BlasterSystem;
 using CameraManagment;
 using ComboSystem;
+using CurrencyManagment;
 using GameModeSystem;
 using GameModeSystem.Modes;
 using Gameplay.States;
@@ -12,6 +13,7 @@ using LeTai.Asset.TranslucentImage;
 using ObstacleSystem;
 using Patterns.StateMachine;
 using PauseManagment;
+using RewardCountSystem;
 using SceneManagment;
 using ScoreSystem;
 using StageSystem;
@@ -107,6 +109,8 @@ namespace Gameplay
             _builder.Register<ObstacleContainer>(Lifetime.Singleton);
             _builder.Register<HealthManager>(Lifetime.Singleton);
             _builder.Register<ScoreCounter>(Lifetime.Singleton);
+            _builder.Register<RewardCounter>(Lifetime.Singleton);
+            _builder.Register<CurrencyWallet>(Lifetime.Singleton);
 
             _builder.Register<ComboCounter>(Lifetime.Singleton)
                 .WithParameter(_comboConfig);

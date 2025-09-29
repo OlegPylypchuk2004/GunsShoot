@@ -1,6 +1,7 @@
 using DG.Tweening;
 using GameModeSystem;
 using Global;
+using RewardCountSystem;
 using SaveSystem;
 using SceneManagment;
 using ScoreSystem;
@@ -21,17 +22,20 @@ namespace Gameplay.UI
         [SerializeField] private TMP_Text _gameModeDisplayTextMesh;
         [SerializeField] private TMP_Text _resultDisplayTextMesh;
         [SerializeField] private TMP_Text _bestResultDisplayTextMesh;
+        [SerializeField] private TMP_Text _creditsCountRewardDisplayTextMesh;
 
         private SceneLoader _sceneLoader;
         private ScoreCounter _scoreCounter;
         private IGameMode _gameMode;
+        private RewardCounter _rewardCounter;
 
         [Inject]
-        private void Construct(SceneLoader sceneLoader, ScoreCounter scoreCounter, IGameMode gameMode)
+        private void Construct(SceneLoader sceneLoader, ScoreCounter scoreCounter, IGameMode gameMode, RewardCounter rewardCounter)
         {
             _sceneLoader = sceneLoader;
             _scoreCounter = scoreCounter;
             _gameMode = gameMode;
+            _rewardCounter = rewardCounter;
         }
 
         protected override void OnEnable()
@@ -73,6 +77,7 @@ namespace Gameplay.UI
             UpdateGameModeDisplay();
             UpdateResultDisplay();
             UpdateBestResultDisplay();
+            UpdateRewardDisplay();
         }
 
         private void UpdateTitleDisplay()
@@ -178,6 +183,11 @@ namespace Gameplay.UI
 
                     break;
             }
+        }
+
+        private void UpdateRewardDisplay()
+        {
+            _creditsCountRewardDisplayTextMesh.text = $"+{_rewardCounter.CalculateReward().Count}";
         }
     }
 }

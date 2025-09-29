@@ -18,4 +18,7 @@ MonoBehaviour:
   <SceneIndex>k__BackingField: 2
   <EnergyPrice>k__BackingField: 1
   <Type>k__BackingField: 0
+  <CreditsPerBoxReward>k__BackingField:
+    <CurrencyConfig>k__BackingField: {fileID: 11400000, guid: e1a0e423aeb84ee44a8439432efab00e, type: 2}
+    <Count>k__BackingField: 2
   StagesConfigFilePath: Configs/GameModeStages/Endless/game_mode_endless_normal.json

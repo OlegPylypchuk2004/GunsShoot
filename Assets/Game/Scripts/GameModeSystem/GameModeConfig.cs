@@ -1,3 +1,4 @@
+using CurrencyManagment;
 using UnityEngine;
 
 namespace GameModeSystem
@@ -10,6 +11,7 @@ namespace GameModeSystem
         [field: SerializeField] public int SceneIndex { get; private set; }
         [field: SerializeField, Min(0)] public int EnergyPrice { get; private set; }
         [field: SerializeField] public GameModeType Type { get; private set; }
+        [field: SerializeField] public WalletOperationData CreditsPerBoxReward { get; private set; }
 
         [SerializeField] protected string StagesConfigFilePath;
 
