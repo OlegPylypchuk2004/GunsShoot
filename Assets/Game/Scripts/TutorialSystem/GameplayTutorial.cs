@@ -12,6 +12,7 @@ namespace TutorialSystem
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField, Min(0f)] private float _disappearDuration;
         [SerializeField] private Ease _disappearEase;
+        [SerializeField] private Animator _handAnimator;
 
         private PreGameplayState _preGameplayState;
         private IInputHandler _inputHandler;
@@ -28,6 +29,8 @@ namespace TutorialSystem
         private void Start()
         {
             _preGameplayState.GameReady += OnGameReady;
+
+            _handAnimator.SetTrigger("Start");
         }
 
         private void OnDestroy()
@@ -48,6 +51,9 @@ namespace TutorialSystem
         private IEnumerator WaitUntilAimCoroutine()
         {
             yield return new WaitUntil(() => _inputHandler.IsAim);
+
+            _handAnimator.SetTrigger("Stop");
+            _handAnimator.gameObject.SetActive(false);
 
             Disappear();
         }
