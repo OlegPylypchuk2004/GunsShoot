@@ -1,3 +1,4 @@
+using BlasterSystem;
 using ObstacleSystem;
 using System;
 
@@ -6,6 +7,7 @@ namespace ComboSystem
     public class ComboCounter
     {
         private ObstacleContainer _obstacleContainer;
+        private BlasterHolder _blasterHolder;
 
         private ComboStageData[] _stages;
         private int _stageIndex;
@@ -16,9 +18,11 @@ namespace ComboSystem
         public event Action<int> ComboChanged;
         public event Action<float> TimeChanged;
 
-        public ComboCounter(ObstacleContainer obstacleContainer, ComboConfig comboConfig)
+        public ComboCounter(ObstacleContainer obstacleContainer, BlasterHolder blasterHolder, ComboConfig comboConfig)
         {
             _obstacleContainer = obstacleContainer;
+            _blasterHolder = blasterHolder;
+
             _stages = comboConfig.Stages;
 
             _obstacleContainer.ObstacleAdded += OnObstacleAdded;
@@ -92,6 +96,11 @@ namespace ComboSystem
         {
             if (_time > 0f)
             {
+                if (_blasterHolder.Blaster != null && _blasterHolder.Blaster.State != BlasterState.ReadyToShoot)
+                {
+                    return;
+                }
+
                 Time -= UnityEngine.Time.deltaTime;
 
                 if (_time <= 0f)
