@@ -18,6 +18,7 @@ namespace Gameplay.UI
         [SerializeField, Min(0)] private int _menuSceneIndex;
         [SerializeField] private TMP_Text _gameModeDisplayTextMesh;
         [SerializeField] private TMP_Text _resultDisplayTextMesh;
+        [SerializeField] private TMP_Text _bestResultDisplayTextMesh;
 
         private SceneLoader _sceneLoader;
         private ScoreCounter _scoreCounter;
@@ -47,14 +48,9 @@ namespace Gameplay.UI
 
         public override Sequence Appear()
         {
-            Sequence sequence = base.Appear();
+            UpdateDisplay();
 
-            sequence.AppendCallback(() =>
-            {
-                UpdateDisplay();
-            });
-
-            return sequence;
+            return base.Appear();
         }
 
         private void OnTryAgainButtonClicked()
@@ -69,6 +65,13 @@ namespace Gameplay.UI
 
         private void UpdateDisplay()
         {
+            UpdateGameModeDisplay();
+            UpdateResultDisplay();
+            UpdateBestResultDisplay();
+        }
+
+        private void UpdateGameModeDisplay()
+        {
             GameModeConfig gameModeConfig = LocalGameData.GameModeConfig;
 
             switch (gameModeConfig.Type)
@@ -76,13 +79,10 @@ namespace Gameplay.UI
                 case GameModeType.Endless:
 
                     _gameModeDisplayTextMesh.text = $"{gameModeConfig.DisplayName}({gameModeConfig.DisplaySubtitle})";
-                    _resultDisplayTextMesh.text = $"{_scoreCounter.Score}";
 
                     break;
 
                 case GameModeType.Level:
-
-                    _gameModeDisplayTextMesh.text = $"{gameModeConfig.DisplayName}";
 
                     int levelNumber = 1;
                     SaveData saveData = SaveManager.Data;
@@ -92,7 +92,55 @@ namespace Gameplay.UI
                         levelNumber = saveData.GameModes[gameModeConfig.ID];
                     }
 
-                    _resultDisplayTextMesh.text = $"{levelNumber}";
+                    _gameModeDisplayTextMesh.text = $"{gameModeConfig.DisplayName} {levelNumber}";
+
+                    break;
+            }
+        }
+
+        private void UpdateResultDisplay()
+        {
+            GameModeConfig gameModeConfig = LocalGameData.GameModeConfig;
+
+            switch (gameModeConfig.Type)
+            {
+                case GameModeType.Endless:
+
+                    _resultDisplayTextMesh.text = $"{_scoreCounter.Score}";
+
+                    break;
+
+                case GameModeType.Level:
+
+                    _resultDisplayTextMesh.text = $"-";
+
+                    break;
+            }
+        }
+
+        private void UpdateBestResultDisplay()
+        {
+            GameModeConfig gameModeConfig = LocalGameData.GameModeConfig;
+
+            switch (gameModeConfig.Type)
+            {
+                case GameModeType.Endless:
+
+                    int bestResult = _scoreCounter.Score;
+                    SaveData saveData = SaveManager.Data;
+
+                    if (saveData.GameModes.ContainsKey(gameModeConfig.ID))
+                    {
+                        bestResult = saveData.GameModes[gameModeConfig.ID];
+                    }
+
+                    _bestResultDisplayTextMesh.text = $"{bestResult}";
+
+                    break;
+
+                case GameModeType.Level:
+
+                    _bestResultDisplayTextMesh.text = $"-";
 
                     break;
             }
