@@ -123,7 +123,7 @@ namespace Gameplay.UI
 
                     if (saveData.GameModes.ContainsKey(gameModeConfig.ID))
                     {
-                        levelNumber = saveData.GameModes[gameModeConfig.ID];
+                        levelNumber = saveData.GameModes[gameModeConfig.ID] - 1;
                     }
 
                     _gameModeDisplayTextMesh.text = $"{gameModeConfig.DisplayName} {levelNumber}";
