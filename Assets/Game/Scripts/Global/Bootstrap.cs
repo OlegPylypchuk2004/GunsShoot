@@ -1,10 +1,12 @@
 using BlasterSystem;
 using CurrencyManagment;
+using DG.Tweening;
 using GameModeSystem;
 using SaveSystem;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using VContainer;
 
 namespace Global
@@ -14,6 +16,9 @@ namespace Global
         [SerializeField] private WalletOperationData[] _initialCurrency;
         [SerializeField] private BlasterConfig[] _initialBoughtBlasters;
         [SerializeField] private BlasterConfig _initialSelectedBlaster;
+        [SerializeField] private Image _backgroundImage;
+        [SerializeField, Min(0f)] private float _backgroundImageDisappearDuration;
+        [SerializeField] private Ease _backgroundImageDisappearEase;
 
         private SaveData _saveData;
         private CurrencyWallet _currencyWallet;
@@ -45,7 +50,11 @@ namespace Global
                 SaveManager.Save();
             }
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            DisappearBackground()
+                .OnKill(() =>
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                });
         }
 
         private void AddInitialCurrency()
@@ -105,6 +114,15 @@ namespace Global
 
             SaveManager.Data.LastExitTime = nowTime.ToBinary().ToString();
             SaveManager.Data.EnergyLastRecoveryTime = nowTime.ToBinary().ToString();
+        }
+
+        private Tween DisappearBackground()
+        {
+            _backgroundImage.gameObject.SetActive(true);
+
+            return _backgroundImage.DOFade(0f, _backgroundImageDisappearDuration)
+                .SetEase(_backgroundImageDisappearEase)
+                .SetLink(gameObject);
         }
     }
 }
