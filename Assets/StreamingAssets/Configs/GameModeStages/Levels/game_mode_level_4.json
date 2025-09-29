@@ -1,0 +1,100 @@
+{
+	"Stages": [
+		{
+			"ObstacleLaunchForceMultiplier": 1.25,
+			"ObstacleGravityMultiplier": 1.5,
+			"MinObstaclesCount": 2,
+			"MaxObstaclesCount": 2,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 1.375,
+			"ObstacleGravityMultiplier": 1.75,
+			"MinObstaclesCount": 2,
+			"MaxObstaclesCount": 3,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 1.5,
+			"ObstacleGravityMultiplier": 2,
+			"MinObstaclesCount": 2,
+			"MaxObstaclesCount": 3,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 1.625,
+			"ObstacleGravityMultiplier": 2.25,
+			"MinObstaclesCount": 2,
+			"MaxObstaclesCount": 3,
+			"SpawnBonusChance": 100,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 1.75,
+			"ObstacleGravityMultiplier": 2.5,
+			"MinObstaclesCount": 2,
+			"MaxObstaclesCount": 4,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 1.875,
+			"ObstacleGravityMultiplier": 2.75,
+			"MinObstaclesCount": 2,
+			"MaxObstaclesCount": 4,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 2,
+			"ObstacleGravityMultiplier": 3,
+			"MinObstaclesCount": 2,
+			"MaxObstaclesCount": 4,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 2.125,
+			"ObstacleGravityMultiplier": 3.25,
+			"MinObstaclesCount": 3,
+			"MaxObstaclesCount": 4,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 2.25,
+			"ObstacleGravityMultiplier": 3.5,
+			"MinObstaclesCount": 3,
+			"MaxObstaclesCount": 4,
+			"SpawnBonusChance": 100,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 2.375,
+			"ObstacleGravityMultiplier": 3.75,
+			"MinObstaclesCount": 3,
+			"MaxObstaclesCount": 4,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 2.5,
+			"ObstacleGravityMultiplier": 4,
+			"MinObstaclesCount": 3,
+			"MaxObstaclesCount": 5,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 2.625,
+			"ObstacleGravityMultiplier": 4.25,
+			"MinObstaclesCount": 3,
+			"MaxObstaclesCount": 5,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		}
+	]
+}
