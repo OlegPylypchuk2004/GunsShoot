@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2942bd44baaa764a95ad2ed47c41bcb, type: 3}
+  m_Name: energy_config
+  m_EditorClassIdentifier: 
+  <EnergyCurrencyConfig>k__BackingField: {fileID: 11400000, guid: 9f7ab3066f2edfc4984934f83b60ccea, type: 2}
+  <Delay>k__BackingField: 600
+  <IncreaseValue>k__BackingField: 1

@@ -1,0 +1,220 @@
+{
+	"Stages": [
+		{
+			"ObstacleLaunchForceMultiplier": 3,
+			"ObstacleGravityMultiplier": 4,
+			"MinObstaclesCount": 7,
+			"MaxObstaclesCount": 8,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.05,
+			"ObstacleGravityMultiplier": 4.1,
+			"MinObstaclesCount": 7,
+			"MaxObstaclesCount": 8,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.1,
+			"ObstacleGravityMultiplier": 4.2,
+			"MinObstaclesCount": 8,
+			"MaxObstaclesCount": 9,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.15,
+			"ObstacleGravityMultiplier": 4.3,
+			"MinObstaclesCount": 8,
+			"MaxObstaclesCount": 9,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.2,
+			"ObstacleGravityMultiplier": 4.4,
+			"MinObstaclesCount": 9,
+			"MaxObstaclesCount": 10,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.25,
+			"ObstacleGravityMultiplier": 4.5,
+			"MinObstaclesCount": 9,
+			"MaxObstaclesCount": 10,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.3,
+			"ObstacleGravityMultiplier": 4.6,
+			"MinObstaclesCount": 10,
+			"MaxObstaclesCount": 11,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.35,
+			"ObstacleGravityMultiplier": 4.7,
+			"MinObstaclesCount": 10,
+			"MaxObstaclesCount": 11,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.4,
+			"ObstacleGravityMultiplier": 4.8,
+			"MinObstaclesCount": 11,
+			"MaxObstaclesCount": 12,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.45,
+			"ObstacleGravityMultiplier": 4.9,
+			"MinObstaclesCount": 11,
+			"MaxObstaclesCount": 12,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.5,
+			"ObstacleGravityMultiplier": 5,
+			"MinObstaclesCount": 12,
+			"MaxObstaclesCount": 13,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.55,
+			"ObstacleGravityMultiplier": 5.1,
+			"MinObstaclesCount": 12,
+			"MaxObstaclesCount": 13,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.6,
+			"ObstacleGravityMultiplier": 5.2,
+			"MinObstaclesCount": 13,
+			"MaxObstaclesCount": 14,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.65,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 13,
+			"MaxObstaclesCount": 14,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.7,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 14,
+			"MaxObstaclesCount": 15,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.75,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 14,
+			"MaxObstaclesCount": 15,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.8,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 15,
+			"MaxObstaclesCount": 16,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.85,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 15,
+			"MaxObstaclesCount": 16,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.9,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 16,
+			"MaxObstaclesCount": 17,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 3.95,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 16,
+			"MaxObstaclesCount": 17,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 4,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 17,
+			"MaxObstaclesCount": 18,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 4.05,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 17,
+			"MaxObstaclesCount": 18,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 4.1,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 18,
+			"MaxObstaclesCount": 19,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 4.15,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 18,
+			"MaxObstaclesCount": 19,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 4.2,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 19,
+			"MaxObstaclesCount": 20,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 4.25,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 19,
+			"MaxObstaclesCount": 20,
+			"SpawnBonusChance": 100,
+			"SpawnGrenadeChance": 0
+		},
+		{
+			"ObstacleLaunchForceMultiplier": 4.3,
+			"ObstacleGravityMultiplier": 5.25,
+			"MinObstaclesCount": 20,
+			"MaxObstaclesCount": 21,
+			"SpawnBonusChance": 0,
+			"SpawnGrenadeChance": 0
+		}
+	]
+}

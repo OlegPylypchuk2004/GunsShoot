@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc8af18e823f2e409788c49df460a69, type: 3}
+  m_Name: blaster_h
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: blaster_h
+  <DisplayName>k__BackingField: Solaris
+  <PriorityIndex>k__BackingField: 5
+  <Price>k__BackingField:
+    <CurrencyConfig>k__BackingField: {fileID: 11400000, guid: e1a0e423aeb84ee44a8439432efab00e, type: 2}
+    <Count>k__BackingField: 650
+  <Damage>k__BackingField: 4
+  <Spread>k__BackingField: 0.75
+  <ProjectileSpeed>k__BackingField: 0
+  <AmmoAmount>k__BackingField: 25
+  <ReloadDuration>k__BackingField: 1.25
+  <ShotCooldown>k__BackingField: 0.125
+  <Projectile>k__BackingField: {fileID: 1248414419027078620, guid: 44c2f6e7731bbfe4f9d8112b3e1d791b, type: 3}
+  <Prefab>k__BackingField: {fileID: 4994769968609523123, guid: e74cec96f5ea4c540acabd3d255d513e, type: 3}
+  <PreviewPrefab>k__BackingField: {fileID: 2995091150493329474, guid: 52809049a9f1b8f4cb151aee190a0f5f, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 6d08092d74ecd6a41bdad3a0759c0617, type: 3}
+  <LockedIcon>k__BackingField: {fileID: 21300000, guid: 41e694a670d451040bd150fa8138f7c0, type: 3}
