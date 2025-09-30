@@ -436,7 +436,7 @@ PrefabInstance:
     - target: {fileID: 3835682991607952872, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
       propertyPath: _shootSound
       value: 
-      objectReference: {fileID: 8300000, guid: 7a15fc41b1d885940a382f983eb3f01b, type: 3}
+      objectReference: {fileID: 8300000, guid: ffa45816b43df074790e9986c5b85b3c, type: 3}
     - target: {fileID: 5026207917933447821, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
       propertyPath: m_Name
       value: SoundPlayer
