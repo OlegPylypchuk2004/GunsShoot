@@ -415,6 +415,7 @@ Transform:
   - {fileID: 9003059480460809289}
   - {fileID: 4489261239451833498}
   - {fileID: 1954812738500851015}
+  - {fileID: 169778721011988153}
   m_Father: {fileID: 5562601645176089751}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &5172518930889570728
@@ -562,6 +563,84 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 203325144289393354, guid: b1ed90ad257cd6b4c8192e095fbcc1b9, type: 3}
   m_PrefabInstance: {fileID: 1869760136638517133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6830868092275262661
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8099619591038760461}
+    m_Modifications:
+    - target: {fileID: 3835682991607952872, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: _blaster
+      value: 
+      objectReference: {fileID: 4994769968609523123}
+    - target: {fileID: 3835682991607952872, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: _shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ffa45816b43df074790e9986c5b85b3c, type: 3}
+    - target: {fileID: 5026207917933447821, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_Name
+      value: SoundPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6950665030191539802, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: _blaster
+      value: 
+      objectReference: {fileID: 4994769968609523123}
+    - target: {fileID: 6950665030191539802, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+      propertyPath: _reloadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ace79a9e0d4a65547af6715539b6e0c0, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+--- !u!4 &169778721011988153 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6671856959643775612, guid: 8529ac93e753fb44798e07b3548dc8e2, type: 3}
+  m_PrefabInstance: {fileID: 6830868092275262661}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7217204515780650702
 PrefabInstance:
