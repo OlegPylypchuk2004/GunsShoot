@@ -106,6 +106,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 7040614429003829803}
   _collider: {fileID: 3454986054652005346}
   _meshTransform: {fileID: 7642580325283420003}
+  _maxYPosition: 2.5
 --- !u!114 &4782777836804002868
 MonoBehaviour:
   m_ObjectHideFlags: 0

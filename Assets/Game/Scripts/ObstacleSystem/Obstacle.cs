@@ -14,6 +14,7 @@ namespace ObstacleSystem
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private Collider _collider;
         [SerializeField] private Transform _meshTransform;
+        [SerializeField] private float _maxYPosition;
 
         private float _gravityMultiplier;
         private int _health;
@@ -64,6 +65,14 @@ namespace ObstacleSystem
         {
             Vector3 gravity = Physics.gravity * _gravityMultiplier;
             _rigidbody.AddForce(gravity, ForceMode.Acceleration);
+
+            if (_rigidbody.position.y >= _maxYPosition && _rigidbody.velocity.y > 0f)
+            {
+                Vector3 targetVelocity = _rigidbody.velocity;
+                targetVelocity.y = 0f;
+
+                _rigidbody.velocity = targetVelocity;
+            }
         }
 
         public virtual void Launch(Vector3 direction, float gravityMultiplier)
