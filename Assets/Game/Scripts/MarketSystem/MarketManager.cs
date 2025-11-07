@@ -20,23 +20,23 @@ namespace MarketSystem
         {
             switch (itemID)
             {
-                case "starter_pack":
+                case "starter_pack_1":
                     _currencyWallet.TryIncrease(new WalletOperationData(_currencyConfig, 500));
                     break;
 
-                case "medium_pack":
+                case "medium_pack_1":
                     _currencyWallet.TryIncrease(new WalletOperationData(_currencyConfig, 2750));
                     break;
 
-                case "big_pack":
+                case "big_pack_1":
                     _currencyWallet.TryIncrease(new WalletOperationData(_currencyConfig, 5500));
                     break;
 
-                case "mega_pack":
+                case "mega_pack_1":
                     _currencyWallet.TryIncrease(new WalletOperationData(_currencyConfig, 8250));
                     break;
 
-                case "ultra_pack":
+                case "ultra_pack_1":
                     _currencyWallet.TryIncrease(new WalletOperationData(_currencyConfig, 12500));
                     break;
             }
