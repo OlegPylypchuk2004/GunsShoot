@@ -2026,6 +2026,38 @@ PrefabInstance:
       propertyPath: productId
       value: medium_pack
       objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1273672815}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnOrderConfirmed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarketSystem.MarketManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: medium_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: m_text
       value: Medium Pack
@@ -5209,7 +5241,6 @@ RectTransform:
   m_Children:
   - {fileID: 339928028}
   - {fileID: 1355520278}
-  - {fileID: 1270592464}
   - {fileID: 558522670}
   - {fileID: 328570109}
   m_Father: {fileID: 1153097770}
@@ -5380,6 +5411,38 @@ PrefabInstance:
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: productId
       value: big_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1273672815}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnOrderConfirmed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarketSystem.MarketManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: big_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: m_text
@@ -6010,6 +6073,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1270592464}
   - {fileID: 986607681}
   m_Father: {fileID: 1219873435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6436,6 +6500,38 @@ PrefabInstance:
       propertyPath: productId
       value: mega_pack
       objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1273672815}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnOrderConfirmed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarketSystem.MarketManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: mega_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: m_text
       value: Mega Pack
@@ -6477,10 +6573,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2027076649}
-  m_Father: {fileID: 986607681}
+  m_Father: {fileID: 1153097770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -6527,6 +6623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1273672813}
   - component: {fileID: 1273672814}
+  - component: {fileID: 1273672815}
   m_Layer: 0
   m_Name: Market
   m_TagString: Untagged
@@ -6571,6 +6668,19 @@ MonoBehaviour:
   _disappearUIEase: 5
   _backButton: {fileID: 339928029}
   _previousSection: {fileID: 2062103001}
+--- !u!114 &1273672815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273672812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba56c66887f1b534aadec80708685b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currencyConfig: {fileID: 11400000, guid: e1a0e423aeb84ee44a8439432efab00e, type: 2}
 --- !u!1 &1299071123
 GameObject:
   m_ObjectHideFlags: 0
@@ -7303,6 +7413,38 @@ PrefabInstance:
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: productId
       value: ultra_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1273672815}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnOrderConfirmed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarketSystem.MarketManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: ultra_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: m_text
@@ -9224,6 +9366,7 @@ MonoBehaviour:
   - {fileID: 328570110}
   - {fileID: 2062102999}
   - {fileID: 1065719071}
+  - {fileID: 1273672812}
   - {fileID: 1119927453}
   - {fileID: 1693890243}
   - {fileID: 1417568702}
@@ -11033,6 +11176,38 @@ PrefabInstance:
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: productId
       value: starter_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1273672815}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnOrderConfirmed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarketSystem.MarketManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: starter_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: m_text
