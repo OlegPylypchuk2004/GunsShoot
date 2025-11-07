@@ -4381,6 +4381,7 @@ MonoBehaviour:
   _resultDisplayTextMesh: {fileID: 1407919955}
   _bestResultDisplayTextMesh: {fileID: 1671853362}
   _creditsCountRewardDisplayTextMesh: {fileID: 1171780805}
+  _energyCurrencyConfig: {fileID: 11400000, guid: 9f7ab3066f2edfc4984934f83b60ccea, type: 2}
 --- !u!1 &1335584597
 GameObject:
   m_ObjectHideFlags: 0
