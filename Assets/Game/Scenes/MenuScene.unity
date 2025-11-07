@@ -2024,7 +2024,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 838e06a04aa8d474d9da29ee9edf702e, type: 3}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: productId
-      value: medium_pack_1
+      value: medium_pack_2025
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.size
@@ -2052,7 +2052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: medium_pack_1
+      value: medium_pack_2025
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -5410,7 +5410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: productId
-      value: big_pack_1
+      value: big_pack_2025
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.size
@@ -5438,7 +5438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: big_pack_1
+      value: big_pack_2025
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -6498,7 +6498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: productId
-      value: mega_pack_1
+      value: mega_pack_2025
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.size
@@ -6526,7 +6526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: mega_pack_1
+      value: mega_pack_2025
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -7412,7 +7412,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: bfe174d2ccf8f034aa7fe352a545854a, type: 3}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: productId
-      value: ultra_pack_1
+      value: ultra_pack_2025
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.size
@@ -7440,7 +7440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ultra_pack_1
+      value: ultra_pack_2025
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -11175,7 +11175,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 838e06a04aa8d474d9da29ee9edf702e, type: 3}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: productId
-      value: starter_pack_1
+      value: starter_pack_2025
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.size
@@ -11203,7 +11203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: starter_pack_1
+      value: starter_pack_2025
       objectReference: {fileID: 0}
     - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: onOrderConfirmed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
