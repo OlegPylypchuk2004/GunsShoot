@@ -2010,10 +2010,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: MarketButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2676390451016324243, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: 4.99$
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340036975698052853, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: +2750
+      objectReference: {fileID: 0}
     - target: {fileID: 5403385511443906235, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 838e06a04aa8d474d9da29ee9edf702e, type: 3}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: productId
+      value: medium_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: Medium Pack
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5353,6 +5369,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MarketButton (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2676390451016324243, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: 9.99$
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340036975698052853, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: +5500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: productId
+      value: big_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: Big Pack
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6317,6 +6349,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MarketButton (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2676390451016324243, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: 14.99$
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340036975698052853, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: +8250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: productId
+      value: mega_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: Mega Pack
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7165,10 +7213,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: MarketButton (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2676390451016324243, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: 24.99$
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340036975698052853, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: +12500
+      objectReference: {fileID: 0}
     - target: {fileID: 5403385511443906235, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: bfe174d2ccf8f034aa7fe352a545854a, type: 3}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: productId
+      value: ultra_pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: m_text
+      value: Ultra Pack
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10635,11 +10699,13 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 838e06a04aa8d474d9da29ee9edf702e, type: 3}
+    - target: {fileID: 6959851471399479073, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
+      propertyPath: productId
+      value: starter_pack
+      objectReference: {fileID: 0}
     - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: m_text
-      value: 'Pack
-
-'
+      value: Starter Pack
       objectReference: {fileID: 0}
     - target: {fileID: 8119644027240217923, guid: 9526b4c58b027224d9a885c01ca21260, type: 3}
       propertyPath: m_fontSize
