@@ -18,6 +18,8 @@ namespace Menu.SectionSystem
         [SerializeField] private MarketSection _marketSection;
         [SerializeField] private GameModeButton[] _gameModeButtons;
         [SerializeField] private CurrencyConfig _energyCurrencyConfig;
+        [SerializeField] private Button _rateButton;
+        [SerializeField] private RateSection _rateSection;
 
         private SceneLoader _sceneLoader;
         private CurrencyWallet _currencyWallet;
@@ -33,6 +35,7 @@ namespace Menu.SectionSystem
         {
             _shopButton.onClick.AddListener(OnShopButtonClicked);
             _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
+            _rateButton.onClick.AddListener(OnRateButtonClicked);
 
             foreach (Button marketButton in _marketButtons)
             {
@@ -49,6 +52,7 @@ namespace Menu.SectionSystem
         {
             _shopButton.onClick.RemoveListener(OnShopButtonClicked);
             _settingsButton.onClick.RemoveListener(OnSettingsButtonClicked);
+            _rateButton.onClick.RemoveListener(OnRateButtonClicked);
 
             foreach (Button marketButton in _marketButtons)
             {
@@ -74,6 +78,11 @@ namespace Menu.SectionSystem
         private void OnMarketButtonClicked()
         {
             _sectionChanger.Change(_marketSection);
+        }
+
+        private void OnRateButtonClicked()
+        {
+            _sectionChanger.Change(_rateSection);
         }
 
         private void OnGameModeSelected(GameModeConfig gameModeConfig)

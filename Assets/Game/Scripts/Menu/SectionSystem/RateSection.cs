@@ -42,8 +42,8 @@ namespace Menu.SectionSystem
         {
             bool isRewardClaimed = SaveManager.Data.IsRateRewardClaimed;
 
-            _claimedDisplay.gameObject.SetActive(!isRewardClaimed);
-            _unclaimedDisplay.gameObject.SetActive(isRewardClaimed);
+            _claimedDisplay.gameObject.SetActive(isRewardClaimed);
+            _unclaimedDisplay.gameObject.SetActive(!isRewardClaimed);
         }
 
         private void OnBackButtonClicked()
