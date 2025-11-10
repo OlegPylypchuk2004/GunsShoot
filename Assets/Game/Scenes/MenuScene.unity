@@ -8124,7 +8124,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +250
+  m_text: +50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41452616eadfc9d4fa2d29b10df282b3, type: 2}
   m_sharedMaterial: {fileID: -899510591713818393, guid: 41452616eadfc9d4fa2d29b10df282b3, type: 2}
@@ -10349,7 +10349,7 @@ MonoBehaviour:
   _unclaimedDisplay: {fileID: 984867488}
   _rewardData:
     <CurrencyConfig>k__BackingField: {fileID: 11400000, guid: e1a0e423aeb84ee44a8439432efab00e, type: 2}
-    <Count>k__BackingField: 250
+    <Count>k__BackingField: 50
   _previousSection: {fileID: 2062103001}
 --- !u!1 &1523801577
 GameObject:
