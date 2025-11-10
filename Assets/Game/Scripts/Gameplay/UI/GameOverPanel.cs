@@ -139,6 +139,11 @@ namespace Gameplay.UI
                         levelNumber = saveData.GameModes[gameModeConfig.ID] - 1;
                     }
 
+                    if (!_gameMode.IsCompleted)
+                    {
+                        levelNumber++;
+                    }
+
                     _gameModeDisplayTextMesh.text = $"{gameModeConfig.DisplayName} {levelNumber}";
 
                     break;
