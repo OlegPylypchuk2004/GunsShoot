@@ -271,9 +271,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blaster: {fileID: 4994769968609523123}
   _meshTransform: {fileID: 4986511578126233917}
-  _punchPositionForce: 0.1
-  _punchRotationForce: 0.125
-  _duration: 0.125
+  _punchPositionForce: 0.05
+  _punchRotationForce: 0.075
+  _duration: 0.075
   _ease: 6
 --- !u!1 &5895081627772578305
 GameObject:
@@ -300,7 +300,7 @@ Transform:
   m_GameObject: {fileID: 5895081627772578305}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.05, z: -0.15000004}
+  m_LocalPosition: {x: 0, y: -0.075, z: -0.15000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -357,6 +357,7 @@ MonoBehaviour:
   _shootPoints:
   - {fileID: 5111457769825561240}
   - {fileID: 7167214437226932817}
+  _isSalvo: 0
 --- !u!114 &-1365144499267950865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,7 +653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6140501399105593008, guid: b1ed90ad257cd6b4c8192e095fbcc1b9, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: -0.025
+      value: -0.125
       objectReference: {fileID: 0}
     - target: {fileID: 6140501399105593008, guid: b1ed90ad257cd6b4c8192e095fbcc1b9, type: 3}
       propertyPath: m_Positions.Array.data[0].z
@@ -660,7 +661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6140501399105593008, guid: b1ed90ad257cd6b4c8192e095fbcc1b9, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: -0.025
+      value: -0.125
       objectReference: {fileID: 0}
     - target: {fileID: 6140501399105593008, guid: b1ed90ad257cd6b4c8192e095fbcc1b9, type: 3}
       propertyPath: m_Positions.Array.data[1].z

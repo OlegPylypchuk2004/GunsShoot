@@ -316,6 +316,7 @@ MonoBehaviour:
   - {fileID: 8644767910128320067}
   - {fileID: 5066661562572958157}
   - {fileID: 3576418449390445584}
+  _isSalvo: 1
 --- !u!114 &-6391580102795631929
 MonoBehaviour:
   m_ObjectHideFlags: 0
