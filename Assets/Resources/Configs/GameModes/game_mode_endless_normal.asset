@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: game_mode_endless_normal
   m_EditorClassIdentifier: 
   <ID>k__BackingField: game_mode_endless_normal
-  <DisplayName>k__BackingField: Endless
-  <DisplaySubtitle>k__BackingField: Normal
+  <DisplayName>k__BackingField: Normal
+  <DisplaySubtitle>k__BackingField: Endless
   <SceneIndex>k__BackingField: 2
   <EnergyPrice>k__BackingField: 1
   <Type>k__BackingField: 0

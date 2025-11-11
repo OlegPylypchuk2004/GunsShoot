@@ -1,3 +1,4 @@
+using CurrencyManagment;
 using DG.Tweening;
 using GameModeSystem;
 using Global;
@@ -23,19 +24,22 @@ namespace Gameplay.UI
         [SerializeField] private TMP_Text _resultDisplayTextMesh;
         [SerializeField] private TMP_Text _bestResultDisplayTextMesh;
         [SerializeField] private TMP_Text _creditsCountRewardDisplayTextMesh;
+        [SerializeField] private CurrencyConfig _energyCurrencyConfig;
 
         private SceneLoader _sceneLoader;
         private ScoreCounter _scoreCounter;
         private IGameMode _gameMode;
         private RewardCounter _rewardCounter;
+        private CurrencyWallet _currencyWallet;
 
         [Inject]
-        private void Construct(SceneLoader sceneLoader, ScoreCounter scoreCounter, IGameMode gameMode, RewardCounter rewardCounter)
+        private void Construct(SceneLoader sceneLoader, ScoreCounter scoreCounter, IGameMode gameMode, RewardCounter rewardCounter, CurrencyWallet currencyWallet)
         {
             _sceneLoader = sceneLoader;
             _scoreCounter = scoreCounter;
             _gameMode = gameMode;
             _rewardCounter = rewardCounter;
+            _currencyWallet = currencyWallet;
         }
 
         protected override void OnEnable()
@@ -44,6 +48,8 @@ namespace Gameplay.UI
 
             _tryAgainButton.onClick.AddListener(OnTryAgainButtonClicked);
             _continueButton.onClick.AddListener(OnContinueButtonClicked);
+
+            _tryAgainButton.gameObject.SetActive(_currencyWallet.GetCount(_energyCurrencyConfig) >= LocalGameData.GameModeConfig.EnergyPrice);
         }
 
         protected override void OnDisable()
@@ -63,7 +69,10 @@ namespace Gameplay.UI
 
         private void OnTryAgainButtonClicked()
         {
-            _sceneLoader.Load(_sceneLoader.CurrentSceneIndex);
+            if (_currencyWallet.TryReduce(new WalletOperationData(_energyCurrencyConfig, LocalGameData.GameModeConfig.EnergyPrice)))
+            {
+                _sceneLoader.Load(_sceneLoader.CurrentSceneIndex);
+            }
         }
 
         private void OnContinueButtonClicked()
@@ -104,7 +113,6 @@ namespace Gameplay.UI
                         _titleTextMesh.text = $"Game over";
                     }
 
-
                     break;
             }
         }
@@ -129,6 +137,11 @@ namespace Gameplay.UI
                     if (saveData.GameModes.ContainsKey(gameModeConfig.ID))
                     {
                         levelNumber = saveData.GameModes[gameModeConfig.ID] - 1;
+                    }
+
+                    if (!_gameMode.IsCompleted)
+                    {
+                        levelNumber++;
                     }
 
                     _gameModeDisplayTextMesh.text = $"{gameModeConfig.DisplayName} {levelNumber}";

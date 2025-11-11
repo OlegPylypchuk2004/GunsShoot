@@ -74,63 +74,63 @@
 		},
 		{
 			"ObstacleLaunchForceMultiplier": 2.125,
-			"ObstacleGravityMultiplier": 3.5,
+			"ObstacleGravityMultiplier": 3.25,
 			"MinObstaclesCount": 3,
 			"MaxObstaclesCount": 4,
 			"SpawnBonusChance": 0,
 			"SpawnGrenadeChance": 0
 		},
 		{
-			"ObstacleLaunchForceMultiplier": 2.25,
-			"ObstacleGravityMultiplier": 3.75,
+			"ObstacleLaunchForceMultiplier": 2.125,
+			"ObstacleGravityMultiplier": 3.25,
 			"MinObstaclesCount": 3,
 			"MaxObstaclesCount": 4,
 			"SpawnBonusChance": 0,
 			"SpawnGrenadeChance": 0
 		},
 		{
-			"ObstacleLaunchForceMultiplier": 2.375,
-			"ObstacleGravityMultiplier": 4,
+			"ObstacleLaunchForceMultiplier": 2.125,
+			"ObstacleGravityMultiplier": 3.25,
 			"MinObstaclesCount": 3,
 			"MaxObstaclesCount": 4,
 			"SpawnBonusChance": 0,
 			"SpawnGrenadeChance": 0
 		},
 		{
-			"ObstacleLaunchForceMultiplier": 2.5,
-			"ObstacleGravityMultiplier": 4.25,
+			"ObstacleLaunchForceMultiplier": 2.125,
+			"ObstacleGravityMultiplier": 3.25,
 			"MinObstaclesCount": 3,
 			"MaxObstaclesCount": 5,
 			"SpawnBonusChance": 0,
 			"SpawnGrenadeChance": 0
 		},
 		{
-			"ObstacleLaunchForceMultiplier": 2.625,
-			"ObstacleGravityMultiplier": 4.5,
+			"ObstacleLaunchForceMultiplier": 2.125,
+			"ObstacleGravityMultiplier": 3.25,
 			"MinObstaclesCount": 3,
 			"MaxObstaclesCount": 5,
 			"SpawnBonusChance": 0,
 			"SpawnGrenadeChance": 0
 		},
 		{
-			"ObstacleLaunchForceMultiplier": 2.75,
-			"ObstacleGravityMultiplier": 4.75,
+			"ObstacleLaunchForceMultiplier": 2.125,
+			"ObstacleGravityMultiplier": 3.25,
 			"MinObstaclesCount": 3,
 			"MaxObstaclesCount": 5,
 			"SpawnBonusChance": 0,
 			"SpawnGrenadeChance": 0
 		},
 		{
-			"ObstacleLaunchForceMultiplier": 2.875,
-			"ObstacleGravityMultiplier": 5,
+			"ObstacleLaunchForceMultiplier": 2.125,
+			"ObstacleGravityMultiplier": 3.25,
 			"MinObstaclesCount": 4,
 			"MaxObstaclesCount": 5,
 			"SpawnBonusChance": 0,
 			"SpawnGrenadeChance": 0
 		},
 		{
-			"ObstacleLaunchForceMultiplier": 3,
-			"ObstacleGravityMultiplier": 5.25,
+			"ObstacleLaunchForceMultiplier": 2.125,
+			"ObstacleGravityMultiplier": 3.25,
 			"MinObstaclesCount": 4,
 			"MaxObstaclesCount": 5,
 			"SpawnBonusChance": 0,

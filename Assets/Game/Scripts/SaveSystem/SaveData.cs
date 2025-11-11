@@ -23,6 +23,7 @@ namespace SaveSystem
         public bool IsFirstEntry;
         public string LastExitTime;
         public string EnergyLastRecoveryTime;
+        public bool IsRateRewardClaimed;
 
         public SaveData()
         {
